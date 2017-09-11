@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   # devise_for :users
   root to: 'pages#home'
-  get '/search_results', to: 'pages#index'
-  get '/search_results/artist', to: 'pages#show'
+  get '/search_result', to: 'artists#index'
+  get '/search_results/artist', to: 'artists#show'
 
     resources :consumers, only: [:destroy, :index]
     resources :consumer_events do
