@@ -12,7 +12,7 @@ class ArtistsController < ApplicationController
 
   def search
     @service = params[:service]
-    results = Artist.where(service: @service)
+    @results = Artist.where(service: @service)
   end
 
   private
