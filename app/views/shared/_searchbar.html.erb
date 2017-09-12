@@ -1,0 +1,7 @@
+<%= form_tag('/search_results', method: 'get') do  %>
+     <%= text_field_tag :service, nil, placeholder: 'Choose a service' %>
+     <%= text_field_tag :date, nil, placeholder: 'Date' %>
+     <%= text_field_tag :time, nil, placeholder: 'Time' %>
+     <%= text_field_tag :location, nil, placeholder: 'City' %>
+     <%= submit_tag 'search', class: "commit commit:hover" %>
+<% end  %>
