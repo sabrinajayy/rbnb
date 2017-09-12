@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/search_results', to: 'artists#search'
   get '/search_results/artist', to: 'artists#show'
 
-    resources :consumers, only: [:destroy, :index]
+    resources :consumers
     resources :consumer_events do
       resources :artist_requests, only: [:create]
     end
