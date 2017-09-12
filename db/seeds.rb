@@ -5,7 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user = User.create({ email: 'useremail@provider.com' })
-artist = Artist.create({ user_id: user.id, first_name: 'Annie', last_name: 'Getyergun'})
-
-
+categories = ['hair', 'makeup', 'both']
+locations = ['Barcelona', 'New York', 'Paris']
+100.times do
+  user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
+  artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: 'tagtagtag', location: locations.sample , category: categories.sample })
+end
