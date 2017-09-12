@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
 
     resources :artists do
-      resources :consumer_requests
+      resources :consumers_requests
     end
 
 
