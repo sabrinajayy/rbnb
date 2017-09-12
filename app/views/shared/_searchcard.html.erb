@@ -1,4 +1,4 @@
-<div class ="container">
+
 
 <% @results.each do |artist| %>
   <div class="row">
@@ -6,12 +6,12 @@
       <div class="product">
         <img src="cam.jpeg" alt="kudoz" class="product-image hidden-xs">
         <div class='product-body'>
-          <% link_to artist_path(artist) do %>
-            <h3><%= artist.first_name artist.last_name %></h3>
-          <%end%>
+          <%# link_to artist_path(artist) do %>
+            <h3><%= artist.first_name %> <%=artist.last_name %></h3>
+          <%#end%>
           <p>Best makeup artist in town</p>
           <ul class="list-inline">
-            <li><a href=""><i class="fa fa-star"></i></a></li>
+            <li><i class="fa fa-star"></i></li>
             <li><a href=""><i class="fa fa-star"></i></a></li>
             <li><a href=""><i class="fa fa-star"></i></a></li>
             <li><a href=""><i class="fa fa-star"></i></a></li>
@@ -27,5 +27,3 @@
   </div>
 
 <%end%>
-
-</div>
