@@ -11,3 +11,8 @@ locations = ['Barcelona', 'New York', 'Paris']
   user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
   artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: 'tagtagtag', location: locations.sample , category: categories.sample })
 end
+
+100.times do
+  user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
+  consumer = Consumer.create({ user: user, name: Faker::Name.name, city: Faker::Address.city, phone_number: Faker::Number.number(4).to_i }, instagram: '@' + Faker::App.name)
+end
