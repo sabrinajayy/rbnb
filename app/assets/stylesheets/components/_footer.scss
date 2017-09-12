@@ -3,13 +3,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
-  padding: 0px 50px;
+  height: 200px;
+  padding: 40px 50px;
   color: rgba(0,0,0,0.3);
 }
-.footer-links {
-  display: flex;
+
+.footer h3 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
 }
+
+.footer ul {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+
+.footer li a {
+  text-decoration: none;
+}
+
 .footer-links a {
   color: #757575;
   opacity: 0.15;
