@@ -1,0 +1,11 @@
+<%= simple_form_for @artist do |f| %>
+  <%= f.input :first_name, required: true %>
+  <%= f.input :last_name, required: true %>
+  <%= f.input :location, required: true %>
+  <%= f.input :travel_range, required: true %>
+  <%= f.input :instagram_handle, required: false %>
+
+  <h2>Enter your personal bio</h2>
+  <%= f.input :bio, required: true %>
+  <%= f.input :tags, required: false %>
+<%end%>
