@@ -1,4 +1,4 @@
 class ArtistRequest < ApplicationRecord
-  belongs_to :consumerevent
+  belongs_to :consumer_event
   belongs_to :artist
 end
