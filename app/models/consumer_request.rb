@@ -1,5 +1,7 @@
 class ConsumerRequest < ApplicationRecord
   belongs_to :user
+
+
   # def confirmed?
   #   status == 'confirmed'
   # end
