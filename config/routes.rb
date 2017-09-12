@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   # devise_for :users
   root to: 'pages#home'
@@ -9,8 +10,6 @@ Rails.application.routes.draw do
     resources :consumer_events do
       resources :artist_requests, only: [:create]
     end
-
-
 
     resources :artists do
       resources :consumer_requests
