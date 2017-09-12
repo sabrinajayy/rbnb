@@ -1,1 +1,30 @@
-index.html.erb
+<div class ="container">
+<%= link_to 'Back to Search Results', :back %>
+<% @artists.each do |artist| %>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="product">
+        <img src="cam.jpeg" alt="kudoz" class="product-image hidden-xs">
+        <div class='product-body'>
+          <%= link_to artist_path(artist) do %>
+            <h3><%= artist.first_name %> <%=artist.last_name %></h3>
+          <%end%>
+          <p><%= artist.category %></p>
+          <p>Best makeup artist in town</p>
+          <ul class="list-inline">
+            <li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star"></i></li>
+        </ul>
+        </div>
+        <div class="product-contact">
+          <a href=""><i class="fa fa-heart"></i></a>
+          <button class="btn-pamprd">Request</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%end%>
