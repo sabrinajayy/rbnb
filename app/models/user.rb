@@ -5,4 +5,8 @@ class User < ApplicationRecord
   has_one :consumer
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def is_artist?
+    self.artist
+  end
 end
