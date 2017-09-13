@@ -1,13 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <%# raise %>
       <%=  simple_form_for(@consumer_request, :url => artist_consumers_requests_path, :method => :post) do  |f| %>
 
       <%= f.input :date, required: true %>
       <%= f.input :time, required: true %>
       <%= f.input :address, required: true %>
 
-      <%= f.input :final_price, collection: [@services.each { |service| "#{service.name} - #{service.price}" }, ], label: "Choose a service" %>
+        <%#= f.input :final_price, collection: [ @services.each { |service| service.name end }, label: "Choose a service" %>
+        <%= f.input :final_price, collection: [ "Makeup - $10" ], label: "Choose a service" %>
       <!-- Display the cart -->
       <!-- Display and update the price -->
       <%= f.submit 'Book this artist!', class: 'btn-pamprd' %>

@@ -11,6 +11,7 @@ class ConsumersRequestsController < ApplicationController
   def new
     @consumer_request = ConsumerRequest.new
     @services = ArtistService.where(artist: @artist)
+
   end
 
   def create
