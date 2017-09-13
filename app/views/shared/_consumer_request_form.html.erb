@@ -3,10 +3,9 @@
       <%= f.input :date, required: true %>
       <%= f.input :time, required: true %>
       <%= f.input :address, required: true %>
-      <%= f.input :message, required: false %>
 
       <h2>Service</h2>
-      <%= f.input :service, :collection ["Makeup Application - $50", "False Lashes - $10", "Special FX Makeup - $75"] %>
+      <%= f.input :service, :collection ["False Lashes - $10", "Special FX Makeup - $75"] %>
       <!-- Display the cart -->
       <!-- Display and update the price -->
       <%= f.submit 'Book this artist!', class: 'btn-pamprd' %>
