@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def is_artist?(resource)
-    resource.artist
+  def is_artist?
+    self.artist
   end
 end
