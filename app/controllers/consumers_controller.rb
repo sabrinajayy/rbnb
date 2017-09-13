@@ -50,7 +50,7 @@ class ConsumersController < ApplicationController
   end
 
   def consumer_params
-    params.require(:consumer).permit(:name, :city, :phone_number)
+    params.require(:consumer).permit(:name, :city, :phone_number, :instagram, :profile_img)
   end
 
 end
