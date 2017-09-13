@@ -7,8 +7,7 @@
       <%= f.input :time, required: true %>
       <%= f.input :address, required: true %>
 
-      <h2>Service</h2>
-      <%= f.input :service, :collection ["False Lashes - $10", "Special FX Makeup - $75"] %>
+      <%= f.input :final_price, collection: [@services.each { |service| service }, ], label: "Choose a service" %>
       <!-- Display the cart -->
       <!-- Display and update the price -->
       <%= f.submit 'Book this artist!', class: 'btn-pamprd' %>

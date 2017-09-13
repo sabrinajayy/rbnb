@@ -44,7 +44,9 @@ class ConsumersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
   def set_consumer
+
     @consumer = current_user.consumer
+
   end
 
   def consumer_params
