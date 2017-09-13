@@ -44,11 +44,11 @@ class ConsumersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
   def set_consumer
-<<<<<<< HEAD
+
     @consumer = Consumer.find_by(user_id: params[:id])
-=======
+
     @consumer = current_user.consumer
->>>>>>> 8ae9720e3d13ad19fa2bc56b6d17cc0918d9715e
+
   end
 
   def consumer_params
