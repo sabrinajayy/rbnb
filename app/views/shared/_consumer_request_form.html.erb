@@ -1,3 +1,6 @@
+<div class=“container”>
+  <div class=“row”>
+    <div class=“col-xs-12 col-sm-6 col-sm-offset-3”>
       <%=  simple_form_for(@consumer_request, :url => artist_consumers_requests_path, :method => :post) do  |f| %>
 
       <%= f.input :date, required: true %>
@@ -12,3 +15,8 @@
       <%= f.submit 'Book this artist!', class: 'btn-pamprd' %>
       <p>You will not be charged until the artist accepts this request</p>
       <% end %>
+    </div>
+  </div>
+</div>
+
+

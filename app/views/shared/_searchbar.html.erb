@@ -1,4 +1,6 @@
 <%= form_tag('/search_results', method: 'get') do  %>
+      <%= collection_select :genre, :id, ArtistService.all, :id, :name %>
+
      <%= text_field_tag :service, nil, placeholder: 'Choose a service', class: 'search-form' %>
      <%= text_field_tag :date, nil, placeholder: 'Date', class: 'search-form' %>
      <%= text_field_tag :time, nil, placeholder: 'Time', class: 'search-form' %>
