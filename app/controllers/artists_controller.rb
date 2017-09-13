@@ -40,7 +40,8 @@ class ArtistsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-  def set_artist
+ def set_artist
+    # @artist = Artist.find_by(user: current_user)
     @artist = Artist.find(params[:id])
   end
 
