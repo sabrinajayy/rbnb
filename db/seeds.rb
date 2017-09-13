@@ -5,7 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-categories = ['hair', 'makeup', 'both']
+
+categories = ['hair', 'makeup', 'hair and makeup']
 locations = ['Barcelona', 'New York', 'Paris']
 
 puts "seeding 20 user artists"

@@ -35,7 +35,7 @@ class ArtistsController < ApplicationController
   def search
     # filtered artists results
 
-    @service = params[:service]
+    @service = params[:category]
     @results = Artist.where(category: @service)
   end
 
