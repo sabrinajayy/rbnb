@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:search, :index, :show]
-  before_action :set_artist, only: [:show]
+  before_action :set_artist, only: [:show, :edit, :update]
 
   def index
     # all artists
@@ -22,6 +22,14 @@ class ArtistsController < ApplicationController
     else
       render 'artists/new'
     end
+  end
+
+  def edit
+  end
+
+  def update
+    @artist.update(artist_params)
+    redirect_to artist_path(@artist)
   end
 
   def search
