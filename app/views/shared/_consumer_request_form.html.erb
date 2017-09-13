@@ -1,6 +1,14 @@
       <%=  simple_form_for(@consumer_request, :url => artist_consumers_requests_path, :method => :post) do  |f| %>
-      <%= f.input :base_price %>
-      <%= f.input :fees %>
-      <%= f.input :final_price %>
-      <%= f.submit 'Request this artist!', class: 'btn btn-primary' %>
+      <%= f.input :date, required: true %>
+      <%= f.input :time, required: true %>
+      <%= f.input :address, required: true %>
+      <%= f.input :location_type, required: true %>
+      <%= f.input :notes, required: false %>
+
+      <h2>Service</h2>
+      <%= f.input :name, :collection ["Makeup Application - $50", "False Lashes - $10", "Special FX Makeup - $75"] %>
+      <!-- Display the cart -->
+      <!-- Display and update the price -->
+      <%= f.submit 'Book this artist!', class: 'btn-pamprd' %>
+      <p>You will not be charged until the artist accepts this request</p>
       <% end %>
