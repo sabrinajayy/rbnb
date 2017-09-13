@@ -1,8 +1,10 @@
 <%= simple_form_for @artist do |f| %>
   <%= f.input :first_name, required: true %>
   <%= f.input :last_name, required: true %>
-
-  <%#= select_tag 'category', options_for_select([['Hair', 'hair'], ['Makeup', 'makeup'], ['Hair and Makeup', 'both']]),  placeholder: 'Category', class: 'search-form' %>
+   <br>
+  <%= f.label :category, "What is your specialty?", required: true %>
+  <%= select_tag 'category', options_for_select([['Hair', 'hair'], ['Makeup', 'makeup'], ['Hair and Makeup', 'both']]),  placeholder: 'Category', class: 'search-form' %>
+  <br><br>
   <%= f.input :location, required: true %>
   <%= f.input :travel_range, required: true %>
   <%= f.input :instagram_handle, required: false %>
