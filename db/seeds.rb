@@ -7,15 +7,20 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 categories = ['hair', 'makeup', 'both']
 locations = ['Barcelona', 'New York', 'Paris']
-puts "seeding 100 user artists"
+
+puts "seeding 20 user artists"
 puts "please wait"
-100.times do
+20.times do
   user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
   artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: 'tagtagtag', location: locations.sample , category: categories.sample })
+  5.times do
+    ArtistService.create(name: 'Service', price: 10, artist: artist )
+  end
 end
-puts "seeding 100 user consumers"
+puts
+puts "seeding 5 user consumers"
 puts "please wait"
-100.times do
+5.times do
   user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
   consumer = Consumer.create({ user: user, name: Faker::Name.name, city: Faker::Address.city, phone_number: Faker::Number.number(8).to_i, instagram: '@' + Faker::App.name})
 end
