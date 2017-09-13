@@ -34,14 +34,16 @@ class ArtistsController < ApplicationController
 
   def search
     # filtered artists results
+
     @service = params[:service]
     @results = Artist.where(category: @service)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-  def set_artist
-    @artist = Artist.find(params[:id])
+
+ def set_artist
+    @artist = current_user.artist
   end
 
   def artist_params
