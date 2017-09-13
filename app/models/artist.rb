@@ -1,4 +1,5 @@
 class Artist < ApplicationRecord
+  # CATEGORY = [['Hair', 'hair'], ['Makeup', 'makeup'], ['Hair and Makeup', 'both']]
   belongs_to :user
   has_many :certifications
   has_many :artist_services
@@ -9,5 +10,9 @@ class Artist < ApplicationRecord
   validates :last_name, presence: true
   validates :location, presence: true
   validates :tags, presence: true
+  # validates_inclusion_of :category, :in => CATEGORY
+
+
+
 
 end
