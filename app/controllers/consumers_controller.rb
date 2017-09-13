@@ -44,8 +44,7 @@ class ConsumersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
   def set_consumer
-    @consumer = Consumer.find(params[:id])
-    # @consumer = Consumer.find_by(user: current_user)
+    @consumer = current_user.consumer
   end
 
   def consumer_params
