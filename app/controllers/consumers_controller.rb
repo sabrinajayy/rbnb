@@ -8,6 +8,7 @@ class ConsumersController < ApplicationController
 
   def show
     # single user profile - will render view
+    @requests = ConsumerRequest.where(consumer: @consumer)
   end
 
   def new
