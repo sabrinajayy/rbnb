@@ -1,4 +1,5 @@
       <%=  simple_form_for(@consumer_request, :url => artist_consumers_requests_path, :method => :post) do  |f| %>
+
       <%= f.input :date, required: true %>
       <%= f.input :time, required: true %>
       <%= f.input :address, required: true %>
