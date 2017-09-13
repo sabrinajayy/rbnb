@@ -2,5 +2,7 @@
       <%= f.input :base_price %>
       <%= f.input :fees %>
       <%= f.input :final_price %>
-      <%= f.submit 'Request this artist!', class: 'btn btn-primary' %>
+      <%= f.submit 'Request this artist!', :url => new_artist_consumers_request_path(@artist.id), class: 'btn btn-primary' %>
+      <%#= button_to "Request this artist!", new_artist_consumers_request_path(artist.id),
+      :class => "btn-pamprd", :method => :get %>
       <% end %>

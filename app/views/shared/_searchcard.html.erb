@@ -21,7 +21,8 @@
         </div>
         <div class="product-contact">
           <a href=""><i class="fa fa-heart"></i></a>
-          <button class="btn-pamprd">Request</button>
+          <%= button_to "REQUEST", new_artist_consumers_request_path(artist.id),
+          :class => "btn-pamprd", :method => :get %>
         </div>
       </div>
     </div>

@@ -24,7 +24,8 @@
     <h2>REVIEWS</h2>
   </a>
   <a class="tab" href="#">
-    <button class="btn-pamprd">REQUEST</button>
+    <%= button_to "REQUEST", new_artist_consumers_request_path(@artist.id),
+    :class => "btn-pamprd", :method => :get %>
   </a>
 </div>
 <div class="container">
