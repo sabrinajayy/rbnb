@@ -1,11 +1,13 @@
 class ConsumersRequestsController < ApplicationController
   before_action :set_artist, only: [:show, :new]
+  before_action :set_consumer_request, only: [:show]
 
   def index
     # show all bookings
   end
 
   def show
+    @services = ArtistService.where(consumer_request: @consumer_request)
   end
 
   def new
@@ -45,6 +47,10 @@ class ConsumersRequestsController < ApplicationController
   private
   def set_artist
     @artist = Artist.find(params[:artist_id])
+  end
+
+  def set_consumer_request
+    @consumer_request = ConsumerRequest.find(params[:consumer_request_id])
   end
 
   def consumer_request_params
