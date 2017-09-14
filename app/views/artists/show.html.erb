@@ -1,5 +1,9 @@
-<% if current_user.is_artist? %>
-  <%= render 'shared/artist_private_profile' %>
+<% if user_signed_in? %>
+  <% if current_user.is_artist? %>
+    <%= render 'shared/artist_private_profile' %>
+  <% else %>
+    <%= render 'shared/artist_public_profile' %>
+  <% end %>
 <% else %>
   <%= render 'shared/artist_public_profile' %>
 <% end %>
