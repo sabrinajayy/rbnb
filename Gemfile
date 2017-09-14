@@ -13,6 +13,9 @@ source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
 
+#datepicker
+gem 'bootstrap-datepicker-rails'
+
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
