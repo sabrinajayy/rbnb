@@ -24,7 +24,7 @@ class ConsumersRequestsController < ApplicationController
     consumer_request.final_price = service.price
 
     consumer_request.status = 'unconfirmed'
-    consumer = Consumer.find_by(user: current_user)
+    @consumer = Consumer.find_by(user: current_user)
 
     if consumer_request.save
       redirect_to consumer_path(@consumer)
