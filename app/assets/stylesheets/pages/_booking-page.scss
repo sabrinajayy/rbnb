@@ -1,1 +1,19 @@
+.booking-container {
+  background-color: #fafafa;
+  color: #757575;
+}
 
+.booking-card {
+  color: #757575;
+  height: 400px;
+  width: 500px;
+  background-color: #fff;
+  padding: 40px;
+  margin-left: 40px;
+  margin-top: 60px;
+  border-radius: 3px;
+  text-align: center;
+  -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+}
