@@ -13,5 +13,10 @@ class ConsumerRequest < ApplicationRecord
   #     Transaction.new(self.id)
   #   end
   # end
+
+  def geocoded?
+    self.latitude && self.longitude
+  end
+
 end
 
