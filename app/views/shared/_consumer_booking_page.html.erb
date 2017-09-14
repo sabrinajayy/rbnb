@@ -12,13 +12,14 @@
           <h2>booking info</h2>
           <p><%= @consumer_request.date %> at <%= @consumer_request.time %></p>
           <p><%= @consumer_request.address %></p>
+
           <p>Services booked:</p>
           <ul class="booking-services">
             <%= @services.each do |service| %>
               <li><%=service.name%> - <%=service.price%></li>
             <% end %>
           </ul>
-
+        <%= render 'event_map' %>
         </div>
 
         <div class="booking-status">
