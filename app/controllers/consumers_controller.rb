@@ -8,7 +8,7 @@ class ConsumersController < ApplicationController
 
   def show
     # single user profile - will render view
-    @requests = ConsumerRequest.where(consumer: @consumer)
+    @requests = ConsumerRequest.where(user: current_user)
     @confirmed = @requests.select { |request| request.status == 'confirmed'}
     @pending = @requests.select { |request| request.status == 'unconfirmed'}
   end
@@ -53,6 +53,12 @@ class ConsumersController < ApplicationController
 
   def consumer_params
     params.require(:consumer).permit(:name, :city, :phone_number, :instagram, :profile_img)
+  end
+
+  def prettify_dates(results_array)
+    results_array.each do |result|
+      result.date = result.date
+    end
   end
 
 end
