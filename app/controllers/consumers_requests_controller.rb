@@ -50,7 +50,7 @@ class ConsumersRequestsController < ApplicationController
   end
 
   def set_consumer_request
-    @consumer_request = ConsumerRequest.find(params[:consumer_request_id])
+    @consumer_request = ConsumerRequest.find(params[:id])
   end
 
   def consumer_request_params
