@@ -2,7 +2,8 @@
 
      <%= select_tag :category, options_for_select([['Hair', 'hair'], ['Makeup', 'makeup'], ['Hair and Makeup', 'hair and makeup']]),  placeholder: 'Category', class: 'search-form' %>
      <%= text_field_tag :date, nil, placeholder: 'Date', class: 'search-form' %>
-     <%= text_field_tag :time, nil, placeholder: 'Time', class: 'search-form' %>
+     <%#= text_field_tag :time, nil, placeholder: 'Time', class: 'search-form' %>
+     <%= select_tag :time, options_for_select([['Morning', 'morning'], ['Afternoon', 'afternoon'], ['Evening', 'evening']]), placeholder: 'Time', class: 'search-form' %>
      <%= text_field_tag :location, nil, placeholder: 'City', class: 'search-form' %>
      <%= submit_tag 'search', class: "btn-pamprd" %>
 <% end  %>
