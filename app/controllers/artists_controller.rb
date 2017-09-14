@@ -10,6 +10,11 @@ class ArtistsController < ApplicationController
   def show
     # single artist profile
     @requests = ConsumerRequest.where(artist: @artist)
+    if current_user == @aritist.user
+      render action: 'aritst_self'
+    else
+      render action: 'artist_other'
+    end
   end
 
   def new

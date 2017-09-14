@@ -9,7 +9,8 @@
       <%= f.input :address, required: true %>
 
         <%= f.input :artist_services do %>
-          <%= f.select :artist_services, @services.map { |s| ["#{s.name}- #{s.price}", s.id] }, include_blank: false %>
+          <%= f.select :artist_services, @services.map { |s| ["#{s.name}: #{s.price}", s.id] }, include_blank: false %>
+
         <% end %>
       <!-- Display the cart -->
       <!-- Display and update the price -->
