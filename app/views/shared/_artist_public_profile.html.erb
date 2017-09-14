@@ -1,15 +1,4 @@
-<% if user_signed_in? %>
-  <% if current_user.is_artist? %>
-    <%= render 'shared/artist_private_profile' %>
-  <% else %>
-    <%= render 'shared/artist_public_profile' %>
-  <% end %>
-<% else %>
-  <%= render 'shared/artist_public_profile' %>
-<% end %>
-
-
-<!-- <div class="profile-banner">
+<div class="profile-banner">
   <div class="banner-content">
     <img src="images/cam.jpeg" class="avatar">
     <h1><%= @artist.first_name %> <%= @artist.last_name %></h1>
@@ -35,7 +24,7 @@
     <h2>REVIEWS</h2>
   </a>
   <a class="tab" href="#">
-    <%#= button_to "REQUEST", new_artist_consumers_request_path(@artist.id),
+    <%= button_to "REQUEST", new_artist_consumers_request_path(@artist.id),
     :class => "btn-pamprd", :method => :get %>
   </a>
 </div>
@@ -46,4 +35,3 @@
   </div>
 
 </div>
- -->

@@ -1,0 +1,85 @@
+.booking-listing {
+  display: flex;
+  align-items: center;
+  padding: 10px 0px 10px 0px;
+  border-bottom: 1px solid rgba(220,224,244,0.4);
+}
+
+.booking-name {
+  padding-left: 15px;
+  padding-right: 15px;
+  min-width: 100px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  text-align: center;
+  line-height: 10px;
+}
+
+.booking-name h3 {
+  font-size: 13px;
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.booking-name p {
+  font-size: 13px;
+  font-weight: regular;
+  font-family: 'Open Sans', sans-serif;
+  opacity: 0.6;
+  margin-top: 5px;
+}
+
+.booking-date {
+  margin-bottom: 5px;
+  padding-bottom: 3px;
+}
+
+.booking-time {
+  margin-bottom: 0px;
+}
+
+.booking-details {
+  flex-grow: 1;
+  padding-left: 10px;
+  font-size: 12px;
+  color: rgba(0,0,0,0.7);
+  line-height: 12px;
+  padding-bottom: 10px;
+}
+
+.booking-details p {
+  margin: 6px 0;
+}
+
+.booking-category {
+  margin: 0;
+  padding-bottom: 0px;
+}
+
+.booking-address {
+  margin-top: 0px;
+}
+
+.booking-status {
+  font-size: 14px;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.booking-price {
+  font-weight: bold;
+  text-align: center;
+}
+
+.status-unconfirmed {
+  color: lightgrey;
+  text-transform: uppercase;
+  margin-bottom: 0px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.status-confirmed {
+  color: green;
+}
