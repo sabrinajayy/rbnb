@@ -1,3 +1,10 @@
+<% if current_user.is_artist? %>
+  <%= render 'shared/artist_private_profile' %>
+<% else %>
+  <%= render 'shared/artist_public_profile' %>
+<% end %>
+
+
 <!-- <div class="profile-banner">
   <div class="banner-content">
     <img src="images/cam.jpeg" class="avatar">
