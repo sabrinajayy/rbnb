@@ -1,1 +1,44 @@
+.booking-container {
+  background-color: #fafafa;
+  color: #757575;
+}
 
+.booking-card h2 {
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 18px;
+}
+
+.booking-card {
+  font-size: 12px;
+  color: #757575;
+  height: 400px;
+  width: 500px;
+  background-color: #fff;
+  padding: 40px;
+  margin-left: 40px;
+  margin-top: 60px;
+  border-radius: 3px;
+  text-align: center;
+  -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+}
+
+.cancel {
+  background-color: $red;
+  font-size: 16px;
+}
+
+.unconfirmed {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.confirmed {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
+  color: green;
+}

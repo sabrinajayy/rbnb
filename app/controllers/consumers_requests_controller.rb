@@ -1,5 +1,6 @@
 class ConsumersRequestsController < ApplicationController
   before_action :set_artist, only: [:show, :new]
+  before_action :set_consumer_request, only: [:show]
 
   def index
     # show all bookings
@@ -13,6 +14,7 @@ class ConsumersRequestsController < ApplicationController
       marker.lat event.latitude
       marker.lng event.longitude
     end
+    @services = ArtistService.where(consumer_request: @consumer_request)
   end
 
   def new
@@ -28,11 +30,13 @@ class ConsumersRequestsController < ApplicationController
     consumer_request.user = user
 
     service = ArtistService.find(consumer_request_params[:artist_services])
+    consumer_request.service = service
+
     consumer_request.final_price = service.price
 
     consumer_request.status = 'unconfirmed'
     @consumer = Consumer.find_by(user: current_user)
-
+    raise
     if consumer_request.save
       redirect_to consumer_path(@consumer)
     else
@@ -52,6 +56,10 @@ class ConsumersRequestsController < ApplicationController
   private
   def set_artist
     @artist = Artist.find(params[:artist_id])
+  end
+
+  def set_consumer_request
+    @consumer_request = ConsumerRequest.find(params[:id])
   end
 
   def consumer_request_params

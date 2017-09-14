@@ -1,0 +1,45 @@
+<div class="booking-container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-5">
+      <div class="booking-card">
+        <div class="booking-artist">
+          <h2><%= @artist.first_name %> <%= @artist.last_name %></h2>
+            <p><%= @artist.rating%></p>
+            <p><%= @artist.location%> | <%= @artist.instagram_handle %></p>
+        </div>
+
+        <div class="booking-info">
+          <h2>booking info</h2>
+          <p><%= @consumer_request.date %> at <%= @consumer_request.time %></p>
+          <p><%= @consumer_request.address %></p>
+          <p>Services booked:</p>
+          <ul class="booking-services">
+            <%= @services.each do |service| %>
+              <li><%=service.name%> - <%=service.price%></li>
+            <% end %>
+          </ul>
+
+        </div>
+
+        <div class="booking-status">
+        <% if @consumer_request.status == 'unconfirmed' %>
+          <p>Booking Status:</p>
+          <p class="unconfirmed"><%= @consumer_request.status %></p><button class="booking-status cancel btn-pamprd">Cancel Request</button>
+        <% else %>
+          <p>Booking Status:</p>
+          <p class="confirmed"><%= @consumer_request.status %></p><button class="booking-status cancel btn-pamprd">Cancel Booking</button>
+        <% end %>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-7">
+
+      <div class="messages-section">
+      </div>
+
+    </div>
+  </div>
+
+</div>
