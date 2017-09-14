@@ -5,7 +5,8 @@
         <div class="booking-artist">
           <h2><%= @artist.first_name %> <%= @artist.last_name %></h2>
             <p><%= @artist.rating%></p>
-            <p><%= @artist.location%> | <%= @artist.instagram_handle %></p>
+            <p><%= @artist.location%></p>
+            <p><%= @artist.instagram_handle %></p>
         </div>
 
         <div class="booking-info">
@@ -15,11 +16,9 @@
 
           <p>Services booked:</p>
           <ul class="booking-services">
-            <%= @services.each do |service| %>
-              <li><%=service.name%> - <%=service.price%></li>
-            <% end %>
+            <li><%= @consumer_request.servicename %>: <%= @consumer_request.final_price %></li>
           </ul>
-        <%= render 'shared/event_map' %>
+
         </div>
 
         <div class="booking-status">
@@ -35,6 +34,7 @@
       </div>
 
     </div>
+    <%= render 'shared/event_map' %>
     <div class="col-xs-12 col-sm-7">
 
       <div class="messages-section">

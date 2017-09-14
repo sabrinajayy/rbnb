@@ -1,22 +1,26 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-    <%# raise %>
+      <%# raise %>
       <%=  simple_form_for(@consumer_request, :url => artist_consumers_requests_path, :method => :post) do  |f| %>
 
       <%= f.input :date, required: true %>
       <%= f.input :time, required: true %>
       <%= f.input :address, required: true %>
 
-        <%= f.input :artist_services do %>
-          <%= f.select :artist_services, @services.map { |s| ["#{s.name}: #{s.price}", s.id] }, include_blank: false %>
+      <%= f.simple_fields_for @services do |s| %>
 
-        <% end %>
+      <%= s.input :name do %>
+      <%= s.select :name, @services.map { |s| ["#{s.name}: #{s.price}", s.id] }, include_blank: false %>
+      <% end %>
+
+      <% end %>
       <!-- Display the cart -->
       <!-- Display and update the price -->
       <%= f.submit 'Book this artist!', class: 'btn-pamprd' %>
-      <p>You will not be charged until the artist accepts this request</p>
       <% end %>
+
+      <p>You will not be charged until the artist accepts this request</p>
     </div>
   </div>
 </div>

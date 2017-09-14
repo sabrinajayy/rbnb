@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170914105611) do
+ActiveRecord::Schema.define(version: 20170914142550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,9 @@ ActiveRecord::Schema.define(version: 20170914105611) do
     t.text     "message"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "artist_id"
+    t.string   "servicename"
+    t.index ["artist_id"], name: "index_consumer_requests_on_artist_id", using: :btree
     t.index ["user_id"], name: "index_consumer_requests_on_user_id", using: :btree
   end
 
@@ -162,6 +165,7 @@ ActiveRecord::Schema.define(version: 20170914105611) do
   add_foreign_key "artists", "users"
   add_foreign_key "certifications", "artists"
   add_foreign_key "consumer_events", "users"
+  add_foreign_key "consumer_requests", "artists"
   add_foreign_key "consumer_requests", "users"
   add_foreign_key "consumers", "users"
   add_foreign_key "messages", "users"

@@ -15,7 +15,7 @@ puts "please wait"
   user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
   artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: 'tagtagtag', location: locations.sample , category: categories.sample })
   5.times do
-    ArtistService.create(name: Faker::Commerce.product_name, price: Faker::Commerce.price, artist: artist )
+    ArtistService.create(name: Faker::Commerce.product_name, price: Faker::Commerce.price, artist: Artist.all.sample )
   end
 end
 puts

@@ -1,5 +1,5 @@
 class ConsumersRequestsController < ApplicationController
-  before_action :set_artist, only: [:show, :new]
+  before_action :set_artist, only: [:new, :show, :create]
   before_action :set_consumer_request, only: [:show]
 
   def index
@@ -14,31 +14,30 @@ class ConsumersRequestsController < ApplicationController
       marker.lat event.latitude
       marker.lng event.longitude
     end
-    @services = ArtistService.where(consumer_request: @consumer_request)
   end
 
   def new
+    # raise
     @consumer_request = ConsumerRequest.new
     @services = ArtistService.where(artist: @artist)
 
   end
 
   def create
-    consumer_request = ConsumerRequest.new
+    consumer_request = ConsumerRequest.new(consumer_request_params)
 
-    user = current_user
-    consumer_request.user = user
+    consumer_request.user_id = current_user.id
 
-    service = ArtistService.find(consumer_request_params[:artist_services])
-    service.consumer_request = consumer_request
+    service = ArtistService.find(params[:consumer_request][:artist_service][:name])
 
     consumer_request.final_price = service.price
+    consumer_request.servicename = service.name
 
+    consumer_request.artist = @artist
     consumer_request.status = 'unconfirmed'
     @consumer = Consumer.find_by(user: current_user)
-
     if consumer_request.save
-      redirect_to consumer_path(@consumer)
+      redirect_to artist_consumers_request_path(consumer_request.artist, consumer_request)
     else
       redirect_to new_artist_consumers_request_path
     end
@@ -63,6 +62,6 @@ class ConsumersRequestsController < ApplicationController
   end
 
   def consumer_request_params
-    params.require(:consumer_request).permit(:artist_services, :date, :time, :address)
+    params.require(:consumer_request).permit(:artist_service, :date, :time, :address)
   end
 end
