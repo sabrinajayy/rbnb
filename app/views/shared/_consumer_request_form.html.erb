@@ -8,8 +8,9 @@
       <%= f.input :time, required: true %>
       <%= f.input :address, required: true %>
 
-        <%= f.input :final_price, collection: @services.pluck(:name), label: "Choose a service" %>
-        <%#= f.input :final_price, collection: [ "Makeup - $10" ], label: "Choose a service" %>
+        <%= f.input :artist_services do %>
+          <%= f.select :artist_services, @services.map { |s| ["#{s.name}- #{s.price}", s] }, include_blank: false %>
+        <% end %>
       <!-- Display the cart -->
       <!-- Display and update the price -->
       <%= f.submit 'Book this artist!', class: 'btn-pamprd' %>
