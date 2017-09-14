@@ -1,16 +1,22 @@
-<div class="container">
+<div class="booking-container">
   <div class="row">
     <div class="col-xs-12 col-sm-5">
-
       <div class="booking-card">
         <div class="booking-artist">
+          <h2><%= @artist.first_name %> <%= @artist.last_name %></h2>
+            <p><%= @artist.rating%></p>
+            <p><%= @artist.location%> | <%= @artist.instagram_handle %></p>
         </div>
 
         <div class="booking-info">
+          <h2>booking info</h2>
+          <p><%= @consumer_request.date %> at <%= @consumer_request.time %></p>
 
         </div>
 
         <div class="booking-status">
+        <p><%= @consumer_request.status %><p>
+        <button class="booking-status cancel btn-pamprd">Cancel Request</button>
         </div>
       </div>
 
