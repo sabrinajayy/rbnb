@@ -9,32 +9,48 @@
             <p><%= @artist.instagram_handle %></p>
         </div>
 
-        <div class="booking-info">
-          <h2>booking info</h2>
+        <div class="booking-info text-center">
           <p><%= @consumer_request.date %> at <%= @consumer_request.time %></p>
           <p><%= @consumer_request.address %></p>
 
-          <p>Services booked:</p>
           <ul class="booking-services">
             <li><%= @consumer_request.servicename %>: <%= @consumer_request.final_price %></li>
           </ul>
-
         </div>
+        <div class="booking-location-map">
+            <%= render 'shared/event_map' %>
+           </div>
 
         <div class="booking-status">
-        <% if @consumer_request.status == 'unconfirmed' %>
-          <p>Booking Status:</p>
-          <p class="unconfirmed"><%= @consumer_request.status %></p><button class="booking-status cancel btn-pamprd">Cancel Request</button>
-        <% else %>
-          <p>Booking Status:</p>
-          <p class="confirmed"><%= @consumer_request.status %></p><button class="booking-status cancel btn-pamprd">Cancel Booking</button>
-        <% end %>
+        <% if current_user.is_artist? %>
+          <% if @consumer_request.status == 'unconfirmed' %>
+              <i class="fa fa-clock-o fa-5x" aria-hidden="true"></i>
+              <p class="unconfirmed">PENDING</p><%= button_to "Accept", artist_path,:confirm => 'Are you sure?',
+          :class => "booking-status accept btn-pamprd", :method => :get %><nobr><%= button_to "Decline", artist_path,:confirm => 'Are you sure?',
+          :class => "booking-status cancel btn-pamprd", :method => :get %>
+            <% else %>
+              <i class="fa fa-check-circle fa-5x" aria-hidden="true"></i>
+              <p class="confirmed"><%= @consumer_request.status %></p><%= button_to "Cancel Booking", artist_path,:confirm => 'Are you sure?',
+          :class => "booking-status cancel btn-pamprd", :method => :get %>
+            <% end %>
+          <%else%>
+            <% if @consumer_request.status == 'unconfirmed' %>
+              <i class="fa fa-clock-o fa-5x" aria-hidden="true"></i>
+              <p class="unconfirmed">PENDING</p><%= button_to "Cancel Request", consumer_path,:confirm => 'Are you sure?',
+          :class => "booking-status cancel btn-pamprd", :method => :get %>
+            <% else %>
+              <i class="fa fa-check-circle fa-5x" aria-hidden="true"></i>
+              <p class="unconfirmed">Confirmed</p><p class="confirmed"><%= @consumer_request.status %></p><%= button_to "Cancel Booking", consumer_path,:confirm => 'Are you sure?',
+          :class => "booking-status cancel btn-pamprd", :method => :get %>
+
+            <% end %>
+        <%end%>
 
         </div>
       </div>
 
     </div>
-    <%= render 'shared/event_map' %>
+    <%#= render 'shared/event_map' %>
     <div class="col-xs-12 col-sm-7">
 
       <div class="messages-section">
@@ -42,5 +58,8 @@
 
     </div>
   </div>
-
+ <div class="booking-location-map">
+            <%= render 'shared/event_map' %>
+  </div>
 </div>
+
