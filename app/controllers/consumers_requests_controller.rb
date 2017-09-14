@@ -30,13 +30,13 @@ class ConsumersRequestsController < ApplicationController
     consumer_request.user = user
 
     service = ArtistService.find(consumer_request_params[:artist_services])
-    consumer_request.service = service
+    service.consumer_request = consumer_request
 
     consumer_request.final_price = service.price
 
     consumer_request.status = 'unconfirmed'
     @consumer = Consumer.find_by(user: current_user)
-    raise
+
     if consumer_request.save
       redirect_to consumer_path(@consumer)
     else
