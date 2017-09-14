@@ -9,24 +9,27 @@
   <p><%= link_to 'Edit Profile', edit_consumer_path %></p>
 </div>
 
-<h3>Your Upcoming Booking</h3>
+<h3>Your Pending Bookings</h3>
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <div class="user-bookings">
-          <div class="booking-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+  <% @requests.each do |booking| %>
+    <ul class="cards">
+      <li class="cards__item">
+        <div class="card">
+          <div class="card__image card__image--fence"></div>
+          <div class="profile-image">
           <img class="booking-card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-          <div class="booking-card-description">
-            <h2>Sean Span</h2>
-            <p>Makeup | LA | @seanspan</p>
-            <p>Appointment on October 6th, 2017 @ 4pm PST</p>
-            <p>123 Hollywood, CA 90032</p>
-
           </div>
-
-          <a class="booking-card-link" href="#" ></a>
+          <div class="card__content">
+            <div class="card__title"> <%=booking.artist.first_name %> <%=booking.artist.last_name %></div>
+            <p class="card__text"><%=booking.address%> | <%=booking.date %> @ <%=booking.time %></p>
+            <p class="card__text"><%=booking.servicename%></p>
+            <p class="card__text"><%=booking.status%></p>
+            <button class="btn btn--block card__btn">Reciept</button>
+          </div>
         </div>
-      </div>
-    </div>
+    </ul>
   </div>
 </div>
+<% end %>
+

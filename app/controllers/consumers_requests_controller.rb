@@ -8,12 +8,14 @@ class ConsumersRequestsController < ApplicationController
 
   def show
     @event = ConsumerRequest.find(params[:id])
-    @event_coords = { lat: @event.latitude, lon: @event.longitude }
-
-    @hash = Gmaps4rails.build_markers(@event) do |event, marker|
-      marker.lat event.latitude
-      marker.lng event.longitude
+    # @event_coords = { lat: @event.latitude, lon: @event.longitude }
+    if @event.geocoded?
+      @hash = Gmaps4rails.build_markers(@event) do |event, marker|
+        marker.lat event.latitude
+        marker.lng event.longitude
+      end
     end
+    # raise
   end
 
   def new
