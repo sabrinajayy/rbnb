@@ -15,6 +15,8 @@ end
 
 #datepicker
 gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-timepicker-rails'
+gem 'jquery-timepicker-rails'
 
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'

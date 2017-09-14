@@ -5,6 +5,8 @@
 //= require gmaps/google
 //= require bootstrap-datepicker
 //= require datepicker
+//= require bootstrap-timepicker
+//= require jquery.timepicker.js
 //= require_tree .
 
 $(function(){

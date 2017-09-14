@@ -4,23 +4,23 @@
       <%# raise %>
       <%=  simple_form_for(@consumer_request, :url => artist_consumers_requests_path, :method => :post) do  |f| %>
 
-      <%= f.input :date, required: true %>
-      <%= f.input :time, required: true %>
-      <%= f.input :address, required: true %>
+      <%= f.text_field :date, placeholder: 'Date', class: 'search-form datepick' %>
+      <%= f.text_field :time, placeholder: 'Time', class: 'search-form timepicker-default', id: 'basicExample' %>
+      <br><br>
+      <%= f.input :address, label: "Where should #{@artist.first_name} meet you for this session?", placeholder: 'Enter an address', required: true %>
 
       <%= f.simple_fields_for @services do |s| %>
 
-      <%= s.input :name do %>
-      <%= s.select :name, @services.map { |s| ["#{s.name}: #{s.price}", s.id] }, include_blank: false %>
+      <%= s.input :name, label: 'Service' do %>
+      <%= s.select :name, @services.map { |s| ["#{s.name}: $#{s.price}", s.id] }, include_blank: false %>
       <% end %>
 
       <% end %>
       <!-- Display the cart -->
       <!-- Display and update the price -->
-      <%= f.submit 'Book this artist!', class: 'btn-pamprd' %>
+      <%= f.submit "Book #{@artist.first_name}!", class: 'btn-pamprd' %>
       <% end %>
-
-      <p>You will not be charged until the artist accepts this request</p>
+      <p>You will not be charged until <%= @artist.first_name %> accepts this request</p>
     </div>
   </div>
 </div>
