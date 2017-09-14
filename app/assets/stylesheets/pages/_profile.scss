@@ -26,6 +26,23 @@
 .profile-rating i {
   color: yellow;
 }
+
+
+/*PROFILE CONTENT*/
+.profile-container {
+  padding: 20px 160px;
+}
+
+#about h2 {
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+
+
+
 /*PROFILE TABS */
 .tabs {
   background: #FFF;
@@ -52,7 +69,7 @@
   background-color: #FFF;
   flex: 0 0 25%;
   text-align: center;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .tab.active {
