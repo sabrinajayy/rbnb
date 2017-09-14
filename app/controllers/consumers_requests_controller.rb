@@ -20,11 +20,11 @@ class ConsumersRequestsController < ApplicationController
     user = current_user
     consumer_request.user = user
 
-    service = ArtistService.find(consumer_request_params[:service])
+    service = ArtistService.find(consumer_request_params[:artist_services])
     consumer_request.final_price = service.price
 
     consumer_request.status = 'unconfirmed'
-    consumer = Consumer.find_by(user: user)
+    consumer = Consumer.find_by(user: current_user)
 
     if consumer_request.save
       redirect_to consumer_path(@consumer)
@@ -48,6 +48,6 @@ class ConsumersRequestsController < ApplicationController
   end
 
   def consumer_request_params
-    params.require(:consumer_request).permit(:service)
+    params.require(:consumer_request).permit(:artist_services, :date, :time, :address)
   end
 end
