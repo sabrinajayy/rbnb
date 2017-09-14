@@ -1,35 +1,27 @@
-<div class="user-profile">
-  <h1>Your Profile</h1>
-  <p>Profile Pic: <%= @consumer.profile_img %></p>
-  <p>Name: <%= @consumer.name %></p>
-  <p>City: <%= @consumer.city %></p>
-  <p>Phone Number: <%= @consumer.phone_number %></p>
-  <p>Instagram: @<%= @consumer.instagram %></p>
-
-  <p><%= link_to 'Edit Profile', edit_consumer_path %></p>
-</div>
-
-<h3>Your Pending Bookings</h3>
-<div class="container">
+<div class="client-profile-container">
   <div class="row">
-  <% @requests.each do |booking| %>
-    <ul class="cards">
-      <li class="cards__item">
-        <div class="card">
-          <div class="card__image card__image--fence"></div>
-          <div class="profile-image">
-          <img class="booking-card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+    <div class="col-xs-12 col-sm-3">
+      <div class="user-profile">
+        <img class="profile-pic" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+        <p>Name: <%= @consumer.name %></p>
+        <p>City: <%= @consumer.city %></p>
+        <p>Phone Number: <%= @consumer.phone_number %></p>
+        <p>Instagram: @<%= @consumer.instagram %></p>
+
+        <p><%= link_to 'Edit Profile', edit_consumer_path %></p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      <div class="booking-container">
+        <h3>Upcoming Bookings</h3>
+          <div class="row">
+            <%= render 'shared/confirmed-booking-card' %>
           </div>
-          <div class="card__content">
-            <div class="card__title"> <%=booking.artist.first_name %> <%=booking.artist.last_name %></div>
-            <p class="card__text"><%=booking.address%> | <%=booking.date %> @ <%=booking.time %></p>
-            <p class="card__text"><%=booking.servicename%></p>
-            <p class="card__text"><%=booking.status%></p>
-            <button class="btn btn--block card__btn">Reciept</button>
+        <h3>Your Pending Bookings</h3>
+          <div class="row">
+            <%= render 'shared/unconfirmed-booking-card' %>
           </div>
         </div>
-    </ul>
+      </div>
+    </div>
   </div>
-</div>
-<% end %>
-

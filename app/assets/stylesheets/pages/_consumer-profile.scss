@@ -1,0 +1,29 @@
+.client-profile-container {
+  padding: 20px 80px;
+}
+
+.booking-container {
+  margin: 0 auto;
+  padding-left: 0px;
+}
+
+.user-profile {
+  background-color: #FFF;
+  padding: 40px;
+  -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+}
+
+.user-profile p {
+  color: #757575;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+
+.profile-pic {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}

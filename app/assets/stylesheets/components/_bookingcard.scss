@@ -1,25 +1,7 @@
-
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-html {
-  background-color: #f0f0f0;
-}
-
-body {
-  color: gray;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0;
-  padding: 1rem;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -moz-font-feature-settings: "liga" on;
 }
 
 img {
@@ -28,66 +10,67 @@ img {
   vertical-align: middle;
 }
 
-.btn {
+.booking-card {
+  margin: 0px 0px 20px 0px !important;
+  height: auto;
+  width: 100% !important;
+  padding: 0px !important;
   background-color: white;
-  border-style: solid none none none;
-  border-color: lightgray;
-  //border-radius: 1rem;
-  color: gray;
-  padding: 0.5rem;
-  font-size: 12px;
-
-}
-
-.btn--block {
-  display: block;
-  width: 100%;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.cards__item {
-  display: flex;
-  padding: 1rem;
-  @media(min-width: 40rem) {
-    width: 50%;
-  }
-  @media(min-width: 56rem) {
-    width: 33.3333%;
-  }
-}
-
-.card {
-  height: 360px;
-  width: 360px;
-  background-color: white;
-  border-radius: 0.25rem;
+  border-radius: 0.1rem;
   box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   position: relative;
   &:hover {
-    .card__image {
+    .booking-bkgrd-image {
       filter: contrast(100%);
     }
   }
 }
 
-.card__content {
+.booking-user-image {
+  align-items: center;
+  width: 100%;
+  /* height: 0px; */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 37px;
+  margin-top: -11px;
+}
+
+.booking-card-user {
+  max-width:100%;
+  max-height:95px;
+  width: auto;
+  height: auto;
+  border-radius: 50%;
+ /*for the img inside your div */
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  // vertical-align: middle;
+}
+
+.booking-name {
+  font-family: 'Raleway', serif;
+
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.booking-card-content {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
   padding: 1rem;
 }
 
-.card__image {
+.booking-bkgrd-image {
+  width: 100%;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -110,6 +93,17 @@ img {
   }
 }
 
+.card__text {
+  flex: 1 1 auto;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.booking-status {
+  text-transform: uppercase;
+}
+
 .card__image--flowers {
   background-image: url(https://unsplash.it/800/600?image=82);
 }
@@ -126,20 +120,6 @@ img {
   background-image: url(https://unsplash.it/800/600?image=59);
 }
 
-.card__title {
-  color: black;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-align: center;
-}
-
-.card__text {
-  flex: 1 1 auto;
-  font-size: 12px;
-  line-height: 1.5;
-  margin-bottom: 1.25rem;
-}
 
 
 
@@ -147,87 +127,3 @@ img {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-.booking-card {
-  height: 360px;
-  width: 360px;
-  background-size: cover !important;
-  background-position: center;
-  color: white;
-  position: relative;
-}
-
-.profile-image {
-  align-items: center;
-  width: 100%;
-  /* height: 0px; */
-  display: flex;
-  justify-content: center;
-  margin-bottom: 37px;
-  margin-top: -11px;
-}
-
-.booking-card-user {
-  max-width:230px;
-  max-height:95px;
-  width: auto;
-  height: auto;
-  border-radius: 50%;
- /*for the img inside your div */
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  // vertical-align: middle;
-}
-.booking-card-artist {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 40px;
-  border-radius: 50%;
-}
-.booking-card-category {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 15px;
-  text-transform: uppercase;
-}
-.booking-card-description {
-  text-align: center;
-  position: absolute;
-  top: 170px;
-  left: 50px;
-  right: 50px;
-}
-.booking-card-description h2 {
-  font-size: 24px;
-}
-.booking-card-description p {
-  font-size: 14px;
-  opacity: 0.7;
-  font-weight: lighter;
-}
-.booking-card-link {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  z-index: 2;
-  background: black;
-  opacity: 0;
-}
-.booking-card-link:hover {
-  opacity: 0.1;
-}
