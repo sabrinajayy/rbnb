@@ -14,13 +14,13 @@
   </div>
 </div>
 <div class="tabs">
-  <a class="tab active" href="#">
+  <a class="tab active" href="#" data-target="#about">
     <h2>ABOUT</h2>
   </a>
-  <a class="tab" href="#">
+  <a class="tab" href="#" data-target="#portfolio">
     <h2>PORTFOLIO</h2>
   </a>
-  <a class="tab" href="#">
+  <a class="tab" href="#" data-target="#reviews">
     <h2>REVIEWS</h2>
   </a>
   <a class="tab" href="#">
@@ -28,10 +28,28 @@
     :class => "btn-pamprd", :method => :get %>
   </a>
 </div>
-<div class="container">
-  <div class="row">
-  <p><%= @artist.bio %></p>
+<div class="profile-container">
+  <div class="tab-content" id="about">
+    <div class="row">
+      <div class="col-xs-12 col-sm-7">
+      <h2>About me</h2>
+        <p><%= @artist.bio %></p>
 
+        <h2>Forte</h2>
+        <p><%= @artist.tags %></p>
+
+        <h2>Toolbelt</h2>
+        <p>Mac, Nars, etc...</p>
+      </div>
+      <div class="col-xs-12 col-sm-5">
+        <%= render 'shared/artist_prices_card' %>
+      </div>
+    </div>
   </div>
-
+  <div class="tab-content hidden" id="portfolio">
+    <p>Here are my projects.</p>
+  </div>
+  <div class="tab-content hidden" id="reviews">
+    <p>Contact me if you want.</p>
+  </div>
 </div>
