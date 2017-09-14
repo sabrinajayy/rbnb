@@ -9,6 +9,7 @@ class ArtistsController < ApplicationController
 
   def show
     # single artist profile
+    @requests = ConsumerRequest.where(artist: @artist)
   end
 
   def new
