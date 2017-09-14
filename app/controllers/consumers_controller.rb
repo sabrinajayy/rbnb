@@ -9,6 +9,8 @@ class ConsumersController < ApplicationController
   def show
     # single user profile - will render view
     @requests = ConsumerRequest.where(consumer: @consumer)
+    @confirmed = @requests.select { |request| request.status == 'confirmed'}
+    @pending = @requests.select { |request| request.status == 'unconfirmed'}
   end
 
   def new
