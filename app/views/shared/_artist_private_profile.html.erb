@@ -3,13 +3,15 @@
     <div class="col-xs-12 col-sm-5">
       <div class="new-requests">
         <h2>New Requests</h2>
-        <%= render 'shared/booking-listing' %>
+        <% if @requests.status == 'unconfirmed' %>
+          <%= render 'shared/booking-listing' %>
+        <% end %>
       </div>
       <div class="upcoming-bookings">
         <h2>Upcoming Bookings</h2>
-        <%= render 'shared/booking-listing' %>
-        <%= render 'shared/booking-listing' %>
-        <%= render 'shared/booking-listing' %>
+        <% if @requests.status == 'confirmed' %>
+          <%= render 'shared/booking-listing' %>
+        <% end %>
       </div>
     </div>
     <div class="col-xs-12 col-sm-7">
