@@ -30,6 +30,7 @@ real_images.each do |image|
 end
 
 puts "Creating and artist called Sarah"
+
 user = User.create({ email: 'sarah@sarah.com', password: 'password' })
 artist = Artist.create({ user: user,
                          first_name: 'Sarah',
@@ -39,12 +40,13 @@ artist = Artist.create({ user: user,
                          category: 'makeup',
                          location: 'milan'
                          })
+
 puts "Creating Sarah's Services"
-ArtistService.create(name: 'Full Face Makeup',price: "$50",artist: artist)
-ArtistService.create(name: "Lashes",price: "$30",artist: artist)
-ArtistService.create(name: "Special FX",price: "$75",artist: artist)
-ArtistService.create(name: "Wedding Day Service",price: "$250" ,artist: artist)
-ArtistService.create(name: "Lesson", price: "$50",artist: artist)
+ArtistService.create(name: 'Full Face Makeup',price: 50.0,artist: artist)
+ArtistService.create(name: "Lashes",price: 30.0,artist: artist)
+ArtistService.create(name: "Special FX",price: 75.0,artist: artist)
+ArtistService.create(name: "Wedding Day Service",price: 250.0,artist: artist)
+ArtistService.create(name: "Lesson", price: 50.0,artist: artist)
 puts
 puts "seeding 20 user artists"
 puts "please wait"
