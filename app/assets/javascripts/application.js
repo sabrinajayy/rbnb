@@ -8,6 +8,7 @@
 //= require bootstrap-timepicker
 //= require jquery.timepicker.js
 //= require google_maps_autocomplete.js
+//= require jquery.validate
 //= require_tree .
 
 $(function(){
@@ -23,6 +24,18 @@ $(function(){
     var tabToShow = $(this).data("target");
     // var tabToShow = $(this).attr("data-target");
     $(tabToShow).removeClass("hidden");
+  });
+
+});
+
+
+
+$(document).ready(function(){
+  $('#req-button').on('click', function(event){
+    if ($('#consumer_name').val().length < 2) {
+      event.preventDefault();
+      $('#consumer_name').addClass('warning')
+    }
   });
 
 });
