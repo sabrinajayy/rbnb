@@ -41,10 +41,17 @@ class ArtistsController < ApplicationController
   end
 
   def search
-    # filtered artists results
+    # filtered artists results on category and location
 
     @service = params[:category]
-    @results = Artist.where(category: @service)
+    @location = params[:location]
+
+    if !@location.empty?
+      @results = Artist.where("category ILIKE ? AND location ILIKE ?", @service, @location)
+    else
+      @results = Artist.where(category: @service)
+    end
+
   end
 
   private
