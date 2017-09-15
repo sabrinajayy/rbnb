@@ -1,7 +1,7 @@
 <div class="profile-banner">
   <div class="banner-content">
 
-    <%= cl_image_tag @artist.photo, class: 'artist-profile-pic', crop: :fill %>
+    <%= cl_image_tag @artist.photo, class: 'artist-profile-pic', width: 300, height: 300, crop: :fill %>
     <h1><%= @artist.first_name %> <%= @artist.last_name %></h1>
      <ul class="list-inline profile-rating">
             <li><i class="fa fa-star"></i></li>
