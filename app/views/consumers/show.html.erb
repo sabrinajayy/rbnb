@@ -15,11 +15,19 @@
       <div class="booking-container">
         <h3>Upcoming Bookings</h3>
           <div class="row">
-            <%= render partial: 'shared/confirmed_booking_card' %>
+            <% if @confirmed.nil? %>
+              <p>You do not have any upcoming bookings</p>
+            <% else %>
+              <%= render partial: 'shared/confirmed_booking_card' %>
+            <% end %>
           </div>
         <h3>Your Pending Bookings</h3>
           <div class="row">
-            <%= render partial: 'shared/unconfirmed_booking_card' %>
+            <% if @unconfirmed.nil? %>
+              <p>You not not have any pending bookings</p>
+            <% else %>
+              <%= render partial: 'shared/unconfirmed_booking_card' %>
+            <% end %>
           </div>
         </div>
       </div>
