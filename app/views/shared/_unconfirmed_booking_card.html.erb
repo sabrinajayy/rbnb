@@ -1,4 +1,4 @@
-  <% if booking.status == 'unconfirmed' %>
+
     <% @requests.each do |booking| %>
 
     <div class="col-xs-12 col-sm-4">
@@ -21,6 +21,3 @@
           </div>
       </div>
     <% end %>
-  <% else %>
-      <p>You don't have any pending bookings</p>
-  <%end%>
