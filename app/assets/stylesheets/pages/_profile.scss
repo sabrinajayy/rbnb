@@ -43,11 +43,29 @@
   padding: 20px 200px;
 }
 
+.row {
+  width: 100%;
+  margin: 0 auto;
+}
+
 #about h2 {
   font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
   font-size: 18px;
   font-weight: 300;
+}
+
+.artist-portfolio-image {
+  margin: 0 auto;
+  padding: 0px;
+  border-color: #fff;
+  border-width: 5px;
+}
+
+.portfolio-img {
+  width: auto;
+  height: auto;
+
 }
 
 

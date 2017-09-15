@@ -1,9 +1,11 @@
 <% @requests.each do |booking| %>
+  <% if booking.status == 'unconfirmed' %>
   <div class="col-xs-12 col-sm-4">
       <div class="booking-card">
         <div class="booking-bkgrd-image card__image--fence"></div>
           <div class="booking-user-image">
-           <img class="booking-card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+          <%= cl_image_tag booking.artist.photo, class: 'booking-card-user', width: 300, height: 300, crop: :fill %>
+           <!-- <img class="booking-card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
           </div>
           <div class="booking-card-content">
             <div class="booking-name">
@@ -17,4 +19,7 @@
           </div>
         </div>
     </div>
+    <% else %>
+      <p>You don't have any pending bookings</p>
+    <% end %>
   <%end%>
