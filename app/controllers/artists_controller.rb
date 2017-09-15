@@ -10,6 +10,7 @@ class ArtistsController < ApplicationController
   def show
 
     # single artist profile
+    @page_user = SessionCheck.new(current_user).call
     @artist = (current_user && current_user.is_artist?) ? Artist.find(current_user.artist.id) : Artist.find(params[:id])
 
     requests = ConsumerRequest.where(artist: @artist)

@@ -4,9 +4,8 @@ class PagesController < ApplicationController
 
     @artists = Artist.all
 
-
     if user_signed_in?
-      @user = current_user
+      @page_user = current_user
     end
 
   end
