@@ -34,14 +34,20 @@
     <div class="col-xs-12 col-sm-5">
       <div class="new-requests">
         <h2>New Requests</h2>
-          <%= render 'shared/unconfirmed-booking-listing' %>
+          <%= render partial: 'shared/unconfirmed_booking_listing' %>
       </div>
       <div class="upcoming-bookings">
         <h2>Upcoming Bookings</h2>
-          <%= render 'shared/confirmed_booking_listing' %>
+          <%= render partial: 'shared/confirmed_booking_listing' %>
       </div>
     </div>
+      <%= link_to 'Edit Profile', edit_artist_path(@artist.id) %>
 
+      <div class="calendar">
+
+      </div>
+
+    </div>
   </div>
 
 </div>
