@@ -13,8 +13,8 @@ h2 {
 
 .new-requests {
   background-color: #fff;
-  padding: 20px 40px;
-  margin: 20px;
+  padding: 20px 40px 20px 10px;
+  margin: 15px;
   -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
   -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
   box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
@@ -23,9 +23,53 @@ h2 {
 
 .upcoming-bookings {
   background-color: #fff;
-  padding: 20px 40px;
-  margin: 20px;
+  padding: 20px 40px 20px 10px;
+  margin: 15px;
   -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
   -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
   box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+}
+
+.booking-list ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.booking-list li {
+
+}
+
+.artist-profile {
+  background-color: #fff;
+  padding: 20px 20px;
+  margin: 20px 5px 20px 20px;
+  -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+}
+
+.artist-profile-pic {
+
+}
+
+.artist-profile-info {
+  list-style-type: none;
+  padding-left: 0px;
+  line-height: 24px;
+}
+
+.artist-profile-info li {
+  font-weight: 300;
+}
+
+.artist-name {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  margin-bottom: 0px;
+}
+
+.artist-tags {
+  font-style: italic;
+  font-size: 12px;
 }

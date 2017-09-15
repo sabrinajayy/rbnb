@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-3">
       <div class="user-profile">
-        <img class="profile-pic" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+        <%= cl_image_tag @consumer.profile_img, width: 300, height: 300, crop: :fill %>
         <p>Name: <%= @consumer.name %></p>
         <p>City: <%= @consumer.city %></p>
         <p>Phone Number: <%= @consumer.phone_number %></p>
@@ -15,11 +15,11 @@
       <div class="booking-container">
         <h3>Upcoming Bookings</h3>
           <div class="row">
-            <%= render 'shared/confirmed-booking-card' %>
+            <%= render partial: 'shared/confirmed_booking_card' %>
           </div>
         <h3>Your Pending Bookings</h3>
           <div class="row">
-            <%= render 'shared/unconfirmed-booking-card' %>
+            <%= render partial: 'shared/unconfirmed_booking_card' %>
           </div>
         </div>
       </div>

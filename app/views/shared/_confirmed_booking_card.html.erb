@@ -1,0 +1,25 @@
+<% @requests.each do |booking| %>
+  <% if booking.status == 'confirmed' %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="booking-card">
+        <div class="booking-bkgrd-image card__image--fence"></div>
+          <div class="booking-user-image">
+          <%= cl_image_tag booking.artist.photo, class: 'booking-card-user', width: 300, height: 300, crop: :fill %>
+          <!--  <img class="booking-card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
+          </div>
+          <div class="booking-card-content">
+            <div class="booking-name">
+              <p><%=booking.artist.first_name%> <%=booking.artist.last_name%></p>
+            </div>
+              <p class="card__text"><%=booking.address%> | <%=booking.date %> @ <%=booking.time %></p>
+              <p class="card__text"><%=booking.servicename%> - $<%=booking.final_price %></p>
+              <p class="booking-status"><%=booking.status%></p>
+              <button class="btn-pamprd">View Booking</button>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <p>You currently do not have any confirmed bookings</p>
+    <% end %>
+  <%end%>
+

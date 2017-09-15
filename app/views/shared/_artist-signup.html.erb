@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-<%= simple_form_for @artist do |f| %>
+<%= simple_form_for @artist, html: {id: 'req'} do |f| %>
   <%= f.input :first_name, required: true %>
   <%= f.input :last_name, required: true %>
    <br>
@@ -15,16 +15,20 @@
 
   <%= f.input :instagram_handle, required: false %>
 
-  <%= f.input :photo, label: "Upload your profile photo" %>
-  <%= f.input :photo_cache, as: :hidden %>
+  <%#= f.input :photo, label: "Upload your profile photo" %>
+  <%#= f.input :photo_cache, as: :hidden %>
+
+  <%= f.label :artist_services, "Which specific services do you offer?", required: true %>
+  <%= f.input :artist_services, collection: ['full face makeup', 'wedding makeup', 'blowout', 'hair styling'], placeholder: 'Category', wrapper_html: { class: 'form-group' }, :as => :check_boxes, include_hidden: false %>
 
   <h2>Enter your personal bio</h2>
   <%= f.input :bio, required: true %>
   <%= f.input :tags, required: false %>
 
-  <%= f.button :submit, "Update Profile" %>
+  <%= f.button :submit, "Update Profile", class: 'update-profile' %>
 <%end%>
     </div>
   </div>
 </div>
+
 
