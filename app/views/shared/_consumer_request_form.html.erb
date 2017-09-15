@@ -9,7 +9,7 @@
       <%= f.text_field :date, placeholder: 'Date', class: 'consumer-request datepick' %>
       <%= f.text_field :time, placeholder: 'Time', class: 'search-form timepicker-default', id: 'basicExample' %>
       <br><br>
-      <%= f.input :address, as: :string, label: "Where should #{@artist.first_name} meet you for this session?", placeholder: 'Enter an address', required: true %>
+      <%= f.input :address, as: :string, label: "Where should #{@artist.first_name} meet you for this session?", placeholder: 'Enter an address', required: true, class: 'request-input' %>
 
       <%= f.simple_fields_for @services do |s| %>
 
