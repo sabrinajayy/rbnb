@@ -6,16 +6,23 @@
             <div class="artist-profile">
               <div class="row">
                 <div class="col-xs-6">
-                  <%= cl_image_tag @artist.photo, class: 'profile-pic', width: 300, height: 300, crop: :fill %>
+                  <%#= image_tag @artist.photo, class: 'profile-pic', width: 300, height: 300, crop: :fill %>
+
+         <% if @artist.photo %>
+        <%= image_tag @artist.photo, class: 'profile-pic hidden-xs', width: 300, height: 300, crop: :fill %>
+        <% else %>
+        <%= image_tag "http://www.breda.academy/wp-content/uploads/2016/11/best-facial-in-dubai-1.jpg", class: 'product-image hidden-xs', width: 300, height: 300, crop: :fill %>
+        <% end %>
+
                 </div>
                 <div class="col-xs-6">
                   <ul class="artist-profile-info">
                     <li><p class="artist-name"><%= @artist.first_name %> <%= @artist.last_name %></p></li>
                     <li><p class="artist-location"><%= @artist.location %></p></li>
-                    <li>@<%= @artist.instagram_handle %> - <%= @artist.category %></li>
+                    <li>@<%= @artist.instagram_handle %>  <%= @artist.category %></li>
                     <li><%= @artist.bio %></li>
                     <li><p class="artist-tags"><%= @artist.tags %></p></li>
-                    <li><%link_to 'Edit Profile', edit_artist_path(@artist.id) %></li>
+                    <li><%= link_to 'Edit Profile', edit_artist_path(@artist.id) %></li>
                   </ul>
 
                 </div>
@@ -34,14 +41,21 @@
     <div class="col-xs-12 col-sm-5">
       <div class="new-requests">
         <h2>New Requests</h2>
+        <% if @unconfirmed.empty? %>
+          <p>You don't have any new bookings!</p>
+        <% else %>
           <%= render partial: 'shared/unconfirmed_booking_listing' %>
+        <% end %>
       </div>
       <div class="upcoming-bookings">
         <h2>Upcoming Bookings</h2>
+        <% if @confirmed.empty? %>
+        <p>You don't have any confirmed bookings!</p>
+        <% else %>
           <%= render partial: 'shared/confirmed_booking_listing' %>
+          <% end %>
       </div>
     </div>
-      <%= link_to 'Edit Profile', edit_artist_path(@artist.id) %>
 
       <div class="calendar">
 
