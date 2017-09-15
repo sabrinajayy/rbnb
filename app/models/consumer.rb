@@ -7,5 +7,5 @@ class Consumer < ApplicationRecord
   # validates :name, presence: true
   # validates :city, presence: true
   # validates :phone_number, presence: true
-
+  mount_uploader :profile_img, PhotoUploader
 end
