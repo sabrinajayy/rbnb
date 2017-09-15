@@ -18,6 +18,8 @@ gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-timepicker-rails'
 gem 'jquery-timepicker-rails'
 
+gem 'jquery-validation-rails'
+
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
