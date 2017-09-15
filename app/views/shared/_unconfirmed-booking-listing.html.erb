@@ -1,5 +1,5 @@
 <ul class="booking-list">
-  <%= @requests.each do |request| %>
+  <%= @unconfirmed.each do |request| %>
     <li>
       <div class="booking-listing">
        <%= cl_image_tag request.artist.photo, class: 'avatar', width: 300, height: 300, crop: :fill %>
