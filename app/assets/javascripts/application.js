@@ -7,10 +7,12 @@
 //= require datepicker
 //= require bootstrap-timepicker
 //= require jquery.timepicker.js
+//= require google_maps_autocomplete.js
 //= require_tree .
 
 $(function(){
   init_datepick();
+
   $(".tab").on("click", function(e){
     // Change active tab
     $('.tab').removeClass("active");

@@ -1,16 +1,7 @@
 <%= form_tag('/search_results', method: 'get') do  %>
-
      <%= select_tag :category, options_for_select([['Hair', 'hair'], ['Makeup', 'makeup'], ['Hair and Makeup', 'hair and makeup']]),  placeholder: 'Category', class: 'search-form' %>
      <%= text_field_tag :date, nil, placeholder: 'Date', class: 'search-form datepick' %>
      <%= select_tag :time, options_for_select([['Morning', 'morning'], ['Afternoon', 'afternoon'], ['Evening', 'evening']]), placeholder: 'Time', class: 'search-form' %>
-     <%= text_field_tag :location, nil, placeholder: 'City', class: 'search-form' %>
+     <%= text_field_tag :location, nil, placeholder: 'City', class: 'search-form', id: 'flat_address' %>
      <%= submit_tag 'search', class: "btn-pamprd" %>
 <% end  %>
-
-
-<!-- <script type="text/javascript">
-  $(document).ready(function(){
-
-  });
-</script>
- -->
