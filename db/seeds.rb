@@ -26,7 +26,9 @@ real_images.each do |image|
   end
 
   artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: my_tags.join(' '), location: "milan" , category: categories.sample, photo: image })
-
+  5.times do
+    ArtistService.create(name: Faker::Commerce.product_name, price: Faker::Commerce.price, artist: artist )
+  end
 end
 
 puts "Creating and artist called Sarah"

@@ -11,7 +11,7 @@
         <div class="navbar-wagon-right hidden-xs hidden-sm">
 
           <a href="" class="navbar-wagon-item navbar-wagon-link">Bookings</a>
-          <%#= link_to 'Bookings', consumer_path(), class: "navbar-wagon-item navbar-wagon-link" %>
+          <%#= link_to 'Bookings', consumer_path(current_user.consumer), class: "navbar-wagon-item navbar-wagon-link" %>
           <!-- We need to add a link for this below, first need messages routes -->
           <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a>
 
@@ -30,7 +30,7 @@
         <div class="navbar-wagon-right hidden-xs hidden-sm">
 
           <a href="" class="navbar-wagon-item navbar-wagon-link">Bookings</a>
-          <%#= link_to 'Bookings', consumer_path(@consumer), class: "navbar-wagon-item navbar-wagon-link" %>
+           <%#= link_to 'Bookings', artist_path(current_user.artist), class: "navbar-wagon-item navbar-wagon-link" %>
           <!-- We need to add a link for this below, first need messages routes -->
           <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a>
 
