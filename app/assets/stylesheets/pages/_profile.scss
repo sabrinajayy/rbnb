@@ -3,28 +3,48 @@
   text-align: center;
   height: 400px;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  background-color: #fff;
+  background-color: #fafafa;
   background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .profile-banner h1 {
-  font-size: 30px;
+  font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
   color: #757575;
-  font-weight: bold;
+  font-weight: 400;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5px;
 }
 .profile-banner p {
-  font-size: 25px;
-  font-weight: lighter;
+  font-size: 16px;
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
   color: #757575;
   opacity: 0.6;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .profile-rating i {
-  color: yellow;
+  color: #fcbd00;
+}
+
+.profile-rating li {
+  padding: 0px;
+  margin-bottom: 0px;
+}
+
+.profile-rating ul {
+  margin: 0 auto !important;
+}
+
+.ratings-number {
+  font-style: italic;
+  font-weight: lighter;
+  color: #757575;
+  font-size: 12px;
+  padding-bottom: 2px;
 }
 
 .artist-profile-pic {
@@ -37,10 +57,20 @@
   margin-right: auto;
 }
 
+.request-btn {
+  font-size: 12px;
+  padding: 0px 10px !important;
+}
+
+.banner-content {
+  padding-bottom: 0px;
+  padding-top: 40px;
+}
+
 
 /*PROFILE CONTENT*/
 .profile-container {
-  padding: 20px 200px;
+  padding: 20px 250px;
 }
 
 #about h2 {
@@ -48,6 +78,15 @@
   text-transform: uppercase;
   font-size: 18px;
   font-weight: 300;
+  margin-bottom: 10px;
+}
+
+#about p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 300px;
+  margin-bottom: 40px;
+  letter-spacing: 0.3px;
 }
 
 
@@ -57,20 +96,22 @@
 .tabs {
   background: #FFF;
   display: flex;
-  padding: 10px 200px 0 200px
+  padding: 10px 250px 10px 250px;
 }
 .tabs a {
   color: #757575;
+  font-weight: 300 !important;
 }
 .tabs a:hover {
   cursor: pointer;
   text-decoration: none;
   opacity: 0.8;
+  font-weight: 300 !important;
 }
 .tabs h2 {
   font-size: 20px;
   font-family: 'Raleway', sans-serif;
-  font-weight: 300;
+  font-weight: 300 !important;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: bold;
@@ -78,14 +119,15 @@
 }
 .tab {
   background-color: #FFF;
-  flex: 0 0 25%;
+  flex: 0 0 33%;
   text-align: center;
   padding: 10px 0;
 }
 
-.tab.active {
+.tab.active h2 {
   background: white;
   color: #F7ABB2;
+  font-weight: 400 !important;
 }
 
 

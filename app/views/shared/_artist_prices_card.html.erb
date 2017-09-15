@@ -2,13 +2,10 @@
   <div class="menu-title">
     <h2>Menu</h2>
   </div>
-  <div class="menu-category">
-    <h3>Makeup</h3>  <!--will be @artist.category -->
-  </div>
-  <ul class="artist-price-list">  <!--will iterate over artist services -->
-    <li>Full Face Makeup - $50</li>
-    <li>Special FX Makeup - $100</li>
-    <li>False Lashes - $10</li>
-    <li>Wedding Makeup - $75</li>
+  <ul class="artist-price-list">
+    <% @artist.artist_services.each do |service| %>
+      <li><%= service.name %> - $<%= service.price %></li>
+      <!--will iterate over artist services -->
+    <% end %>
   </ul>
 </div>
