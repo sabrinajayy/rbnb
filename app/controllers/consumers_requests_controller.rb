@@ -26,7 +26,7 @@ class ConsumersRequestsController < ApplicationController
   end
 
   def create
-    raise
+
     consumer_request = ConsumerRequest.new(consumer_request_params)
 
     consumer_request.user_id = current_user.id

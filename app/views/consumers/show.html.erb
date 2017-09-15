@@ -23,7 +23,7 @@
           </div>
         <h3>Your Pending Bookings</h3>
           <div class="row">
-            <% if @unconfirmed.nil? %>
+            <% if @pending.nil? %>
               <p>You not not have any pending bookings</p>
             <% else %>
               <%= render partial: 'shared/unconfirmed_booking_card' %>
