@@ -1,0 +1,22 @@
+<ul class="booking-list">
+  <%= @unconfirmed.each do |request| %>
+    <li>
+      <div class="booking-listing">
+       <%= cl_image_tag request.artist.photo, class: 'avatar', width: 300, height: 300, crop: :fill %>
+        <div class="booking-name">
+          <h3></h3>
+          <p class="booking-date">request.date</p>
+          <p class="booking-time">request.time</p>
+        </div>
+        <div class="booking-details">
+          <p class="booking-category">request.servicename</p>
+          <p class="booking-address">request.address</p>
+        </div>
+        <div class="booking-status">
+          <p class="status-unconfirmed">request.status</p>
+          <p class="booking-price">request.final_price</p>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
