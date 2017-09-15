@@ -30,4 +30,30 @@
   color: white;
 }
 
+
+.btn {
+  background-color: #ffffff;
+  color: #000000 !important;
+  border: none;
+  display: inline-block;
+  outline: 0;
+  padding: 5px 5px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  float: left!important;
+  font-size: 10px !important;
+  border: 1px solid #cccccc;
+  margin-top: 4px;
+  margin-left: 4px;
+}
+.btn:hover {
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+outline-width: 0;
+}
+
 /* Build your own button classes ! */

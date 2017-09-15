@@ -2,12 +2,14 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <%# raise %>
+      <div class="consumer-request-form" >
+      <h1 style="font-size: 30px;">Book a session with <%= @artist.first_name %> </h1>
       <%=  simple_form_for(@consumer_request, :url => artist_consumers_requests_path, :method => :post) do  |f| %>
 
-      <%= f.text_field :date, placeholder: 'Date', class: 'search-form datepick' %>
+      <%= f.text_field :date, placeholder: 'Date', class: 'consumer-request datepick' %>
       <%= f.text_field :time, placeholder: 'Time', class: 'search-form timepicker-default', id: 'basicExample' %>
       <br><br>
-      <%= f.input :address, label: "Where should #{@artist.first_name} meet you for this session?", placeholder: 'Enter an address', required: true %>
+      <%= f.input :address, as: :string, label: "Where should #{@artist.first_name} meet you for this session?", placeholder: 'Enter an address', required: true %>
 
       <%= f.simple_fields_for @services do |s| %>
 
@@ -21,8 +23,11 @@
       <%= f.submit "Book #{@artist.first_name}!", class: 'btn-pamprd' %>
       <% end %>
       <p>You will not be charged until <%= @artist.first_name %> accepts this request</p>
+      </div>
     </div>
   </div>
 </div>
+
+
 
 
