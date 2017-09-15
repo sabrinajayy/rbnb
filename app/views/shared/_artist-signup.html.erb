@@ -15,6 +15,9 @@
 
   <%= f.input :instagram_handle, required: false %>
 
+  <%= f.input :photo, label: "Upload your profile photo" %>
+  <%= f.input :photo_cache, as: :hidden %>
+
   <h2>Enter your personal bio</h2>
   <%= f.input :bio, required: true %>
   <%= f.input :tags, required: false %>
