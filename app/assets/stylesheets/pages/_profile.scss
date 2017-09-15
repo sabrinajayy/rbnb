@@ -99,12 +99,17 @@
   padding: 0px;
   border-color: #fff;
   border-width: 5px;
+
+
 }
 
 .portfolio-img {
   width: auto;
   height: auto;
-
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 
@@ -146,6 +151,7 @@
   background: white;
   color: #F7ABB2;
   font-weight: 400 !important;
+  text-decoration: none !important;
 }
 
 

@@ -1,5 +1,5 @@
-<% @requests.each do |booking| %>
-  <% if booking.status == 'confirmed' %>
+<% if booking.status == 'confirmed' %>
+  <% @requests.each do |booking| %>
     <div class="col-xs-12 col-sm-4">
       <div class="booking-card">
         <div class="booking-bkgrd-image card__image--fence"></div>
@@ -18,8 +18,8 @@
           </div>
         </div>
       </div>
-    <% else %>
-      <p>You currently do not have any confirmed bookings</p>
     <% end %>
+  <% else %>
+      <p>You currently do not have any confirmed bookings</p>
   <%end%>
 
