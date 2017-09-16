@@ -11,7 +11,9 @@ class ArtistsController < ApplicationController
 
     # single artist profile
 
-    @artist = (current_user && current_user.is_artist?) ? Artist.find(current_user.artist.id) : Artist.find(params[:id])
+    # @artist = (current_user && current_user.is_artist?) ? Artist.find(current_user.artist.id) : Artist.find(params[:id])
+    # if params[:id] @artist
+    @artist = Artist.find(params[:id])
 
     requests = ConsumerRequest.where(artist: @artist)
     @confirmed = requests.select { |request| request.status == 'confirmed' }
