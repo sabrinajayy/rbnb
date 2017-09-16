@@ -1,20 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-2">
       <%# raise %>
       <div class="consumer-request-form" >
-      <h1 style="font-size: 30px;">Book a session with <%= @artist.first_name %> </h1>
+      <h1>Book a session with <%= @artist.first_name %> </h1>
       <%=  simple_form_for(@consumer_request, :url => artist_consumers_requests_path, :method => :post) do  |f| %>
 
-      <%= f.text_field :date, placeholder: 'Date', class: 'consumer-request datepick' %>
-      <%= f.text_field :time, placeholder: 'Time', class: 'search-form timepicker-default', id: 'basicExample' %>
-      <br><br>
-      <%= f.input :address, as: :string, label: "Where should #{@artist.first_name} meet you for this session?", placeholder: 'Enter an address', required: true, class: 'request-input' %>
+      <%= f.text_field :date, placeholder: 'Date', required: true, class: 'consumer-request datepick request-time' %>
+      <%= f.text_field :time, placeholder: 'Time', required: true, class: 'timepicker-default request-time' %>
+      <%= f.text_field :address, as: :string, label: "Where should #{@artist.first_name} meet you for this session?", placeholder: 'Address', required: true, class: 'request-address', id: 'flat_address' %>
 
       <%= f.simple_fields_for @services do |s| %>
-
-      <%= s.input :name, label: 'Service' do %>
-      <%= s.select :name, @services.map { |s| ["#{s.name}: $#{s.price}", s.id] }, include_blank: false %>
+        <%= s.input :name, label: 'Service' do %>
+        <%= s.select :name, @services.map { |s| ["#{s.name}: $#{s.price}", s.id] }, include_blank: false, class: 'request-time' %>
       <% end %>
 
       <% end %>
@@ -22,7 +20,7 @@
       <!-- Display and update the price -->
       <%= f.submit "Book #{@artist.first_name}!", class: 'btn-pamprd' %>
       <% end %>
-      <p>You will not be charged until <%= @artist.first_name %> accepts this request</p>
+      <p class="request-msg text-center">You will not be charged until <%= @artist.first_name %> accepts this request</p>
       </div>
     </div>
   </div>
