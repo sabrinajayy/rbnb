@@ -21,13 +21,13 @@
   text-transform: uppercase;
   border-width: 0;
   height: 50px;
-}
-.btn-pamprd:hover {
-  opacity: 1;
-  background: #212121;
-  border-width: 0;
-  text-decoration: none;
-  color: white;
+    &:hover {
+      opacity: 1;
+      background: #212121;
+      border-width: 0;
+      text-decoration: none;
+      color: white;
+    }
 }
 
 
@@ -54,6 +54,19 @@
 .btn:hover {
 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 outline-width: 0;
+}
+
+.back-btn {
+  color: #757575;
+  font-weight: 400;
+  text-transform: capitalize;
+  text-decoration: none;
+  margin-top: 40px;
+  margin-left: 20px;
+  &:hover {
+    color: #F7ABB2;
+    text-decoration: none;
+  }
 }
 
 /* Build your own button classes ! */
