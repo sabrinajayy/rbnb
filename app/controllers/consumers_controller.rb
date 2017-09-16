@@ -7,11 +7,10 @@ class ConsumersController < ApplicationController
   end
 
   def show
-    # single user profile - will render view
-    # @page_user = SessionCheck.new(current_user).call
     @requests = ConsumerRequest.where(user_id: current_user.id)
     @confirmed = @requests.select { |request| request.status == 'confirmed'}
     @pending = @requests.select { |request| request.status == 'unconfirmed'}
+
   end
 
   def new

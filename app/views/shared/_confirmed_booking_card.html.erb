@@ -14,7 +14,9 @@
               <p class="card__text"><%=booking.address%> | <%=booking.date %> @ <%=booking.time %></p>
               <p class="card__text"><%=booking.servicename%> - $<%=booking.final_price %></p>
               <p class="booking-status"><%=booking.status%></p>
-              <button class="btn-pamprd">View Booking</button>
+              <!-- <button class="btn-pamprd">View Booking</button> -->
+              <%= button_to "View Booking", artist_consumers_request_path(booking.artist, booking),:confirm => 'Are you sure?',
+          :class => "btn-pamprd", :method => :get %>
           </div>
         </div>
       </div>
