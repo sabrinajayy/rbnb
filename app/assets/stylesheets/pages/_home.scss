@@ -1,7 +1,8 @@
 // Specific CSS for your home-page
 
-body {
+html, body {
   color: #757575;
   background-color: #fafafa;
-  padding-top: 70px;
+  width: auto !important;
+  min-width: 1080px;
 }

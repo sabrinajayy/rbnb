@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-2">
       <%# raise %>
-      <div class="consumer-request-form" >
-      <h1>Book a session with <%= @artist.first_name %> </h1>
+      <div class="form" >
+      <h1 class="form-title">Book a session with <%= @artist.first_name %> </h1>
       <%=  simple_form_for(@consumer_request, :url => artist_consumers_requests_path, :method => :post) do  |f| %>
 
       <%= f.text_field :date, placeholder: 'Date', required: true, class: 'consumer-request datepick request-time' %>
