@@ -7,6 +7,7 @@ class ConsumersRequestsController < ApplicationController
   end
 
   def show
+
     @event = ConsumerRequest.find(params[:id])
     # @event_coords = { lat: @event.latitude, lon: @event.longitude }
     if @event.geocoded?
@@ -19,7 +20,7 @@ class ConsumersRequestsController < ApplicationController
   end
 
   def new
-    # raise
+
     @consumer_request = ConsumerRequest.new
     @services = ArtistService.where(artist: @artist)
 
