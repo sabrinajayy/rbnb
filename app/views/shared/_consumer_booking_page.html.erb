@@ -44,6 +44,7 @@
             <% if @consumer_request.status == 'unconfirmed' %>
               <i class="fa fa-clock-o fa-5x" aria-hidden="true"></i>
               <p class="unconfirmed">PENDING</p><%= button_to "Cancel Request", artist_consumers_request_path(@consumer_request.artist, @consumer_request), data: {:confirm => 'Are you really sure?'}, :class => "booking-status cancel btn-pamprd", method: :delete %>
+
             <% else %>
               <i class="fa fa-check-circle fa-5x" aria-hidden="true"></i>
               <p class="unconfirmed">Confirmed</p><p class="confirmed"><%= @consumer_request.status %></p><%= button_to "Cancel Booking", artist_consumers_request_path(@consumer_request.artist, @consumer_request), data: {:confirm => 'Are you really sure?'}, :class => "booking-status cancel btn-pamprd", method: :delete %>

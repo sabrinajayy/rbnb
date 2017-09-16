@@ -7,7 +7,7 @@
       <%=  simple_form_for(@consumer_request, :url => artist_consumers_requests_path, :method => :post) do  |f| %>
 
       <%= f.text_field :date, placeholder: 'Date', required: true, class: 'consumer-request datepick request-time' %>
-      <%= f.text_field :time, placeholder: 'Time', required: true, class: 'timepicker-default request-time' %>
+      <%= f.text_field :time, placeholder: 'Time', required: true, class: 'timepicker-default request-time', id: 'basicExample' %>
       <%= f.text_field :address, as: :string, label: "Where should #{@artist.first_name} meet you for this session?", placeholder: 'Address', required: true, class: 'request-address', id: 'flat_address' %>
 
       <%= f.simple_fields_for @services do |s| %>
