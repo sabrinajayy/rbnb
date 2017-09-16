@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
     resources :artists do
       resources :consumers_requests
+      resources :reviews, only: [:create, :update]
     end
 
 
