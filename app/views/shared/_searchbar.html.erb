@@ -3,5 +3,7 @@
      <%= text_field_tag :date, nil, placeholder: 'Date', class: 'search-form datepick' %>
      <%= select_tag :time, options_for_select([['Morning', 'morning'], ['Afternoon', 'afternoon'], ['Evening', 'evening']]), placeholder: 'Time', class: 'search-form' %>
      <%= text_field_tag :location, nil, placeholder: 'City', class: 'search-form', id: 'flat_address' %>
+     <%= hidden_field_tag :latitude, id: 'searchlat' %>
+     <%= hidden_field_tag :longitude, id: 'searchlon' %>
      <%= submit_tag 'search', class: "btn-pamprd" %>
 <% end  %>

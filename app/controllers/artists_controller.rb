@@ -61,9 +61,12 @@ class ArtistsController < ApplicationController
 
     @service = params[:category]
     @location = params[:location]
+    @location_arr = @location.delete(',').split
+    @longitude = params[:longitude]
+    @latitude = params[:latitude]
 
     if !@location.empty?
-      @results = Artist.where("category ILIKE ? AND location ILIKE ?", @service, @location)
+      @results = Artist.where("category ILIKE ? AND location IN (?)", @service, @location_arr)
     else
       @results = Artist.where(category: @service)
     end

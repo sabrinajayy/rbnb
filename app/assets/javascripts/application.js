@@ -12,8 +12,11 @@
 //= require_tree .
 
 $(function(){
+
+  // datepicker and timepicker functions:
   init_datepick();
 
+  // profile tabs:
   $(".tab").on("click", function(e){
     // Change active tab
     $('.tab').removeClass("active");
@@ -26,11 +29,25 @@ $(function(){
     $(tabToShow).removeClass("hidden");
   });
 
-});
+  // address autocomplete:
+  var flatAddress = document.getElementById('flat_address');
 
+  if (flatAddress) {
+    var autocomplete = new google.maps.places.Autocomplete(flatAddress, { types: ['geocode'] });
+    google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+    google.maps.event.addDomListener(flatAddress, 'keydown', function(e) {
+      if (e.key === "Enter") {
+         $('#searchlat').val() = lat;
+          $('#searchlon').val() = lon;
+           // document.getElementById('searchlat').get(0).value = lat;
+          // document.getElementById('searchlon').get(0).value = lon;
+        e.preventDefault(); // Do not submit the form on Enter.
 
+      }
+    });
+  }
 
-$(document).ready(function(){
+  // consumer sign up field validation:
   $('#req-button').on('click', function(event){
     if ($('#consumer_name').val().length < 2) {
       event.preventDefault();
@@ -38,4 +55,7 @@ $(document).ready(function(){
     }
   });
 
+
+
+// end document ready function here
 });

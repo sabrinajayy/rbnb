@@ -25,7 +25,7 @@ real_images.each do |image|
     my_tags << tags.delete(tags.sample)
   end
 
-  artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: my_tags.join(' '), location: "milan" , category: categories.sample, photo: image })
+  artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: my_tags.join(' '), location: "Milan" , category: categories.sample, photo: image })
   5.times do
     ArtistService.create(name: Faker::Commerce.product_name, price: Faker::Commerce.price, artist: artist )
   end
@@ -40,7 +40,7 @@ artist = Artist.create({ user: user,
                          tags: "#gothic #natural #lazysundaydays #afternoondelight",
                          photo: "http://www.vivianmakeupartist.com/wp-content/uploads/2017/01/vivianmakeupartist_boldlip.jpg",
                          category: 'makeup',
-                         location: 'milan'
+                         location: 'Milan'
                          })
 
 puts "Creating Sarah's Services"
