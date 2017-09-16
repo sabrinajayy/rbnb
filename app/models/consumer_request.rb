@@ -18,5 +18,9 @@ class ConsumerRequest < ApplicationRecord
     self.latitude && self.longitude
   end
 
+  def is_past?
+    self.date < Time.now
+  end
+
 end
 
