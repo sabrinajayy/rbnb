@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <% if current_user.is_artist? %>
+  <% if current_user.is_artist? && current_user.artist == Artist.find_by(user_id: params[:id]) %>
     <%= render 'shared/artist_private_profile' %>
   <% else %>
     <%= render 'shared/artist_public_profile' %>
