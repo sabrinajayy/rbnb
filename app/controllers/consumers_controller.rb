@@ -10,7 +10,7 @@ class ConsumersController < ApplicationController
     @requests = ConsumerRequest.where(user_id: current_user.id)
     @confirmed = @requests.select { |request| request.status == 'confirmed'}
     @pending = @requests.select { |request| request.status == 'unconfirmed'}
-    raise
+
   end
 
   def new

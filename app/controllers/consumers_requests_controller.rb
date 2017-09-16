@@ -1,6 +1,6 @@
 class ConsumersRequestsController < ApplicationController
-  before_action :set_artist, only: [:new, :show, :create]
-  before_action :set_consumer_request, only: [:show]
+  before_action :set_artist, only: [:new, :show, :create, :destroy, :update]
+  before_action :set_consumer_request, only: [:show, :destroy, :update]
 
   def index
     # show all bookings
@@ -48,9 +48,19 @@ class ConsumersRequestsController < ApplicationController
   end
 
   def destroy
+
+    @consumer_request.destroy!
+    if current_user.is_artist?
+      redirect_to artist_path(@artist)
+    else
+      redirect_to consumer_path
+    end
   end
 
   def update
+    @consumer_request.status = 'confirmed'
+    @consumer_request.save
+    redirect_to artist_path(@artist)
   end
 
   def edit
