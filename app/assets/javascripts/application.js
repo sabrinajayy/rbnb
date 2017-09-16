@@ -47,15 +47,6 @@ $(function(){
     });
   }
 
-  // consumer sign up field validation:
-  $('#req-button').on('click', function(event){
-    if ($('#consumer_name').val().length < 2) {
-      event.preventDefault();
-      $('#consumer_name').addClass('warning')
-    }
-  });
-
-
 
 // end document ready function here
 });
