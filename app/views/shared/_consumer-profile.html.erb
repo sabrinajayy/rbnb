@@ -4,7 +4,8 @@
   <div class="consumer-request-form edit-profile-form">
   <h1 class="edit-profile-title text-center">Update your profile</h1>
 <%= simple_form_for @consumer, html: {id: 'req'} do |f| %>
-  <%= f.input :name, required: true %>
+  <%= f.input :first_name, required: true %>
+  <%= f.input :last_name, required: true %>
   <%= f.input :phone_number, required: false %>
   <%= f.input :city, required: false %>
   <%= f.input :profile_img, label: "Upload your profile photo" %>

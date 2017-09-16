@@ -64,6 +64,6 @@ puts "seeding 5 user consumers"
 puts "please wait"
 5.times do
   user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
-  consumer = Consumer.create({ user: user, name: Faker::Name.name, city: Faker::Address.city, phone_number: Faker::Number.number(8).to_i, instagram: '@' + Faker::App.name})
+  consumer = Consumer.create({ user: user, first_name: Faker::Name.name, last_name: Faker::Name.name, city: Faker::Address.city, phone_number: Faker::Number.number(8).to_i, instagram: '@' + Faker::App.name})
 end
 
