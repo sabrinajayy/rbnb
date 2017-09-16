@@ -5,6 +5,7 @@ class Artist < ApplicationRecord
   has_many :artist_services
   has_many :artist_images
   has_many :messages, through: :artist_requests
+  has_many :reviews
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
