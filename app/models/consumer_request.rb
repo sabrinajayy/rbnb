@@ -1,5 +1,6 @@
 class ConsumerRequest < ApplicationRecord
   belongs_to :artist
+  has_one :review
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
