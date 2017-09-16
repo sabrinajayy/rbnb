@@ -1,6 +1,7 @@
 .consumer-request-form {
   padding: 50px;
   margin-bottom: 60px;
+  margin-top: 40px;
   background-color: white;
   height: 100%;
   overflow: hidden;
@@ -63,7 +64,7 @@ label {
   font-weight: 300;
 }
 
-.datepick {
+.consumer-request-form .datepick {
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
@@ -87,7 +88,8 @@ label {
 }
 
 .consumer-request-form input[type=submit] {
-  color: white;
+  color: white !important;
+  font-size: 14px !important;
   padding: 10px 25px;
   border-radius: 3px;
   font-weight: bold;
@@ -98,6 +100,9 @@ label {
   height: 50px;
   margin-top: 30px;
   margin-bottom: 20px;
+    &:hover {
+      background-color: #212121;
+    }
 }
 
 // .request-time {
