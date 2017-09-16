@@ -1,9 +1,9 @@
 <% if @results.empty? %>
-  <p>No results.</p>
+  <p class="text-center">No results.</p>
 <% end %>
 
 <% @results.each do |artist| %>
-  <div class="row">
+<div class="row">
     <div class="col-xs-12">
       <div class="search-result">
       <% if artist.photo %>
@@ -11,12 +11,12 @@
         <% else %>
         <%= image_tag "http://www.breda.academy/wp-content/uploads/2016/11/best-facial-in-dubai-1.jpg", class: 'search-image hidden-xs', width: 300, height: 300, crop: :fill %>
         <% end %>
-<!--         <img src=<#%= artist.photo  %> alt="kudoz" class="product-image hidden-xs"> -->
-        <div class='search-body'>
+<!--       <img src=<%#= artist.photo  %> alt="kudoz" class="product-image hidden-xs"> -->
+          <div class='search-body'>
           <%= link_to artist_path(artist) do %>
             <h3><%= artist.first_name %> <%=artist.last_name %></h3>
           <%end%>
-          <p><%= artist.category %> | <%= artist.location %></p>
+          <p> <%= artist.category %> | <%= artist.location %></p>
           <p>Best makeup artist in town</p>
           <ul class="list-inline">
             <li><i class="fa fa-star"></i></li>
@@ -26,7 +26,7 @@
             <li><i class="fa fa-star"></i></li>
         </ul>
         </div>
-        <div class="product-contact">
+    <!--     <div class="product-contact"> -->
           <!-- <a href=""><i class="fa fa-heart"></i></a> -->
           <%= button_to "REQUEST", new_artist_consumers_request_path(artist.id),
           :class => "btn-pamprd", :method => :get %>

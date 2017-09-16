@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-  <div class="consumer-request-form edit-profile-form">
-  <h1 class="edit-profile-title text-center">Update your profile</h1>
+  <div class="form edit-profile-form">
+  <h1 class="form-title text-center">Update your profile</h1>
 <%= simple_form_for @consumer, html: {id: 'req'} do |f| %>
   <%= f.input :name, required: true %>
   <%= f.input :phone_number, required: false %>
