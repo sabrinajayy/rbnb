@@ -13,8 +13,14 @@ class ArtistsController < ApplicationController
 
     # @artist = (current_user && current_user.is_artist?) ? Artist.find(current_user.artist.id) : Artist.find(params[:id])
     # if params[:id] @artist
+<<<<<<< HEAD
     @artist = Artist.find(params[:id])
     @review = Review.new
+=======
+    # current_user.artist == Artist.find(params[:id])
+    @artist = Artist.find_by(user_id: params[:id])
+    # current_user.artist == Artist.find_by(user_id: params[:id])
+>>>>>>> f4d3747ccc290e3d4ef09ebbbc1d516bb61a8408
     requests = ConsumerRequest.where(artist: @artist)
     @confirmed = requests.select { |request| request.status == 'confirmed' }
     @unconfirmed = requests.select { |request| request.status == 'unconfirmed' }

@@ -1,4 +1,11 @@
-.consumer-request-form {
+.form-title {
+  font-size: 30px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.form {
   padding: 50px;
   margin-bottom: 60px;
   margin-top: 40px;
@@ -10,7 +17,7 @@
   box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
 }
 
-.consumer-request-form h1 {
+.form h1 {
   font-family: 'Open Sans', sans-serif;
   font-size: 26px;
   font-weight: 300;
@@ -18,7 +25,7 @@
   margin-bottom: 40px;
 }
 
-.consumer-request-form select {
+.form select {
   background-color: white;
   border-color: #757575 !important;
   padding: 5px;
@@ -28,7 +35,7 @@
   border-top-style: none !important;
 }
 
-.consumer-request-form option {
+.form option {
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
@@ -40,7 +47,7 @@
   font-weight: 300;
 }
 
-.consumer-request-form input {
+.form input {
   background-color: white;
   border-color: #757575 !important;
   padding: 5px;
@@ -52,7 +59,7 @@
   width: 100%;
 }
 
-.consumer-request-form input::placeholder {
+.form input::placeholder {
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
@@ -64,7 +71,7 @@ label {
   font-weight: 300;
 }
 
-.consumer-request-form .datepick {
+.form .datepick {
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
@@ -96,7 +103,7 @@ label {
   border-width: 1px;
 }
 
-.consumer-request-form input[type=submit] {
+.form input[type=submit] {
   color: white !important;
   font-size: 14px !important;
   padding: 10px 25px;
@@ -188,3 +195,5 @@ label {
 .warning {
   border-color: red;
 }
+
+
