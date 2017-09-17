@@ -49,7 +49,8 @@ artist_sarah = Artist.create({ user: user,
                          tags: "#gothic #natural #lazysundaydays #afternoondelight",
                          photo: "http://www.vivianmakeupartist.com/wp-content/uploads/2017/01/vivianmakeupartist_boldlip.jpg",
                          category: 'makeup',
-                         location: 'Milan'
+                         location: 'Milan',
+                         range: 20,
                          })
 
 puts "Creating Sarah's Services"
@@ -63,7 +64,7 @@ puts "seeding 20 user artists"
 puts "please wait"
 20.times do
   user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
-  artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: 'tagtagtag', location: locations.sample , category: categories.sample })
+  artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: 'tagtagtag', location: locations.sample , category: categories.sample, range: 20 })
   5.times do
     ArtistService.create(name: Faker::Commerce.product_name, price: Faker::Commerce.price, artist: artist )
   end
