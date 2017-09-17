@@ -52,7 +52,7 @@ class ConsumersController < ApplicationController
   end
 
   def consumer_params
-    params.require(:consumer).permit(:name, :city, :phone_number, :instagram, :profile_img, :profile_img_cache)
+    params.require(:consumer).permit(:first_name, :last_name, :address, :phone_number, :instagram, :profile_img, :profile_img_cache)
   end
 
   def prettify_dates(results_array)

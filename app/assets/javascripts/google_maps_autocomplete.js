@@ -31,6 +31,8 @@ function getAddressComponents(place) {
   var lon = place.geometry.location.lng();
   console.log(lat);
   console.log(lon);
+  $('#searchlat').val(lat);
+  $('#searchlon').val(lon);
 
   var street_number = null;
   var route = null;

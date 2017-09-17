@@ -37,8 +37,7 @@ $(function(){
     google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
     google.maps.event.addDomListener(flatAddress, 'keydown', function(e) {
       if (e.key === "Enter") {
-         $('#searchlat').val() = lat;
-          $('#searchlon').val() = lon;
+
            // document.getElementById('searchlat').get(0).value = lat;
           // document.getElementById('searchlon').get(0).value = lon;
         e.preventDefault(); // Do not submit the form on Enter.
