@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:search, :index, :show]
-  before_action :set_artist, only: [ :edit, :update]
+  before_action :set_artist, only: [:show, :edit, :update]
 
   def index
     # all artists
@@ -9,31 +9,13 @@ class ArtistsController < ApplicationController
 
   def show
 
-    # single artist profile
-
-    # @artist = (current_user && current_user.is_artist?) ? Artist.find(current_user.artist.id) : Artist.find(params[:id])
-    # if params[:id] @artist
 
     @review = Review.new
-    # current_user.artist == Artist.find(params[:id])
-    @artist = Artist.find_by(user_id: params[:id])
-    # current_user.artist == Artist.find_by(user_id: params[:id])
 
-
-    @review = Review.new
-    # current_user.artist == Artist.find(params[:id])
-    @artist = Artist.find_by(user_id: params[:id])
-    # current_user.artist == Artist.find_by(user_id: params[:id])
-
+    #
     requests = ConsumerRequest.where(artist: @artist)
     @confirmed = requests.select { |request| request.status == 'confirmed' }
     @unconfirmed = requests.select { |request| request.status == 'unconfirmed' }
-
-    # if current_user == @artist.user
-    #   render partial: 'shared/artist_private_profile'
-    # else
-    #   render partial: 'shared/artist_public_profile'
-    # end
   end
 
   def new
@@ -71,7 +53,7 @@ class ArtistsController < ApplicationController
 
   def search
     # filtered artists results on category and location
-
+    # params[:id] # will be a user id
     @service = params[:category]
     @location = params[:location]
     @location_arr = @location.delete(',').split

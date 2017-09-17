@@ -7,8 +7,8 @@ class Artist < ApplicationRecord
   has_many :messages, through: :artist_requests
   has_many :reviews
 
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
+  geocoded_by :location
+  after_validation :geocode, if: :location_changed?
 
   # validates :first_name, presence: true
   # validates :last_name, presence: true
