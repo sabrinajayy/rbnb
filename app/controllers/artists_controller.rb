@@ -21,16 +21,17 @@ class ArtistsController < ApplicationController
 
   def create
     @artist = Artist.new(artist_params)
+    @artist.user = current_user
     prices = [15, 43.50, 87, 33.10, 45, 60.99]
-
-    params([:artist][:artist_services]).each do |service|
+    params[:artist][:artist_services].each do |service|
       ArtistService.create({ name: service, price: prices.sample, artist: @artist})
     end
 
     if @artist.save
-
       redirect_to artist_path(@artist)
+
     else
+      raise
       render 'artists/new'
     end
   end
@@ -41,8 +42,11 @@ class ArtistsController < ApplicationController
   def update
     # raise
     prices = [15.0, 43.50, 87.99, 33.10, 45.85, 60.99]
-    params[:artist][:artist_services].each do |service|
-      ArtistService.create({ name: service, price: prices.sample.to_f, artist: @artist})
+
+    if params[:artist][:artist_services]
+      params[:artist][:artist_services].each do |service|
+        ArtistService.create({ name: service, price: prices.sample.to_f, artist: @artist})
+      end
     end
     @artist.update(artist_params)
     redirect_to artist_path(@artist)
@@ -78,7 +82,7 @@ class ArtistsController < ApplicationController
   end
 
   def artist_params
-    params.require(:artist).permit(:first_name, :last_name, :location, :tags, :travel_range, :instagram_handle, :category, :photo, :photo_cache, :artist_services)
+    params.require(:artist).permit(:first_name, :last_name, :location, :tags, :travel_range, :instagram_handle, :category, :photo, :photo_cache, {artist_service: []})
   end
 
 

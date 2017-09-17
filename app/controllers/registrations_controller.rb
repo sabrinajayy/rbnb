@@ -16,7 +16,8 @@ class RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     # raise
       if resource.artist
-        edit_artist_path(resource.artist.id)
+        # edit_artist_path(resource.artist.id)
+        new_artist_path
       else
         edit_consumer_path(resource.consumer.id)
       end
