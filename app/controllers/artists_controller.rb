@@ -13,16 +13,16 @@ class ArtistsController < ApplicationController
 
     # @artist = (current_user && current_user.is_artist?) ? Artist.find(current_user.artist.id) : Artist.find(params[:id])
     # if params[:id] @artist
-
+    if params[:artist_id]
+      id = params[:artist_id]
+    else
+      id = params[:id]
+    end
+    @artist = Artist.find(id)
     @review = Review.new
     # current_user.artist == Artist.find(params[:id])
-    @artist = Artist.find_by(user_id: params[:id])
-    # current_user.artist == Artist.find_by(user_id: params[:id])
-
-
-    @review = Review.new
-    # current_user.artist == Artist.find(params[:id])
-    @artist = Artist.find_by(user_id: params[:id])
+    # @artist = Artist.find_by(user_id: params[:id])
+    # @artist = Artist.find(params[:id])
     # current_user.artist == Artist.find_by(user_id: params[:id])
 
     requests = ConsumerRequest.where(artist: @artist)
@@ -79,7 +79,9 @@ class ArtistsController < ApplicationController
     @latitude = params[:latitude]
 
     if !@location.empty?
-      @results = Artist.where("category ILIKE ? AND location IN (?)", @service, @location_arr)
+      # next two lines are equivalent:
+      # @results = Artist.where("category ILIKE ?", @service) && Artist.near(@location, 10)
+      @results = Artist.where("category ILIKE ?", @service) && Artist.near([@latitude, @longitude], 10)
     else
       @results = Artist.where(category: @service)
     end

@@ -10,7 +10,7 @@
   <%= f.label :category, "What is your specialty?", required: true %>
   <%= select_tag :category, options_for_select([['Hair', 'hair'], ['Makeup', 'makeup'], ['Hair and Makeup', 'hair and makeup']]),  placeholder: 'Category', class: 'search-form' %>
   <br><br>
-  <%= f.input :location, required: true %>
+  <%= f.text_field :location, placeholder: 'Address', required: true, class: 'search-form', id: 'flat_address' %>
 
   <%= f.label :travel_range, "How far are you willing to travel? (km)", required: true %>
   <%= f.input :travel_range, label: false, required: true %>
@@ -20,10 +20,10 @@
   <%#= f.input :photo, label: "Upload your profile photo" %>
   <%#= f.input :photo_cache, as: :hidden %>
 
-  <%= f.label :artist_services, "Which specific services do you offer?", required: true %>
+  <%= f.label :artist_services, "Which specific services do you offer? Select at least one."%>
   <%= f.input :artist_services, collection: ['full face makeup', 'wedding makeup', 'blowout', 'hair styling'], placeholder: 'Category', wrapper_html: { class: 'form-group' }, :as => :check_boxes, include_hidden: false %>
 
-  <%= f.input :bio, required: true %>
+  <%= f.input :bio, required: false %>
   <%= f.input :tags, required: false %>
 
   <%= f.button :submit, "Update Profile", class: 'update-profile' %>
