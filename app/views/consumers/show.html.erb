@@ -4,7 +4,7 @@
       <div class="user-profile">
         <%= cl_image_tag @consumer.profile_img, width: 300, height: 300, crop: :fill %>
         <p>Name: <%= @consumer.first_name %> <%= @consumer.last_name %></p>
-        <p>City: <%= @consumer.city %></p>
+        <p>Address: <%= @consumer.address %></p>
         <p>Phone Number: <%= @consumer.phone_number %></p>
         <p>Instagram: @<%= @consumer.instagram %></p>
 

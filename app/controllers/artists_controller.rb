@@ -9,10 +9,7 @@ class ArtistsController < ApplicationController
 
   def show
 
-
     @review = Review.new
-
-    #
     requests = ConsumerRequest.where(artist: @artist)
     @confirmed = requests.select { |request| request.status == 'confirmed' }
     @unconfirmed = requests.select { |request| request.status == 'unconfirmed' }
@@ -61,7 +58,9 @@ class ArtistsController < ApplicationController
     @latitude = params[:latitude]
 
     if !@location.empty?
-      @results = Artist.where("category ILIKE ? AND location IN (?)", @service, @location_arr)
+      # next two lines are equivalent:
+      # @results = Artist.where("category ILIKE ?", @service) && Artist.near(@location, 10)
+      @results = Artist.where("category ILIKE ?", @service) && Artist.near([@latitude, @longitude], 10)
     else
       @results = Artist.where(category: @service)
     end
