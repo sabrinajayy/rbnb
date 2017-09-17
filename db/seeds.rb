@@ -6,6 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# puts
+# puts "seeding 5 user consumers"
+# puts "please wait"
+# 5.times do
+#   user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
+#   consumer = Consumer.create({ user: user, first_name: Faker::Name.name, last_name: Faker::Name.name, city: Faker::Address.city, phone_number: Faker::Number.number(8).to_i, instagram: '@' + Faker::App.name})
+# end
+
+require 'date'
 categories = ['hair', 'makeup', 'hair and makeup']
 locations = ['Barcelona', 'New York', 'Paris']
 
@@ -34,36 +43,40 @@ end
 puts "Creating and artist called Sarah"
 
 user = User.create({ email: 'sarah@sarah.com', password: 'password' })
-artist = Artist.create({ user: user,
+artist_sarah = Artist.create({ user: user,
                          first_name: 'Sarah',
                          last_name: 'Leibowitz',
                          tags: "#gothic #natural #lazysundaydays #afternoondelight",
                          photo: "http://www.vivianmakeupartist.com/wp-content/uploads/2017/01/vivianmakeupartist_boldlip.jpg",
                          category: 'makeup',
-                         location: 'Milan'
+                         location: 'Milan',
+                         travel_range: 20,
                          })
 
 puts "Creating Sarah's Services"
-ArtistService.create(name: 'Full Face Makeup',price: 50.0,artist: artist)
-ArtistService.create(name: "Lashes",price: 30.0,artist: artist)
-ArtistService.create(name: "Special FX",price: 75.0,artist: artist)
-ArtistService.create(name: "Wedding Day Service",price: 250.0,artist: artist)
-ArtistService.create(name: "Lesson", price: 50.0,artist: artist)
+ArtistService.create(name: 'Full Face Makeup',price: 50.0,artist: artist_sarah)
+ArtistService.create(name: "Lashes",price: 30.0,artist: artist_sarah)
+ArtistService.create(name: "Special FX",price: 75.0,artist: artist_sarah)
+ArtistService.create(name: "Wedding Day Service",price: 250.0,artist: artist_sarah)
+ArtistService.create(name: "Lesson", price: 50.0,artist: artist_sarah)
 puts
 puts "seeding 20 user artists"
 puts "please wait"
 20.times do
   user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
-  artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: 'tagtagtag', location: locations.sample , category: categories.sample })
+  artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: 'tagtagtag', location: locations.sample , category: categories.sample, travel_range: 20 })
   5.times do
     ArtistService.create(name: Faker::Commerce.product_name, price: Faker::Commerce.price, artist: artist )
   end
 end
-puts
-puts "seeding 5 user consumers"
-puts "please wait"
-5.times do
-  user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
-  consumer = Consumer.create({ user: user, first_name: Faker::Name.name, last_name: Faker::Name.name, city: Faker::Address.city, phone_number: Faker::Number.number(8).to_i, instagram: '@' + Faker::App.name})
-end
+# seed hero user
+hero_user = User.create(email: 'hero@hero.com', password: 'password')
+Consumer.create(user: hero_user, first_name: 'Bruce', last_name: 'Wayne', city: 'Milan', phone_number: '500-500-500', instagram: '@secret_hero')
 
+puts
+puts hero_user
+puts "Creating Consumer Requests"
+times = [DateTime.new(2017,9,1), DateTime.new(2017,9,10), DateTime.new(2017,9,25), DateTime.new(2017,9,17), DateTime.new(2017,10,1)]
+times.each do |t|
+  ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: t, status: 'confirmed')
+end
