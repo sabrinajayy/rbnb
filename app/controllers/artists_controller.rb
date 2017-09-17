@@ -31,7 +31,6 @@ class ArtistsController < ApplicationController
       redirect_to artist_path(@artist)
 
     else
-      raise
       render 'artists/new'
     end
   end
