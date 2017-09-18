@@ -111,7 +111,7 @@ end
 
 puts "Creating an Artist Request from Sarah to work Hero user's event"
 event = ConsumerEvent.last
-ArtistRequest.new(offer_price: 50.0, artist: artist_sarah, conesumer_event: event)
+ArtistRequest.new(offer_price: 50.0, artist: artist_sarah, consumer_event: event)
 
 
 
