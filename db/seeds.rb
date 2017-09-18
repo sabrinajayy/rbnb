@@ -100,6 +100,7 @@ puts "Creating an Artist Request from Sarah to work Hero user's event"
 event = ConsumerEvent.last
 ArtistRequest.new(offer_price: 50.0, artist: artist_sarah, consumer_event: event)
 
+
 puts "Ensuring that Sarah will always be busy tomorrow in the morning"
 booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.new.tomorrow.change(hour: 9), status: 'confirmed')
 TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
@@ -109,3 +110,5 @@ TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: boo
 puts "Ensuring that Sarah will always be busy in three days in the evening."
 booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.advance(days: 3).change(hour: 20), status: 'confirmed')
 TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
+
+

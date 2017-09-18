@@ -3,7 +3,6 @@ class ArtistsController < ApplicationController
   before_action :set_artist, only: [:show, :edit, :update]
 
   def index
-    # all artists
     @artists = Artist.all
   end
 
@@ -13,6 +12,10 @@ class ArtistsController < ApplicationController
     requests = ConsumerRequest.where(artist: @artist)
     @confirmed = requests.select { |request| request.status == 'confirmed' }
     @unconfirmed = requests.select { |request| request.status == 'unconfirmed' }
+    unless TimeBlock.where(artist: @artist).empty?
+      time_blocks = TimeBlock.where(artist: @artist)
+      @time_blocks_by_date = time_blocks.group_by(&:date)
+    end
   end
 
   def new
@@ -52,29 +55,35 @@ class ArtistsController < ApplicationController
   end
 
   def search
-    # filtered artists results on category and location
-    # params[:id] # will be a user id
-    @service = params[:category]
-    @location = params[:location]
-    @location_arr = @location.delete(',').split
-    @longitude = params[:longitude]
-    @latitude = params[:latitude]
-
-    if !@location.empty?
-      # next two lines are equivalent:
-      # @results = Artist.where("category ILIKE ?", @service) && Artist.near(@location, 10)
-      @results = Artist.where("category ILIKE ?", @service) && Artist.near([@latitude, @longitude], 10)
-    else
-      @results = Artist.where(category: @service)
+    service = params[:category]
+    location = params[:location]
+    # @location_arr = @location.delete(',').split # where is this used?
+    long = params[:longitude]
+    lat = params[:latitude]
+    begin
+      time_range = MakeTimeRange.new(params[:date], params[:time]).call
+    rescue
     end
+    if !location.empty? && !params[:date].empty?
+      # consider iterating over the return of Artist.where, selecting for artist_instance_result.near([lat, long], artist.range)
+      results_by_cat_and_location = Artist.where("category ILIKE ?", service) && Artist.near([lat, long], 10)
+      @results = results_by_cat_and_location.reject do |artist|
+        CheckArtistClashesForSegment.new(artist, time_range).call
+      end
+    elsif !params[:date].empty?
+      results_by_cat = Artist.where(category: service)
+      @results = results_by_cat.reject do |artist|
+        CheckArtistClashesForSegment.new(artist, time_range).call
+      end
+    else
+      @results = Artist.where(category: service)
+    end
+
 
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-
- def set_artist
-
+  def set_artist
     @artist = Artist.find(params[:id])
     # may need the below method for edit and update later
     # @artist = Artist.find(current_user.artist.id)
@@ -83,6 +92,4 @@ class ArtistsController < ApplicationController
   def artist_params
     params.require(:artist).permit(:first_name, :last_name, :bio, :location, :tags, :travel_range, :instagram_handle, :category, :photo, :photo_cache, {artist_service: []})
   end
-
-
 end

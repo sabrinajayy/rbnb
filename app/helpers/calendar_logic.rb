@@ -1,4 +1,4 @@
-class ArtistAvailibility
+class CheckArtistAvailibility
   def initialize(artist, time_query)
     @artist = artist
     @time_query = time_query

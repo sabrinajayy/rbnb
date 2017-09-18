@@ -1,4 +1,4 @@
-availability_index.html.erb
+
 
 <h1>Bookings</h1>
 
@@ -6,7 +6,7 @@ availability_index.html.erb
 
   <%= calendar do |date| %>
     <%= date.day %>
-    <% if @bookings_by_date[date] %>
+    <% if @time_blocks_by_date[date] %>
     <ul>
       <% @bookings_by_date[date]each do |booking| %>
         <li><%= link_to booking.user.consumer.first_name, booking %></li>

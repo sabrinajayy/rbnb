@@ -6,6 +6,7 @@ class Artist < ApplicationRecord
   has_many :artist_images
   has_many :messages, through: :artist_requests
   has_many :reviews
+  has_many :time_blocks
 
   geocoded_by :location
   after_validation :geocode, if: :location_changed?
