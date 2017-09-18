@@ -7,6 +7,8 @@ class ConsumersController < ApplicationController
   end
 
   def show
+
+    @my_events = ConsumerEvent.where(user: current_user)
     @requests = ConsumerRequest.where(user_id: current_user.id)
     @confirmed = @requests.select { |request| request.status == 'confirmed' && !request.is_past?}
     @pending = @requests.select { |request| request.status == 'unconfirmed'}

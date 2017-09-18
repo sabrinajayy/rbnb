@@ -1,0 +1,20 @@
+availability_index.html.erb
+
+<h1>Bookings</h1>
+
+<div id="bookings">
+
+  <%= calendar do |date| %>
+    <%= date.day %>
+    <% if @bookings_by_date[date] %>
+    <ul>
+      <% @bookings_by_date[date]each do |booking| %>
+        <li><%= link_to booking.user.consumer.first_name, booking %></li>
+        <% end %>
+    </ul>
+    <% end %>
+  <% end %>
+</div>
+<!-- @bookings = ConsumerRequest.where(artist: @artist)
+     @bookings_by_date = @bookings.group_by(:date)
+     @date = Date.today -->

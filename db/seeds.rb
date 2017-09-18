@@ -74,9 +74,30 @@ hero_user = User.create(email: 'hero@hero.com', password: 'password')
 Consumer.create(user: hero_user, first_name: 'Bruce', last_name: 'Wayne', city: 'Milan', phone_number: '500-500-500', instagram: '@secret_hero')
 
 puts
-puts hero_user
 puts "Creating Consumer Requests"
-times = [DateTime.new(2017,9,1), DateTime.new(2017,9,10), DateTime.new(2017,9,25), DateTime.new(2017,9,17), DateTime.new(2017,10,1)]
+times = [DateTime.yesterday, DateTime.new(2017,9,10), DateTime.new(2017,9,25), DateTime.new(2017,9,17), DateTime.new(2017,10,1)]
 times.each do |t|
   ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: t, status: 'confirmed')
 end
+
+puts "Creating Consumer Events for Hero user"
+times.each do |t|
+  ConsumerEvent.create(location: 'Milan', service: 'makeup', description: 'my birthday', user: hero_user, date: t)
+end
+
+puts "Creating an Artist Request from Sarah to work Hero user's event"
+event = ConsumerEvent.last
+ArtistRequest.new(offer_price: 50.0, artist: artist_sarah, conesumer_event: event)
+
+ # create_table "artist_requests", force: :cascade do |t|
+ #    t.float    "offer_price"
+ #    t.integer  "consumer_event_id"
+ #    t.integer  "artist_id"
+ #    t.datetime "created_at",        null: false
+ #    t.datetime "updated_at",        null: false
+ #    t.index ["artist_id"], name: "index_artist_requests_on_artist_id", using: :btree
+ #    t.index ["consumer_event_id"], name: "index_artist_requests_on_consumer_event_id", using: :btree
+ #  end
+
+
+
