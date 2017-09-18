@@ -74,9 +74,29 @@ hero_user = User.create(email: 'hero@hero.com', password: 'password')
 Consumer.create(user: hero_user, first_name: 'Bruce', last_name: 'Wayne', city: 'Milan', phone_number: '500-500-500', instagram: '@secret_hero')
 
 puts
-puts hero_user
 puts "Creating Consumer Requests"
 times = [DateTime.new(2017,9,1), DateTime.new(2017,9,10), DateTime.new(2017,9,25), DateTime.new(2017,9,17), DateTime.new(2017,10,1)]
 times.each do |t|
   ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: t, status: 'confirmed')
 end
+
+puts "Creating Consumer Events"
+ConsumerEvent.create(location: 'Milan', service: 'makeup', description: 'my birthday', user: hero_user)
+
+
+  # create_table "consumer_events", force: :cascade do |t|
+  #   t.string   "location"
+  #   t.datetime "date"
+  #   t.string   "service"
+  #   t.text     "description"
+  #   t.string   "tags"
+  #   t.float    "budget"
+  #   t.integer  "user_id"
+  #   t.datetime "created_at",  null: false
+  #   t.datetime "updated_at",  null: false
+  #   t.index ["user_id"], name: "index_consumer_events_on_user_id", using: :btree
+  # end
+
+
+
+
