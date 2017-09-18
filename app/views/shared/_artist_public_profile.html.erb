@@ -75,20 +75,14 @@
   </div>
 
   <div class="tab-content hidden" id="reviews">
-    <!-- <p class="text-center"><%= @artist.first_name %> currently doesn't have any reviews.</p> -->
+  <% if @reviews.empty? %>
+    <p class="text-center"><%= @artist.first_name %> currently doesn't have any reviews.</p>
+    <% else %>
     <div id="reviews">
-    <%= render 'reviews/form', artist: @artist, review: @review %>
-      <% if @artist.reviews.blank? %>
-        Be the first to leave a review for <%= @artist.first_name %>
-      <% else %>
-        <% @artist.reviews.each do |review| %>
-          <h5><%= review.title %></h5>
-          <p><%= review.content %></p>
-          <br>
-          <%= render 'artists/show', review: review %>
-        <% end %>
-      <% end %>
+    <h1>hello</h1>
+      <%= @reviews %>
     </div>
+    <% end %>
   </div>
 
 </div>

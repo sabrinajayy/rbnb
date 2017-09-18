@@ -9,6 +9,7 @@ class ArtistsController < ApplicationController
 
   def show
     @review = Review.new
+    @reviews = Review.where(artist_id: @artist)
     requests = ConsumerRequest.where(artist: @artist)
     @confirmed = requests.select { |request| request.status == 'confirmed' }
     @unconfirmed = requests.select { |request| request.status == 'unconfirmed' }
@@ -80,7 +81,7 @@ class ArtistsController < ApplicationController
   end
 
   def artist_params
-    params.require(:artist).permit(:first_name, :last_name, :location, :tags, :travel_range, :instagram_handle, :category, :photo, :photo_cache, {artist_service: []})
+    params.require(:artist).permit(:first_name, :last_name, :bio, :location, :tags, :travel_range, :instagram_handle, :category, :photo, :photo_cache, {artist_service: []})
   end
 
 
