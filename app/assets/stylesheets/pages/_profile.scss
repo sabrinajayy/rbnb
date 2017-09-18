@@ -1,25 +1,19 @@
-.profile-banner {
-  color: white;
+.artist-banner-content {
   text-align: center;
-  height: 400px;
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  background-color: #fafafa;
-  background-size: cover !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding-bottom: 20px;
+  padding-top: 40px;
 }
-.profile-banner h1 {
-  font-size: 20px;
+.artist-banner-content h1 {
+  font-size: 2rem;
   font-family: 'Open Sans', sans-serif;
   color: #757575;
   font-weight: 400;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
   margin-bottom: 5px;
 }
-.profile-banner p {
-  font-size: 16px;
-  font-weight: 300;
+.artist-banner-content p {
+  font-size: 14px;
+  font-weight: 400;
   font-family: 'Open Sans', sans-serif;
   color: #757575;
   opacity: 0.6;
@@ -35,7 +29,7 @@
   margin-bottom: 0px;
 }
 
-.profile-rating ul {
+.artist-banner-content ul {
   margin: 0 auto !important;
 }
 
@@ -63,14 +57,16 @@
 }
 
 .banner-content {
-  padding-bottom: 0px;
+  padding-bottom: 20px;
   padding-top: 40px;
+  text-align: center;
 }
 
 
 /*PROFILE CONTENT*/
 .profile-container {
-  padding: 20px 250px;
+  padding: 20px 20px;
+
 }
 
 .row {
@@ -93,6 +89,14 @@
   margin-bottom: 40px;
   letter-spacing: 0.3px;
 }
+.about-artist {
+  padding: 20px 200px;
+
+}
+
+#portfolio {
+  padding: 20px 200px;
+}
 
 .artist-portfolio-image {
   margin: 0 auto;
@@ -112,46 +116,164 @@
   }
 }
 
-
-
-
-/*PROFILE TABS */
-.tabs {
-  background: #FFF;
-  display: flex;
-  padding: 10px 250px 10px 250px;
+/*REVIEW SECTION*/
+#reviews {
+  padding: 20px 150px;
 }
-.tabs a {
-  color: #757575;
-  font-weight: 300 !important;
+
+.review-pic {
+  align-content: right;
+  text-align: right;
 }
-.tabs a:hover {
-  cursor: pointer;
-  text-decoration: none;
-  opacity: 0.8;
-  font-weight: 300 !important;
+
+#reviews ul {
+  margin-top: 5px !important;
+  margin-bottom: 3px !important;
+  padding-left: 5px;
 }
-.tabs h2 {
-  font-size: 20px;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 300 !important;
+
+.review-details {
+  line-height: 14px;
+  text-align: left;
+}
+
+#reviews p {
+  display: inline;
+}
+
+.review-client {
+  font-size: 14px;
+  font-weight: 400;
+}
+.review-date {
+  font-size: 13px;
+  font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: bold;
-  margin-top: 0;
 }
-.tab {
-  background-color: #FFF;
-  flex: 0 0 33%;
+
+.review-content {
+  font-weight: 300;
+  font-style: italic;
+  font-size: 14px;
+}
+
+
+/* NEW PROFILE TABS */
+
+.artist-profile-tabs {
+  display: table;
+  margin: 0 auto;
+}
+.nav-tabs ul {
   text-align: center;
-  padding: 10px 0;
+
+}
+.nav-tabs li {
+  text-transform: uppercase;
+  padding: 0.94rem 1.6rem;
 }
 
-.tab.active h2 {
-  background: white;
-  color: #F7ABB2;
-  font-weight: 400 !important;
-  text-decoration: none !important;
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+  border-width: 0;
+}
+
+.nav-tabs > li > a {
+  border: none;
+  color: #757575;
+  font-size: 16px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li > a:hover {
+  border: none;
+  color: #f7abb2 !important;
+  font-weight: 400;
+  background: transparent;
+}
+
+.nav-tabs > li > a::after {
+  content: "";
+  background: #fafafa;
+  height: 2px;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  bottom: -1px;
+  transition: all 250ms ease 0s;
+  transform: scale(0);
+}
+
+.nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after {
+  transform: scale(1);
+}
+
+.tab-nav > li > a::after {
+  background: #fafafa none repeat scroll 0% 0%;
+  color: #fff;
+}
+
+.tab-content {
+  padding: 0;
 }
 
 
+
+/*MOBILE RESPONSIVE*/
+
+@media screen and (max-width: 900px) {
+  .about-artist {
+    padding: 20px;
+  }
+  #portfolio {
+    padding: 0px;
+  }
+  #reviews {
+    padding: 20px;
+  }
+  .review-pic {
+    align-content: left;
+    text-align: left;
+  }
+}
+
+
+/* OLD PROFILE TABS */
+// .tabs {
+//   background: transparent;
+//   display: flex;
+//   width: 100%;
+//   overflow: hidden;
+//   padding: 10px 20px 10px 20px;
+// }
+// .tabs a {
+//   color: #757575;
+//   font-weight: 300 !important;
+// }
+// .tabs a:hover {
+//   cursor: pointer;
+//   text-decoration: none;
+//   opacity: 0.8;
+//   font-weight: 300 !important;
+// }
+// .tabs h2 {
+//   font-size: 20px;
+//   font-family: 'Raleway', sans-serif;
+//   font-weight: 300 !important;
+//   text-transform: uppercase;
+//   letter-spacing: 0.5px;
+//   font-weight: bold;
+//   margin-top: 0;
+// }
+// .tab {
+//   background-color: #FFF;
+//   flex: 0 0 33%;
+//   text-align: center;
+//   padding: 10px 0;
+// }
+
+// .tab.active h2 {
+//   background: transparent;
+//   color: #F7ABB2;
+//   font-weight: 400 !important;
+//   text-decoration: none !important;
+//   padding: 0;
+// }

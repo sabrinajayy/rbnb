@@ -4,7 +4,7 @@
   -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
   -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
   box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
-
+  width: auto;
 }
 
 .artist-prices-card h2 {
@@ -45,4 +45,8 @@
   font-weight: 300;
   font-size: 16px;
   line-height: 32px;
+}
+
+.artist-prices-card button {
+  width: 100%;
 }
