@@ -102,13 +102,13 @@ ArtistRequest.new(offer_price: 50.0, artist: artist_sarah, consumer_event: event
 
 
 puts "Ensuring that Sarah will always be busy today in the morning"
-booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.change(hour: 9), status: 'confirmed')
+booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.change(hour: 11), status: 'confirmed')
 TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
 puts "Ensuring that Sarah will always be busy in two days in the afternoon."
-booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.advance(days: 2).change(hour: 13), status: 'confirmed')
+booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.advance(days: 2).change(hour: 15), status: 'confirmed')
 TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
 puts "Ensuring that Sarah will always be busy in three days in the evening."
-booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.advance(days: 3).change(hour: 20), status: 'confirmed')
+booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.advance(days: 3).change(hour: 22), status: 'confirmed')
 TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
 
 
