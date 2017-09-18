@@ -80,6 +80,30 @@ times.each do |t|
   ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: t, status: 'confirmed')
 end
 
+"Creating a review for Sarah"
+booking = ConsumerRequest.first
+Review.create(title: 'She was great!',
+              content: 'She did my makeup and she was great',
+              rating: 5,
+              consumer_request: booking,
+              user: hero_user,
+              artist: artist_sarah
+              )
+
+# create_table "reviews", force: :cascade do |t|
+#     t.string   "title"
+#     t.string   "content"
+#     t.integer  "rating"
+#     t.integer  "artist_id"
+#     t.integer  "user_id"
+#     t.integer  "consumer_request_id"
+#     t.datetime "created_at",          null: false
+#     t.datetime "updated_at",          null: false
+#     t.index ["artist_id"], name: "index_reviews_on_artist_id", using: :btree
+#     t.index ["consumer_request_id"], name: "index_reviews_on_consumer_request_id", using: :btree
+#     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+#   end
+
 puts "Creating Consumer Events for Hero user"
 times.each do |t|
   ConsumerEvent.create(location: 'Milan', service: 'makeup', description: 'my birthday', user: hero_user, date: t)
@@ -88,16 +112,6 @@ end
 puts "Creating an Artist Request from Sarah to work Hero user's event"
 event = ConsumerEvent.last
 ArtistRequest.new(offer_price: 50.0, artist: artist_sarah, conesumer_event: event)
-
- # create_table "artist_requests", force: :cascade do |t|
- #    t.float    "offer_price"
- #    t.integer  "consumer_event_id"
- #    t.integer  "artist_id"
- #    t.datetime "created_at",        null: false
- #    t.datetime "updated_at",        null: false
- #    t.index ["artist_id"], name: "index_artist_requests_on_artist_id", using: :btree
- #    t.index ["consumer_event_id"], name: "index_artist_requests_on_consumer_event_id", using: :btree
- #  end
 
 
 
