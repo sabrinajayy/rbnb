@@ -2,6 +2,8 @@ class ConsumersEventsController < ApplicationController
   before_action :set_consumer_event, only: [:show, :destroy, :update, :edit]
 
   def show
+
+    @artist_request = ArtistRequest.new
   end
 
   def index
