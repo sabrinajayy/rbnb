@@ -27,7 +27,6 @@ class ConsumersRequestsController < ApplicationController
   end
 
   def create
-
     consumer_request = ConsumerRequest.new(consumer_request_params)
 
     consumer_request.user_id = current_user.id
@@ -60,6 +59,9 @@ class ConsumersRequestsController < ApplicationController
   def update
     @consumer_request.status = 'confirmed'
     @consumer_request.save
+
+    TimeBlock.create(artist: @consumer_request.artist, date: @consumer_request.date, consumer_request: @consumer_request )
+
     redirect_to artist_path(@artist)
   end
 
