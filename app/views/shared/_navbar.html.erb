@@ -9,16 +9,17 @@
       <% if current_user.is_artist? %>
         <!-- Right Navigation -->
         <div class="navbar-wagon-right hidden-xs hidden-sm">
-          <a href="" class="navbar-wagon-item navbar-wagon-link">Hello <%= current_user.artist.first_name %></a>
-          <a href="" class="navbar-wagon-item navbar-wagon-link">Bookings</a>
-          <%#= link_to 'Bookings', consumer_path(current_user.consumer), class: "navbar-wagon-item navbar-wagon-link" %>
-          <!-- We need to add a link for this below, first need messages routes -->
-          <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a>
+          <h6><strong>Hello, <%= current_user.artist.first_name %>!</strong></h6>
+          <%= link_to 'Bookings', artist_path(current_user.artist), class: "navbar-wagon-item navbar-wagon-link" %>
 
           <!-- Profile picture with dropdown list -->
           <div class="navbar-wagon-item">
             <div class="dropdown">
+            <% if !current_user.artist.photo %>
               <%= cl_image_tag current_user.artist.photo, class: 'avatar dropdown-toggle', id: 'navbar-wagon-menu', data: { toggle: 'dropdown' }, width: 300, height: 300, crop: :fill %>
+              <% else %>
+              <%= cl_image_tag "http://res.cloudinary.com/dl12g2ws3/image/upload/v1505729708/profile-icon_xx3teu.png", class: 'avatar dropdown-toggle', id: 'navbar-wagon-menu', data: { toggle: 'dropdown' }, width: 300, height: 300, crop: :fill %>
+              <% end %>
               <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
                 <li><%= link_to 'Profile', artist_path(current_user.artist), class: "navbar-wagon-item navbar-wagon-link" %></li>
                 <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
@@ -29,15 +30,17 @@
       <% elsif current_user.is_consumer? %>
         <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-          <a href="" class="navbar-wagon-item navbar-wagon-link">Bookings</a>
-           <%#= link_to 'Bookings', artist_path(current_user.artist), class: "navbar-wagon-item navbar-wagon-link" %>
-          <!-- We need to add a link for this below, first need messages routes -->
-          <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a>
+          <!-- <a href="" class="navbar-wagon-item navbar-wagon-link">Bookings</a> -->
+           <%= link_to 'Bookings', consumer_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
 
           <!-- Profile picture with dropdown list -->
           <div class="navbar-wagon-item">
             <div class="dropdown">
+            <% if !current_user.consumer.profile_img %>
               <%= cl_image_tag current_user.consumer.profile_img, class: 'avatar dropdown-toggle', id: 'navbar-wagon-menu', data: { toggle: 'dropdown' }, width: 300, height: 300, crop: :fill %>
+                <% else %>
+              <%= cl_image_tag "http://res.cloudinary.com/dl12g2ws3/image/upload/v1505729708/profile-icon_xx3teu.png", class: 'avatar dropdown-toggle', id: 'navbar-wagon-menu', data: { toggle: 'dropdown' }, width: 300, height: 300, crop: :fill %>
+              <% end %>
               <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
                 <li><%= link_to 'Profile', consumer_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %></li>
                 <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
