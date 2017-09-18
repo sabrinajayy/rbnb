@@ -117,8 +117,13 @@
 }
 
 /*REVIEW SECTION*/
+
 #reviews {
   padding: 20px 150px;
+  // width: 660px;
+  // text-align: left;
+  word-wrap: break-word;
+  margin-right: 0px !important;
 }
 
 .artist-review {
@@ -216,23 +221,33 @@
 }
 
 .tab-content {
-  padding: 0;
+  padding: 0 !important ;
+  margin-right: 0px !important;
+}
+
+.tab-content.active {
+  margin-right: 0px;
 }
 
 
 
 /*MOBILE RESPONSIVE*/
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
   .about-artist {
     padding: 20px;
   }
+
   #portfolio {
     padding: 0px;
   }
+
   #reviews {
     padding: 20px;
+    width: 90%;
+    margin-right: 0px;
   }
+
   .review-pic {
     align-content: left;
     text-align: left;
