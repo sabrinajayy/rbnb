@@ -1,4 +1,4 @@
-calendar_helper.rb
+
 # if ArtistAvailibility.new(time).call
 # booking = ConsumerRequest.create =>
 # TimeBlock.create(date: booking.date)
