@@ -2,25 +2,29 @@
 
 <div class="review-container">
   <% @reviews.each do |review| %>
+  <div class="artist-review">
     <div class="row">
-      <div class="col-xs-12 col-sm-3">
-        <div class="review-pic">
-          <%= cl_image_tag(review.consumer.profile_img, width: 75, height: 75, crop: :fill) %>
+
+        <div class="col-xs-12 col-sm-3">
+          <div class="review-pic">
+            <%= cl_image_tag(review.user.consumer.profile_img, width: 75, height: 75, crop: :fill) %>
+          </div>
         </div>
-      </div>
-      <div class="col-xs-12 col-sm-9">
-        <div class="review-details">
-          <p class="review-client"><%= review.consumer.name %> - </p>
-          <p class="review-date"><%= review.created_at.strftime('%b %d %Y, %I:%M%p') %></p>
-          <ul class="list-inline profile-rating review-rating">
-            <% review.rating.times do %>
-            <li><i class="fa fa-star"></i></li>
-          <% end %>
-          </ul>
-          <p class="review-content"><%= review.content %></p>
+        <div class="col-xs-12 col-sm-9">
+          <div class="review-details">
+            <p class="review-client"><%= review.user.consumer.first_name %> - </p>
+            <p class="review-date"><%= review.created_at.strftime('%b %d %Y, %I:%M%p') %></p>
+            <ul class="list-inline profile-rating review-rating">
+              <% review.rating.times do %>
+              <li><i class="fa fa-star"></i></li>
+            <% end %>
+            </ul>
+            <p class="review-content"><%= review.content %></p>
+          </div>
         </div>
       </div>
     </div>
+  </div>
   <% end %>
 </div>
 
