@@ -108,12 +108,13 @@
   </div>
 
   <div class="tab-content hidden" id="reviews">
-    <!-- <p class="text-center"><%= @artist.first_name %> currently doesn't have any reviews.</p> -->
+  <% if @reviews.empty? %>
+    <p class="text-center"><%= @artist.first_name %> currently doesn't have any reviews.</p>
+    <% else %>
     <div id="reviews">
-
     <%= render 'reviews/review-card' %>
-
     </div>
+    <% end %>
   </div>
 
 <!-- </div> -->

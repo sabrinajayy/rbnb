@@ -29,6 +29,14 @@
               <%= render partial: 'shared/unconfirmed_booking_card' %>
             <% end %>
           </div>
+          <h3>Your Past Bookings</h3>
+          <div class="row">
+            <% if @past.nil? %>
+              <p>You not not have any recent bookings</p>
+            <% else %>
+              <%= render partial: 'shared/past_booking_card' %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

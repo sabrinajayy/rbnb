@@ -5,17 +5,19 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/search_results', to: 'artists#search'
   get '/search_results/artist', to: 'artists#show'
+  # get '/new_review" => 'project#new_release', :as => :new_release
 
-    resources :consumers
+    resources :consumers do
+      resources :reviews, only: [:new, :edit, :update ,:destroy]
+    end
+
     resources :consumer_events do
       resources :artist_requests, only: [:create]
     end
 
-
-
     resources :artists do
       resources :consumers_requests
-      resources :reviews, only: [:create, :update]
+      resources :reviews, only: [:create, :index ]
     end
 
 

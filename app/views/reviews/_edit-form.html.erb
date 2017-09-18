@@ -1,0 +1,5 @@
+<%= simple_form_for(review, url: consumer_review_path(review_id: review ,consumer_id: @consumer,artist_id: booking.artist.id,booking_id: booking.id)) do |f| %>
+<%= f.input :rating, as: :integer, placeholder: "Enter a rating between 1 and 50" %>
+  <%= f.input :content, as: :text, placeholder: "What did you like about this session?" %>
+  <%= f.button :submit, class: 'btn' %>
+<% end %>

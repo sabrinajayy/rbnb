@@ -8,9 +8,9 @@ class ConsumersController < ApplicationController
 
   def show
     @requests = ConsumerRequest.where(user_id: current_user.id)
-    @confirmed = @requests.select { |request| request.status == 'confirmed'}
+    @confirmed = @requests.select { |request| request.status == 'confirmed' && !request.is_past?}
     @pending = @requests.select { |request| request.status == 'unconfirmed'}
-
+    @past = @requests.select {|request| request.is_past? }
   end
 
   def new

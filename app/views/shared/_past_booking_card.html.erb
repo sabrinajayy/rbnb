@@ -1,0 +1,36 @@
+<% @past.each do |booking| %>
+<div class="col-xs-12 col-sm-4">
+  <div class="booking-card">
+    <div class="booking-bkgrd-image card__image--fence"></div>
+    <div class="booking-user-image">
+      <%= cl_image_tag booking.artist.photo, class: 'booking-card-user', width: 300, height: 300, crop: :fill %>
+      <!-- <img class="booking-card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
+    </div>
+    <div class="booking-card-content">
+      <div class="booking-name">
+        <p><%=booking.artist.first_name%> <%=booking.artist.last_name%></p>
+      </div>
+      <p class="card__text"><%=booking.address%> | <%=booking.date %> @ <%=booking.time %></p>
+      <p class="card__text"><%=booking.servicename%> - $<%=booking.final_price %></p>
+      <p class="booking-status"><%=booking.status%></p>
+      <!-- <button class="btn-pamprd">View Booking</button> -->
+      <%= button_to "View Booking", artist_consumers_request_path(booking.artist, booking), :class => "btn-pamprd", :method => :get %>
+      <br>
+
+      <% if !booking.review %>
+        <%= link_to 'Review me', new_consumer_review_path(booking), "data-toggle" => "modal", 'data-target'=>"#exampleModal#{booking.id}"  %>
+        <!-- Modal -->
+        <%= render 'reviews/new', booking: booking %>
+
+      <% else %>
+          <!-- edit -->
+          <%= link_to 'Edit your review', edit_consumer_review_path(@consumer, booking.review), "data-toggle" => "modal", 'data-target'=>"#exampleModal#{booking.id}"  %>
+          <%= render 'reviews/edit', booking: booking, review: booking.review%>
+
+          <!-- delete -->
+          <%= link_to 'Delete your review', consumer_review_path(@consumer, booking.review), method: :delete, data: {confirm: "Are you sure?" } %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
