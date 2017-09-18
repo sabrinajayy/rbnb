@@ -8,7 +8,6 @@ class ArtistsController < ApplicationController
   end
 
   def show
-
     @review = Review.new
     requests = ConsumerRequest.where(artist: @artist)
     @confirmed = requests.select { |request| request.status == 'confirmed' }

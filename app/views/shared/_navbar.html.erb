@@ -9,7 +9,7 @@
       <% if current_user.is_artist? %>
         <!-- Right Navigation -->
         <div class="navbar-wagon-right hidden-xs hidden-sm">
-
+          <a href="" class="navbar-wagon-item navbar-wagon-link">Hello <%= current_user.artist.first_name %></a>
           <a href="" class="navbar-wagon-item navbar-wagon-link">Bookings</a>
           <%#= link_to 'Bookings', consumer_path(current_user.consumer), class: "navbar-wagon-item navbar-wagon-link" %>
           <!-- We need to add a link for this below, first need messages routes -->

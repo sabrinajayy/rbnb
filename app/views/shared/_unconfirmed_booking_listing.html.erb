@@ -6,7 +6,7 @@
        <%= cl_image_tag Consumer.find_by(user_id: request.user_id).profile_img, class: 'avatar', width: 300, height: 300, crop: :fill %>
         <div class="booking-name">
           <h3></h3>
-          <p class="booking-date"><%= request.date %></p>
+          <p class="booking-date"><%= request.date.strftime('%b %d %Y, %I:%M%p') %></p>
           <p class="booking-time"><%= request.time %></p>
         </div>
         <div class="booking-details">
