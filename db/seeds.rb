@@ -90,19 +90,6 @@ Review.create(title: 'She was great!',
               artist: artist_sarah
               )
 
-# create_table "reviews", force: :cascade do |t|
-#     t.string   "title"
-#     t.string   "content"
-#     t.integer  "rating"
-#     t.integer  "artist_id"
-#     t.integer  "user_id"
-#     t.integer  "consumer_request_id"
-#     t.datetime "created_at",          null: false
-#     t.datetime "updated_at",          null: false
-#     t.index ["artist_id"], name: "index_reviews_on_artist_id", using: :btree
-#     t.index ["consumer_request_id"], name: "index_reviews_on_consumer_request_id", using: :btree
-#     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
-#   end
 
 puts "Creating Consumer Events for Hero user"
 times.each do |t|
@@ -111,7 +98,14 @@ end
 
 puts "Creating an Artist Request from Sarah to work Hero user's event"
 event = ConsumerEvent.last
-ArtistRequest.new(offer_price: 50.0, artist: artist_sarah, conesumer_event: event)
+ArtistRequest.new(offer_price: 50.0, artist: artist_sarah, consumer_event: event)
 
-
-
+puts "Ensuring that Sarah will always be busy tomorrow in the morning"
+booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.new.tomorrow.change(hour: 9), status: 'confirmed')
+TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
+puts "Ensuring that Sarah will always be busy in two days in the afternoon."
+booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.advance(days: 2).change(hour: 13), status: 'confirmed')
+TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
+puts "Ensuring that Sarah will always be busy in three days in the evening."
+booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.advance(days: 3).change(hour: 20), status: 'confirmed')
+TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
