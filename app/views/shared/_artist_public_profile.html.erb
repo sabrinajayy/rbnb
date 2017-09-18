@@ -1,51 +1,84 @@
-<div class="profile-banner">
-  <div class="banner-content">
-    <% if @artist.photo %>
-    <%= cl_image_tag @artist.photo, class: 'artist-profile-pic', width: 300, height: 300, crop: :fill %>
-    <% else %>
-     <%= image_tag "http://www.breda.academy/wp-content/uploads/2016/11/best-facial-in-dubai-1.jpg", class: 'product-image hidden-xs', width: 300, height: 300, crop: :fill %>
-    <% end %>
-    <h1><%= @artist.first_name %> <%= @artist.last_name %></h1>
-     <ul class="list-inline profile-rating">
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            <li class="ratings-number">(21)</li>
-        </ul>
-    <p><%= @artist.category %> | <%= @artist.location %> | <%= @artist.instagram_handle %></p>
-    <%= button_to "REQUEST #{@artist.first_name.upcase}", new_artist_consumers_request_path(@artist.id),
-    :class => "btn-pamprd request-btn", :method => :get %>
+<div class="container">
+<!--   <div class="profile-banner"> -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12">
+        <div class="artist-banner-content">
+          <% if @artist.photo %>
+          <%= cl_image_tag @artist.photo, class: 'artist-profile-pic', width: 300, height: 300, crop: :fill %>
+          <% else %>
+           <%= image_tag "http://www.breda.academy/wp-content/uploads/2016/11/best-facial-in-dubai-1.jpg", class: 'product-image hidden-xs', width: 300, height: 300, crop: :fill %>
+          <% end %>
+          <h1><%= @artist.first_name %> <%= @artist.last_name %></h1>
+           <ul class="list-inline profile-rating">
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li class="ratings-number">(21)</li>
+              </ul>
+          <p><%= @artist.category.capitalize %> | <%= @artist.location %> | <%= @artist.instagram_handle %></p>
+          <%= button_to "REQUEST #{@artist.first_name.upcase}", new_artist_consumers_request_path(@artist.id),
+          :class => "btn-pamprd request-btn", :method => :get %>
 
+        </div>
+      </div>
+    </div>
+<!--   </div> -->
+
+
+<!-- Nav tabs -->
+<!-- <div class="tab-container"> -->
+  <div class="row">
+    <div class="artist-profile-tabs">
+      <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" ><a href="#home" class="tab active" aria-controls="home" role="tab" data-toggle="tab" data-target="#about">About</a></li>
+          <li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" data-target="#portfolio" class="tab">Portfolio</a></li>
+          <li role="presentation"><a href="#messages"  class="tab" aria-controls="messages" role="tab" data-toggle="tab" data-target="#reviews">Reviews</a></li>
+      </ul>
+
+    </div>
   </div>
-</div>
-<div class="tabs">
-  <a class="tab active" href="#" data-target="#about">
-    <h2>ABOUT</h2>
-  </a>
-  <a class="tab" href="#" data-target="#portfolio">
-    <h2>PORTFOLIO</h2>
-  </a>
-  <a class="tab" href="#" data-target="#reviews">
-    <h2>REVIEWS</h2>
-  </a>
-</div>
-<div class="profile-container">
+<!-- </div> -->
+
+<!-- <div class="tab-container">
+  <div class="row">
+    <div class="tabs">
+      <div class="col-xs-4 col-sm-4">
+        <a class="tab active" href="#" data-target="#about">
+          <h2>ABOUT</h2>
+        </a>
+      </div>
+      <div class="col-xs-4 col-sm-4">
+        <a class="tab" href="#" data-target="#portfolio">
+          <h2>PORTFOLIO</h2>
+        </a>
+      </div>
+      <div class="col-xs-4 col-sm-4">
+        <a class="tab" href="#" data-target="#reviews">
+          <h2>REVIEWS</h2>
+        </a>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="profile-container"> -->
   <div class="tab-content" id="about">
     <div class="row">
-      <div class="col-xs-12 col-sm-7">
-      <h2>About me</h2>
-        <p><%= @artist.bio %></p>
+      <div class="about-artist">
+        <div class="col-xs-12 col-sm-7">
+          <h2>About me</h2>
+            <p><%= @artist.bio %></p>
 
-        <h2>Forte</h2>
-        <p><%= @artist.tags %></p>
+            <h2>Forte</h2>
+            <p><%= @artist.tags %></p>
 
-        <h2>Toolbelt</h2>
-        <p>Mac, Nars, etc...</p>
-      </div>
-      <div class="col-xs-12 col-sm-5">
-        <%= render 'shared/artist_prices_card' %>
+            <h2>Toolbelt</h2>
+            <p>Mac, Nars, etc...</p>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+          <%= render 'shared/artist_prices_card' %>
+        </div>
       </div>
     </div>
   </div>
@@ -75,20 +108,15 @@
   </div>
 
   <div class="tab-content hidden" id="reviews">
-    <!-- <p class="text-center"><%= @artist.first_name %> currently doesn't have any reviews.</p> -->
+  <% if @reviews.empty? %>
+    <p class="text-center"><%= @artist.first_name %> currently doesn't have any reviews.</p>
+    <% else %>
     <div id="reviews">
-    <%= render 'reviews/form', artist: @artist, review: @review %>
-      <% if @artist.reviews.blank? %>
-        Be the first to leave a review for <%= @artist.first_name %>
-      <% else %>
-        <% @artist.reviews.each do |review| %>
-          <h5><%= review.title %></h5>
-          <p><%= review.content %></p>
-          <br>
-          <%= render 'artists/show', review: review %>
-        <% end %>
-      <% end %>
+    <%= render 'reviews/review-card' %>
     </div>
+    <% end %>
   </div>
+
+<!-- </div> -->
 
 </div>

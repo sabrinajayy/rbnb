@@ -4,5 +4,13 @@ html, body {
   color: #757575;
   background-color: #fafafa;
   width: auto !important;
-  min-width: 1080px;
+  height: auto;
+  margin: 0 auto;
+  overflow: auto;
 }
+
+.container {
+  margin: 0 auto;
+  padding: 0;
+}
+
