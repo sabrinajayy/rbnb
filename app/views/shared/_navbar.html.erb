@@ -29,7 +29,7 @@
         </div>
       <% elsif current_user.is_consumer? %>
         <div class="navbar-wagon-right hidden-xs hidden-sm">
-
+        <h6><strong>Hello, <%= current_user.consumer.first_name %>!</strong></h6>
           <!-- <a href="" class="navbar-wagon-item navbar-wagon-link">Bookings</a> -->
            <%= link_to 'Bookings', consumer_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
 
