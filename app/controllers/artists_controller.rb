@@ -32,6 +32,7 @@ class ArtistsController < ApplicationController
 
   def create
     @artist = Artist.new(artist_params)
+
     @artist.user = current_user
     prices = [15, 43.50, 87, 33.10, 45, 60.99]
     params[:artist][:artist_services].each do |service|
