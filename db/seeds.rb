@@ -1,19 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-# puts
-# puts "seeding 5 user consumers"
-# puts "please wait"
-# 5.times do
-#   user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
-#   consumer = Consumer.create({ user: user, first_name: Faker::Name.name, last_name: Faker::Name.name, city: Faker::Address.city, phone_number: Faker::Number.number(8).to_i, instagram: '@' + Faker::App.name})
-# end
-
 require 'date'
 categories = ['hair', 'makeup', 'hair and makeup']
 locations = ['Barcelona', 'New York', 'Paris']
@@ -100,13 +84,15 @@ puts "Creating an Artist Request from Sarah to work Hero user's event"
 event = ConsumerEvent.last
 ArtistRequest.new(offer_price: 50.0, artist: artist_sarah, consumer_event: event)
 
-
+puts
 puts "Ensuring that Sarah will always be busy today in the morning"
 booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.change(hour: 11), status: 'confirmed')
 TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
+puts
 puts "Ensuring that Sarah will always be busy in two days in the afternoon."
 booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.advance(days: 2).change(hour: 15), status: 'confirmed')
 TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
+puts
 puts "Ensuring that Sarah will always be busy in three days in the evening."
 booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.advance(days: 3).change(hour: 22), status: 'confirmed')
 TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
