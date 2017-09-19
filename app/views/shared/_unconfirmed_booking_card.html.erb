@@ -10,8 +10,11 @@
             </div>
             <div class="booking-card-content">
               <div class="booking-name">
+              <%= link_to artist_path(booking.artist.id) do %>
                 <p><%=booking.artist.first_name%> <%=booking.artist.last_name%></p>
+                <% end %>
               </div>
+
                 <p class="card__text"><%=booking.address%> | <%=booking.date.strftime('%b %d %Y, %I:%M%p')%></p>
                 <p class="card__text"><%=booking.servicename%> - $<%=booking.final_price %></p>
                 <p class="booking-status"><%=booking.status%></p>
