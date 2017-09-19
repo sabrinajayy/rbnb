@@ -14,8 +14,7 @@
                 <li><i class="fa fa-star"></i></li>
               <% end %>
               </ul>
-
-          <p><%= @artist.category.capitalize %> | <%= @artist.location %> | <%= @artist.instagram_handle %></p>
+          <p><%= @artist.try(:category).try(:capitalize) %> | <%= @artist.location %> | <%= @artist.instagram_handle %></p>
           <%= button_to "REQUEST #{@artist.first_name.upcase}", new_artist_consumers_request_path(@artist.id),
           :class => "btn-pamprd request-btn", :method => :get %>
 
@@ -82,26 +81,14 @@
   </div>
   <div class="tab-content hidden" id="portfolio">
     <div class="row">
-      <div class="col-xs-4 artist-portfolio-image">
-        <img src='https://scontent-ort2-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/20394071_1949177522031932_3697815963949858816_n.jpg' class="portfolio-img" />
-      </div>
-      <div class="col-xs-4 artist-portfolio-image">
-        <img src='https://scontent-ort2-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.134.1080.1080/20394259_254374725076903_1863279979781947392_n.jpg' class="portfolio-img" />
-      </div>
-      <div class="col-xs-4 artist-portfolio-image">
-        <img src='https://scontent-ort2-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/20225325_257110314783549_8278444244931182592_n.jpg' class="portfolio-img"/>
-      </div>
-    </div>
-     <div class="row">
-      <div class="col-xs-4 artist-portfolio-image">
-        <img src='https://scontent-ort2-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/19932305_1945713632362600_4283869620198178816_n.jpg' class="portfolio-img"/>
-      </div>
-      <div class="col-xs-4 artist-portfolio-image">
-        <img src='https://scontent-ort2-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/20226077_474019142972882_8921510005736210432_n.jpg' class="portfolio-img"/>
-      </div>
-      <div class="col-xs-4 artist-portfolio-image">
-        <img src='https://scontent-ort2-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/20394071_1949177522031932_3697815963949858816_n.jpg' class="portfolio-img" />
-      </div>
+      <% @artist_gallery.each do |i| %>
+
+          <div class="col-xs-4 artist-portfolio-image">
+            <%= link_to "#{i.image}", class: "swipebox" do %>
+              <%= cl_image_tag i.image, width: 300, height: 300, crop: :fill, class: 'portfolio-img' %>
+            <% end %>
+          </div>
+      <% end %>
     </div>
   </div>
 
