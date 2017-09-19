@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-2">
+      <%# raise %>
+      <div class="form" >
+      <h1 class="form-title">Create your own event </h1>
+      <%=  simple_form_for(@consumer_event, :url => consumer_consumers_events_path, :method => :post) do  |f| %>
+
+      <%= f.text_field :date, placeholder: 'Date', required: true, class: 'consumer-request datepick request-time' %>
+      <%= f.text_field :date, placeholder: 'Time', required: true, class: 'timepicker-default request-time', id: 'basicExample' %>
+      <%= f.text_field :location, as: :string, label: "Where will this event take place?", placeholder: 'Address', required: true, class: 'request-address', id: 'flat_address' %>
+      <%= f.text_field :description, placeholder: 'Describe your event', required: true, class: 'consumer-request' %>
+      <%= f.text_field :tags, placeholder: 'Give your event some tags', required: true, class: 'consumer-request' %>
+      <%= f.input :budget, placeholder: 'Approximately how much would you like to spend on this event? ($)', required: true, class: 'consumer-request' %>
+      <%= f.submit "Go!", class: 'btn-pamprd' %>
+      <% end %>
+      <p class="request-msg text-center">Check your dashboard for bids on this event from local artists and stylists!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
