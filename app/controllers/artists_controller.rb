@@ -15,8 +15,9 @@ class ArtistsController < ApplicationController
     @unconfirmed = requests.select { |request| request.status == 'unconfirmed' }
     unless TimeBlock.where(artist: @artist).empty?
       time_blocks = TimeBlock.where(artist: @artist)
-      @time_blocks_by_date = time_blocks.group_by(&:date)
+      @time_blocks_by_date = time_blocks.group_by { |i| i.date.to_date}
     end
+
   end
 
   def new
@@ -69,7 +70,10 @@ class ArtistsController < ApplicationController
 
     # by location and date and service (always filled in)
     if !location.empty? && !params[:date].empty?
+
       # consider iterating over the return of Artist.where, selecting for artist_instance_result.near([lat, long], artist.range)
+      # results_by_cat = Artist.where(category: service)
+      # results_by_cat_and_location =
       results_by_cat_and_location = Artist.where("category ILIKE ?", service) && Artist.near([lat, long], 10)
       @results = results_by_cat_and_location.reject do |artist|
         CheckArtistClashesForSegment.new(artist, time_range).call
