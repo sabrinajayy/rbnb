@@ -26,6 +26,14 @@
   <%= f.input :bio, required: false %>
   <%= f.input :tags, required: false %>
 
+     <%= f.fields_for :artist_images, ArtistImage.new do |i| %>
+     <div class="field">
+       <%= i.label :image %><br>
+       <%= i.file_field :image, :multiple => true, name: "artist_images[image][]" %>
+   <%= i.input :image_cache, as: :hidden %>
+     </div>
+   <% end %>
+
   <%= f.button :submit, "Create Profile", class: 'update-profile', id: 'req-button' %>
 <%end%>
 </div>
