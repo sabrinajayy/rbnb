@@ -55,15 +55,17 @@ class ArtistsController < ApplicationController
   end
 
   def search
+
     service = params[:category]
     location = params[:location]
     # @location_arr = @location.delete(',').split # where is this used?
     long = params[:longitude]
     lat = params[:latitude]
-    begin
-      time_range = MakeTimeRange.new(params[:date], params[:time]).call
-    rescue
-    end
+
+    time_range = MakeTimeRange.new(params[:date], params[:time]).call
+
+
+
     if !location.empty? && !params[:date].empty?
       # consider iterating over the return of Artist.where, selecting for artist_instance_result.near([lat, long], artist.range)
       results_by_cat_and_location = Artist.where("category ILIKE ?", service) && Artist.near([lat, long], 10)

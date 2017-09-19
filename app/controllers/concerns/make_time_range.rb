@@ -10,8 +10,9 @@ class MakeTimeRange
 
   private
   def given_day
-    data = @day.split('/').map { |i| i.to_i }
-    DateTime.new(data[2], data[0], data[1])
+
+    data = @day.split('-').map { |i| i.to_i }
+    DateTime.new(data[0], data[1], data[2])
   end
 
   def given_segment_for(day)
