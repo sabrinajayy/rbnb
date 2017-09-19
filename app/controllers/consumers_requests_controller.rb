@@ -2,10 +2,6 @@ class ConsumersRequestsController < ApplicationController
   before_action :set_artist, only: [:new, :show, :create, :destroy, :update]
   before_action :set_consumer_request, only: [:show, :destroy, :update]
 
-  def index
-    # show all bookings
-  end
-
   def show
 
     @event = ConsumerRequest.find(params[:id])
