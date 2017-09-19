@@ -1,33 +1,49 @@
-<div class ="container">
+<%= render 'shared/search_filter_nav' %>
 <%= link_to 'Back to Search Results', :back %>
-<% @artists.each do |artist| %>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="search-result">
-        <img src="http://www.breda.academy/wp-content/uploads/2016/11/best-facial-in-dubai-1.jpg" alt="kudoz" class="search-image hidden-xs">
-        <div class='search-body'>
-          <%= link_to artist_path(artist) do %>
-            <h3><%= artist.first_name %> <%=artist.last_name %></h3>
-          <%end%>
-          <p><%= artist.category %> | <%= artist.location %></p>
-          <p>Best makeup artist in town</p>
-          <ul class="list-inline">
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-        </ul>
-        </div>
-        <div class="product-contact">
-          <a href=""><i class="fa fa-heart"></i></a>
-          <%= button_to "REQUEST", new_artist_consumers_request_path(artist.id),
-      :class => "btn-pamprd", :method => :get %>
-        </div>
+<div class="search-container">
+
+    <% @artists.each do |artist| %>
+    <div class="search-result-card">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4">
+              <% if artist.photo %>
+                <div class="search-img-wrapper">
+                  <%= image_tag artist.photo %>
+                </div>
+              <% else %>
+                <%= image_tag "http://www.breda.academy/wp-content/uploads/2016/11/best-facial-in-dubai-1.jpg", class: 'search-image', width: 300, height: 300, crop: :fill %>
+              <% end %>
+
+          </div>
+    <!--       <img src=<%#= artist.photo  %> alt="kudoz" class="product-image hidden-xs"> -->
+          <div class="col-xs-12 col-sm-4">
+            <div class='search-body'>
+              <%= link_to artist_path(artist) do %>
+                <h3><%= artist.first_name %> <%=artist.last_name %></h3>
+              <%end%>
+              <ul class="list-inline profile-rating">
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+              </ul>
+              <p> <%= artist.category.capitalize %> | <%= artist.location %></p>
+              <p><%= artist.bio %></p>
+
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div class="search-btn">
+        <!--     <div class="product-contact"> -->
+              <!-- <a href=""><i class="fa fa-heart"></i></a> -->
+              <%= button_to "REQUEST", new_artist_consumers_request_path(artist.id),
+              :class => "btn-pamprd", :method => :get %>
+            </div>
+          </div>
       </div>
     </div>
-  </div>
-
-<%end%>
+  <%end%>
+</div>
 
 
