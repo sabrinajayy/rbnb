@@ -61,8 +61,10 @@ class ArtistsController < ApplicationController
     # @location_arr = @location.delete(',').split # where is this used?
     long = params[:longitude]
     lat = params[:latitude]
-
-    time_range = MakeTimeRange.new(params[:date], params[:time]).call
+    begin
+      time_range = MakeTimeRange.new(params[:date], params[:time]).call
+    rescue
+    end
 
 
 
