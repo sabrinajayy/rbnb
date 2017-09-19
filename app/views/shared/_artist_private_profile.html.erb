@@ -1,89 +1,28 @@
-<div class="dashboard-container">
-  <div class="row">
-      <div class="col-xs-12 col-sm-7">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="artist-profile">
-              <div class="row">
-                <div class="col-xs-6">
-                  <%#= image_tag @artist.photo, class: 'profile-pic', width: 300, height: 300, crop: :fill %>
+<div id="dashboard-nav-wrapper">
+  <%= render partial: 'artists/dashboard/artist_dashboard_nav' %>
+</div>
 
-         <% if @artist.photo %>
-        <%= image_tag @artist.photo, class: 'profile-pic hidden-xs', width: 300, height: 300, crop: :fill %>
-        <% else %>
-        <%= image_tag "http://www.breda.academy/wp-content/uploads/2016/11/best-facial-in-dubai-1.jpg", class: 'product-image hidden-xs', width: 300, height: 300, crop: :fill %>
-        <% end %>
-
-                </div>
-                <div class="col-xs-6">
-                  <ul class="artist-profile-info">
-                    <li><p class="artist-name"><%= @artist.first_name %> <%= @artist.last_name %></p></li>
-                    <li><p class="artist-location"><%= @artist.location %></p></li>
-                    <li>@<%= @artist.instagram_handle %>  <%= @artist.category %></li>
-                    <li><%= @artist.bio %></li>
-                    <li><p class="artist-tags"><%= @artist.tags %></p></li>
-                    <li><%= link_to 'Edit Profile', edit_artist_path(@artist.id) %></li>
-                    <br>
-                    <li><%= link_to 'View Consumer-posted Events Near You', eventsearch_path(@artist.id) %></li>
-                  </ul>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="calendar">
-
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-5">
-      <div class="new-requests">
-        <h2>New Requests</h2>
-        <% if @unconfirmed.empty? %>
-          <p>You don't have any new bookings!</p>
-        <% else %>
-          <%= render partial: 'shared/unconfirmed_booking_listing' %>
-        <% end %>
-      </div>
-      <div class="upcoming-bookings">
-        <h2>Upcoming Bookings</h2>
-        <% if @confirmed.empty? %>
-        <p>You don't have any confirmed bookings!</p>
-        <% else %>
-          <%= render partial: 'shared/confirmed_booking_listing' %>
-          <% end %>
-      </div>
+<div id="dashboard-content-wrapper">
+  <div class="dashboard-container">
+    <div class="dash-tab-content" id="bookings">
+      <%= render partial: 'artists/dashboard/artist_bookings' %>
     </div>
 
-      <div class="calendar">
-        <div id="bookings">
-        <!-- <#% raise %> -->
-              <%#= link_to "<", date: @date.prev_month %>
-              <h2 id='month'><%= @date.strftime("%B %Y") %></h2>
-              <%#= link_to ">", date: @date.next_month %>
+    <div class="dash-tab-content hidden" id="calendar">
+      <%= render partial: 'artists/dashboard/artist_calendar' %>
+    </div>
 
-              <%= calendar @date do |date| %>
-                <%= date.day %>
-                <%# raise %>
-                <% if @time_blocks_by_date[date.to_date] %>
-                <ul>
-                  <% @time_blocks_by_date[date.to_date].each do |booking| %>
-                    <li><%= link_to booking.consumer_request.servicename  %></li>
+    <div class="dash-tab-content hidden" id="financials">
+      <%= render partial: 'artists/dashboard/artist_financials' %>
+    </div>
 
-                    <% end %>
-                </ul>
-                <% end %>
+    <div class="dash-tab-content hidden" id="edit">
+      <%= render partial: 'artists/dashboard/artist_financials' %>
+    </div>
 
-              <% end %>
-            </div>
-               <%# raise %>
-      </div>
-
+    <div class="dash-tab-content hidden" id="settings">
+      <%= render partial: 'artists/dashboard/artist_financials' %>
     </div>
   </div>
-
 </div>
+

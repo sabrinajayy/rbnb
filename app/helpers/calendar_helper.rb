@@ -10,7 +10,7 @@ module CalendarHelper
     delegate :content_tag, to: :view
 
     def table
-      content_tag :table, class: "calendar" do
+      content_tag :table, class: "calendar table table-responsive" do
         header + week_rows
       end
     end

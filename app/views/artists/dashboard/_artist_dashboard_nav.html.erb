@@ -1,0 +1,29 @@
+  <ul class="artist-dashboard-nav">
+    <div class="dash-tab active">
+      <li>
+        <a href="#bookings" class="dash-tab active" aria-controls="home" role="tab" data-toggle="tab" data-target="#bookings"><i class="fa fa-heart fa-2x" aria-hidden="true"></i><br>Bookings</a>
+      </li>
+    </div>
+    <div class="dash-tab">
+      <li>
+        <a href="#calendar" class="dash-tab" aria-controls="home" role="tab" data-toggle="tab" data-target="#calendar"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i><br>Calendar</a>
+      </li>
+    </div>
+    <div class="dash-tab">
+      <li>
+        <a href="#financials" class="dash-tab" aria-controls="home" role="tab" data-toggle="tab" data-target="#financials"><i class="fa fa-usd fa-2x" aria-hidden="true"></i><br>Financials</a>
+      </li>
+    </div>
+    <div class="dash-tab">
+      <li>
+        <%= link_to edit_artist_path(@artist.id), class: 'dash-tab' do %>
+          <i class="fa fa-pencil fa-2x" aria-hidden="true"></i><br>Edit Profile
+        <% end %>
+      </li>
+    </div>
+    <div class="dash-tab">
+      <li>
+        <a href="#settings" class="dash-tab" aria-controls="home" role="tab" data-toggle="tab" data-target="#settings"><i class="fa fa-cog fa-2x" aria-hidden="true"></i><br>Settings</a>
+      </li>
+    </div>
+  </ul>
