@@ -1,3 +1,14 @@
 <!-- @consumer_event -->
 <!-- @artist_request -> this is an empty, new ArtistRequest instance can be used when viewed by artist to populate a form_for etc. -->
 
+<div class="booking-container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-5">
+    <%= @consumer_event.location %> <br>
+    <%= @consumer_event.date %> <br>
+    <%= @consumer_event.description %> <br>
+    <%= @consumer_event.tags %> <br>
+    <%= @consumer_event.budget %> <br>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 <%= render 'shared/search_filter_nav' %>
-<%= link_to 'Back to Search Results', :back %>
+<%= link_to "Create your own event", new_consumer_consumers_event_path(current_user.consumer) %> <br>
+<%= link_to 'Or, return to search results', :back %>
 <div class="search-container">
 
     <% @artists.each do |artist| %>
