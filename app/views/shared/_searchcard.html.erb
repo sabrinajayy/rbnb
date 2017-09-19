@@ -1,10 +1,14 @@
 <% if @results.empty? %>
   <p class="text-center">No results.</p>
+  <% if user_signed_in? %>
   <%= link_to "Create your own event", new_consumer_consumers_event_path(current_user.consumer) %>
+  <% end %>
 <% end %>
 
 <div class="search-container">
-<%= link_to "Create your own event", new_consumer_consumers_event_path(current_user.consumer) %>
+  <% if user_signed_in? %>
+    <%= link_to "Create your own event", new_consumer_consumers_event_path(current_user.consumer) %>
+  <% end %>
     <% @results.each do |artist| %>
     <div class="search-result-card">
       <div class="row">
