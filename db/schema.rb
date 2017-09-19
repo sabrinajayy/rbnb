@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170918202413) do
+ActiveRecord::Schema.define(version: 20170919134732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20170918202413) do
     t.string   "instagram_handle"
     t.time     "avg_response_time"
     t.float    "confirmation_rate"
-    t.integer  "rating"
+    t.float    "rating"
     t.integer  "user_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false

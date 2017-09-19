@@ -14,6 +14,9 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
+      artist_reviews = Review.where(artist_id: @artist.id).map {|review| review.rating.to_f}
+      rating = (@review.rating + artist_reviews.reduce(0, :+) )/(artist_reviews.count).to_f
+      @artist.update(rating: rating)
       flash[:notice] = "success"
     else
       flash[:alert] = "try again"
@@ -32,7 +35,12 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
+    @artist = @review.artist
+    artist_reviews = Review.where(artist_id: @artist.id).map {|review| review.rating.to_f}
+    rating = (artist_reviews.reduce(0, :+) - @review.rating)/(artist_reviews.count - 1).to_f
+    @artist.update(rating: rating)
     @review.destroy!
+
     redirect_to :back
   end
 

@@ -10,13 +10,11 @@
           <% end %>
           <h1><%= @artist.first_name %> <%= @artist.last_name %></h1>
            <ul class="list-inline profile-rating">
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li class="ratings-number">(21)</li>
+              <% @artist.rating.round.times do %>
+                <li><i class="fa fa-star"></i></li>
+              <% end %>
               </ul>
+
           <p><%= @artist.category.capitalize %> | <%= @artist.location %> | <%= @artist.instagram_handle %></p>
           <%= button_to "REQUEST #{@artist.first_name.upcase}", new_artist_consumers_request_path(@artist.id),
           :class => "btn-pamprd request-btn", :method => :get %>
