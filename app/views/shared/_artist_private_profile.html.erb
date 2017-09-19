@@ -23,6 +23,8 @@
                     <li><%= @artist.bio %></li>
                     <li><p class="artist-tags"><%= @artist.tags %></p></li>
                     <li><%= link_to 'Edit Profile', edit_artist_path(@artist.id) %></li>
+                    <br>
+                    <li><%= link_to 'View Consumer-posted Events Near You', eventsearch_path(@artist.id) %></li>
                   </ul>
 
                 </div>

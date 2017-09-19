@@ -20,6 +20,9 @@ class ArtistsController < ApplicationController
 
   end
 
+  def eventsearch
+    @events = ConsumerEvent.all
+  end
 
   def new
     @artist = Artist.new
