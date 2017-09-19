@@ -66,8 +66,6 @@ class ArtistsController < ApplicationController
     rescue
     end
 
-
-
     if !location.empty? && !params[:date].empty?
       # consider iterating over the return of Artist.where, selecting for artist_instance_result.near([lat, long], artist.range)
       results_by_cat_and_location = Artist.where("category ILIKE ?", service) && Artist.near([lat, long], 10)

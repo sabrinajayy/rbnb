@@ -1,10 +1,11 @@
-
-
 <h1>Bookings</h1>
 
 <div id="bookings">
+  <%= link_to "<", date: @date.prev_month %>
+  <h2 id='month'><%= @date.strftime("%B %Y") %></h2>
+  <%= link_to ">", date: @date.next_month %>
 
-  <%= calendar do |date| %>
+  <%= calendar @date do |date| %>
     <%= date.day %>
     <% if @time_blocks_by_date[date] %>
     <ul>
@@ -15,24 +16,3 @@
     <% end %>
   <% end %>
 </div>
-<!-- @bookings = ConsumerRequest.where(artist: @artist)
-     @bookings_by_date = @bookings.group_by(:date)
-     @date = Date.today -->
-<!-- <h1>Bookings</h1>
-
-<div id="bookings">
-  <%#= link_to "<", date: @date.prev_month %>
-  <h2 id='month'><%#= @date.strftime("%B %Y") %></h2>
-  <%#= link_to ">", date: @date.next_month %>
-
-  <%= calendar @date #do |date| %>
-    <%= date.day %>
-    <% #if @time_blocks_by_date[date] %>
-    <ul>
-      <#% @bookings_by_date[date]each do |booking| %>
-        <li><%= link_to booking.user.consumer.first_name, booking %></li>
-        <#% end %>
-    </ul>
-    <#% end %>
-  <#% end %>
-</div> -->
