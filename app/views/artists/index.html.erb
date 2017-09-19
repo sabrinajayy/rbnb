@@ -26,15 +26,9 @@
               <%end%>
               <ul class="list-inline profile-rating">
               <% if artist.rating > 0.0 %>
-              <% artist.rating.round.times do %>
-                <li><i class="fa fa-star"></i></li>
-              <% end %>
-              <% else %>
-                <li><i class="fa fa-star-o"></i></li>
-                <li><i class="fa fa-star-o"></i></li>
-                <li><i class="fa fa-star-o"></i></li>
-                <li><i class="fa fa-star-o"></i></li>
-                <li><i class="fa fa-star-o"></i></li>
+                <% artist.rating.round.times do %>
+                  <li><i style="padding: 0;" class="fa fa-star"></i></li>
+                <% end %>
               <% end %>
               </ul>
               <p> <%= artist.category.capitalize %> | <%= artist.location %></p>
