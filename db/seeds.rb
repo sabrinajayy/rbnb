@@ -35,7 +35,7 @@ artist_sarah = Artist.create({ user: user,
                          category: 'makeup',
                          location: 'Milan',
                          travel_range: 20,
-                         rating: 3
+                         rating: 3.0
                          })
 
 puts "Creating Sarah's Services"

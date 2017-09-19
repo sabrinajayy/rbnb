@@ -9,9 +9,17 @@
            <%= image_tag "http://www.breda.academy/wp-content/uploads/2016/11/best-facial-in-dubai-1.jpg", class: 'product-image hidden-xs', width: 300, height: 300, crop: :fill %>
           <% end %>
           <h1><%= @artist.first_name %> <%= @artist.last_name %></h1>
-           <ul class="list-inline profile-rating">
+              <ul class="list-inline profile-rating">
+              <% if @artist.rating > 0.0 %>
               <% @artist.rating.round.times do %>
                 <li><i class="fa fa-star"></i></li>
+              <% end %>
+              <% else %>
+                <li><i class="fa fa-star-o"></i></li>
+                <li><i class="fa fa-star-o"></i></li>
+                <li><i class="fa fa-star-o"></i></li>
+                <li><i class="fa fa-star-o"></i></li>
+                <li><i class="fa fa-star-o"></i></li>
               <% end %>
               </ul>
           <p><%= @artist.try(:category).try(:capitalize) %> | <%= @artist.location %> | <%= @artist.instagram_handle %></p>
