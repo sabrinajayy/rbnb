@@ -18,7 +18,7 @@ real_images.each do |image|
     my_tags << tags.delete(tags.sample)
   end
 
-  artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: my_tags.join(' '), location: "Milan" , category: categories.sample, photo: image })
+  artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: my_tags.join(' '), location: "Milan" , category: categories.sample, photo: image, travel_range: 20 })
   5.times do
     ArtistService.create(name: Faker::Commerce.product_name, price: Faker::Commerce.price, artist: artist )
   end
@@ -35,6 +35,7 @@ artist_sarah = Artist.create({ user: user,
                          category: 'makeup',
                          location: 'Milan',
                          travel_range: 20,
+                         rating: 3
                          })
 
 puts "Creating Sarah's Services"
@@ -96,5 +97,4 @@ puts
 puts "Ensuring that Sarah will always be busy in three days in the evening."
 booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.advance(days: 3).change(hour: 22), status: 'confirmed')
 TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
-
 
