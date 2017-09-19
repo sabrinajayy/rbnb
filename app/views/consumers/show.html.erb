@@ -13,6 +13,7 @@
     </div>
     <div class="col-xs-12 col-sm-9">
       <div class="booking-container">
+      <%= link_to "Create your own event", new_consumer_consumers_event_path(current_user.consumer) %>
         <h3>Upcoming Bookings</h3>
           <div class="row">
             <% if @confirmed.nil? %>

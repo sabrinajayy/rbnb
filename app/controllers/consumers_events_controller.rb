@@ -2,8 +2,8 @@ class ConsumersEventsController < ApplicationController
   before_action :set_consumer_event, only: [:show, :destroy, :update, :edit]
 
   def show
-
     @artist_request = ArtistRequest.new
+    @consumer_event = ConsumerEvent.find(params[:id])
   end
 
   def index
@@ -20,12 +20,13 @@ class ConsumersEventsController < ApplicationController
   end
 
   def create
+    @consumer = current_user.consumer
     @consumer_event = ConsumerEvent.new(consumer_event_params)
     @consumer_event.user = current_user
     if @consumer_event.save
-      redirect_to consumer_consumer_event_path @consumer, @consumer_event
+      redirect_to consumer_consumers_event_path(@consumer, @consumer_event)
     else
-      redirect_to new_consumer_consumer_event_path
+      redirect_to new_consumer_consumers_event_path(@consumer)
     end
   end
 
@@ -36,7 +37,7 @@ class ConsumersEventsController < ApplicationController
 
   def update
     @consumer_event.update(consumer_event_params)
-    redirect_to consumer_consumer_event_path
+    redirect_to consumer_consumers_event_path
   end
 
   def edit
@@ -44,6 +45,7 @@ class ConsumersEventsController < ApplicationController
 
   private
   def set_consumer_event
+
     @consumer_event = ConsumerEvent.find(params[:id])
   end
 
