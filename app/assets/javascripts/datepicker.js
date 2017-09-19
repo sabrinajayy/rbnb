@@ -5,10 +5,12 @@
 
 function init_datepick() {
   $('.datepick').datepicker({
-    format: 'mm/dd/yyyy',
+    // do not change the format below, required by rails form
+    format: 'yyyy-mm-dd',
     startDate: '0d',
     endDate: '+365d',
-    todayHighlight: 'true'
+    todayHighlight: 'true',
+    autoclose: 'true'
   });
   $('#basicExample').timepicker({
     minTime: '5:00am',
