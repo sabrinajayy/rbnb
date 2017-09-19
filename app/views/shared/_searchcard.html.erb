@@ -35,7 +35,7 @@
                 <li><i class="fa fa-star"></i></li>
                 <li><i class="fa fa-star"></i></li>
               </ul>
-              <p> <%= artist.category.capitalize %> | <%= artist.location %></p>
+              <p> <%= artist.try(:category).try(:capitalize)%> | <%= artist.location %></p>
               <p><%= artist.bio %></p>
 
             </div>
