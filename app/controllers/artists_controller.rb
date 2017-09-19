@@ -7,6 +7,7 @@ class ArtistsController < ApplicationController
   end
 
   def show
+    @date = DateTime.now
     @review = Review.new
     @reviews = Review.where(artist_id: @artist)
     requests = ConsumerRequest.where(artist: @artist)
@@ -66,17 +67,26 @@ class ArtistsController < ApplicationController
     rescue
     end
 
+    # by location and date and service (always filled in)
     if !location.empty? && !params[:date].empty?
       # consider iterating over the return of Artist.where, selecting for artist_instance_result.near([lat, long], artist.range)
       results_by_cat_and_location = Artist.where("category ILIKE ?", service) && Artist.near([lat, long], 10)
       @results = results_by_cat_and_location.reject do |artist|
         CheckArtistClashesForSegment.new(artist, time_range).call
       end
+
+    # by location and service
+    elsif !location.empty?
+      @results = Artist.where("category ILIKE ?", service) && Artist.near([lat, long], 10)
+
+    # by date and servie
     elsif !params[:date].empty?
       results_by_cat = Artist.where(category: service)
       @results = results_by_cat.reject do |artist|
         CheckArtistClashesForSegment.new(artist, time_range).call
       end
+
+    # by service only
     else
       @results = Artist.where(category: service)
     end
