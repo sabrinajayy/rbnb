@@ -1,5 +1,5 @@
 <%= render 'shared/search_filter_nav' %>
-<% if user_signed_in? %>
+<% if user_signed_in? && current_user.is_consumer? %>
   <%= link_to "Create your own event", new_consumer_consumers_event_path(current_user.consumer) %> <br>
 <% end %>
 <%= link_to 'Return to search results', :back %>
