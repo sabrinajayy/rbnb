@@ -1,0 +1,79 @@
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+  box-sizing: content-box;
+  height: 0;
+  margin: 0 50px;
+}
+
+h1 {
+font-size: 28px;
+font-weight: 300;
+margin: 0 0 10px;
+font-weight: bold;
+}
+
+h3 {
+font-size: 22px;
+font-weight: 300;
+margin: 0 0 10px;
+}
+
+.info_card{
+  background-color: #FAFAFA;
+  text-align: center;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.fa {
+  color: #f7ABB2;
+  padding: 10px;
+}
+
+.card-category {
+  margin-top: 5px;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card {
+  padding: 25px;
+  margin: 10px;
+  background-color: white;
+  height: 250px;
+  width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+.info_card{
+  background-color: #FAFAFA;
+  text-align: center;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.fa {
+  color: #f7ABB2;
+  padding: 10px;
+}
+
+.card-category {
+  margin-top: 5px;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card {
+  padding: 25px;
+  margin: 10px;
+  background-color: white;
+  height: 250px;
+  width: 100%;
+}
+}
+
