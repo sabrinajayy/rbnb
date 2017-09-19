@@ -20,6 +20,7 @@ class ArtistsController < ApplicationController
 
   end
 
+
   def new
     @artist = Artist.new
   end
@@ -60,7 +61,6 @@ class ArtistsController < ApplicationController
 
     service = params[:category]
     location = params[:location]
-    # @location_arr = @location.delete(',').split # where is this used?
     long = params[:longitude]
     lat = params[:latitude]
     begin
@@ -70,20 +70,19 @@ class ArtistsController < ApplicationController
 
     # by location and date and service (always filled in)
     if !location.empty? && !params[:date].empty?
-
-      # consider iterating over the return of Artist.where, selecting for artist_instance_result.near([lat, long], artist.range)
-      # results_by_cat = Artist.where(category: service)
-      # results_by_cat_and_location =
-      results_by_cat_and_location = Artist.where("category ILIKE ?", service) && Artist.near([lat, long], 10)
+      results_by_cat = Artist.where(category: service)
+      results_by_cat_and_location = results_by_cat.select { |artist| Geocoder::Calculations.distance_between([lat, long], [artist.latitude, artist.longitude],  ) <= artist.travel_range }
       @results = results_by_cat_and_location.reject do |artist|
         CheckArtistClashesForSegment.new(artist, time_range).call
       end
 
-    # by location and service
     elsif !location.empty?
-      @results = Artist.where("category ILIKE ?", service) && Artist.near([lat, long], 10)
+      # Geocoder::Calculations.distance_between([lat, long], [artist.lat, artist.long],  ) <= artist.range
+      results_by_cat = Artist.where(category: service)
+      results_by_cat_and_location = results_by_cat.select { |artist| Geocoder::Calculations.distance_between([lat, long], [artist.latitude, artist.longitude],  ) <= artist.travel_range }
+      @results = results_by_cat_and_location
 
-    # by date and servie
+    # by date and service
     elsif !params[:date].empty?
       results_by_cat = Artist.where(category: service)
       @results = results_by_cat.reject do |artist|
