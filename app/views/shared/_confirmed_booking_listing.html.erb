@@ -25,7 +25,7 @@
           <div class="booking-listing">
             <div class="row">
               <div class="col-xs-12 col-md-2">
-                <%= cl_image_tag Consumer.find_by(user_id: request.user_id).profile_img, class: 'avatar', width: 300, height: 300, crop: :fill %>
+                <%= cl_image_tag Consumer.find_by(user_id: request.user_id).profile_img, class: 'avatar-large', width: 300, height: 300, crop: :fill %>
               </div>
               <div class="col-xs-8 col-md-7">
                 <p class="booking-date"><%= request.date.strftime('%b %d %Y, %I:%M%p') %></p>
