@@ -1,8 +1,21 @@
 <%  @events.each do |event|  %>
-<%= link_to "View details", consumer_consumers_event_path(event.user.consumer, event) %>
+<div class="dash-bookings">
+<%#= link_to "View details", consumer_consumers_event_path(event.user.consumer, event) %>
 <h3> <%= event.location %> </h3>
 <h3> <%= event.date %> </h3>
 <h3> <%= event.description %> </h3>
 <h3> <%= event.tags %> </h3>
 <h3> <%= event.budget %> </h3>
+
+<% if !event.artist_requests.any? {|e| e.artist == @artist } %>
+<%= link_to "Apply for this gig!", create_artist_request_path(@artist), "data-toggle" => "modal", 'data-target'=>"#requestModal#{event.id}" %>
+<%= render 'artist_requests/new', event: event %>
+<% else %>
+  <p>Already Bidded</p>
+  <% end %>
+</div>
 <% end %>
+
+
+
+

@@ -22,7 +22,9 @@ class ArtistsController < ApplicationController
   end
 
   def eventsearch
-    @events = ConsumerEvent.all
+    @artist = Artist.find(params[:artist_id])
+    @events = ConsumerEvent.all.reverse
+    @request = ArtistRequest.new
   end
 
   def new

@@ -2,8 +2,8 @@ class ConsumersEventsController < ApplicationController
   before_action :set_consumer_event, only: [:show, :destroy, :update, :edit]
 
   def show
-    @artist_request = ArtistRequest.new
     @consumer_event = ConsumerEvent.find(params[:id])
+    @artist_requests = ArtistRequest.where(consumer_event: @consumer_event)
   end
 
   def index

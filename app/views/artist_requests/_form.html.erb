@@ -1,0 +1,6 @@
+
+<%= simple_form_for(:artist_request, url: create_artist_request_path(artist_id: @artist.id, consumer_event_id: event.id)) do |f| %>
+<%= f.input :offer_price, as: :integer, placeholder: "Enter your bid" %>
+  <%= f.input :message, as: :text, placeholder: "Send a message to #{event.user.consumer.first_name}" %>
+  <%= f.button :submit, "Submit your bid", class: 'btn' %>
+<% end %>

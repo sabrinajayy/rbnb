@@ -4,7 +4,7 @@ class Artist < ApplicationRecord
   has_many :certifications
   has_many :artist_services
   has_many :artist_images
-  has_many :messages, through: :artist_requests
+  has_many :messages, through: :consumer_requests
   has_many :reviews
   has_many :time_blocks
 
