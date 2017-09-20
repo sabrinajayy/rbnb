@@ -31,14 +31,16 @@
 
 .artist-banner-content ul {
   margin: 0 auto !important;
+  display: inline;
 }
 
-.ratings-number {
+.number-of-reviews {
   font-style: italic;
   font-weight: lighter;
   color: #757575;
-  font-size: 12px;
+  font-size: 14px;
   padding-bottom: 2px;
+  display: inline;
 }
 
 .artist-profile-pic {
@@ -122,7 +124,7 @@
   padding: 20px 150px;
   // width: 660px;
   // text-align: left;
-  word-wrap: break-word;
+  // word-wrap: break-word;
   margin-right: 0px !important;
 }
 
@@ -135,20 +137,43 @@
   text-align: right;
 }
 
-#reviews ul {
-  margin-top: 5px !important;
-  margin-bottom: 3px !important;
-  padding-left: 5px;
+// #reviews ul {
+//   margin-top: 5px !important;
+//   margin-bottom: 3px !important;
+//   padding-left: 5px;
+// }
+
+.review-card {
+  margin: 10px 100px 20px 100px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(116, 116, 116, 0.1);
 }
 
 .review-details {
-  line-height: 14px;
+  line-height: 12px;
   text-align: left;
 }
 
-#reviews p {
-  display: inline;
+.review-details p {
+  margin-bottom: 3px !important;
 }
+
+.review-content {
+  line-height: 16px;
+}
+
+.review-card i {
+  font-size: 14px;
+  padding: 0px;
+}
+
+// .review-card ul {
+//   text-align: right;
+// }
+
+// #reviews p {
+//   display: inline;
+// }
 
 .review-client {
   font-size: 14px;
@@ -179,7 +204,7 @@
 }
 .nav-tabs li {
   text-transform: uppercase;
-  padding: 0.94rem 1.6rem;
+  padding: 0.94rem 6rem;
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
@@ -234,6 +259,15 @@
 /*MOBILE RESPONSIVE*/
 
 @media screen and (max-width: 1000px) {
+  .nav-tabs li {
+    text-transform: uppercase;
+    padding: 0.94rem 1rem;
+  }
+
+  .nav-tabs li a {
+    font-size: 12px !important;
+  }
+
   .about-artist {
     padding: 20px;
   }
@@ -251,6 +285,12 @@
   .review-pic {
     align-content: left;
     text-align: left;
+  }
+
+  .review-card {
+    margin: 0 auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(116, 116, 116, 0.1);
   }
 }
 
