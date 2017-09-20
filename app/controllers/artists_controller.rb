@@ -18,6 +18,7 @@ class ArtistsController < ApplicationController
       time_blocks = TimeBlock.where(artist: @artist)
       @time_blocks_by_date = time_blocks.group_by { |i| i.date.to_date}
     end
+    @my_bids = ArtistRequest.where(artist: @artist)
 
   end
 
