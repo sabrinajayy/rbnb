@@ -11,7 +11,7 @@
                   <% if @time_blocks_by_date[date.to_date] %>
                   <ul>
                     <% @time_blocks_by_date[date.to_date].each do |booking| %>
-                      <li><%= link_to booking.consumer_request.servicename  %></li>
+                      <li><%= link_to booking.consumer_request.servicename  %> - <%= booking.consumer_request.time%></li>
 
                       <% end %>
                   </ul>

@@ -1,5 +1,5 @@
 #dashboard-nav-wrapper {
-  width: 15%;
+  width: 12%;
   margin: 0;
   background-color: white;
   color: #757575;
@@ -41,12 +41,20 @@
   }
 }
 
+#dashboard-nav-wrapper i {
+  display: block;
+}
+
 .dash-tab {
   color: #757575;
   opacity: 0.8;
   &:hover {
     color: $pink;
   }
+}
+
+.hidden {
+  display: none;
 }
 
 .dash-tab.active {
@@ -57,5 +65,38 @@
   }
   i {
     color: $pink;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #dashboard-nav-wrapper {
+    display: table;
+    margin: 0 auto !important;
+    width: 100%;
+    background-color: white;
+    color: #757575;
+    height: 30px !important;
+    position: sticky;
+  }
+
+  #dashboard-nav-wrapper ul {
+    list-style-type: none;
+    padding-left: 0px;
+    text-align: center;
+    display: inline-block;
+    height: 40px !important;
+  }
+  #dashboard-nav-wrapper li {
+    display: inline-block;
+    color: #757575;
+    padding: 0.94rem 1.3rem;
+  }
+
+  .dash-nav-header {
+    display: none !important;
+  }
+
+  #dashboard-nav-wrapper i {
+    font-size: 14px;
   }
 }

@@ -42,6 +42,10 @@ $(function(){
     $(tabToShow).removeClass("hidden");
   });
 
+    //dashboard nav - mobile responsive
+
+
+
   // address autocomplete:
   var flatAddress = document.getElementById('flat_address');
 

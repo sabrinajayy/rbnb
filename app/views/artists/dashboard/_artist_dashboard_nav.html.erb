@@ -1,29 +1,23 @@
   <ul class="artist-dashboard-nav">
-    <div class="dash-tab active">
       <li>
-        <a href="#bookings" class="dash-tab active" aria-controls="home" role="tab" data-toggle="tab" data-target="#bookings"><i class="fa fa-heart fa-2x" aria-hidden="true"></i><br>Bookings</a>
+        <a href="#bookings" class="dash-tab" aria-controls="home" role="tab" data-toggle="tab" data-target="#bookings"><i class="fa fa-calendar-check-o  fa-2x" aria-hidden="true"></i><p class="dash-nav-header">Bookings</p></a>
       </li>
-    </div>
-    <div class="dash-tab">
       <li>
-        <a href="#calendar" class="dash-tab" aria-controls="home" role="tab" data-toggle="tab" data-target="#calendar"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i><br>Calendar</a>
+        <a href="#calendar" class="dash-tab" aria-controls="home" role="tab" data-toggle="tab" data-target="#calendar"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i><p class="dash-nav-header">Calendar</p></a>
       </li>
-    </div>
-    <div class="dash-tab">
+
       <li>
-        <a href="#financials" class="dash-tab" aria-controls="home" role="tab" data-toggle="tab" data-target="#financials"><i class="fa fa-usd fa-2x" aria-hidden="true"></i><br>Financials</a>
+        <a href="#financials" class="dash-tab" aria-controls="home" role="tab" data-toggle="tab" data-target="#financials"><i class="fa fa-usd fa-2x" aria-hidden="true"></i><p class="dash-nav-header">Financials</p></a>
       </li>
-    </div>
-    <div class="dash-tab">
+
       <li>
         <%= link_to edit_artist_path(@artist.id), class: 'dash-tab' do %>
-          <i class="fa fa-pencil fa-2x" aria-hidden="true"></i><br>Edit Profile
+          <i class="fa fa-pencil fa-2x" aria-hidden="true"></i><p class="dash-nav-header">Edit Profile</p>
         <% end %>
       </li>
-    </div>
-    <div class="dash-tab">
+
       <li>
-        <a href="#settings" class="dash-tab" aria-controls="home" role="tab" data-toggle="tab" data-target="#settings"><i class="fa fa-cog fa-2x" aria-hidden="true"></i><br>Settings</a>
+        <a href="#settings" class="dash-tab" aria-controls="home" role="tab" data-toggle="tab" data-target="#settings"><i class="fa fa-cog fa-2x" aria-hidden="true"></i><p class="dash-nav-header">Settings</p></a>
       </li>
-    </div>
+
   </ul>

@@ -1,12 +1,13 @@
 #dashboard-content-wrapper {
-  width: 85%;
-  margin-left: 15%;
+  width: 88%;
+  margin-left: 12%;
 }
 
 .dashboard-container {
   background-color: #FAFAFA;
   color: #757575;
-  padding-left: 10px;
+  padding-left: 7px;
+  margin: 10px;
 }
 
 h2 {
@@ -16,81 +17,20 @@ h2 {
   margin-bottom: 0px;
 }
 
-.new-requests {
+/*BOOKINGS SECTION */
+
+.dash-bookings {
+  border-top: 2px solid $pink;
   background-color: #fff;
-  padding: 20px 40px 20px 10px;
+  padding: 20px 20px;
   margin: 20px 5px 5px 5px;
   -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
   -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
   box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
-}
-
-.new-requests h2 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
-}
-
-.new-requests p {
-  font-size: 14px;
-  font-style: italic;
-  margin-top: 10px;
-}
-
-
-.upcoming-bookings {
-  background-color: #fff;
-  padding: 20px 40px 20px 10px;
-  margin: 20px 5px 5px 5px;
-  -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
-  -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
-  box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
-}
-
-.upcoming-bookings h2 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
-}
-
-.booking-list ul {
-  list-style-type: none;
-  padding-left: 0px;
-}
-
-.booking-list li {
-  list-style-type: none;
 }
 
 .artist-profile {
-  background-color: #fff;
-  padding: 20px 20px;
-  margin: 20px 5px 5px 5px;
-  -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
-  -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
-  box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
-}
 
-.artist-profile-pic {
-
-}
-
-.artist-calendar {
-  font-size: 10px;
-  background-color: #fff;
-  padding: 20px 20px;
-  margin: 20px 5px 20px 20px;
-  -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
-  -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
-  box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
-  height: 100vh;
-}
-
-.artist-calendar ul {
-  list-style-type: none;
-  padding-left: 0px;
-}
-
-.artist-financials {
-  height: 100%;
 }
 
 .artist-profile-info {
@@ -113,4 +53,145 @@ h2 {
 .artist-tags {
   font-style: italic;
   font-size: 12px;
+}
+
+.artist-quotes {
+  padding: 20px 15px 20px 15px;
+}
+
+.artist-quotes h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+.client-event {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.client-event h3 {
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+
+.client-event p {
+  font-size: 12px;
+}
+
+.artist-quote-price {
+  text-align: center;
+}
+
+.artist-quote-price h3 {
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  color: $pink;
+}
+
+.new-requests {
+
+}
+
+.new-requests h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+.new-requests p {
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+
+.upcoming-bookings {
+
+}
+
+.upcoming-bookings h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+.booking-list ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.booking-list li {
+  list-style-type: none;
+}
+
+/*CALENDAR SECTION */
+
+#bookings .col-xs-12 {
+  padding: 0px;
+}
+.artist-calendar table {
+  width: 100%;
+  table-layout: fixed;
+
+}
+
+.artist-calendar td {
+    height: 80px;
+}
+
+.artist-calendar {
+  font-size: 10px;
+  background-color: #fff;
+  padding: 20px 20px;
+  margin: 20px;
+  -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  height: 100vh;
+}
+
+.artist-calendar h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.artist-calendar ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.artist-calendar th {
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: $pink;
+  opacity: 0.8;
+}
+
+.artist_calendar th tbody {
+
+}
+
+.today td {
+  background-color: #757575;
+  opacity: 0.7;
+}
+
+
+@media screen and (max-width: 1024px) {
+  #dashboard-content-wrapper {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .artist-profile {
+    text-align: center;
+  }
+  .client-event {
+    text-align: left;
+  }
+  .artist-quote-price {
+    text-align: left;
+  }
 }
