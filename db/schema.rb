@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170920122537) do
+ActiveRecord::Schema.define(version: 20170920135007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,10 +29,10 @@ ActiveRecord::Schema.define(version: 20170920122537) do
     t.float    "offer_price"
     t.integer  "consumer_event_id"
     t.integer  "artist_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "message"
-    t.string   "status"
+    t.string   "status",            default: "pending"
     t.index ["artist_id"], name: "index_artist_requests_on_artist_id", using: :btree
     t.index ["consumer_event_id"], name: "index_artist_requests_on_consumer_event_id", using: :btree
   end
