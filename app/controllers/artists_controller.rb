@@ -7,6 +7,7 @@ class ArtistsController < ApplicationController
   end
 
   def show
+    @artist_gallery = ArtistImage.where(artist: @artist)
     @date = DateTime.now
     @review = Review.new
     @reviews = Review.where(artist_id: @artist)
@@ -17,19 +18,25 @@ class ArtistsController < ApplicationController
       time_blocks = TimeBlock.where(artist: @artist)
       @time_blocks_by_date = time_blocks.group_by { |i| i.date.to_date}
     end
+    @my_bids = ArtistRequest.where(artist: @artist)
 
   end
 
   def eventsearch
-    @events = ConsumerEvent.all
+    @artist = Artist.find(params[:artist_id])
+    @events = ConsumerEvent.all.reverse
+    @request = ArtistRequest.new
   end
 
   def new
     @artist = Artist.new
+    @artist_image = @artist.artist_images.build
   end
 
   def create
     @artist = Artist.new(artist_params)
+
+    @artist.rating = 0.0
     @artist.user = current_user
     prices = [15, 43.50, 87, 33.10, 45, 60.99]
     params[:artist][:artist_services].each do |service|
@@ -37,6 +44,9 @@ class ArtistsController < ApplicationController
     end
 
     if @artist.save
+        params[:artist_images]['image'].each do |i|
+          @artist_image = @artist.artist_images.create!(:image => i)
+       end
       redirect_to artist_path(@artist)
 
     else
@@ -108,6 +118,6 @@ class ArtistsController < ApplicationController
   end
 
   def artist_params
-    params.require(:artist).permit(:first_name, :last_name, :bio, :location, :tags, :travel_range, :instagram_handle, :category, :photo, :photo_cache, {artist_service: []})
+    params.require(:artist).permit(:first_name, :last_name, :bio, :location, :tags, :travel_range, :instagram_handle, :category, :photo, :photo_cache, {artist_service: []}, artist_images_attributes: [:id, :artist_id, :image, :image_cache])
   end
 end

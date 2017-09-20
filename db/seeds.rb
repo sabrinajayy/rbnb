@@ -10,6 +10,12 @@ real_images = ["https://i.pinimg.com/736x/40/32/e0/4032e0031e2e95989f1e76fe3d4f5
 
 tags = ["ecofriendly", "costume", "wedding", "birthday", "fierce", "natural", "whatever", "ilovejesus", "brash", "sass"]
 
+puts
+puts "Seeding Pamperd environment"
+puts "Creating admin user"
+
+User.create({email: 'admin@admin.com', password: 'password', admin: true})
+
 real_images.each do |image|
   user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
   my_tags = []
@@ -18,7 +24,7 @@ real_images.each do |image|
     my_tags << tags.delete(tags.sample)
   end
 
-  artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: my_tags.join(' '), location: "Milan" , category: categories.sample, photo: image, travel_range: 20 })
+  artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: my_tags.join(' '), location: "Milan" , category: categories.sample, photo: image, travel_range: 20, rating: 0.0 })
   5.times do
     ArtistService.create(name: Faker::Commerce.product_name, price: Faker::Commerce.price, artist: artist )
   end
@@ -35,7 +41,7 @@ artist_sarah = Artist.create({ user: user,
                          category: 'makeup',
                          location: 'Milan',
                          travel_range: 20,
-                         rating: 3
+                         rating: 4.7
                          })
 
 puts "Creating Sarah's Services"
@@ -49,7 +55,7 @@ puts "seeding 20 user artists"
 puts "please wait"
 20.times do
   user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
-  artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: 'tagtagtag', location: locations.sample , category: categories.sample, travel_range: 20 })
+  artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: 'tagtagtag', location: locations.sample , category: categories.sample, travel_range: 20, rating: 2.9 })
   5.times do
     ArtistService.create(name: Faker::Commerce.product_name, price: Faker::Commerce.price, artist: artist )
   end
@@ -65,15 +71,17 @@ times.each do |t|
   ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: t, status: 'confirmed')
 end
 
-"Creating a review for Sarah"
-booking = ConsumerRequest.first
-Review.create(title: 'She was great!',
-              content: 'She did my makeup and she was great',
-              rating: 5,
-              consumer_request: booking,
-              user: hero_user,
-              artist: artist_sarah
-              )
+puts "Creating reviews for Sarah"
+['special', 'gracious', 'ugly', 'messy', 'stupid','giant'].each do |word|
+  booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.new(2017, 8, rand(10)), status: 'confirmed')
+  Review.create(
+                content: "She did my makeup and she was #{word}",
+                rating: rand(5).to_f,
+                consumer_request: booking,
+                user: hero_user,
+                artist: artist_sarah
+                )
+end
 
 
 puts "Creating Consumer Events for Hero user"

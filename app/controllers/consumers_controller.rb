@@ -14,6 +14,7 @@ class ConsumersController < ApplicationController
       @pending = @requests.select { |request| request.status == 'unconfirmed'}
       @past = @requests.select {|request| request.status == 'confirmed' && request.is_past? }
     end
+    # @artist_requests = ArtistRequest.where()
   end
 
   def new

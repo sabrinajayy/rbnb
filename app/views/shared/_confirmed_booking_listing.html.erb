@@ -1,22 +1,45 @@
-<ul class="booking-list">
-  <% @confirmed.each do |request| %>
-    <li>
-      <div class="booking-listing">
-       <%= cl_image_tag Consumer.find_by(user_id: request.user_id).profile_img, class: 'avatar', width: 300, height: 300, crop: :fill %>
-        <div class="booking-name">
-          <h3></h3>
-          <p class="booking-date"><%=  request.date.strftime('%b %d %Y, %I:%M%p') %></p>
-          <p class="booking-time"><%=  request.time %></p>
+<!-- <ul class="booking-list"> -->
+  <%# @confirmed.each do |request| %>
+<!--     <li>
+      <div class="booking-listing"> -->
+       <%#= cl_image_tag Consumer.find_by(user_id: request.user_id).profile_img, class: 'avatar', width: 300, height: 300, crop: :fill %>
+ <!--        <div class="booking-name">
+          <h3></h3> -->
+      <!--     <p class="booking-date"> --><%#=  request.date.strftime('%b %d %Y, %I:%M%p') %><!-- </p>
+          <p class="booking-time"><%#=  request.time %></p>
+        </div> -->
+        <!-- <div class="booking-details">
+          <p class="booking-category"><%#=  request.servicename %></p>
+          <p class="booking-address"><%#=  request.address %></p>
         </div>
-        <div class="booking-details">
-          <p class="booking-category"><%=  request.servicename %></p>
-          <p class="booking-address"><%=  request.address %></p>
-        </div>
-        <div class="booking-status">
-          <p class="status-unconfirmed"><%=  request.status %></p>
-          <p class="booking-price"><%=  request.final_price %></p>
+        <div class="booking-status"> -->
+          <!-- <p class="status-unconfirmed"><%#=  request.status %></p>
+          <p class="booking-price"><%#=  request.final_price %></p>
         </div>
       </div>
     </li>
+  <%# end %>
+</ul> -->
+
+ <% @confirmed.each do |request| %>
+          <div class="booking-listing">
+            <div class="row">
+              <div class="col-xs-12 col-md-2">
+                <%= cl_image_tag Consumer.find_by(user_id: request.user_id).profile_img, class: 'avatar-large', width: 300, height: 300, crop: :fill %>
+              </div>
+              <div class="col-xs-8 col-md-7">
+                <p class="booking-date"><%= request.date.strftime('%b %d %Y, %I:%M%p') %></p>
+                <p class="booking-time"><%= request.time %></p>
+                <p class="booking-category"><%= request.servicename%></p>
+                <p class="booking-address"><%= request.address%></p>
+              </div>
+              <div class="col-xs-4 col-md-3">
+                <div class="artist-quote-price">
+                  <p class="booking-price">$<%= request.final_price %></p>
+                  <p class="status-confirmed"><%= request.status %></p>
+
+                </div>
+              </div>
+            </div>
+          </div>
   <% end %>
-</ul>

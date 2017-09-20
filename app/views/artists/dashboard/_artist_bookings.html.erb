@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="artist-profile dash-bookings">
+          <div class="row">
+            <div class="col-xs-12 col-md-4">
+              <%#= image_tag @artist.photo, class: 'profile-pic', width: 300, height: 300, crop: :fill %>
+               <% if @artist.photo %>
+              <%= image_tag @artist.photo, class: 'artist-profile-pic', width: 300, height: 300, crop: :fill %>
+              <% else %>
+              <%= image_tag "http://www.breda.academy/wp-content/uploads/2016/11/best-facial-in-dubai-1.jpg", class: 'artist-profile-pic', width: 300, height: 300, crop: :fill %>
+              <% end %>
+
+            </div>
+            <div class="col-xs-12 col-md-8">
+              <ul class="artist-profile-info">
+                <li><p class="artist-name"><%= @artist.first_name %> <%= @artist.last_name %></p></li>
+                <li><p class="artist-location"><%= @artist.location %></p></li>
+                <li>@<%= @artist.instagram_handle %>  <%= @artist.category %></li>
+                <li><%= @artist.bio %></li>
+                <li><p class="artist-tags"><%= @artist.tags %></p></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-xs-12">
+            <div class="artist-quotes dash-bookings">
+              <h2>Active Quotes</h2>
+              <div class="client-event">
+                <div class="row">
+                  <div class="col-xs-12 col-md-2">
+                  <% @my_bids.each do |bid| %>
+                    <%= image_tag bid.consumer_event.user.consumer.profile_img, class:'avatar hidden-xs' %>
+                    </div>
+                    <div class="col-xs-8 col-md-7">
+
+                      <h3><%= bid.message %></h3>
+                      <p>Oct 12, 2017 - Barcelona, ES</p>
+                       <%= link_to "View this event", consumer_consumers_event_path(bid.consumer_event.user.consumer, bid.consumer_event) %>
+                    </div>
+                    <div class="col-xs-4 col-md-3">
+                      <div class="artist-quote-price">
+                        <h5>Your bid: <%= bid.offer_price %></h5>
+                        <h3><%= bid.status %></h3>
+
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <%= link_to 'Browse Gigs Near You', eventsearch_path(@artist.id), class: 'btn-pamprd' %>
+            </div>
+          </div>
+        </div>
+
+          </div>
+
+
+
+    </div>
+  </div>
+  </div>
+
+  <div class="col-xs-12 col-md-6">
+    <div class="new-requests dash-bookings">
+      <h2>New Requests</h2>
+        <% if @unconfirmed.empty? %>
+          <p>You don't have any new requests!</p>
+        <% else %>
+          <%= render partial: 'shared/unconfirmed_booking_listing' %>
+        <% end %>
+    </div>
+
+    <div class="upcoming-bookings dash-bookings">
+      <h2>Upcoming Bookings</h2>
+        <% if @confirmed.empty? %>
+          <p>You don't have any confirmed bookings!</p>
+        <% else %>
+          <%= render partial: 'shared/confirmed_booking_listing' %>
+        <% end %>
+    </div>
+  </div>
+
+</div>
+

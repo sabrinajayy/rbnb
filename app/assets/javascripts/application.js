@@ -29,6 +29,23 @@ $(function(){
     $(tabToShow).removeClass("hidden");
   });
 
+  //dashboard tabs:
+    $(".dash-tab").on("click", function(e){
+    // Change active tab
+    $('.dash-tab').removeClass("active");
+    $(this).addClass("active");
+    // Hide all tab-content (use class="hidden")
+    $('.dash-tab-content').addClass("hidden");
+    // Show target tab-content (use class="hidden")
+    var tabToShow = $(this).data("target");
+    // var tabToShow = $(this).attr("data-target");
+    $(tabToShow).removeClass("hidden");
+  });
+
+    //dashboard nav - mobile responsive
+
+
+
   // address autocomplete:
   var flatAddress = document.getElementById('flat_address');
 
@@ -55,6 +72,24 @@ $(function(){
 
     });
 
+;( function( $ ) {
+
+  $( '.swipebox' ).swipebox({
+    useCSS : true, // false will force the use of jQuery for animations
+    useSVG : true, // false to force the use of png for buttons
+    initialIndexOnArray : 0, // which image index to init when a array is passed
+    hideCloseButtonOnMobile : false, // true will hide the close button on mobile devices
+    removeBarsOnMobile : true, // false will show top bar on mobile devices
+    hideBarsDelay : 3000, // delay before hiding bars on desktop
+    videoMaxWidth : 1140, // videos max width
+    beforeOpen: function() {}, // called before opening
+    afterOpen: null, // called after opening
+    afterClose: function() {}, // called after closing
+    loopAtEnd: false // tru
+
+  });
+
+} )( jQuery );
 
 // end document ready function here
 });

@@ -1,5 +1,6 @@
 <% if @results.empty? %>
   <p class="text-center">No results.</p>
+  <p class="text-center"> <%= link_to "Search Again", root_path %></p>
   <% if user_signed_in? && current_user.is_consumer? %>
   <%= link_to "Create your own event", new_consumer_consumers_event_path(current_user.consumer) %>
   <% end %>
@@ -29,13 +30,14 @@
                 <h3><%= artist.first_name %> <%=artist.last_name %></h3>
               <%end%>
               <ul class="list-inline profile-rating">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
+              <% if artist.rating > 0.0 %>
+              <% artist.rating.round.times do %>
+                <li><i style="padding: 0;" class="fa fa-star"></i></li>
+              <% end %>
+              <% end %>
               </ul>
-              <p> <%= artist.category.capitalize %> | <%= artist.location %></p>
+              </ul>
+              <p> <%= artist.try(:category).try(:capitalize)%> | <%= artist.location %></p>
               <p><%= artist.bio %></p>
 
             </div>
