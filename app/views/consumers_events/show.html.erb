@@ -4,12 +4,38 @@
 <div class="booking-container">
   <div class="row">
     <div class="col-xs-12 col-sm-5">
-    <%= @consumer_event.location %> <br>
-    <%= @consumer_event.date %> <br>
-    <%= @consumer_event.description %> <br>
-    <%= @consumer_event.tags %> <br>
-    <%= @consumer_event.budget %> <br>
-    <%= button_to "Apply for this event" %>
+      <%= @consumer_event.location %> <br>
+      <%= @consumer_event.date %> <br>
+      <%= @consumer_event.description %> <br>
+      <%= @consumer_event.tags %> <br>
+      <%= @consumer_event.budget %> <br>
+      <h3>Requests from Artists</h3>
+      <% @artist_requests.each do |request| %>
+      <p>Artist Name: <%= request.artist.first_name %></p>
+      <p>Their offer: <%= request.offer_price %> </p>
+      <p>Their message: <%= request.message %> </p>
+
+      <% if request.status == 'pending' %>
+      <!-- show accept/decline buttons if status pending -->
+        <i class="fa fa-clock-o fa-4x" aria-hidden="true"></i>
+        <p class="unconfirmed">Pending</p>
+        <%= button_to  "Accept", accept_artist_request_path(request.artist, request),
+      :class => "booking-status accept btn-pamprd", :method => :patch%><nobr>
+        <%= button_to  "Decline", decline_artist_request_path(request.artist, request),
+      :class => "booking-status cancel btn-pamprd", :method => :patch%>
+      <% elsif request.status == 'declined'%>
+      <!-- show declined status with no buttons -->
+        <i class="fa fa-star-o" aria-hidden="true"></i>
+        <p class="unconfirmed">Declined</p>
+      <% else %>
+      <!-- show accepted status with no buttons -->
+        <i class="fa fa-check-circle fa-5x" aria-hidden="true"></i>
+        <p class="unconfirmed">Confirmed</p>
+      <% end %>
+
+
+
+      <% end %>
     </div>
   </div>
 </div>

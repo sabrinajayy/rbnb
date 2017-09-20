@@ -10,6 +10,12 @@ real_images = ["https://i.pinimg.com/736x/40/32/e0/4032e0031e2e95989f1e76fe3d4f5
 
 tags = ["ecofriendly", "costume", "wedding", "birthday", "fierce", "natural", "whatever", "ilovejesus", "brash", "sass"]
 
+puts
+puts "Seeding Pamperd environment"
+puts "Creating admin user"
+
+User.create({email: 'admin@admin.com', password: 'password', admin: true})
+
 real_images.each do |image|
   user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
   my_tags = []
@@ -67,7 +73,7 @@ end
 
 puts "Creating reviews for Sarah"
 ['special', 'gracious', 'ugly', 'messy', 'stupid','giant'].each do |word|
-  booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.new(2017, 8, rand(20)), status: 'confirmed')
+  booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.new(2017, 8, rand(10)), status: 'confirmed')
   Review.create(
                 content: "She did my makeup and she was #{word}",
                 rating: rand(5).to_f,

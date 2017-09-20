@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => { registrations: "registrations"}
   # devise_for :users
   root to: 'pages#home'
@@ -7,7 +8,10 @@ Rails.application.routes.draw do
   get '/search_results/artist', to: 'artists#show'
 
   get '/artists/:artist_id/eventsearch', to: 'artists#eventsearch', as: 'eventsearch'
-  get '/artists/:artist_id/eventsearch/event', to: 'consumers_events#show'
+  get '/consumers/:consumer_id/event/:id', to: 'consumers_events#show', as: 'event_details'
+  post '/artists/:artist_id/artist_request', to: 'artist_requests#create', as: 'create_artist_request'
+  patch '/artists/:artist_id/artist_request/accept/:id', to: 'artist_requests#accept', as: 'accept_artist_request'
+  patch '/artists/:artist_id/artist_request/decline/:id', to: 'artist_requests#decline', as: 'decline_artist_request'
 
     resources :consumers do
       resources :reviews, only: [:new, :edit, :update ,:destroy]
