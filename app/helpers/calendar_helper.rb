@@ -10,14 +10,14 @@ module CalendarHelper
     delegate :content_tag, to: :view
 
     def table
-      content_tag :table, class: "calendar" do
+      content_tag :table, class: "calendar table table-responsive table-bordered" do
         header + week_rows
       end
     end
 
     def header
       content_tag :tr do
-        HEADER.map { |day| content_tag :th, day }.join.html_safe
+        HEADER.map { |day| content_tag :th, day.first(3) }.join.html_safe
       end
     end
 
