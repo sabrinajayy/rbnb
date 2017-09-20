@@ -98,3 +98,20 @@ puts "Ensuring that Sarah will always be busy in three days in the evening."
 booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.advance(days: 3).change(hour: 22), status: 'confirmed')
 TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
 
+puts "Creating a rival artist to bid against Sarah"
+user = User.create(email: 'rival@rival.com', password: 'password')
+artist_rival = Artist.create({ user: user,
+                         first_name: 'Rival',
+                         last_name: 'Artist',
+                         tags: "#gothic #natural #lazysundaydays #afternoondelight",
+                         photo: "https://i.pinimg.com/originals/0b/3c/f9/0b3cf9a6887049b4fe833810c286ae3e.jpg",
+                         category: 'makeup',
+                         location: 'Milan',
+                         travel_range: 20,
+                         rating: 4.7
+                         })
+puts
+puts "Creating a new event, with two artist requests: one from Sarah and the other from a rival artist."
+event = ConsumerEvent.create(location: 'Milan', service: 'makeup', description: 'my face day', user: hero_user, date: DateTime.now.advance(days: 1))
+ArtistRequest.create(offer_price: 30.0, consumer_event: event, artist: artist_sarah, message: "Hi, I have ten years of experience doing the thing that you need.")
+ArtistRequest.create(offer_price: 20.0, consumer_event: event, artist: artist_rival, message: "Hello there, I have no experience but I'm cheap.")
