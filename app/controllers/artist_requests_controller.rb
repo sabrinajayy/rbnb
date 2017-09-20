@@ -35,6 +35,9 @@ class ArtistRequestsController < ApplicationController
                            servicename: event.service,
                            artist: @artist_request.artist,
                            status: 'confirmed')
+    ArtistRequest.where(consumer_event: event).each do |request|
+      request.update(status: 'declined') if request != @artist_request
+    end
 
     redirect_to :back
 
