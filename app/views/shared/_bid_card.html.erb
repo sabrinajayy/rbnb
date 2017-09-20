@@ -1,0 +1,29 @@
+<div class="artist-quotes dash-bookings">
+  <h2>Active Quotes</h2>
+    <% @my_bids.each do |bid| %>
+      <% next if bid.status == 'accepted' %>
+        <div class="client-event">
+          <div class="row">
+            <div class="col-xs-12 col-md-2">
+              <%= image_tag bid.consumer_event.user.consumer.profile_img, class:'avatar-large hidden-xs' %>
+            </div>
+            <div class="col-xs-7 col-md-7">
+              <div class="consumer-event-info">
+                <%= link_to consumer_consumers_event_path(bid.consumer_event.user.consumer, bid.consumer_event) do %>
+                <p class="event-header"><%= bid.consumer_event.description.capitalize.first(20) %>...</p>
+                <% end %>
+                <p><%= bid.consumer_event.date.strftime('%b %d %Y') %> </p>
+                <p><%= bid.consumer_event.location %></p>
+              </div>
+            </div>
+            <div class="col-xs-5 col-md-3">
+              <div class="artist-bid-section">
+                <p>Your Quote</p>
+                <p class="artist-quote-price">$<%= bid.offer_price %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <%= link_to 'Browse Gigs Near You', eventsearch_path(@artist.id), class: 'btn-pamprd' %>
+</div>

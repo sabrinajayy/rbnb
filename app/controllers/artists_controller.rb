@@ -19,7 +19,6 @@ class ArtistsController < ApplicationController
       @time_blocks_by_date = time_blocks.group_by { |i| i.date.to_date}
     end
     @my_bids = ArtistRequest.where(artist: @artist)
-
   end
 
   def eventsearch
@@ -44,9 +43,11 @@ class ArtistsController < ApplicationController
     end
 
     if @artist.save
+      if !params[:artist_images].nil?
         params[:artist_images]['image'].each do |i|
           @artist_image = @artist.artist_images.create!(:image => i)
-       end
+        end
+      end
       redirect_to artist_path(@artist)
 
     else
@@ -55,6 +56,7 @@ class ArtistsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -118,6 +120,8 @@ class ArtistsController < ApplicationController
   end
 
   def artist_params
-    params.require(:artist).permit(:first_name, :last_name, :bio, :location, :tags, :travel_range, :instagram_handle, :category, :photo, :photo_cache, {artist_service: []}, artist_images_attributes: [:id, :artist_id, :image, :image_cache])
+    params.require(:artist).permit(:first_name, :last_name, :bio, :location, :tags, :travel_range, :instagram_handle, :category, :photo, :photo_cache, {artist_service: []})
   end
 end
+
+# , artist_images_attributes: [:id, :artist_id, :image, :image_cache]
