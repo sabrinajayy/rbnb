@@ -19,7 +19,7 @@
         <!-- price and submit quote button -->
         <h3> <%= event.budget %> </h3>
         <% if !event.artist_requests.any? {|e| e.artist == @artist } %>
-          <%= link_to "Apply for this gig!", create_artist_request_path(@artist), "data-toggle" => "modal", 'data-target'=>"#requestModal#{event.id}", class: 'btn-pamprd' %>
+          <%= link_to "Apply", create_artist_request_path(@artist), "data-toggle" => "modal", 'data-target'=>"#requestModal#{event.id}", class: 'btn-pamprd' %>
           <%= render 'artist_requests/new', event: event %>
           <% else %>
             <p>Already Bidded</p>
