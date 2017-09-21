@@ -21,7 +21,7 @@
 
         <% if !event.artist_requests.any? {|e| e.artist == @artist } %>
           <h3>Budget: $<%= event.budget %> </h3>
-          <%= link_to "Apply", create_artist_request_path(@artist), "data-toggle" => "modal", 'data-target'=>"#requestModal#{event.id}", class: 'btn-pamprd' %>
+          <%= link_to "Quote", create_artist_request_path(@artist), "data-toggle" => "modal", 'data-target'=>"#requestModal#{event.id}", class: 'btn-pamprd' %>
           <%= render 'artist_requests/new', event: event %>
           <% else %>
           <i class="fa fa-check fa-2x" aria-hidden="true"></i>
