@@ -89,29 +89,38 @@ class ArtistsController < ApplicationController
     location = params[:location]
     long = params[:longitude]
     lat = params[:latitude]
+
+    # consider adding a specific time to the search bar as we can now search by that
+    # using ReturnAvailableArtists.new(params, artist).call
+
     begin
-      time_range = MakeTimeRange.new(params[:date], params[:time]).call
+      time_range = MakeTimeRange(params[:date], params[:time]).call
     rescue
     end
 
     # by location and date and service (always filled in)
     if !location.empty? && !params[:date].empty?
+
       results_by_cat = Artist.where(category: service)
       results_by_cat_and_location = results_by_cat.select { |artist| Geocoder::Calculations.distance_between([lat, long], [artist.latitude, artist.longitude],  ) <= artist.travel_range }
       @results = results_by_cat_and_location.reject do |artist|
+        # ReturnAvailableArtists.new(params, artist).call
         CheckArtistClashesForSegment.new(artist, time_range).call
       end
 
     elsif !location.empty?
-      # Geocoder::Calculations.distance_between([lat, long], [artist.lat, artist.long],  ) <= artist.range
       results_by_cat = Artist.where(category: service)
       results_by_cat_and_location = results_by_cat.select { |artist| Geocoder::Calculations.distance_between([lat, long], [artist.latitude, artist.longitude],  ) <= artist.travel_range }
       @results = results_by_cat_and_location
 
     # by date and service
     elsif !params[:date].empty?
+
       results_by_cat = Artist.where(category: service)
+      
       @results = results_by_cat.reject do |artist|
+        # ReturnAvailableArtists.new(params, artist).call
+
         CheckArtistClashesForSegment.new(artist, time_range).call
       end
 
