@@ -43,10 +43,10 @@ class ArtistsController < ApplicationController
     end
 
     if @artist.save
-      if !params[:artist_images].nil?
+      if params[:artist_images]
         params[:artist_images]['image'].each do |i|
           @artist_image = @artist.artist_images.create!(:image => i)
-        end
+       end
       end
       redirect_to artist_path(@artist)
 
