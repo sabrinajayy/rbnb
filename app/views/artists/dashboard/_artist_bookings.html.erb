@@ -25,37 +25,10 @@
           </div>
         </div>
         <div class="row">
-        <div class="col-xs-12">
-            <div class="artist-quotes dash-bookings">
-              <h2>Active Quotes</h2>
-              <div class="client-event">
-                <div class="row">
-                  <div class="col-xs-12 col-md-2">
-                  <% @my_bids.each do |bid| %>
-                    <%= image_tag bid.consumer_event.user.consumer.profile_img, class:'avatar hidden-xs' %>
-                    </div>
-                    <div class="col-xs-8 col-md-7">
-
-                      <h3><%= bid.message %></h3>
-                      <p>Oct 12, 2017 - Barcelona, ES</p>
-                       <%= link_to "View this event", consumer_consumers_event_path(bid.consumer_event.user.consumer, bid.consumer_event) %>
-                    </div>
-                    <div class="col-xs-4 col-md-3">
-                      <div class="artist-quote-price">
-                        <h5>Your bid: <%= bid.offer_price %></h5>
-                        <h3><%= bid.status %></h3>
-
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-              <%= link_to 'Browse Gigs Near You', eventsearch_path(@artist.id), class: 'btn-pamprd' %>
-            </div>
+        <div class="col-xs-12 ">
+          <%= render partial: 'shared/bid_card' %>
           </div>
         </div>
-
-          </div>
 
 
 

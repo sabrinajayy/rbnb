@@ -1,20 +1,19 @@
-<%  @events.each do |event|  %>
-<div class="dash-bookings">
-<%#= link_to "View details", consumer_consumers_event_path(event.user.consumer, event) %>
-<h3> <%= event.location %> </h3>
-<h3> <%= event.date %> </h3>
-<h3> <%= event.description %> </h3>
-<h3> <%= event.tags %> </h3>
-<h3> <%= event.budget %> </h3>
+<div class="event-search-container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-7">
+      <div class="event-search-results">
+        <!-- insert search_event_card partial here -->
+        <%= render 'shared/search_event_card' %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-5">
+      <div class="event-search-map hidden-xs">
+        <!-- insert google map here -->
 
-<% if !event.artist_requests.any? {|e| e.artist == @artist } %>
-<%= link_to "Apply for this gig!", create_artist_request_path(@artist), "data-toggle" => "modal", 'data-target'=>"#requestModal#{event.id}" %>
-<%= render 'artist_requests/new', event: event %>
-<% else %>
-  <p>Already Bidded</p>
-  <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-<% end %>
 
 
 

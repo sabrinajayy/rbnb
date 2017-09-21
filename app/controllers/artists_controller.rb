@@ -19,7 +19,6 @@ class ArtistsController < ApplicationController
       @time_blocks_by_date = time_blocks.group_by { |i| i.date.to_date}
     end
     @my_bids = ArtistRequest.where(artist: @artist)
-
   end
 
   def eventsearch
@@ -57,6 +56,7 @@ class ArtistsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -120,6 +120,8 @@ class ArtistsController < ApplicationController
   end
 
   def artist_params
-    params.require(:artist).permit(:first_name, :last_name, :bio, :location, :tags, :travel_range, :instagram_handle, :category, :photo, :photo_cache, {artist_service: []}, artist_images_attributes: [:id, :artist_id, :image, :image_cache])
+    params.require(:artist).permit(:first_name, :last_name, :bio, :location, :tags, :travel_range, :instagram_handle, :category, :photo, :photo_cache, {artist_service: []})
   end
 end
+
+# , artist_images_attributes: [:id, :artist_id, :image, :image_cache]
