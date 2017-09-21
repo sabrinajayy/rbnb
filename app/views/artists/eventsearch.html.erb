@@ -6,12 +6,13 @@
         <%= render 'shared/search_event_card' %>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-5">
-      <div class="event-search-map hidden-xs">
-        <!-- insert google map here -->
 
-      </div>
+    <div class="col-xs-12 col-sm-5">
+        <div class="event-search-map hidden-xs" style="height: 100vh; position: sticky;" id="searchmap">
+            <%= render 'shared/searchmap' %>
+        </div>
     </div>
+
   </div>
 </div>
 
