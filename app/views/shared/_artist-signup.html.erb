@@ -20,8 +20,13 @@
   <%#= f.input :photo, label: "Upload your profile photo" %>
   <%#= f.input :photo_cache, as: :hidden %>
 
-  <%= f.label :artist_services, "Which specific services do you offer? Select at least one."%>
-  <%= f.input :artist_services, collection: ['full face makeup', 'wedding makeup', 'blowout', 'hair styling'], placeholder: 'Category', wrapper_html: { class: 'form-group checkbox-group required' }, :as => :check_boxes, include_hidden: false %>
+
+
+  <%= f.fields_for :artist_services, ArtistService.new do |service| %>
+      <%= service.label :name, "Which specific services do you offer? Select at least one."%>
+     <%= service.input :name, placeholder: 'Makeup Application'%>
+      <%= service.input :price, placeholder: '$75'%>
+   <% end %>
 
   <%= f.input :bio, required: false %>
   <%= f.input :tags, required: false %>
