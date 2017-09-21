@@ -80,7 +80,6 @@ class ArtistsController < ApplicationController
       end
     end
     @artist.update(artist_params)
-    raise
     redirect_to artist_path(@artist)
   end
 
