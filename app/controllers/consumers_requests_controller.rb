@@ -56,7 +56,7 @@ class ConsumersRequestsController < ApplicationController
     @consumer_request.status = 'confirmed'
     @consumer_request.save
 
-    TimeBlock.create(artist: @consumer_request.artist, date: @consumer_request.date, consumer_request: @consumer_request )
+    TimeBlock.create(artist: @consumer_request.artist, date: @consumer_request.date, consumer_request: @consumer_request, end_date: @consumer_request.date.advance(hours: 1) )
 
     redirect_to artist_path(@artist)
   end

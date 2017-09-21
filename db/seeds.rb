@@ -51,15 +51,7 @@ ArtistService.create(name: "Special FX",price: 75.0,artist: artist_sarah)
 ArtistService.create(name: "Wedding Day Service",price: 250.0,artist: artist_sarah)
 ArtistService.create(name: "Lesson", price: 50.0,artist: artist_sarah)
 puts
-puts "seeding 20 user artists"
-puts "please wait"
-20.times do
-  user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
-  artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: 'tagtagtag', location: locations.sample , category: categories.sample, travel_range: 20, rating: 2.9 })
-  5.times do
-    ArtistService.create(name: Faker::Commerce.product_name, price: Faker::Commerce.price, artist: artist )
-  end
-end
+#
 # seed hero user
 hero_user = User.create(email: 'hero@hero.com', password: 'password')
 Consumer.create(user: hero_user, first_name: 'Bruce', last_name: 'Wayne', city: 'Milan', phone_number: '500-500-500', instagram: '@secret_hero')
@@ -73,7 +65,7 @@ end
 
 puts "Creating reviews for Sarah"
 ['special', 'gracious', 'ugly', 'messy', 'stupid','giant'].each do |word|
-  booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.new(2017, 8, rand(10)), status: 'confirmed')
+  booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.new(2017, 8, rand(12)+1), status: 'confirmed')
   Review.create(
                 content: "She did my makeup and she was #{word}",
                 rating: rand(5).to_f,
@@ -96,13 +88,28 @@ ArtistRequest.new(offer_price: 50.0, artist: artist_sarah, consumer_event: event
 puts
 puts "Ensuring that Sarah will always be busy today in the morning"
 booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.change(hour: 11), status: 'confirmed')
-TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
+TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking, end_date: booking.date.advance(hours: 1))
 puts
 puts "Ensuring that Sarah will always be busy in two days in the afternoon."
 booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.advance(days: 2).change(hour: 15), status: 'confirmed')
-TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
+TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking, end_date: booking.date.advance(hours: 1))
 puts
 puts "Ensuring that Sarah will always be busy in three days in the evening."
 booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.advance(days: 3).change(hour: 22), status: 'confirmed')
-TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking)
+TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking, end_date: booking.date.advance(hours: 1))
+
+
+
+
+
+
+# puts "seeding 20 user artists"
+# puts "please wait"
+# 20.times do
+#   user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
+#   artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: 'tagtagtag', location: locations.sample , category: categories.sample, travel_range: 20, rating: 2.9 })
+#   5.times do
+#     ArtistService.create(name: Faker::Commerce.product_name, price: Faker::Commerce.price, artist: artist )
+#   end
+# end
 
