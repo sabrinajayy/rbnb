@@ -1,0 +1,88 @@
+.client-event-details {
+  background-color: #FFF;
+  padding: 40px;
+  margin: 20px 10px;
+  -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  width: 100%;
+}
+
+.client-event-details h1 {
+  border-bottom: 3px solid $pink;
+  padding-bottom: 5px;
+}
+
+
+.client-event-tags {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.request-card {
+  background-color: #FFF;
+  padding: 15px 10px;
+  margin-top: 20px;
+  margin-right: 40px;
+  -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  width: 100%;
+}
+
+.request-card .col-sm-6 {
+  padding: 0px !important;
+}
+
+.artist-info {
+  padding: 0px;
+  line-height: 16px;
+}
+
+.artist-info a {
+  color: #757575;
+  &:hover {
+    color: $pink;
+  }
+}
+
+.bid-price {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 20px;
+  color: $pink;
+}
+
+.bid-date {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.bid-amount {
+  text-align: center;
+}
+
+.bid-amount p {
+  margin-bottom: 0px;
+}
+
+.bid-amount i {
+  color: #757575;
+  opacity: 0.5;
+  padding: 20px 15px;
+}
+
+ .accept-artist {
+    &:hover {
+      opacity: 1;
+      color: green;
+    }
+  }
+
+   .decline-artist {
+    &:hover {
+      opacity: 1;
+      color: red;
+    }
+  }
