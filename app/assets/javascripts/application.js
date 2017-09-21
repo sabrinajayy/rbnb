@@ -17,11 +17,11 @@ $(window).scroll(function () {
 if ($(window).scrollTop() > 50) {
   $('.transparent.navbar-wagon').css('background','white');
   $('.transparent a').css('color','#757575');
-  $('.navbar-wagon').removeClass('transparent');
+  $('.transparent.navbar-wagon').removeClass('transparent');
 
 }
 else {
-  $('.navbar-wagon').addClass('transparent');
+  $('.transparent.navbar-wagon').addClass('transparent');
   $('.transparent.navbar-wagon').css('background','transparent');
   }
 });
