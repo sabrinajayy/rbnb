@@ -50,8 +50,14 @@
   box-shadow: none !important;
 
 }
-
+.transparent img {
+  filter: invert(100%) !important;
+}
 .transparent a{
+color: white !important;
+}
+
+.transparent h6{
 color: white !important;
 }
 
@@ -62,7 +68,7 @@ text-decoration: none;
 }
 
 .black a {
-color: black !important;
+color: #757575 !important;
 }
 
 .black a:hover {
