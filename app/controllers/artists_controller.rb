@@ -71,15 +71,16 @@ class ArtistsController < ApplicationController
   end
 
   def update
-    # raise
-    prices = [15.0, 43.50, 87.99, 33.10, 45.85, 60.99]
+
+    # prices = [15.0, 43.50, 87.99, 33.10, 45.85, 60.99]
 
     if params[:artist][:artist_services]
-      params[:artist][:artist_services].each do |service|
-        ArtistService.create({ name: service, price: prices.sample.to_f, artist: @artist})
+      params[:artist][:artist_services].each do |service, price|
+        ArtistService.create({ name: service, price: price, artist: @artist})
       end
     end
     @artist.update(artist_params)
+    raise
     redirect_to artist_path(@artist)
   end
 
