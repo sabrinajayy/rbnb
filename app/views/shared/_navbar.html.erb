@@ -8,6 +8,10 @@
 
     <% if user_signed_in? %>
       <% if current_user.is_artist? %>
+        <!-- Left Navigation -->
+        <!-- <div class="navbar-wagon-left">
+          <%#= render 'shared/event_search_bar' %>
+        </div> -->
         <!-- Right Navigation -->
         <div class="navbar-wagon-right">
           <h6><strong>Hello, <%= current_user.artist.first_name %>!</strong></h6>

@@ -1,0 +1,8 @@
+<div class="event-search-form">
+  <%= form_tag('/artists/#{@artist}/eventsearch', method: 'get') do  %>
+       <%= text_field_tag :location, nil, placeholder: 'City', class: 'event-search-form', id: 'flat_address' %>
+       <%= text_field_tag :latitude, nil, id: 'searchlat', class: 'hidden' %>
+       <%= text_field_tag :longitude, nil, id: 'searchlon', class: 'hidden'  %>
+       <%= submit_tag 'browse gigs', class: 'btn-pamprd event-search-form' %>
+  <% end  %>
+</div>
