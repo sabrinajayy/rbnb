@@ -73,7 +73,7 @@ end
 
 puts "Creating reviews for Sarah"
 ['special', 'gracious', 'ugly', 'messy', 'stupid','giant'].each do |word|
-  booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.new(2017, 8, rand(10)), status: 'confirmed')
+  booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.new(2017, 8, (rand(10) + 1), status: 'confirmed')
   Review.create(
                 content: "She did my makeup and she was #{word}",
                 rating: rand(5).to_f,
