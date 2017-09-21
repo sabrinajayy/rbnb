@@ -25,6 +25,17 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:artist_id])
     @events = ConsumerEvent.all.reverse
     @request = ArtistRequest.new
+    @coords = [@artist.latitude, @artist.longitude]
+
+    #map
+
+      @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+        if event.geocoded?
+          marker.lat event.latitude
+          marker.lng event.longitude
+          marker.infowindow render_to_string(partial: "shared/map_box", locals: { event: event })
+        end
+      end
   end
 
   def new

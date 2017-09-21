@@ -1,4 +1,4 @@
 class TimeBlock < ApplicationRecord
   belongs_to :artist
-  belongs_to :consumer_request
+  belongs_to :consumer_request, dependent: :destroy
 end
