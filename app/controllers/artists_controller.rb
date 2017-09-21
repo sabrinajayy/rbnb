@@ -106,7 +106,7 @@ class ArtistsController < ApplicationController
     elsif !params[:date].empty?
 
       results_by_cat = Artist.where(category: service)
-      raise
+      
       @results = results_by_cat.reject do |artist|
         # ReturnAvailableArtists.new(params, artist).call
 
