@@ -26,5 +26,9 @@ class ConsumerRequest < ApplicationRecord
     self.date < Time.now
   end
 
+  def consumer
+    Consumer.find_by(user_id: self.user_id)
+  end
+
 end
 
