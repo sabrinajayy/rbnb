@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="consumer-event-info">
+      <div class="all-event-info">
+        <h1>Your Event Details</h1>
+        <p><em>Date posted: <%= @consumer_event.created_at.strftime('%b %d %Y') %></em></p>
+        <p class="client-event-budget"><b>Budget:</b> $<%= @consumer_event.budget.to_i %></p>
+        <p><b>Event Date:</b> <%= @consumer_event.date.strftime('%b %d %Y') %></p>
+        <p><b>Time:</b> <%= @consumer_event.date.strftime('%I:%M%p') %></p>
+        <p><b>Address:</b> <%= @consumer_event.location %> </p>
+        <p class="event-description">"<%= @consumer_event.description %>"</p>
+        <p class="client-event-tags"><%= @consumer_event.tags %></p>
+      </div>
+    </div>
+  </div>
+</div>

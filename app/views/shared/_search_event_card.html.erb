@@ -13,6 +13,7 @@
         <p> <%= event.date.strftime('%b %d %Y - %I:%M%p') %> </p>
         <p> <%= event.location %> </p>
         <p> <%= event.tags %> </p>
+        <p>Date posted: <%= event.created_at.strftime('%b %d %Y') %></p>
       </div>
 
       <div class="col-xs-12 col-sm-3">
@@ -26,7 +27,7 @@
           <% else %>
           <i class="fa fa-check fa-2x" aria-hidden="true"></i>
             <h3>Already Quoted</h3>
-            <p class="event-budget">(Budget: $<%= event.budget %>)</p>
+            <p class="event-budget">(Budget: $<%= event.budget.to_i %>)</p>
             <% end %>
         </div>
       </div>
