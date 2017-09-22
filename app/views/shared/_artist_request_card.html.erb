@@ -1,0 +1,62 @@
+<% if current_user.consumer %>
+  <% @artist_requests.each do |request| %>
+    <div class="request-card">
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          <!--artist photo -->
+          <%= link_to artist_path(request.artist.id) do %>
+            <%= image_tag request.artist.photo, class: 'avatar-large' %>
+          <% end %>
+        </div>
+        <div class="col-xs-12 col-sm-7">
+          <!-- artist name and message -->
+          <div class="artist-info">
+            <%= link_to artist_path(request.artist.id) do %>
+              <h2><%= request.artist.first_name %> <%= request.artist.last_name %></h2>
+            <% end %>
+            <p class="bid-price">$<%= request.offer_price.to_i %></p>
+            <p><%= request.message.first(40) %>...<button type="button" class="btn-event" data-toggle="modal" data-target="#myModal">view</button></p>
+            <p class="bid-date">Date submitted: <%= request.created_at.strftime('%b %d %Y') %></p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <!-- artist quote and accept/decline btns -->
+          <div class="bid-amount">
+
+            <%= link_to  accept_artist_request_path(request.artist, request), :method => :patch do %>
+              <i class="fa fa-check fa-2x accept-artist" aria-hidden="true"></i>
+            <% end %>
+            <%= link_to decline_artist_request_path(request.artist, request), :method => :patch do %>
+              <i class="fa fa-times fa-2x decline-artist" aria-hidden="true"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- popup when client clicks artist quote -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><%= request.artist.first_name %>'s Quote</h4>
+          </div>
+          <div class="modal-body">
+            <p class="bid-price">$<%= request.offer_price.to_i %></p>
+            <p><%= request.message %></p>
+            <p class="bid-date">Date submitted: <%= request.created_at.strftime('%b %d %Y') %></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn-pamprd" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <% end %>
+<% end %>
+
+
+

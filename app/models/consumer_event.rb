@@ -3,7 +3,8 @@ class ConsumerEvent < ApplicationRecord
   has_many :artist_requests
 
   geocoded_by :location
-  after_validation :geocode, if: :location_changed?
+  # after_validation :geocode, if: :location_changed?
+   after_validation :geocode
 
   # def confirmed?
   #   status == 'confirmed'

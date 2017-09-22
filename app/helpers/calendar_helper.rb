@@ -1,9 +1,9 @@
 module CalendarHelper
-  def calendar(date = Date.today, &block)
-    Calendar.new(self, date, block).table
+  def calendar(date = Date.today, block_times = nil, &block)
+    Calendar.new(self, date, block_times, block).table
   end
 
-  class Calendar < Struct.new(:view, :date, :callback)
+  class Calendar < Struct.new(:view, :date, :block_times, :callback)
     HEADER = %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday]
     START_DAY = :Sunday
 
@@ -34,7 +34,12 @@ module CalendarHelper
     end
 
     def day_classes(day)
+      block_times_for_day = block_times[day.to_date]
       classes = []
+      if block_times_for_day
+        classes << "hasblocks" if block_times_for_day
+        classes << "reserved_day" if block_times_for_day.any? { |bt| bt.all_day? }
+      end
       classes << "today" if day == Date.today
       classes << "notmonth" if day.month != date.month
       classes.empty? ? nil : classes.join(" ")
@@ -45,6 +50,8 @@ module CalendarHelper
       last = date.end_of_month.end_of_week
       (first..last).to_a.in_groups_of(7)
     end
+
+
   end
 end
 

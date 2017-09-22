@@ -1,7 +1,7 @@
 class ConsumerRequest < ApplicationRecord
   belongs_to :artist
   has_many :messages
-  has_one :time_block
+  has_one :time_block, dependent: :destroy
   has_one :review, dependent: :destroy
 
 
@@ -24,6 +24,10 @@ class ConsumerRequest < ApplicationRecord
 
   def is_past?
     self.date < Time.now
+  end
+
+  def consumer
+    Consumer.find_by(user_id: self.user_id)
   end
 
 end

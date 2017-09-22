@@ -1,0 +1,59 @@
+.event-search-results {
+  margin-bottom: 30px;
+}
+
+.consumer-event {
+  background-color: #fff;
+  padding: 20px 20px;
+  margin: 20px 5px 5px 5px;
+  -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+}
+
+.consumer-event h2 {
+  font-size:18px;
+  margin-bottom: 5px;
+  display: inline;
+}
+
+.consumer-event h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.consumer-event i {
+  padding: 10px 0px 0px 0px;
+  display: inline;
+}
+
+.btn-event {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: transparent !important;
+  border-style: none;
+  color: #757575;
+  opacity: 0.8;
+  border-radius: 2px;
+  display: inline;
+  padding: 7px px;
+  &:hover {
+    opacity: 1;
+    color: $pink;
+  }
+}
+
+.event-budget {
+  font-style: italic;
+}
+
+.event-price {
+  text-align: center;
+}
+
+.event-price .btn-pamprd {
+  margin-top: 20px;
+}

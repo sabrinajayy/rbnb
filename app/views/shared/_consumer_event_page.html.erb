@@ -1,0 +1,19 @@
+<div class="event-container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <div class="client-event-details">
+        <!-- event details card goes here -->
+        <%= render 'shared/consumer_event_info_card' %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <div class="client-artist-quotes">
+        <!-- artist requests (quotes) go here -->
+        <h2>Quotes (<%= @artist_requests.size %>)</h2>
+        <%= render 'shared/artist_request_card' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
