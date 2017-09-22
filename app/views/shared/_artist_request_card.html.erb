@@ -22,13 +22,21 @@
         <div class="col-xs-12 col-sm-3">
           <!-- artist quote and accept/decline btns -->
           <div class="bid-amount">
+            <% if request.status == 'accepted' %>
+              <i class="fa fa-check" aria-hidden="true"></i> <p class='quote-status'>accepted</p>
+            <% elsif request.status == 'declined' %>
+              <i class="fa fa-times" aria-hidden="true"></i> <p class='quote-status'>declined</p>
+            <% else %>
+              <div class="choice-btns">
+                <%= link_to  accept_artist_request_path(request.artist, request), :method => :patch do %>
+                  <i class="fa fa-check fa-2x accept-artist" aria-hidden="true"></i>
+                <% end %>
+                <%= link_to decline_artist_request_path(request.artist, request), :method => :patch do %>
+                  <i class="fa fa-times fa-2x decline-artist" aria-hidden="true"></i>
+                <% end %>
+              </div>
+            <% end %>
 
-            <%= link_to  accept_artist_request_path(request.artist, request), :method => :patch do %>
-              <i class="fa fa-check fa-2x accept-artist" aria-hidden="true"></i>
-            <% end %>
-            <%= link_to decline_artist_request_path(request.artist, request), :method => :patch do %>
-              <i class="fa fa-times fa-2x decline-artist" aria-hidden="true"></i>
-            <% end %>
           </div>
         </div>
       </div>

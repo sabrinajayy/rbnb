@@ -17,6 +17,8 @@ class ArtistsController < ApplicationController
     unless TimeBlock.where(artist: @artist).empty?
       time_blocks = TimeBlock.where(artist: @artist)
       @time_blocks_by_date = time_blocks.group_by { |i| i.date.to_date}
+    else
+      @time_blocks_by_date = {}
     end
     @my_bids = ArtistRequest.where(artist: @artist)
   end
