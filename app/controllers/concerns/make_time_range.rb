@@ -6,6 +6,7 @@ class MakeTimeRange
 
   def call
     range_from(given_segment_for(given_day))
+
   end
 
   private

@@ -80,11 +80,12 @@ class ArtistsController < ApplicationController
 
     # consider adding a specific time to the search bar as we can now search by that
     # using ReturnAvailableArtists.new(params, artist).call
-
+    # raise
     begin
-      time_range = MakeTimeRange(params[:date], params[:time]).call
+      time_range = MakeTimeRange.new(params[:date], params[:time]).call
     rescue
     end
+    # raise
 
     # by location and date and service (always filled in)
     if !location.empty? && !params[:date].empty?
