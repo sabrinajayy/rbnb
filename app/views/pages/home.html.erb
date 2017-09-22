@@ -1,4 +1,27 @@
 <!-- <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p> -->
+<% content_for(:after_js) do %>
+    <%= javascript_tag do %>
+
+        $(function(){
+            $(window).scroll(function () {
+            if  ($(window).scrollTop() < 50) {
+              $('.navbar-wagon').css('background','transparent');
+              $('.navbar-wagon').addClass('transparent');
+            }
+
+            else {
+              $('.transparent.navbar-wagon').css('background','white');
+              $('.transparent a').css('color','#757575');
+              $('.transparent.navbar-wagon').removeClass('transparent');
+            }
+
+            });
+        });
+
+    <% end %>
+<% end %>
+
 <%= render 'shared/banner'%>
 <%= render 'shared/info_card'%>
+
