@@ -7,6 +7,14 @@
   padding-left: 0px;
 }
 
+.booking-container .panel-heading {
+  background-color: white;
+}
+
+.panel-heading h4 {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .user-profile {
   background-color: #FFF;
   padding: 40px;
@@ -22,8 +30,20 @@
   letter-spacing: 0.3px;
 }
 
+// .user-profile .btn-pamprd {
+//   font-size: 12px;
+//   padding: 5px 10px;
+// }
+
 .profile-pic {
   width: 100%;
   height: auto;
   margin-bottom: 20px;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .client-profile-container {
+    padding: 10px;
+  }
 }
