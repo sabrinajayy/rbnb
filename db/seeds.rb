@@ -131,7 +131,7 @@ event_users.each { |i| Consumer.create(user: i, first_name: Faker::Name.first_na
 event_users.each_with_index { |user, i| ConsumerEvent.create(location: event_locations[i], service: 'makeup', description: event_descriptions[i], user: user, date: event_dates[i], budget: rand(20) * 10) }
 
 puts "Creating a new event, with two artist requests: one from Sarah and the other from a rival artist."
-event = ConsumerEvent.create(location: 'Carrer de Ferran, 57, Barcelona', service: 'makeup', description: "Daughter's Birthday Party", user: hero_user, date: DateTime.now.advance(days: 1))
+event = ConsumerEvent.create(location: 'Carrer de Ferran, 57, Barcelona', service: 'makeup', description: "Daughter's Birthday Party", budget: 50, user: hero_user, date: DateTime.now.advance(days: 1))
 
 
 # puts "Creating an Artist Request from Sarah to work Hero user's event"
