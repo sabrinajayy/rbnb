@@ -9,23 +9,11 @@
 //= require jquery.timepicker.js
 //= require google_maps_autocomplete.js
 //= require jquery.validate
+//= require consumer_event.js
 //= require_tree .
 
 $(function(){
 
-$(window).scroll(function () {
-if ($(window).scrollTop() < 50) {
-  $('.navbar-wagon').css('background','transparent');
-  $('.navbar-wagon').addClass('transparent');
-
-}
-else {
-  $('.transparent.navbar-wagon').css('background','white');
-  $('.transparent a').css('color','#757575');
-  $('.transparent.navbar-wagon').removeClass('transparent');
-}
-
-});
 
   // datepicker and timepicker functions:
   init_datepick();

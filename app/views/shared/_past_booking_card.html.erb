@@ -1,53 +1,39 @@
-<% @past.sort_by(&:date).each do |booking| %>
-<div class="col-xs-12">
-  <div class="col-xs-12 col-sm-2">
-    <!-- stylist photo -->
-    <%= cl_image_tag booking.artist.photo, class: 'avatar-large', width: 300, height: 300, crop: :fill %>
-  </div>
-  <div class="col-xs-12 col-sm-7">
-    <!-- appt info -->
-    <p><%=booking.date.strftime('%b %d %Y, %I:%M%p') %></p>
-  </div>
-  <div class="col-xs-12 col-sm-3">
-    <!-- status and links -->
-  </div>
-</div>
+<% @past.sort_by(&:date).reverse.each do |booking| %>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="col-xs-12 col-sm-2">
+        <!-- stylist photo -->
+        <%= cl_image_tag booking.artist.photo, class: 'avatar-large hidden-xs', width: 300, height: 300, crop: :fill %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <!-- appt info -->
+        <%= link_to artist_path(booking.artist.id) do %>
+          <p><%=booking.artist.first_name%> <%=booking.artist.last_name%></p>
+        <% end %>
+        <%= link_to artist_consumers_request_path(booking.artist, booking) do %>
+          <p><%=booking.date.strftime('%b %d %Y, %I:%M%p') %></p>
+          <p><%=booking.address%></p>
+        <% end %>
 
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <!-- status and links -->
 
-<div class="col-xs-12 col-sm-4">
-  <div class="booking-card">
-    <div class="booking-bkgrd-image card__image--flowers"></div>
-    <div class="booking-user-image">
-      <%= cl_image_tag booking.artist.photo, class: 'booking-card-user', width: 300, height: 300, crop: :fill %>
-      <!-- <img class="booking-card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
-    </div>
-    <div class="booking-card-content">
-      <div class="booking-name">
-      <%= link_to artist_path(booking.artist.id) do %>
-        <p><%=booking.artist.first_name%> <%=booking.artist.last_name%></p>
+        <% if !booking.review %>
+          <%= link_to "Review #{booking.artist.first_name}", new_consumer_review_path(booking), class: 'btn-pamprd', "data-toggle" => "modal", 'data-target'=>"#exampleModal#{booking.id}"  %>
+          <!-- Modal -->
+          <%= render 'reviews/new', booking: booking %>
+
+        <% else %>
+            <!-- edit -->
+            <%= link_to 'Edit Review', edit_consumer_review_path(@consumer, booking.review), "data-toggle" => "modal", 'data-target'=>"#exampleModal#{booking.id}"  %>
+            <%= render 'reviews/edit', booking: booking, review: booking.review%>
+
+            <!-- delete - it is in the edit form -->
+            <%#= link_to 'Delete Review', consumer_review_path(@consumer, booking.review), method: :delete, data: {confirm: "Are you sure?" } %>
         <% end %>
       </div>
-      <p class="card__text"><%=booking.address%> | <%=booking.date %> @ <%=booking.time %></p>
-      <p class="card__text"><%=booking.servicename%> - $<%=booking.final_price %></p>
-      <p class="booking-status">Completed</p>
-      <!-- <button class="btn-pamprd">View Booking</button> -->
-      <%= button_to "View Booking", artist_consumers_request_path(booking.artist, booking), :class => "btn-pamprd", :method => :get %>
-      <br>
-
-      <% if !booking.review %>
-        <%= link_to 'Review me', new_consumer_review_path(booking), "data-toggle" => "modal", 'data-target'=>"#exampleModal#{booking.id}"  %>
-        <!-- Modal -->
-        <%= render 'reviews/new', booking: booking %>
-
-      <% else %>
-          <!-- edit -->
-          <%= link_to 'Edit your review', edit_consumer_review_path(@consumer, booking.review), "data-toggle" => "modal", 'data-target'=>"#exampleModal#{booking.id}"  %>
-          <%= render 'reviews/edit', booking: booking, review: booking.review%>
-
-          <!-- delete -->
-          <%= link_to 'Delete your review', consumer_review_path(@consumer, booking.review), method: :delete, data: {confirm: "Are you sure?" } %>
-      <% end %>
     </div>
   </div>
-</div>
 <% end %>
+
