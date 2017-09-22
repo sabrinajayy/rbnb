@@ -6,11 +6,11 @@ class MakeTimeRange
 
   def call
     range_from(given_segment_for(given_day))
+
   end
 
   private
   def given_day
-
     data = @day.split('-').map { |i| i.to_i }
     DateTime.new(data[0], data[1], data[2])
   end

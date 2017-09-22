@@ -10,13 +10,16 @@ class TestArtistAvailability
   end
 
   def call
-    fits_in
+    space_in_gaps?
   end
 
   private
-  def fits_in
+  def space_in_gaps?
     @gaps.any? do |segment|
       (segment.cover? @request_start.advance(minutes: -30)) && (segment.cover? @request_finish.advance(minutes: 30))
     end
+  end
+
+  def after_last_block?
   end
 end
