@@ -65,7 +65,9 @@ ArtistService.create(name: "Wedding Day Service",price: 250.0,artist: artist_sar
 ArtistService.create(name: "Lesson", price: 50.0,artist: artist_sarah)
 puts
 
+
 puts "Creating and artist called Angelo"
+user = User.create({ email: 'angelo@angelo.com', password: 'password' })
 artist_angelo = Artist.create({ user: user,
                          first_name: 'Angelo',
                          last_name: 'Cervantes',
