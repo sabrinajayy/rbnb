@@ -22,6 +22,12 @@
   border-radius: 50%;
 }
 
+/*Left Section - Artist */
+.navbar-wagon-left {
+  align-items: left;
+  justify-content: space-between;
+}
+
 /* Right section */
 .navbar-wagon-right {
   display: flex;
@@ -50,8 +56,14 @@
   box-shadow: none !important;
 
 }
-
+.transparent img {
+  filter: invert(100%) !important;
+}
 .transparent a{
+color: white !important;
+}
+
+.transparent h6{
 color: white !important;
 }
 
@@ -62,7 +74,7 @@ text-decoration: none;
 }
 
 .black a {
-color: black !important;
+color: #757575 !important;
 }
 
 .black a:hover {

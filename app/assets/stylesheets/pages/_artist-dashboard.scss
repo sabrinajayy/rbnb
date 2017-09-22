@@ -55,9 +55,7 @@ h2 {
   font-size: 12px;
 }
 
-.artist-quotes {
-  padding: 20px 15px 20px 15px;
-}
+/*active quotes */
 
 .artist-quotes h2 {
   font-family: 'Open Sans', sans-serif;
@@ -67,30 +65,46 @@ h2 {
 .client-event {
   margin-top: 10px;
   margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(220,224,244,0.4);
 }
 
-.client-event h3 {
+.client-event p {
   font-size: 14px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   margin-bottom: 0px;
 }
 
-.client-event p {
-  font-size: 12px;
+.event-header {
+  font-weight: 600 !important;
+}
+
+.consumer-event-info {
+  font-size: 14px;
+}
+
+.consumer-event-info a {
+  color: #757575;
+  &:hover {
+    color: $pink;
+  }
 }
 
 .artist-quote-price {
+  font-size: 18px;
+  font-weight: 600 !important;
+}
+
+.artist-bid-section {
   text-align: center;
 }
 
-.artist-quote-price h3 {
-  font-size: 18px;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
-  color: $pink;
+.artist-quotes button {
+  margin-top: 40px;
 }
 
+/*new requests (not answered yet) */
 .new-requests {
 
 }
@@ -106,6 +120,7 @@ h2 {
   margin-top: 10px;
 }
 
+/*upcoming bookings */
 
 .upcoming-bookings {
 
@@ -116,14 +131,6 @@ h2 {
   font-weight: 600;
 }
 
-.booking-list ul {
-  list-style-type: none;
-  padding-left: 0px;
-}
-
-.booking-list li {
-  list-style-type: none;
-}
 
 /*CALENDAR SECTION */
 

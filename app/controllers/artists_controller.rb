@@ -19,13 +19,23 @@ class ArtistsController < ApplicationController
       @time_blocks_by_date = time_blocks.group_by { |i| i.date.to_date}
     end
     @my_bids = ArtistRequest.where(artist: @artist)
-
   end
 
   def eventsearch
     @artist = Artist.find(params[:artist_id])
     @events = ConsumerEvent.all.reverse
     @request = ArtistRequest.new
+    @coords = [@artist.latitude, @artist.longitude]
+
+    #map
+
+      @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+        if event.geocoded?
+          marker.lat event.latitude
+          marker.lng event.longitude
+          marker.infowindow render_to_string(partial: "shared/map_box", locals: { event: event })
+        end
+      end
   end
 
   def new
@@ -57,15 +67,16 @@ class ArtistsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
-    # raise
-    prices = [15.0, 43.50, 87.99, 33.10, 45.85, 60.99]
+
+    # prices = [15.0, 43.50, 87.99, 33.10, 45.85, 60.99]
 
     if params[:artist][:artist_services]
-      params[:artist][:artist_services].each do |service|
-        ArtistService.create({ name: service, price: prices.sample.to_f, artist: @artist})
+      params[:artist][:artist_services].each do |service, price|
+        ArtistService.create({ name: service, price: price, artist: @artist})
       end
     end
     @artist.update(artist_params)
@@ -122,6 +133,8 @@ class ArtistsController < ApplicationController
   end
 
   def artist_params
-    params.require(:artist).permit(:first_name, :last_name, :bio, :location, :tags, :travel_range, :instagram_handle, :category, :photo, :photo_cache, {artist_service: []}, artist_images_attributes: [:id, :artist_id, :image, :image_cache])
+    params.require(:artist).permit(:first_name, :last_name, :bio, :location, :tags, :travel_range, :instagram_handle, :category, :photo, :photo_cache, {artist_service: []})
   end
 end
+
+# , artist_images_attributes: [:id, :artist_id, :image, :image_cache]

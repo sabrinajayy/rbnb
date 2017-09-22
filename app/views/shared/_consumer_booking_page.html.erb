@@ -8,7 +8,13 @@
              <%= cl_image_tag(@artist.photo, class: "artist-profile-pic") %>
               <h2><%= @artist.first_name %> <%= @artist.last_name %></h2>
             <% end %>
-              <p><%= @artist.rating%></p>
+              <ul class="list-inline profile-rating">
+              <% if @artist.rating > 0.0 %>
+                <% @artist.rating.round.times do %>
+                  <li><i style="padding: 0;" class="fa fa-star"></i></li>
+                <% end %>
+              <% end %>
+              </ul><p>(<%= @artist.rating %>)</p>
           </div>
 
           <div class="booking-info text-center">

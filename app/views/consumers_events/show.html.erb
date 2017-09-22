@@ -1,47 +1,7 @@
 <!-- @consumer_event -->
 <!-- @artist_request -> this is an empty, new ArtistRequest instance can be used when viewed by artist to populate a form_for etc. -->
+<%= link_to "Back to all bookings", :back %>
 
-<div class="booking-container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-5">
-    <%= link_to "Back to all bookings", :back %>
-    <br><br><br>
-      <%= @consumer_event.location %> <br>
-      <%= @consumer_event.date %> <br>
-      <%= @consumer_event.description %> <br>
-      <%= @consumer_event.tags %> <br>
-      <%= @consumer_event.budget %> <br>
+<%= render 'shared/consumer_event_page' %>
 
-      <!-- only show artist requests and buttons to consumer -->
-      <% if current_user.consumer %>
-        <h3>Requests from Artists</h3>
-        <% @artist_requests.each do |request| %>
-        <div class="dash-bookings">
-        <p>Artist Name: <%= request.artist.first_name %></p>
-        <p>Their offer: <%= request.offer_price %> </p>
-        <p>Their message: <%= request.message %> </p>
 
-        <% if request.status == 'pending' %>
-        <!-- show accept/decline buttons if status pending -->
-          <i class="fa fa-clock-o fa-4x" aria-hidden="true"></i>
-          <p class="unconfirmed">Pending</p>
-          <%= button_to  "Accept", accept_artist_request_path(request.artist, request),
-        :class => "booking-status accept btn-pamprd", :method => :patch%><nobr>
-          <%= button_to  "Decline", decline_artist_request_path(request.artist, request),
-        :class => "booking-status cancel btn-pamprd", :method => :patch%>
-        <% elsif request.status == 'declined'%>
-        <!-- show declined status with no buttons -->
-          <i class="fa fa-star-o" aria-hidden="true"></i>
-          <p class="unconfirmed">Declined</p>
-        <% else %>
-        <!-- show accepted status with no buttons -->
-          <i class="fa fa-check-circle fa-5x" aria-hidden="true"></i>
-          <p class="unconfirmed">Confirmed</p>
-        <% end %>
-        <% end %>
-         </div>
-      <% end %>
-
-    </div>
-  </div>
-</div>

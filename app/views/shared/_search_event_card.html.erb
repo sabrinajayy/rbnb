@@ -1,0 +1,66 @@
+<%  @events.each do |event|  %>
+
+  <div class="consumer-event">
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
+        <!-- client photo -->
+        <%= cl_image_tag event.user.consumer.profile_img, class: 'avatar-xlarge hidden-xs', width: 300, height: 300, crop: :fill %>
+      </div>
+
+      <div class="col-xs-12 col-sm-6">
+        <!-- event info -->
+        <h2> <%= event.description.capitalize.first(20) %> <em>...</em> </h2><button type="button" class="btn-event" data-toggle="modal" data-target="#myModal">View full</button>
+        <p> <%= event.date.strftime('%b %d %Y - %I:%M%p') %> </p>
+        <p> <%= event.location %> </p>
+        <p> <%= event.tags %> </p>
+        <p>Date posted: <%= event.created_at.strftime('%b %d %Y') %></p>
+      </div>
+
+      <div class="col-xs-12 col-sm-3">
+        <div class="event-price">
+        <!-- price and submit quote button -->
+
+        <% if !event.artist_requests.any? {|e| e.artist == @artist } %>
+          <h3>Budget: $<%= event.budget %> </h3>
+          <%= link_to "Quote", create_artist_request_path(@artist), "data-toggle" => "modal", 'data-target'=>"#requestModal#{event.id}", class: 'btn-pamprd' %>
+          <%= render 'artist_requests/new', event: event %>
+          <% else %>
+          <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+            <h3>Already Quoted</h3>
+            <p class="event-budget">(Budget: $<%= event.budget.to_i %>)</p>
+            <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Event Description Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Event Details</h4>
+      </div>
+      <div class="modal-body consumer-event">
+        <h3><%= event.date.strftime('%b %d %Y - %I:%M%p') %></h3>
+        <p><%= event.location %></p>
+        <p><%= event.tags %></p>
+        <p><%= event.description %></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-pamprd" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+
+<%#= link_to "View details", consumer_consumers_event_path(event.user.consumer, event) %>
+
+
+
+
