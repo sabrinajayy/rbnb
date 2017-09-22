@@ -1,3 +1,9 @@
+<div class="add-client-event-btn">
+  <%= link_to new_consumer_consumers_event_path(current_user.consumer) do %>
+    Add Event <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
+  <% end %>
+</div>
+
 <div class="client-profile-container">
   <div class="row">
     <div class="col-xs-12 col-sm-3">
@@ -9,21 +15,45 @@
         <p>Instagram: @<%= @consumer.instagram %></p>
 
         <p><%= link_to 'Edit Profile', edit_consumer_path %></p>
+         <%= link_to "Create Event", new_consumer_consumers_event_path(current_user.consumer), class: 'btn-pamprd' %>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-9">
-      <div class="booking-container">
-      <%= link_to "Create your own event", new_consumer_consumers_event_path(current_user.consumer) %>
+  <div class="col-xs-12 col-sm-9">
+    <div class="booking-container">
 
-      <h3>Upcoming Bookings</h3>
-        <div class="row">
-          <% if @confirmed.nil? %>
-            <p>You do not have any upcoming bookings</p>
-          <% else %>
-            <%= render partial: 'shared/confirmed_booking_card' %>
-          <% end %>
+
+<!-- collapsible tabs -->
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingFour">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Upcoming Bookings <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </a>
+        </h4>
+      </div>
+      <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div class="panel-body">
+          <div class="row">
+            <% if @confirmed.nil? %>
+              <p>You do not have any upcoming bookings</p>
+            <% else %>
+              <%= render partial: 'shared/confirmed_booking_card' %>
+            <% end %>
+          </div>
         </div>
-      <h3>Your events</h3>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingThree">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Your Created Events <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div class="panel-body">
           <div class="row">
             <% if @my_events.nil? %>
               <p>You have not created any events yet</p>
@@ -31,8 +61,19 @@
               <%= render partial: 'shared/consumer_event_card' %>
             <% end %>
           </div>
-
-        <h3>Your Pending Bookings</h3>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Pending Bookings <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
           <div class="row">
             <% if @pending.nil? %>
               <p>You not not have any pending bookings</p>
@@ -40,7 +81,19 @@
               <%= render partial: 'shared/unconfirmed_booking_card' %>
             <% end %>
           </div>
-          <h3>Your Past Bookings</h3>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingTwo">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Past Bookings <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="panel-body">
           <div class="row">
             <% if @past.nil? %>
               <p>You not not have any recent bookings</p>
@@ -48,6 +101,23 @@
               <%= render partial: 'shared/past_booking_card' %>
             <% end %>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
       </div>
     </div>
