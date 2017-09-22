@@ -1,9 +1,9 @@
 
-    <% @pending.each do |booking| %>
+    <% @pending.sort_by(&:date).each do |booking| %>
 
     <div class="col-xs-12 col-sm-4">
         <div class="booking-card">
-          <div class="booking-bkgrd-image card__image--fence"></div>
+          <div class="booking-bkgrd-image card__image--flowers"></div>
             <div class="booking-user-image">
             <%= cl_image_tag booking.artist.photo, class: 'booking-card-user', width: 300, height: 300, crop: :fill %>
              <!-- <img class="booking-card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
