@@ -162,7 +162,6 @@ ActiveRecord::Schema.define(version: 20170921183752) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.datetime "end_date"
-    t.string   "type"
     t.string   "category"
     t.index ["artist_id"], name: "index_time_blocks_on_artist_id", using: :btree
     t.index ["consumer_request_id"], name: "index_time_blocks_on_consumer_request_id", using: :btree
