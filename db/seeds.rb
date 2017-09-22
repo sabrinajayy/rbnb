@@ -1,8 +1,10 @@
 require 'date'
 
 ArtistService.destroy_all
+ArtistRequest.destroy_all
 Consumer.destroy_all
 Review.destroy_all
+
 ConsumerRequest.destroy_all
 TimeBlock.destroy_all
 ConsumerEvent.destroy_all
