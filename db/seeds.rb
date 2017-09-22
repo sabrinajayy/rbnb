@@ -1,4 +1,14 @@
 require 'date'
+
+ArtistService.destroy_all
+Consumer.destroy_all
+ConsumerRequest.destroy_all
+Review.destroy_all
+TimeBlock.destroy_all
+ConsumerEvent.destroy_all
+Artist.destroy_all
+User.destroy_all
+
 categories = ['hair', 'makeup', 'hair and makeup']
 locations = ['Barcelona', 'New York', 'Paris']
 
