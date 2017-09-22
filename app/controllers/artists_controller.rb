@@ -84,7 +84,6 @@ class ArtistsController < ApplicationController
   end
 
   def search
-
     service = params[:category]
     location = params[:location]
     long = params[:longitude]
@@ -92,35 +91,28 @@ class ArtistsController < ApplicationController
 
     # consider adding a specific time to the search bar as we can now search by that
     # using ReturnAvailableArtists.new(params, artist).call
-
     begin
-      time_range = MakeTimeRange(params[:date], params[:time]).call
+      time_range = MakeTimeRange.new(params[:date], params[:time]).call
     rescue
     end
 
     # by location and date and service (always filled in)
     if !location.empty? && !params[:date].empty?
-
       results_by_cat = Artist.where(category: service)
-      results_by_cat_and_location = results_by_cat.select { |artist| Geocoder::Calculations.distance_between([lat, long], [artist.latitude, artist.longitude],  ) <= artist.travel_range }
+      results_by_cat_and_location = SearchArtistByLocation.new(results_by_cat, lat, long).call
       @results = results_by_cat_and_location.reject do |artist|
-        # ReturnAvailableArtists.new(params, artist).call
         CheckArtistClashesForSegment.new(artist, time_range).call
       end
 
     elsif !location.empty?
       results_by_cat = Artist.where(category: service)
-      results_by_cat_and_location = results_by_cat.select { |artist| Geocoder::Calculations.distance_between([lat, long], [artist.latitude, artist.longitude],  ) <= artist.travel_range }
+      results_by_cat_and_location = SearchArtistByLocation.new(results_by_cat, lat, long).call
       @results = results_by_cat_and_location
 
     # by date and service
     elsif !params[:date].empty?
-
       results_by_cat = Artist.where(category: service)
-      
       @results = results_by_cat.reject do |artist|
-        # ReturnAvailableArtists.new(params, artist).call
-
         CheckArtistClashesForSegment.new(artist, time_range).call
       end
 
@@ -128,15 +120,16 @@ class ArtistsController < ApplicationController
     else
       @results = Artist.where(category: service)
     end
+  end
 
+  def reserve_day
 
+    # TimeBlock.new(date:, end_date:, artist:).save(:validate => false)
   end
 
   private
   def set_artist
     @artist = Artist.find(params[:id])
-    # may need the below method for edit and update later
-    # @artist = Artist.find(current_user.artist.id)
   end
 
   def artist_params

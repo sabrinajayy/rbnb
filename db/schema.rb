@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921134226) do
+ActiveRecord::Schema.define(version: 20170921183752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(version: 20170921134226) do
     t.datetime "updated_at",          null: false
     t.datetime "end_date"
     t.string   "type"
+    t.string   "category"
     t.index ["artist_id"], name: "index_time_blocks_on_artist_id", using: :btree
     t.index ["consumer_request_id"], name: "index_time_blocks_on_consumer_request_id", using: :btree
   end

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   patch '/artists/:artist_id/artist_request/accept/:id', to: 'artist_requests#accept', as: 'accept_artist_request'
   patch '/artists/:artist_id/artist_request/decline/:id', to: 'artist_requests#decline', as: 'decline_artist_request'
 
+  post '/artist/:artist_id/reserveday', to: 'artist#reserve_day', as: 'reserve_day'
+
     resources :consumers do
       resources :reviews, only: [:new, :edit, :update ,:destroy]
       resources :consumers_events

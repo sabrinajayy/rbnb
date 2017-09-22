@@ -8,11 +8,23 @@ class TimeBlock < ApplicationRecord
   end
 
   def consumer_name
-    self.consumer_request.consumer.first_name
+    if self.consumer_request
+      self.consumer_request.consumer.first_name
+    else
+      'Day Blocked'
+    end
   end
 
   def pretty_time
     self.date.strftime("%H %M")
+  end
+
+  def all_day?
+    self.category == 'all day'
+  end
+
+  def consumer
+    self.consumer_request.consumer
   end
 
 end
