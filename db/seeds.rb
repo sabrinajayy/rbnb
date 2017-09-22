@@ -39,7 +39,8 @@ artist_sarah = Artist.create({ user: user,
                          tags: "#gothic #natural #lazysundaydays #afternoondelight",
                          photo: "http://www.vivianmakeupartist.com/wp-content/uploads/2017/01/vivianmakeupartist_boldlip.jpg",
                          category: 'makeup',
-                         location: 'Milan',
+                         location: 'Carrer Pere Serafi, Barcelona',
+                         bio: "Sarah has always had a passion for the arts. She started her professional career at MAC Cosmetics in 2003. Sarah is continually inspired by her clients and the creative collaborators she works alongside.",
                          travel_range: 20,
                          rating: 4.7
                          })
@@ -51,10 +52,30 @@ ArtistService.create(name: "Special FX",price: 75.0,artist: artist_sarah)
 ArtistService.create(name: "Wedding Day Service",price: 250.0,artist: artist_sarah)
 ArtistService.create(name: "Lesson", price: 50.0,artist: artist_sarah)
 puts
+
+puts "Creating and artist called Angelo"
+artist_angelo = Artist.create({ user: user,
+                         first_name: 'Angelo',
+                         last_name: 'Cervantes',
+                         tags: "#onfleek #unnatural #busysaturdays #eveningdelight",
+                         photo: "http://m1.22slides.com/jaleesajaikaran/4448_image_661127.jpg",
+                         category: 'makeup',
+                         location: "Carrer d'Aribau, 51, 08011 Barcelona",
+                         bio: "Hey guys, I really love all things beauty.",
+                         travel_range: 20,
+                         rating: 4.7
+                         })
+puts "Creating Angelo's Services"
+ArtistService.create(name: 'Full Face Makeup',price: 40.0,artist: artist_sarah)
+ArtistService.create(name: "Lashes",price: 20.0,artist: artist_sarah)
+ArtistService.create(name: "Special FX",price: 60.0,artist: artist_sarah)
+ArtistService.create(name: "Wedding Day Service",price: 200.0,artist: artist_sarah)
+ArtistService.create(name: "Lesson", price: 30.0,artist: artist_sarah)
+puts
 #
 # seed hero user
 hero_user = User.create(email: 'hero@hero.com', password: 'password')
-Consumer.create(user: hero_user, first_name: 'Bruce', last_name: 'Wayne', city: 'Milan', phone_number: '500-500-500', instagram: '@secret_hero')
+Consumer.create(user: hero_user, first_name: 'Bruce', last_name: 'Wayne', city: 'Barcelona', phone_number: '500-500-500', instagram: '@secret_hero')
 
 puts
 puts "Creating Consumer Requests"
@@ -65,7 +86,9 @@ end
 
 puts "Creating reviews for Sarah"
 ['special', 'gracious', 'ugly', 'messy', 'stupid','giant'].each do |word|
+
   booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.new(2017, 8, rand(12)+1), status: 'confirmed')
+
   Review.create(
                 content: "She did my makeup and she was #{word}",
                 rating: rand(5).to_f,
@@ -76,14 +99,35 @@ puts "Creating reviews for Sarah"
 end
 
 
-puts "Creating Consumer Events for Hero user"
-times.each do |t|
-  ConsumerEvent.create(location: 'Milan', service: 'makeup', description: 'my birthday', user: hero_user, date: t)
-end
+puts "Creating Consumer Events near Sarah"
 
-puts "Creating an Artist Request from Sarah to work Hero user's event"
-event = ConsumerEvent.last
-ArtistRequest.new(offer_price: 50.0, artist: artist_sarah, consumer_event: event)
+event_locations = ["Carrer d'Astúries, 15, Barcelona",
+                   "Carrer de Bonavista, Barcelona",
+                   "14 Carrer de Casanova, Barcelona",
+                   "Avinguda Diagonal, 247, Barcelona",
+                   "Carrer de Provença, 238, Barcelona"]
+
+event_descriptions = ["Birthday party.",
+                      "Wedding rehearsal dinner.",
+                      "Prom.",
+                      "Graduation dinner.",
+                      "Intimate gathering."]
+puts "Creating events near to Sarah to show on her search"
+event_dates = 5.times.map { |i| DateTime.new(2017, rand(2) + 9, rand(20) + 1, rand(10) + 9) }
+event_users = 5.times.map { |i| User.create(email: Faker::Internet.email, password: Faker::Internet.password) }
+event_users.each { |i| Consumer.create(user: i, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city: 'Barcelona', phone_number: '500-500-500', instagram: '@secret_hero') }
+event_users.each_with_index { |user, i| ConsumerEvent.create(location: event_locations[i], service: 'makeup', description: event_descriptions[i], user: user, date: event_dates[i], budget: rand(20) * 10) }
+
+puts "Creating a new event, with two artist requests: one from Sarah and the other from a rival artist."
+event = ConsumerEvent.create(location: 'Carrer de Ferran, 57, Barcelona', service: 'makeup', description: "Daughter's Birthday Party", user: hero_user, date: DateTime.now.advance(days: 1))
+
+
+# puts "Creating an Artist Request from Sarah to work Hero user's event"
+# ArtistRequest.create(offer_price: 50.0, artist: artist_sarah, consumer_event: event, message: "Hi, I have ten years of experience doing the thing that you need.")
+
+
+puts "Creating an Artist Request from Angelo to work Hero user's event"
+ArtistRequest.create(offer_price: 50.0, artist: artist_angelo, consumer_event: event, message: "Hello there, I have no experience but I'm cheap.")
 
 puts
 puts "Ensuring that Sarah will always be busy today in the morning"
@@ -101,15 +145,4 @@ TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: boo
 
 
 
-
-
-# puts "seeding 20 user artists"
-# puts "please wait"
-# 20.times do
-#   user = User.create({ email: Faker::Internet.email, password: Faker::Internet.password })
-#   artist = Artist.create({ user: user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, tags: 'tagtagtag', location: locations.sample , category: categories.sample, travel_range: 20, rating: 2.9 })
-#   5.times do
-#     ArtistService.create(name: Faker::Commerce.product_name, price: Faker::Commerce.price, artist: artist )
-#   end
-# end
 
