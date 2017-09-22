@@ -19,10 +19,6 @@ if ($(window).scrollTop() < 50) {
   $('.navbar-wagon').addClass('transparent');
 
 }
-// else if($(window).scrollTop() == 0) {
-//   $('.transparent.navbar-wagon').addClass('transparent');
-//   $('.transparent.navbar-wagon').css('background','transparent');
-// }
 else {
   $('.transparent.navbar-wagon').css('background','white');
   $('.transparent a').css('color','#757575');
