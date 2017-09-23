@@ -9,7 +9,7 @@
 
       <div class="col-xs-12 col-sm-6">
         <!-- event info -->
-        <h2> <%= event.description.capitalize.first(20) %> <em>...</em> </h2><button type="button" class="btn-event" data-toggle="modal" data-target="#consumerEventModal">View full</button>
+        <h2> <%= event.description.capitalize.first(20) %> <em>...</em> </h2><button type="button" class="btn-event" data-toggle="modal" data-target='<%="#consumerEventModal#{event.id}"%>'>View full</button>
         <p> <%= event.date.strftime('%b %d %Y - %I:%M%p') %> </p>
         <p> <%= event.location %> </p>
         <p> <%= event.tags %> </p>
@@ -36,7 +36,7 @@
   </div>
 
 <!-- Event Description Modal -->
-    <div class="modal fade" id="consumerEventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id='<%="consumerEventModal#{event.id}"%>' tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
