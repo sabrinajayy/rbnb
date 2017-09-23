@@ -6,7 +6,9 @@
                 <%= cl_image_tag Consumer.find_by(user_id: request.user_id).profile_img, class: 'avatar-large hidden-xs', width: 300, height: 300, crop: :fill %>
               </div>
               <div class="col-xs-8 col-md-7">
-                <p class="booking-date"><%= request.date.strftime('%b %d %Y, %I:%M%p') %></p>
+                <%= link_to artist_consumers_request_path(request.id) do %>
+                  <p class="booking-date"><%= request.date.strftime('%b %d %Y, %I:%M%p') %></p>
+                <% end %>
                 <p class="booking-time"><%= request.time %></p>
                 <p class="booking-category"><%= request.servicename%></p>
                 <p class="booking-address"><%= request.address%></p>

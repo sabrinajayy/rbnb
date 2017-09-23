@@ -38,7 +38,7 @@
               </ul>
               </ul>
               <p> <%= artist.try(:category).try(:capitalize)%> | <%= artist.location %></p>
-              <p><%= artist.bio %></p>
+              <p><%= artist.bio.first(40) %>...</p>
 
             </div>
           </div>
