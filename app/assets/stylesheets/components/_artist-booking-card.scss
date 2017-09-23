@@ -9,6 +9,7 @@
   font-size: 14px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
+  line-height: 14px;
 }
 
 .booking-date {
@@ -87,10 +88,12 @@
 }
 
 .status-unconfirmed {
-  color: lightgrey;
+  color: #757575;
+  opacity: 0.8;
   text-transform: uppercase;
   margin-bottom: 0px;
   font-size: 12px;
+  font-weight: 600;
   letter-spacing: 0.5px;
 }
 
