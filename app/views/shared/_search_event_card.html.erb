@@ -24,11 +24,12 @@
           <h3>Budget: $<%= event.budget %> </h3>
           <%= link_to "Quote", create_artist_request_path(@artist), "data-toggle" => "modal", 'data-target'=>"#requestModal#{event.id}", class: 'btn-pamprd' %>
           <%= render 'artist_requests/new', event: event %>
-          <% else %>
+          <% elsif event.artist_requests.any? do |e| %>
           <i class="fa fa-check fa-2x" aria-hidden="true"></i>
-            <h3>Already Quoted</h3>
-            <p class="event-budget">(Budget: $<%= event.budget.to_i %>)</p>
-            <% end %>
+            <h4>You Quoted $<%=e.offer_price.to_i%></h4>
+            <p class="event-budget">(Client Budget: $<%= event.budget.to_i %>)</p>
+          <% end %>
+        <% end %>
         </div>
       </div>
 
@@ -44,15 +45,17 @@
             <h4 class="modal-title" id="myModalLabel">Event Details</h4>
           </div>
           <div class="modal-body consumer-event">
-              <h3><%= event.date.strftime('%b %d %Y - %I:%M%p') %></h3>
+              <h2><%= event.date.strftime('%b %d %Y - %I:%M%p') %></h2>
+              <p>with <strong><%= event.user.consumer.first_name %> <%= event.user.consumer.last_name %></strong></p>
               <p><%= event.location %></p>
+              <p>Client Budget: <strong>$<%= event.budget.to_i%></strong></p>
               <p><%= event.tags %></p>
               <p><%= event.description %></p>
 
           </div>
-          <div class="modal-footer">
+        <!--   <div class="modal-footer">
             <button type="button" class="btn-pamprd" data-dismiss="modal">Close</button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
