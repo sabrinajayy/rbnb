@@ -126,6 +126,7 @@ event_descriptions = ["Birthday party.",
                       "Prom.",
                       "Graduation dinner.",
                       "Intimate gathering."]
+
 puts "Creating events near to Sarah to show on her search"
 event_dates = 5.times.map { |i| DateTime.new(2017, rand(2) + 9, rand(20) + 1, rand(10) + 9) }
 event_users = 5.times.map { |i| User.create(email: Faker::Internet.email, password: Faker::Internet.password) }
@@ -155,8 +156,4 @@ puts
 puts "Ensuring that Sarah will always be busy in three days in the evening."
 booking = ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: DateTime.now.advance(days: 3).change(hour: 22), status: 'confirmed')
 TimeBlock.create(artist: artist_sarah, date: booking.date, consumer_request: booking, end_date: booking.date.advance(hours: 1))
-
-
-
-
 
