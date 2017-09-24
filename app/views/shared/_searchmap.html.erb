@@ -2,10 +2,18 @@
   <%= javascript_tag do %>
     var handler = Gmaps.build('Google');
     handler.buildMap({ internal: { id: 'searchmap' } }, function() {
-      markers = handler.addMarkers(<%= raw @hash.to_json %>);
+      markers = <%= raw @hash.to_json %> <!--fetch JSON w. markers -->
+      Gmaps.store = {} <!--initialize storage -->
+      Gmaps.store.markers = markers.map(function(m) {
+        marker = handler.addMarker(m);
+        marker.serviceObject.set('id', m.id);
+        return marker;
+      });
+
       handler.map.centerOn(<%= raw @coords.to_json %>);
       handler.getMap().setZoom(13);
      });
+
   <% end %>
 <% end %>
 

@@ -1,19 +1,13 @@
 <div class="event-search-container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-7">
       <div class="event-search-results">
         <!-- insert search_event_card partial here -->
         <%= render 'shared/search_event_card' %>
       </div>
-    </div>
 
-    <div class="col-xs-12 col-sm-5">
-        <div class="event-search-map hidden-xs" style="height: 100vh; position: sticky;" id="searchmap">
+        <div class="event-search-map hidden-xs" id="searchmap">
             <%= render 'shared/searchmap' %>
         </div>
-    </div>
 
-  </div>
 </div>
 
 

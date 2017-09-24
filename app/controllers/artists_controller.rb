@@ -36,6 +36,7 @@ class ArtistsController < ApplicationController
           marker.lat event.latitude
           marker.lng event.longitude
           marker.infowindow render_to_string(partial: "shared/map_box", locals: { event: event })
+          marker.json({ :id => event.id })
         end
       end
   end
