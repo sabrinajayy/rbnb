@@ -25,30 +25,30 @@
     }
 }
 
-.booking-name {
-  padding-left: 15px;
-  padding-right: 15px;
-  min-width: 100px;
-  padding-top: 10px;
-  padding-bottom: 5px;
-  text-align: center;
-  line-height: 10px;
-}
+// .booking-name {
+//   padding-left: 15px;
+//   padding-right: 15px;
+//   min-width: 100px;
+//   padding-top: 10px;
+//   padding-bottom: 5px;
+//   text-align: center;
+//   line-height: 10px;
+// }
 
-.booking-name h3 {
-  font-size: 13px;
-  font-family: 'Raleway', sans-serif;
-  margin-bottom: 0px;
-  margin-top: 0px;
-}
+// .booking-name h3 {
+//   font-size: 13px;
+//   font-family: 'Raleway', sans-serif;
+//   margin-bottom: 0px;
+//   margin-top: 0px;
+// }
 
-.booking-name p {
-  font-size: 13px;
-  font-weight: regular;
-  font-family: 'Open Sans', sans-serif;
-  opacity: 0.6;
-  margin-top: 5px;
-}
+// .booking-name p {
+//   font-size: 13px;
+//   font-weight: regular;
+//   font-family: 'Open Sans', sans-serif;
+//   opacity: 0.6;
+//   margin-top: 5px;
+// }
 
 .booking-date {
   margin-bottom: 5px;
@@ -72,13 +72,21 @@
   margin: 6px 0;
 }
 
+.client-booking-name {
+  font-weight: 400 !important;
+}
+
 .booking-category {
   margin: 0;
   padding-bottom: 0px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300 !important;
 }
 
 .booking-address {
   margin-top: 0px;
+  font-weight: 300 !important;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .booking-status {

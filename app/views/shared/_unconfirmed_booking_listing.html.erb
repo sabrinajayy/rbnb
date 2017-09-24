@@ -33,7 +33,7 @@
                   <p class="booking-date"><%= request.date.strftime('%b %d %Y')%> - <% if !request.time.nil? %>
                     <%= request.time.strftime('%I:%M %p') %> <%end%></p>
                 <% end %>
-                <p class="booking-date"><%= request.consumer.first_name%> <%=request.consumer.last_name %> </p>
+                <p class="booking-date client-booking-name"><%= request.consumer.first_name%> <%=request.consumer.last_name %> </p>
                 <p class="booking-category"><%= request.servicename%></p>
                 <p class="booking-address"><%= request.address%></p>
               </div>
