@@ -57,6 +57,11 @@ h2 {
 
 /*active quotes */
 
+.artist-quotes {
+  min-height: 75px;
+  position: relative;
+}
+
 .artist-quotes h2 {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
@@ -98,10 +103,6 @@ h2 {
 
 .artist-bid-section {
   text-align: center;
-}
-
-.artist-quotes button {
-  margin-top: 40px;
 }
 
 /*new requests (not answered yet) */

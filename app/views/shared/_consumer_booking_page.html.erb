@@ -1,9 +1,26 @@
+<% if current_user.is_artist? %>
+  <%= link_to artist_path(@artist) do %>
+    <i class="fa fa-chevron-left" aria-hidden="true" style="color: 'white';"></i> Dashboard
+  <% end %>
+<% else %>
+  <%= link_to consumer_path do %>
+    <i class="fa fa-chevron-left" aria-hidden="true" style="color: 'white';"></i> Bookings
+  <% end %>
+<% end %>
+
 <div class="booking-container">
   <div class="row">
     <div class="col-xs-12 col-sm-5">
       <div class="booking-card">
         <div class="booking-details">
           <div class="booking-artist">
+          <!-- name and photo -->
+          <% if current_user.is_artist? %>
+          <!-- show consumer pic and name -->
+            <%= cl_image_tag(@consumer_request.consumer.profile_img, class: "avatar-super-large") %>
+            <h2><%= @consumer_request.consumer.first_name%> <%= @consumer_request.consumer.last_name %></h2>
+          <% else %>
+          <!-- show artist pic, name and info -->
             <%= link_to artist_path(@artist) do %>
              <%= cl_image_tag(@artist.photo, class: "artist-profile-pic") %>
               <h2><%= @artist.first_name %> <%= @artist.last_name %></h2>
@@ -15,6 +32,7 @@
                 <% end %>
               <% end %>
               </ul><p style="display: inline; font-style: italic;">(<%= @artist.reviews.size %>)</p>
+          <% end %>
           </div>
 
           <div class="booking-info text-center">

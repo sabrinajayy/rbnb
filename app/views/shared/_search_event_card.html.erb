@@ -1,5 +1,5 @@
 <%  @events.each do |event|  %>
-
+  <% next if event.date.past? %>
   <div class="consumer-event">
     <div class="row">
       <div class="col-xs-12 col-sm-3">
@@ -21,7 +21,7 @@
         <!-- price and submit quote button -->
 
         <% if !event.artist_requests.any? {|e| e.artist == @artist } %>
-          <h3>Budget: $<%= event.budget %> </h3>
+          <h3>Budget: $<%= event.budget.to_i %> </h3>
           <%= link_to "Quote", create_artist_request_path(@artist), "data-toggle" => "modal", 'data-target'=>"#requestModal#{event.id}", class: 'btn-pamprd' %>
           <%= render 'artist_requests/new', event: event %>
           <% elsif event.artist_requests.any? do |e| %>
@@ -53,12 +53,10 @@
               <p><%= event.description %></p>
 
           </div>
-        <!--   <div class="modal-footer">
-            <button type="button" class="btn-pamprd" data-dismiss="modal">Close</button>
-          </div> -->
         </div>
       </div>
     </div>
+
 <% end %>
 
 

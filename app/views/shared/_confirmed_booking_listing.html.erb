@@ -1,5 +1,6 @@
 
  <% @confirmed.sort_by(&:date).reverse.each do |request| %>
+    <% next if request.date.past? %>
           <div class="booking-listing">
             <div class="row">
               <div class="col-xs-12 col-md-2">
@@ -10,13 +11,13 @@
                   <p class="booking-date"><%= request.date.strftime('%b %d %Y')%> - <% if !request.time.nil? %>
                     <%= request.time.strftime('%I:%M %p') %> <%end%></p>
                 <% end %>
-                <p class="booking-date"><%= request.consumer.first_name%> <%=request.consumer.last_name %> </p>
+                <p class="booking-date client-booking-name"><%= request.consumer.first_name%> <%=request.consumer.last_name %> </p>
                 <p class="booking-category"><%= request.servicename%></p>
                 <p class="booking-address"><%= request.address%></p>
               </div>
               <div class="col-xs-4 col-md-3">
                 <div class="artist-quote-price">
-                  <p class="booking-price">$<%= request.final_price %></p>
+                  <p class="booking-price">$<%= request.final_price.to_i %></p>
                   <p class="status-confirmed"><%= request.status %></p>
 
                 </div>

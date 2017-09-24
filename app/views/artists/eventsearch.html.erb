@@ -1,6 +1,9 @@
 <div class="event-search-container">
       <div class="event-search-results">
         <!-- insert search_event_card partial here -->
+        <%= link_to artist_path(@artist) do %>
+          <i class="fa fa-chevron-left" aria-hidden="true" style="color: 'white';"></i> Dashboard
+        <% end %>
         <%= render 'shared/search_event_card' %>
       </div>
 
