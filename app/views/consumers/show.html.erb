@@ -8,8 +8,8 @@
   <div class="row">
     <div class="col-xs-12 col-sm-3">
       <div class="user-profile">
-        <%= cl_image_tag @consumer.profile_img, width: 300, height: 300, crop: :fill %>
-        <p>Name: <%= @consumer.first_name %> <%= @consumer.last_name %></p>
+        <%= cl_image_tag @consumer.profile_img, width: 300, height: 300, crop: :fill, class: 'avatar-super-large' %>
+        <p style="margin-top: 10px;">Name: <%= @consumer.first_name %> <%= @consumer.last_name %></p>
         <p>Address: <%= @consumer.address %></p>
         <p>Phone Number: <%= @consumer.phone_number %></p>
         <p>Instagram: @<%= @consumer.instagram %></p>
@@ -48,7 +48,7 @@
       <div class="panel-heading" role="tab" id="headingThree">
         <h4 class="panel-title">
           <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Your Created Events <i class="fa fa-caret-down" aria-hidden="true"></i>
+          Your Events <i class="fa fa-caret-down" aria-hidden="true"></i>
           </a>
         </h4>
       </div>

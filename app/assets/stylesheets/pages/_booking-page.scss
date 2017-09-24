@@ -97,13 +97,14 @@
 }
 
 .accept {
-  background-color: green;
+  background-color: #53ce70;
   font-size: 16px;
   opacity: 0.8;
 }
 
 .cancel-btn {
-  background-color: $red;
+  background-color: #D7382F;
+  opacity: 0.9;
   color: white;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
@@ -125,6 +126,6 @@
   text-transform: uppercase;
   font-size: 16px;
   font-weight: bold;
-  color: green;
+  color: #53ce70;
   margin-bottom: 20px;
 }

@@ -1,5 +1,6 @@
 
  <% @confirmed.sort_by(&:date).reverse.each do |request| %>
+    <% next if request.date.past? %>
           <div class="booking-listing">
             <div class="row">
               <div class="col-xs-12 col-md-2">
@@ -16,7 +17,7 @@
               </div>
               <div class="col-xs-4 col-md-3">
                 <div class="artist-quote-price">
-                  <p class="booking-price">$<%= request.final_price %></p>
+                  <p class="booking-price">$<%= request.final_price.to_i %></p>
                   <p class="status-confirmed"><%= request.status %></p>
 
                 </div>
