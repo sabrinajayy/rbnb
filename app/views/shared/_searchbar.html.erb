@@ -1,5 +1,5 @@
 <%= form_tag('/search_results', method: 'get') do  %>
-     <%= select_tag :category, options_for_select([['Hair', 'hair'], ['Makeup', 'makeup'], ['Hair and Makeup', 'hair and makeup']]),  placeholder: 'Category', class: 'search-form search-service' %>
+     <%= select_tag :category, options_for_select([['Makeup', 'makeup'], ['Hair', 'hair'], ['Hair and Makeup', 'hair and makeup']]),  placeholder: 'Category', class: 'search-form search-service' %>
      <%= text_field_tag :date, nil, placeholder: 'Date', class: 'search-form datepick search-date' %>
      <%= select_tag :time, options_for_select([['Morning', 'morning'], ['Afternoon', 'afternoon'], ['Evening', 'evening']]), placeholder: 'Time', class: 'search-form search-time' %>
      <%= text_field_tag :location, nil, placeholder: 'City', class: 'search-form search-location', id: 'flat_address' %>

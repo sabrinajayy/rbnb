@@ -25,7 +25,7 @@
                 <h3><%= artist.first_name %> <%=artist.last_name %></h3>
               <%end%>
               <ul class="list-inline profile-rating">
-              <% if artist.rating > 0.0 %>
+              <% if artist.rating && artist.rating > 0.0 %>
                 <% artist.rating.round.times do %>
                   <li><i style="padding: 0;" class="fa fa-star"></i></li>
                 <% end %>
