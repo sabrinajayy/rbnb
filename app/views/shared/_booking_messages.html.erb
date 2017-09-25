@@ -1,22 +1,26 @@
 <!-- _booking_messages.html.erb -->
-<div class="booking-container">
-  <div class="row">
+<div class="messaging-container">
+  <div class="row-messages">
+    <div class="col-xs-12-messages col-sm-7-messages">
+    <div class="new-message">
         <h1>Messages with <%= display_name %></h1>
-        <% @messages.each do |m| %>
+                <br>
+        <%= simple_form_for(:message, url: artist_consumers_request_messages_path(@artist, @consumer_request)) do |f| %>
+          <%= f.input :body, as: :text, label: false, placeholder: "Enter your message here" %>
+          <%= f.button :submit, "Send message", class: 'btn' %>
+        <% end %>
+      </div>
+      <div class="conversation">
+        <% @messages.reverse.each do |m| %>
           <div class="<%= whos_message(m) %>">
             <h4><%= m.body %></h4>
             <p><%= m.created_at.strftime("%b %e, %l:%M %p") %></p>
           </div>
         <% end %>
-
-        <br><br><br>
-        <h2>New Message</h2>
-        <br>
-        <%= simple_form_for(:message, url: artist_consumers_request_messages_path(@artist, @consumer_request)) do |f| %>
-          <%= f.input :body, as: :text, label: false, placeholder: "Enter your message here" %>
-          <%= f.button :submit, class: 'btn' %>
-        <% end %>
+        </div>
+    </div>
   </div>
 </div>
+
 
 
