@@ -1,6 +1,7 @@
 
- <% @confirmed.sort_by(&:date).reverse.each do |request| %>
+ <% @confirmed.sort_by(&:date).each do |request| %>
     <% next if request.date.past? %>
+
           <div class="booking-listing">
             <div class="row">
               <div class="col-xs-12 col-md-2">
@@ -24,4 +25,5 @@
               </div>
             </div>
           </div>
+
   <% end %>

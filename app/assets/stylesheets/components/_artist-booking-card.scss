@@ -3,6 +3,9 @@
   // align-items: center;
   padding: 10px 0px 10px 0px;
   border-bottom: 1px solid rgba(220,224,244,0.4);
+  &:hover {
+    background-color: rgba(201, 197, 197, 0.2);
+  }
 }
 
 .booking-listing p {
@@ -19,36 +22,11 @@
 }
 
 .booking-listing a {
-  color: #757575;
+  color: #757575 !important;
     &:hover {
-      color: $pink;
+      color: $pink !important;
     }
 }
-
-// .booking-name {
-//   padding-left: 15px;
-//   padding-right: 15px;
-//   min-width: 100px;
-//   padding-top: 10px;
-//   padding-bottom: 5px;
-//   text-align: center;
-//   line-height: 10px;
-// }
-
-// .booking-name h3 {
-//   font-size: 13px;
-//   font-family: 'Raleway', sans-serif;
-//   margin-bottom: 0px;
-//   margin-top: 0px;
-// }
-
-// .booking-name p {
-//   font-size: 13px;
-//   font-weight: regular;
-//   font-family: 'Open Sans', sans-serif;
-//   opacity: 0.6;
-//   margin-top: 5px;
-// }
 
 .booking-date {
   margin-bottom: 5px;
@@ -74,6 +52,8 @@
 
 .client-booking-name {
   font-weight: 400 !important;
+  color: #757575 !important;
+
 }
 
 .booking-category {

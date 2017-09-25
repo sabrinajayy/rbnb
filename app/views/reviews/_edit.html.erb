@@ -8,8 +8,17 @@
           </button>
         </div>
         <div class="modal-body">
+          <%= simple_form_for(review, url: consumer_review_path(review_id: review ,consumer_id: @consumer,artist_id: booking.artist.id,booking_id: booking.id)) do |f| %>
+            <%= f.input :rating, as: :integer, placeholder: "Enter a rating between 1 and 5", input_html: {min: 1, max: 5} %>
+              <%= f.input :content, as: :text, placeholder: "What did you like about this session?" %>
 
-          <%= render 'reviews/edit-form', booking: booking, review: review%>
+          <div class="modal-footer">
+            <%= link_to 'Delete Review', consumer_review_path(@consumer, booking.review), method: :delete, data: {confirm: "Are you sure?" } %>
+            <%= f.submit "Edit Review", class: 'btn-pamprd' %>
+
+          <% end %>
+          </div>
+          <%#= render 'reviews/edit-form', booking: booking, review: review%>
         </div>
       </div>
     </div>
