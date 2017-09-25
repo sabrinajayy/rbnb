@@ -1,6 +1,6 @@
 class ConsumerRequest < ApplicationRecord
   belongs_to :artist
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_one :time_block, dependent: :destroy
   has_one :review, dependent: :destroy
 

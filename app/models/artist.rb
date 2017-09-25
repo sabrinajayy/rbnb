@@ -15,5 +15,5 @@ class Artist < ApplicationRecord
   # validates :last_name, presence: true
   # validates :location, presence: true
   # validates :tags, presence: true
-  # mount_uploader :photo, PhotoUploader
+  mount_uploader :photo, PhotoUploader
 end

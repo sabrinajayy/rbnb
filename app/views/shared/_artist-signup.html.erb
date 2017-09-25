@@ -10,23 +10,24 @@
   <%= f.label :category, "What is your specialty?", required: true %>
   <%= select_tag :category, options_for_select([['Hair', 'hair'], ['Makeup', 'makeup'], ['Hair and Makeup', 'hair and makeup']]),  placeholder: 'Category', class: 'search-form' %>
   <br><br>
-  <%= f.text_field :location, placeholder: 'Address', required: true, class: 'search-form', id: 'flat_address' %>
+  <%= f.text_field :location, placeholder: 'City', required: true, class: 'search-form', id: 'flat_address' %>
 
   <%= f.label :travel_range, "How far are you willing to travel? (km)", required: true %>
   <%= f.input :travel_range, label: false, required: true %>
 
   <%= f.input :instagram_handle, required: false %>
 
-  <%#= f.input :photo, label: "Upload your profile photo" %>
-  <%#= f.input :photo_cache, as: :hidden %>
+  <%= f.input :photo, label: "Upload your profile photo" %>
+  <%= f.input :photo_cache, as: :hidden %>
 
+  <%= f.label :artist_services, "Which specific services do you offer? Select at least one."%>
+  <%= f.input :artist_services, collection: ['Makeup Application', 'Special FX Makeup', 'Costume Makeup', 'Bridal Makeup', 'Makeup Lesson'], placeholder: 'Category', wrapper_html: { class: 'form-group checkbox-group required' }, :as => :check_boxes, include_hidden: false %>
 
-
-  <%= f.fields_for :artist_services, ArtistService.new do |service| %>
-      <%= service.label :name, "Which specific services do you offer? Select at least one."%>
-     <%= service.input :name, placeholder: 'Makeup Application'%>
-      <%= service.input :price, placeholder: '$75'%>
-   <% end %>
+  <%#= f.fields_for :artist_services, ArtistService.new do |service| %>
+      <%#= service.label :name, "Which specific services do you offer? Select at least one."%>
+     <%#= service.input :name, placeholder: 'Makeup Application'%>
+      <%#= service.input :price, placeholder: '$75'%>
+   <%# end %>
 
   <%= f.input :bio, required: true, input_html: { minLength: 50, maxLength: 500 } %>
   <%= f.input :tags, required: false %>
