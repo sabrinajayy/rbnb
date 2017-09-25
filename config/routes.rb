@@ -21,8 +21,10 @@ Rails.application.routes.draw do
     end
 
     resources :artists do
-      resources :consumers_requests
       resources :reviews, only: [:create, :index ]
+      resources :consumers_requests do
+        resources :messages, only: [:create, :index, :new]
+      end
     end
 
 
