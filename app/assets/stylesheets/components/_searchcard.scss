@@ -26,6 +26,8 @@
   font-weight: 400;
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
   margin-top: 0;
   margin-bottom: 5px;
 }
@@ -35,12 +37,19 @@
 }
 
 .search-body p {
-  font-size: 16px;
+  font-size: 12px;
   font-weight: lighter;
   color: #757575;
   margin-bottom: 0;
   margin-top: 0px;
+  padding: 0px !important;
+  margin: 0px !important;
 
+}
+
+.paragraph-bold {
+  font-size: 14px !important;
+  font-weight: 400 !important;
 }
 
 /* search image */
@@ -67,6 +76,10 @@
 
 .search-btn {
   text-align: right;
+}
+
+.fa-star {
+  margin-left: 5px;
 }
 
 /*MOBILE RESPONSIVE*/
