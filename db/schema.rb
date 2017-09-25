@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921183752) do
+ActiveRecord::Schema.define(version: 20170925110645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,8 +136,10 @@ ActiveRecord::Schema.define(version: 20170921183752) do
     t.string   "subject"
     t.text     "body"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "consumer_request_id"
+    t.index ["consumer_request_id"], name: "index_messages_on_consumer_request_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
@@ -162,6 +164,7 @@ ActiveRecord::Schema.define(version: 20170921183752) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.datetime "end_date"
+    t.string   "type"
     t.string   "category"
     t.index ["artist_id"], name: "index_time_blocks_on_artist_id", using: :btree
     t.index ["consumer_request_id"], name: "index_time_blocks_on_consumer_request_id", using: :btree
@@ -204,6 +207,7 @@ ActiveRecord::Schema.define(version: 20170921183752) do
   add_foreign_key "consumer_requests", "messages", column: "messages_id"
   add_foreign_key "consumer_requests", "users"
   add_foreign_key "consumers", "users"
+  add_foreign_key "messages", "consumer_requests"
   add_foreign_key "messages", "users"
   add_foreign_key "reviews", "artists"
   add_foreign_key "reviews", "consumer_requests"

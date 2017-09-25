@@ -5,6 +5,7 @@ class ConsumersRequestsController < ApplicationController
   def show
 
     @event = ConsumerRequest.find(params[:id])
+    @messages = Message.where(consumer_request: @event)
     # @event_coords = { lat: @event.latitude, lon: @event.longitude }
     if @event.geocoded?
       @hash = Gmaps4rails.build_markers(@event) do |event, marker|
