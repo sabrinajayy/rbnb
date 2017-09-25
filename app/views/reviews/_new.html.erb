@@ -2,13 +2,22 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">New Review</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Review <%= booking.artist.first_name %></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <%= render 'reviews/form', booking: booking%>
+          <%#= render 'reviews/form', booking: booking%>
+          <%= simple_form_for(:review, url: artist_reviews_path(artist_id: booking.artist.id,booking_id: booking.id)) do |f| %>
+          <%= f.input :rating, as: :integer, placeholder: "Enter a rating between 1 and 5", input_html: {min: 1, max: 5} %>
+            <%= f.input :content, as: :text, placeholder: "Tell us about your experience with #{booking.artist.first_name}" %>
+
+           <div class="modal-footer">
+          <%= f.submit "Submit Quote", class: 'btn-pamprd' %>
+          <% end %>
+            <!-- <button type="button" class="btn-pamprd" data-dismiss="modal">Close</button> -->
+        </div>
         </div>
       </div>
     </div>

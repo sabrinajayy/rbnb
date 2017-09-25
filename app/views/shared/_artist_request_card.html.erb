@@ -15,7 +15,7 @@
               <h2><%= request.artist.first_name %> <%= request.artist.last_name %></h2>
             <% end %>
             <p class="bid-price">$<%= request.offer_price.to_i %></p>
-            <p><%= request.message.first(40) %>...<button type="button" class="btn-event" data-toggle="modal" data-target="#myModal">view</button></p>
+            <p><%= request.message.first(40) %>...<button type="button" class="btn-event" data-toggle="modal" data-target='<%= "#myQuote#{request.artist.first_name}" %>'>view</button></p>
             <p class="bid-date">Date submitted: <%= request.created_at.strftime('%b %d %Y') %></p>
           </div>
         </div>
@@ -43,7 +43,8 @@
     </div>
 
     <!-- popup when client clicks artist quote -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+    <div class="modal fade" id='<%= "myQuote#{request.artist.first_name}" %>' tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">

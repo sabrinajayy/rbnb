@@ -1,0 +1,22 @@
+<!-- _booking_messages.html.erb -->
+<div class="booking-container">
+  <div class="row">
+        <h1>Messages with <%= display_name %></h1>
+        <% @messages.each do |m| %>
+          <div class="<%= whos_message(m) %>">
+            <h4><%= m.body %></h4>
+            <p><%= m.created_at.strftime("%b %e, %l:%M %p") %></p>
+          </div>
+        <% end %>
+
+        <br><br><br>
+        <h2>New Message</h2>
+        <br>
+        <%= simple_form_for(:message, url: artist_consumers_request_messages_path(@artist, @consumer_request)) do |f| %>
+          <%= f.input :body, as: :text, label: false, placeholder: "Enter your message here" %>
+          <%= f.button :submit, class: 'btn' %>
+        <% end %>
+  </div>
+</div>
+
+

@@ -1,3 +1,4 @@
+
 // when client accepts quote, hide the buttons and show ACCEPTED
 // $(function(){
 //   $('.accept-artist').on("click", function(e){
@@ -14,4 +15,8 @@
 //     // $('.bid-amount').append('<p class="quote-status">DECLINED</p>');
 //     return false;
 //   });
+
+//when someone clicks on map marker, highlight event
+// $('#search-map').hover(function (e) {
+//   $('.consumer-event').css('border', '1px solid $pink');
 // });

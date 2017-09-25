@@ -1,37 +1,41 @@
 <% @past.sort_by(&:date).reverse.each do |booking| %>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="col-xs-12 col-sm-2">
-        <!-- stylist photo -->
-        <%= cl_image_tag booking.artist.photo, class: 'avatar-large hidden-xs', width: 300, height: 300, crop: :fill %>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <!-- appt info -->
-        <%= link_to artist_path(booking.artist.id) do %>
-          <p><%=booking.artist.first_name%> <%=booking.artist.last_name%></p>
-        <% end %>
-        <%= link_to artist_consumers_request_path(booking.artist, booking) do %>
-          <p><%=booking.date.strftime('%b %d %Y, %I:%M%p') %></p>
-          <p><%=booking.address%></p>
-        <% end %>
+  <div class="past-booking">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-2">
+          <!-- stylist photo -->
+          <%= cl_image_tag booking.artist.photo, class: 'avatar-large hidden-xs', width: 300, height: 300, crop: :fill %>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <!-- appt info -->
 
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <!-- status and links -->
+          <%= link_to artist_path(booking.artist.id) do %>
+            <p class="booking-date booking-listing"><%=booking.artist.first_name%> <%=booking.artist.last_name%></p>
+          <% end %>
+          <%= link_to artist_consumers_request_path(booking.artist, booking) do %>
+            <p class="booking-date"><%=booking.date.strftime('%b %d %Y, %I:%M%p') %></p>
+            <p class="booking-date"><%=booking.address%></p>
+          <% end %>
 
-        <% if !booking.review %>
-          <%= link_to "Review #{booking.artist.first_name}", new_consumer_review_path(booking), class: 'btn-pamprd', "data-toggle" => "modal", 'data-target'=>"#exampleModal#{booking.id}"  %>
-          <!-- Modal -->
-          <%= render 'reviews/new', booking: booking %>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <!-- status and links -->
+          <div class="review-btn">
+            <% if !booking.review %>
+              <%= link_to "Review #{booking.artist.first_name}", new_consumer_review_path(booking), class: 'btn-pamprd review-btn', "data-toggle" => "modal", 'data-target'=>"#exampleModal#{booking.id}"  %>
+              <!-- Modal -->
+              <%= render 'reviews/new', booking: booking %>
 
-        <% else %>
-            <!-- edit -->
-            <%= link_to 'Edit Review', edit_consumer_review_path(@consumer, booking.review), "data-toggle" => "modal", 'data-target'=>"#exampleModal#{booking.id}"  %>
-            <%= render 'reviews/edit', booking: booking, review: booking.review%>
+            <% else %>
+                <!-- edit -->
+                <%= link_to 'Edit Review', edit_consumer_review_path(@consumer, booking.review), "data-toggle" => "modal", 'data-target'=>"#exampleModal#{booking.id}"  %>
+                <%= render 'reviews/edit', booking: booking, review: booking.review%>
 
-            <!-- delete - it is in the edit form -->
-            <%#= link_to 'Delete Review', consumer_review_path(@consumer, booking.review), method: :delete, data: {confirm: "Are you sure?" } %>
-        <% end %>
+                <!-- delete - it is in the edit form -->
+                <%#= link_to 'Delete Review', consumer_review_path(@consumer, booking.review), method: :delete, data: {confirm: "Are you sure?" } %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

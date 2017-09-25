@@ -28,7 +28,7 @@
       <%= service.input :price, placeholder: '$75'%>
    <% end %>
 
-  <%= f.input :bio, required: false %>
+  <%= f.input :bio, required: true, input_html: { minLength: 50, maxLength: 500 } %>
   <%= f.input :tags, required: false %>
 
      <%= f.fields_for :artist_images, ArtistImage.new do |i| %>
