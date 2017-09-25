@@ -150,7 +150,7 @@ angelo_reviewers = ['Margot', 'Sandra', 'Amelia', 'Silvia']
 
 sarah_reviewers.each_with_index do |reviewer_name, i|
   user = User.create!({ email: Faker::Internet.email, password: Faker::Internet.password })
-  consumer = Consumer.create!(user: user, first_name: reviewer_name, last_name: Faker::Name.last_name, profile_img: sarah_consumer_images[i], city: 'Barcelona', phone_number: Faker::PhoneNumber.cell_phone, instagram: '@' + reviewer_name)
+  consumer = Consumer.create!(user: user, first_name: reviewer_name, last_name: Faker::Name.last_name, profile_img: sarah_consumer_images[i], city: 'Barcelona', phone_number: Faker::PhoneNumber.cell_phone, instagram: reviewer_name)
   consumer_request = ConsumerRequest.create!(artist: artist_sarah, user_id: user.id, final_price: 50.0, servicename: real_services.sample, address: 'Barcelona', date: DateTime.now.advance(months: -(rand(2) + 1)), status: 'confirmed')
   Review.create!(
                 content: "#{["Sarah", "She"].sample} #{['did my', 'sorted out my'].sample} #{consumer_request.servicename} and she was #{good_adjectives[i]}#{['.','!'].sample}",
@@ -163,7 +163,7 @@ end
 
 angelo_reviewers.each_with_index do |reviewer_name, i|
   user = User.create!({ email: Faker::Internet.email, password: Faker::Internet.password })
-  consumer = Consumer.create!(user: user, first_name: reviewer_name, last_name: Faker::Name.last_name, profile_img: angelo_consumer_images[i], city: 'Barcelona', phone_number: Faker::PhoneNumber.cell_phone, instagram: '@' + reviewer_name)
+  consumer = Consumer.create!(user: user, first_name: reviewer_name, last_name: Faker::Name.last_name, profile_img: angelo_consumer_images[i], city: 'Barcelona', phone_number: Faker::PhoneNumber.cell_phone, instagram: reviewer_name)
   consumer_request = ConsumerRequest.create!(artist: artist_angelo, user_id: user.id, final_price: 50.0, servicename: real_services.sample, address: 'Barcelona', date: DateTime.now.advance(months: -(rand(2) + 1)), status: 'confirmed')
   Review.create!(
                 content: "#{["Angelo", "He"].sample} did my #{consumer_request.servicename} and he was #{mediocre_adjectives[i]}#{['.','!'].sample}",
