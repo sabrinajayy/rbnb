@@ -32,7 +32,7 @@ class ArtistsController < ApplicationController
     #map
 
       @hash = Gmaps4rails.build_markers(@events) do |event, marker|
-        if event.geocoded?
+        if event.geocoded? && !event.date.past?
           marker.lat event.latitude
           marker.lng event.longitude
           marker.infowindow render_to_string(partial: "shared/map_box", locals: { event: event })
