@@ -3,6 +3,9 @@
   // align-items: center;
   padding: 10px 0px 10px 0px;
   border-bottom: 1px solid rgba(220,224,244,0.4);
+  &:hover {
+    background-color: rgba(201, 197, 197, 0.2);
+  }
 }
 
 .booking-listing p {
@@ -19,9 +22,9 @@
 }
 
 .booking-listing a {
-  color: #757575;
+  color: #757575 !important;
     &:hover {
-      color: $pink;
+      color: $pink !important;
     }
 }
 
