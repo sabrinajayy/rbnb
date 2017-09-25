@@ -1,5 +1,12 @@
-<div>
-    <p><%= event.location %> </p>
-    <p><%= event.description %> </p>
-    <p><%= event.budget %> </p>
+<div class="iw-container">
+  <div class="search-map-popup">
+      <p>Event date: <%= event.date.strftime('%b %d %Y') %></p>
+      <p><%= event.location %> </p>
+      <p>Client Budget: $<%= event.budget.to_i %> </p>
+      <p><%= event.description.first(100) %>
+      <button type="button" class="btn-event" data-toggle="modal" data-target='<%="#consumerEventModal#{event.id}"%>'>View full</button></p>
+
+      <%= link_to "Quote", create_artist_request_path(@artist), "data-toggle" => "modal", 'data-target'=>"#requestModal#{event.id}", class: 'btn-pamprd' %>
+
+  </div>
 </div>

@@ -1,9 +1,10 @@
 
 
   <% @my_events.each do |event| %>
+    <% next if event.artist_requests.any? { |r| r.status == 'accepted' } %>
     <div class="col-xs-12 col-sm-4">
       <div class="booking-card">
-        <div class="booking-bkgrd-image card__image--fence"></div>
+        <div class="booking-bkgrd-image"></div>
           <div class="booking-user-image">
           <%= cl_image_tag @consumer.profile_img, class: 'booking-card-user', width: 300, height: 300, crop: :fill %>
           <!--  <img class="booking-card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
@@ -11,12 +12,14 @@
           <div class="booking-card-content">
             <div class="booking-name">
               <%#= link_to artist_path(booking.artist.id) do %>
-                <p><%=event.description%> </p>
+              <p><%=event.date.strftime('%b %d %Y') %> </p>
+
               <%# end %>
             </div>
-              <p class="card__text"><%=event.location%> | <%=event.date.strftime('%b %d %Y, %I:%M%p') %> </p>
-              <p class="card__text"><%=event.budget%></p>
-              <p class="booking-status"><%=event.tags%></p>
+              <p class="card__text"><%=event.location%></p>
+              <p class="card__text">Your Budget: $<%=event.budget.to_i%></p>
+              <!-- <p class="card__text"><%#=event.description.first(40)%> </p> -->
+
               <!-- <button class="btn-pamprd">View Booking</button> -->
               <%= button_to "View details", event_details_path(@consumer, event), :class => "btn-pamprd", :method => :get %>
           </div>

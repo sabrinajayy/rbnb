@@ -1,8 +1,8 @@
 
-  <% @confirmed.each do |booking| %>
+  <% @confirmed.sort_by(&:date).each do |booking| %>
     <div class="col-xs-12 col-sm-4">
       <div class="booking-card">
-        <div class="booking-bkgrd-image card__image--fence"></div>
+        <div class="booking-bkgrd-image card__image--flowers"></div>
           <div class="booking-user-image">
           <%= cl_image_tag booking.artist.photo, class: 'booking-card-user', width: 300, height: 300, crop: :fill %>
           <!--  <img class="booking-card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
@@ -14,7 +14,7 @@
               <% end %>
             </div>
               <p class="card__text"><%=booking.address%> | <%=booking.date.strftime('%b %d %Y, %I:%M%p') %> </p>
-              <p class="card__text"><%=booking.servicename%> - $<%=booking.final_price %></p>
+              <p class="card__text"><%=booking.servicename%> - $<%=booking.final_price.to_i %></p>
               <p class="booking-status"><%=booking.status%></p>
               <!-- <button class="btn-pamprd">View Booking</button> -->
               <%= button_to "View Booking", artist_consumers_request_path(booking.artist, booking), :class => "btn-pamprd", :method => :get %>

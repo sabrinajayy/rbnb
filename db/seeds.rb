@@ -1,5 +1,6 @@
 require 'date'
 
+
 ArtistImage.destroy_all
 ArtistService.destroy_all
 ArtistRequest.destroy_all
@@ -69,7 +70,6 @@ ArtistService.create(name: "Wedding Day Service",price: 250.0,artist: artist_sar
 ArtistService.create(name: "Lesson", price: 50.0,artist: artist_sarah)
 puts
 
-
 sarah_artist_images = ["http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good" + "%20" + "makeup/costume_makeup1.jpg",
                        "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup2.jpg",
                        "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup3.jpg",
@@ -81,7 +81,9 @@ sarah_artist_images = ["http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,
                        "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333832/good%20makeup/costume_makeup9.jpg"]
 sarah_artist_images.each { |i| ArtistImage.create(artist: artist_sarah, image: i) }
 
+
 puts "Creating and artist called Angelo"
+user = User.create({ email: 'angelo@angelo.com', password: 'password' })
 artist_angelo = Artist.create({ user: user,
                          first_name: 'Angelo',
                          last_name: 'Cervantes',
@@ -195,7 +197,7 @@ event_users.each { |i| Consumer.create(user: i, first_name: Faker::Name.first_na
 event_users.each_with_index { |user, i| ConsumerEvent.create(location: event_locations[i], service: 'makeup', description: event_descriptions[i], user: user, date: event_dates[i], budget: ((rand(20) + 4) * 10).to_f) }
 
 puts "Creating a new event, with two artist requests: one from Sarah and the other from a rival artist."
-event = ConsumerEvent.create(location: 'Carrer de Ferran, 57, Barcelona', service: 'makeup', description: "Daughter's Birthday Party", user: hero_user, date: DateTime.now.advance(days: 1))
+event = ConsumerEvent.create(location: 'Carrer de Ferran, 57, Barcelona', service: 'makeup', description: "Daughter's Birthday Party", budget: 50, user: hero_user, date: DateTime.now.advance(days: 1))
 
 
 puts "Creating an Artist Request from Angelo to work Hero user's event"

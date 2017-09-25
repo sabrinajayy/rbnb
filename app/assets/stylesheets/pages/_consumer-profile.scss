@@ -1,3 +1,24 @@
+.add-client-event-btn {
+  text-align: right;
+  padding-right: 100px;
+  padding-top: 20px;
+}
+
+.add-client-event-btn i {
+  padding-top: 10px;
+}
+
+.add-client-event-btn a {
+  color: $pink;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
 .client-profile-container {
   padding: 20px 80px;
 }
@@ -5,6 +26,14 @@
 .booking-container {
   margin: 0 auto;
   padding-left: 0px;
+}
+
+.booking-container .panel-heading {
+  background-color: white;
+}
+
+.panel-heading h4 {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .user-profile {
@@ -22,8 +51,20 @@
   letter-spacing: 0.3px;
 }
 
+// .user-profile .btn-pamprd {
+//   font-size: 12px;
+//   padding: 5px 10px;
+// }
+
 .profile-pic {
   width: 100%;
   height: auto;
   margin-bottom: 20px;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .client-profile-container {
+    padding: 10px;
+  }
 }

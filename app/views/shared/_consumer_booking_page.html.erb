@@ -1,28 +1,47 @@
+<% if current_user.is_artist? %>
+  <%= link_to artist_path(@artist) do %>
+    <i class="fa fa-chevron-left" aria-hidden="true" style="color: 'white';"></i> Dashboard
+  <% end %>
+<% else %>
+  <%= link_to consumer_path do %>
+    <i class="fa fa-chevron-left" aria-hidden="true" style="color: 'white';"></i> Bookings
+  <% end %>
+<% end %>
+
 <div class="booking-container">
   <div class="row">
     <div class="col-xs-12 col-sm-5">
       <div class="booking-card">
         <div class="booking-details">
           <div class="booking-artist">
+          <!-- name and photo -->
+          <% if current_user.is_artist? %>
+          <!-- show consumer pic and name -->
+            <%= cl_image_tag(@consumer_request.consumer.profile_img, class: "avatar-super-large") %>
+            <h2><%= @consumer_request.consumer.first_name%> <%= @consumer_request.consumer.last_name %></h2>
+          <% else %>
+          <!-- show artist pic, name and info -->
             <%= link_to artist_path(@artist) do %>
              <%= cl_image_tag(@artist.photo, class: "artist-profile-pic") %>
               <h2><%= @artist.first_name %> <%= @artist.last_name %></h2>
             <% end %>
-              <ul class="list-inline profile-rating">
+              <ul class="list-inline profile-rating" style="display: inline; margin-top: 5px;">
               <% if @artist.rating > 0.0 %>
                 <% @artist.rating.round.times do %>
                   <li><i style="padding: 0;" class="fa fa-star"></i></li>
                 <% end %>
               <% end %>
-              </ul><p>(<%= @artist.rating %>)</p>
+              </ul><p style="display: inline; font-style: italic;">(<%= @artist.reviews.size %>)</p>
+          <% end %>
           </div>
 
           <div class="booking-info text-center">
-            <p><%= @consumer_request.date.strftime('%b %d %Y') %> at <%= @consumer_request.time %></p>
+            <p><%= @consumer_request.date.strftime('%b %d %Y') %> at </p>
             <p><%= @consumer_request.address %></p>
 
             <ul class="booking-services">
-              <li><%= @consumer_request.servicename %> - $<%= @consumer_request.final_price %></li>
+              <li style="font-weight: 600; font-size: 16px;"><%= @consumer_request.servicename %></li>
+              <li style="font-size: 24px; color: #F7ABB2; font-weight: 700; margin-top: 10px; ">$<%= @consumer_request.final_price.to_i %></li>
             </ul>
           </div>
 
@@ -30,29 +49,27 @@
           <% if current_user.is_artist? %>
             <!-- Accept Booking -->
             <% if @consumer_request.status == 'unconfirmed' %>
-                <i class="fa fa-clock-o fa-4x" aria-hidden="true"></i>
-                <p class="unconfirmed">PENDING</p><%= button_to "Accept", artist_consumers_request_path(current_user.artist, @consumer_request),:confirm => 'Are you sure?',
+               <%= button_to "Accept", artist_consumers_request_path(current_user.artist, @consumer_request),:confirm => 'Are you sure?',
             :class => "booking-status accept btn-pamprd", :method => :patch %>
 
             <!-- Decline Booking -->
-            <nobr><%= button_to "Decline", artist_consumers_request_path(current_user.artist, @consumer_request), data: {:confirm => 'Are you really sure?'}, :class => "booking-status cancel btn-pamprd", method: :delete %>
+            <nobr><%= button_to "Decline", artist_consumers_request_path(current_user.artist, @consumer_request), data: {:confirm => 'Are you really sure?'}, :class => "booking-status cancel-btn btn-pamprd", method: :delete %>
 
               <% else %>
               <!-- Cancel previously accepted booking -->
-                <i class="fa fa-check-circle fa-5x" aria-hidden="true"></i>
-                <p class="confirmed"><%= @consumer_request.status %></p><%= button_to "Cancel Booking", artist_consumers_request_path(@consumer_request),  data: {:confirm => 'Are you sure?'},
-            :class => "booking-status cancel btn-pamprd", :method => :delete %>
+                <p class="confirmed">CONFIRMED</p>
+                <p class="cancel-booking"><%= link_to "Cancel Booking", artist_consumers_request_path(@consumer_request),  data: {:confirm => 'Are you sure?'},
+            :class => "booking-status cancel", :method => :delete %></p>
               <% end %>
 
 
             <%else%>
               <% if @consumer_request.status == 'unconfirmed' %>
-                <i class="fa fa-clock-o fa-4x" aria-hidden="true"></i>
-                <p class="unconfirmed">PENDING</p>
-                <p class="cancel-booking"><%= link_to "Cancel Request", artist_consumers_request_path(@consumer_request.artist, @consumer_request), data: {:confirm => 'Are you really sure?'}, :class => "booking-status cancel btn-pamprd", method: :delete %></p>
+               <!--  <i class="fa fa-clock-o fa-4x" aria-hidden="true"></i> -->
+                <p class="unconfirmed">UNCONFIRMED</p>
+                <p class="cancel-booking"><%= link_to "Cancel Request", artist_consumers_request_path(@consumer_request.artist, @consumer_request), data: {:confirm => 'Are you really sure?'}, :class => "booking-status cancel", method: :delete %></p>
 
               <% else %>
-                <i class="fa fa-check-circle fa-4x" aria-hidden="true"></i>
                 <p class='confirmed'><%= @consumer_request.status %></p>
                 <p class='cancel-booking'><%= link_to "Cancel Booking", artist_consumers_request_path(@consumer_request.artist, @consumer_request), data: {:confirm => 'Are you really sure?'}, :class => "booking-status cancel", method: :delete %></p>
 

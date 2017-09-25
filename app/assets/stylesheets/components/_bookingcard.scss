@@ -12,11 +12,12 @@ img {
 
 .booking-card {
   margin: 0px 0px 20px 0px !important;
+  min-height: 360px;
   height: auto;
   width: 100% !important;
   padding: 0px !important;
   background-color: white;
-  border-radius: 0.1rem;
+  border-radius: 1px;
   box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
   display: flex;
   flex-direction: column;
@@ -82,12 +83,14 @@ img {
 
 .booking-bkgrd-image {
   width: 100%;
+  background-color: $pink;
+  opacity: 0.2;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-  filter: contrast(70%);
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
+  // filter: contrast(70%);
   //filter: saturate(180%);
   overflow: hidden;
   position: relative;
@@ -108,7 +111,7 @@ img {
   flex: 1 1 auto;
   font-size: 12px;
   line-height: 1.5;
-  margin-bottom: 1.25rem;
+  margin-bottom: 10px;
 }
 
 .booking-status {
