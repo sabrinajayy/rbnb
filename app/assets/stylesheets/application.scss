@@ -16,21 +16,8 @@
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
+@import "components/messages";
 
 
 
-.current_user{
 
-  text-align: right;
-  h4 {
-    color: blue !important;
-  }
-}
-
-.other_user{
-
-  text-align: left;
-  h4 {
-    color: red !important;
-  }
-}
