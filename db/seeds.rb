@@ -1,6 +1,6 @@
 require 'date'
 
-
+ArtistImage.destroy_all
 ArtistService.destroy_all
 ArtistRequest.destroy_all
 Consumer.destroy_all
@@ -20,7 +20,7 @@ real_images = ["http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_
                "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506332945/mua-woman_l8tncl.jpg",
                "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506332946/mua-sarah_eexokm.jpg"]
 
-real_names = ["Liz", "Linda", "Michela", "Jen", "Sally"]
+real_names = ["Liz", "Michel", "Michela", "Jen", "Sally"]
 real_services = ["Full Face Makeup", "Lashes", "Special FX", "Wedding Day Service", "Lesson"]
 
 tags = ["#ecofriendly", "#costume", "#wedding", "#birthday", "#fierce", "#natural", "#whatever", "#ilovejesus", "#brash", "#sass"]
@@ -46,7 +46,7 @@ real_names.each_with_index do |name, i|
     ArtistService.create(name: service, price: (rand(10) + 40).to_f, artist: artist )
   end
 end
-puts "Creating and artist called Sarah"
+puts "Creating an artist called Sarah"
 
 user = User.create({ email: 'sarah@sarah.com', password: 'password' })
 artist_sarah = Artist.create({ user: user,
@@ -69,6 +69,18 @@ ArtistService.create(name: "Wedding Day Service",price: 250.0,artist: artist_sar
 ArtistService.create(name: "Lesson", price: 50.0,artist: artist_sarah)
 puts
 
+
+sarah_artist_images = ["http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good" + "%20" + "makeup/costume_makeup1.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup2.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup3.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup4.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup5.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup6.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup7.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup8.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333832/good%20makeup/costume_makeup9.jpg"]
+sarah_artist_images.each { |i| ArtistImage.create(artist: artist_sarah, image: i) }
+
 puts "Creating and artist called Angelo"
 artist_angelo = Artist.create({ user: user,
                          first_name: 'Angelo',
@@ -79,8 +91,9 @@ artist_angelo = Artist.create({ user: user,
                          location: "Carrer d'Aribau, 51, 08011 Barcelona",
                          bio: "Hey guys, I really love all things beauty.",
                          travel_range: 20,
-                         rating: 4.7
+                         rating: 0.0
                          })
+
 puts "Creating Angelo's Services"
 ArtistService.create(name: 'Full Face Makeup',price: 40.0,artist: artist_sarah)
 ArtistService.create(name: "Lashes",price: 20.0,artist: artist_sarah)
@@ -88,6 +101,20 @@ ArtistService.create(name: "Special FX",price: 60.0,artist: artist_sarah)
 ArtistService.create(name: "Wedding Day Service",price: 200.0,artist: artist_sarah)
 ArtistService.create(name: "Lesson", price: 30.0,artist: artist_sarah)
 puts
+
+
+angelo_artist_images = ["http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,w_1080/v1506334008/bad%20makeup/bad_makeup1.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334008/bad%20makeup/bad_makeup2.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334008/bad%20makeup/bad_makeup3.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334008/bad%20makeup/bad_makeup4.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334008/bad%20makeup/bad_makeup5.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334008/bad%20makeup/bad_makeup6.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334009/bad%20makeup/bad_makeup7.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334008/bad%20makeup/bad_makeup8.jpg",
+                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334009/bad%20makeup/bad_makeup9.jpg"]
+angelo_artist_images.each { |i| ArtistImage.create(artist: artist_angelo, image: i) }
+
+
 #
 # seed hero user
 hero_user = User.create(email: 'hero@hero.com', password: 'password')
@@ -100,7 +127,7 @@ times.each do |t|
   ConsumerRequest.create(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: t, status: 'confirmed')
 end
 
-sarah_consumer_images = ["http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506334654/review%20pics/profile_pic1B.jpg",
+sarah_consumer_images = ['http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506334654/review%20pics/profile_pic1B.jpg',
                          "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506334655/review%20pics/profile_pic1G.jpg",
                          "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506334654/review%20pics/profile_pic2G.jpg",
                          "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506334654/review%20pics/profile_pic3G.jpg",
@@ -160,6 +187,7 @@ event_descriptions = ["Birthday party.",
                       "Prom.",
                       "Graduation dinner.",
                       "Intimate gathering."]
+
 puts "Creating events near to Sarah to show on her search"
 event_dates = 5.times.map { |i| DateTime.new(2017, rand(2) + 9, rand(20) + 1, rand(10) + 9) }
 event_users = 5.times.map { |i| User.create(email: Faker::Internet.email, password: Faker::Internet.password) }
