@@ -79,7 +79,10 @@ class ArtistsController < ApplicationController
 
     if params[:artist][:artist_services]
       params[:artist][:artist_services].each do |service, price|
-        ArtistService.create({ name: service, price: price, artist: @artist})
+        ArtistService.where(artist: @artist).each do |service_to_destroy|
+          service_to_destroy.destroy! if service == service_to_destroy.name
+        end
+        ArtistService.create({ name: service, price: prices.sample, artist: @artist})
       end
     end
     @artist.update(artist_params)

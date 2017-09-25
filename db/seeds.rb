@@ -22,7 +22,7 @@ real_images = ["http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_
                "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506332946/mua-sarah_eexokm.jpg"]
 
 real_names = ["Liz", "Michel", "Michela", "Jen", "Sally"]
-real_services = ["Full Face Makeup", "Lashes", "Special FX", "Wedding Day Service", "Lesson"]
+real_services = ["Makeup Application", "False Lashes", "Special FX Makeup", "Bridal Makeup", "Makeup Lesson"]
 
 tags = ["#ecofriendly", "#costume", "#wedding", "#birthday", "#fierce", "#natural", "#whatever", "#ilovejesus", "#brash", "#sass"]
 
@@ -54,7 +54,7 @@ artist_sarah = Artist.create!({ user: user,
                          first_name: 'Sarah',
                          last_name: 'Leibowitz',
                          tags: "#haloween #gothic #natural #lazysundaydays #afternoondelight",
-                         photo: "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333074/mua-real-sarah_ze70qf.jpg",
+                         photo: "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506347055/mua-real-sarah_goswvn.jpg",
                          category: 'makeup',
                          location: 'Carrer Pere Serafi, Barcelona',
                          bio: "Sarah has always had a passion for the arts. She started her professional career at MAC Cosmetics in 2003. Sarah is continually inspired by her clients and the creative collaborators she works alongside.",
@@ -63,22 +63,22 @@ artist_sarah = Artist.create!({ user: user,
                          })
 
 puts "Creating Sarah's Services"
-ArtistService.create!(name: 'Full Face Makeup',price: 50.0,artist: artist_sarah)
-ArtistService.create!(name: "Lashes",price: 30.0,artist: artist_sarah)
-ArtistService.create!(name: "Special FX",price: 75.0,artist: artist_sarah)
+ArtistService.create!(name: 'Makeup Application',price: 50.0,artist: artist_sarah)
+ArtistService.create!(name: "Bridal Makeup",price: 30.0,artist: artist_sarah)
+ArtistService.create!(name: "Special FX Makeup",price: 75.0,artist: artist_sarah)
 ArtistService.create!(name: "Wedding Day Service",price: 250.0,artist: artist_sarah)
-ArtistService.create!(name: "Lesson", price: 50.0,artist: artist_sarah)
+ArtistService.create!(name: "Makeup Lesson", price: 50.0,artist: artist_sarah)
 puts
 
-sarah_artist_images = ["http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good" + "%20" + "makeup/costume_makeup1.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup2.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup3.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup4.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup5.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup6.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup7.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333831/good%20makeup/costume_makeup8.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506333832/good%20makeup/costume_makeup9.jpg"]
+sarah_artist_images = ["https://res.cloudinary.com/dl12g2ws3/image/upload/v1506342826/pc679avqqhvqltg3vuwt.jpg",
+                       "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506342828/puxhsnfhizzle0i7mm0n.jpg",
+                       "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506342829/tmjmrbjr7jdq8iycdw1t.jpg",
+                       "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506342830/gfs5hd5xzuv5tsr0bzet.jpg",
+                       "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506342831/jujjwbfy9ebzx50uiit5.jpg",
+                       "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506342832/ns5urbjborqilclzoclk.jpg",
+                       "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506342834/axhgtxw2obc8vp4hnfue.jpg",
+                       "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506342835/rgymqldknl355hxv7fiw.jpg",
+                       "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506342836/yxuiecvpqposqruleeij.jpg"]
 sarah_artist_images.each { |i| ArtistImage.create!(artist: artist_sarah, image: i) }
 
 
@@ -88,7 +88,7 @@ artist_angelo = Artist.create!({ user: user,
                          first_name: 'Angelo',
                          last_name: 'Cervantes',
                          tags: "#onfleek #unnatural #busysaturdays #eveningdelight",
-                         photo: "http://m1.22slides.com/jaleesajaikaran/4448_image_661127.jpg",
+                         photo: "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506347055/angelo-photo_mnobo3.jpg",
                          category: 'makeup',
                          location: "Carrer d'Aribau, 51, 08011 Barcelona",
                          bio: "Hey guys, I really love all things beauty.",
@@ -97,23 +97,23 @@ artist_angelo = Artist.create!({ user: user,
                          })
 
 puts "Creating Angelo's Services"
-ArtistService.create!(name: 'Full Face Makeup',price: 40.0,artist: artist_sarah)
-ArtistService.create!(name: "Lashes",price: 20.0,artist: artist_sarah)
-ArtistService.create!(name: "Special FX",price: 60.0,artist: artist_sarah)
-ArtistService.create!(name: "Wedding Day Service",price: 200.0,artist: artist_sarah)
-ArtistService.create!(name: "Lesson", price: 30.0,artist: artist_sarah)
+ArtistService.create!(name: 'Makeup Application',price: 50.0,artist: artist_angelo)
+ArtistService.create!(name: "Bridal Makeup",price: 30.0,artist: artist_angelo)
+ArtistService.create!(name: "Special FX Makeup",price: 75.0,artist: artist_angelo)
+ArtistService.create!(name: "Wedding Day Service",price: 250.0,artist: artist_angelo)
+ArtistService.create!(name: "Makeup Lesson", price: 50.0,artist: artist_angelo)
 puts
 
 
-angelo_artist_images = ["http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,w_1080/v1506334008/bad%20makeup/bad_makeup1.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334008/bad%20makeup/bad_makeup2.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334008/bad%20makeup/bad_makeup3.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334008/bad%20makeup/bad_makeup4.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334008/bad%20makeup/bad_makeup5.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334008/bad%20makeup/bad_makeup6.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334009/bad%20makeup/bad_makeup7.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334008/bad%20makeup/bad_makeup8.jpg",
-                       "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506334009/bad%20makeup/bad_makeup9.jpg"]
+angelo_artist_images = ["https://res.cloudinary.com/dl12g2ws3/image/upload/v1506348212/bad_makeup1_maw6x6.jpg",
+                        "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506348212/bad_makeup2_hns3yz.jpg",
+                        "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506348212/bad_makeup3_mqzklc.jpg",
+                        "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506348212/bad_makeup4_f53waa.jpg",
+                        "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506348212/bad_makeup6_xdmizw.jpg",
+                        "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506348213/bad_makeup7_pyoh3o.jpg",
+                        "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506348213/bad_makeup8_gt0n5e.jpg",
+                        "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506348213/bad_makeup8_gt0n5e.jpg",
+                        "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506348213/bad_makeup9_eudwqu.jpg"]
 angelo_artist_images.each { |i| ArtistImage.create!(artist: artist_angelo, image: i) }
 
 
