@@ -75,14 +75,24 @@ class ArtistsController < ApplicationController
 
   def update
 
-    # prices = [15.0, 43.50, 87.99, 33.10, 45.85, 60.99]
+    prices = [50.0, 150.00, 100.00, 75.00, 80.00]
 
     if params[:artist][:artist_services]
       params[:artist][:artist_services].each do |service, price|
-        ArtistService.create({ name: service, price: price, artist: @artist})
+        ArtistService.where(artist: @artist).each do |service_to_destroy|
+          service_to_destroy.destroy! if service == service_to_destroy.name
+        end
+        ArtistService.create({ name: service, price: prices.sample, artist: @artist})
       end
     end
     @artist.update(artist_params)
+
+    if params[:artist_images]
+      params[:artist_images]['image'].each do |i|
+        @artist_image = @artist.artist_images.create!(:image => i)
+      end
+    end
+
     redirect_to artist_path(@artist)
   end
 

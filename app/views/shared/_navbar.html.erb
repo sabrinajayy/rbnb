@@ -21,7 +21,7 @@
             <div class="dropdown">
             <div class="navbar-wagon-right hidden-sm hidden-xs">
               <%= link_to 'Bookings', artist_path(current_user.artist), class: "navbar-wagon-item navbar-wagon-link" %>
-              <% if !current_user.artist.photo %>
+              <% if current_user.artist.photo %>
                 <%= cl_image_tag current_user.artist.photo, class: 'avatar dropdown-toggle', id: 'navbar-wagon-menu', data: { toggle: 'dropdown' }, width: 300, height: 300, crop: :fill %>
                 <% else %>
                 <%= cl_image_tag "http://res.cloudinary.com/dl12g2ws3/image/upload/v1505729708/profile-icon_xx3teu.png", class: 'avatar dropdown-toggle', id: 'navbar-wagon-menu', data: { toggle: 'dropdown' }, width: 300, height: 300, crop: :fill %>
@@ -59,7 +59,7 @@
               <div class="navbar-wagon-right hidden-sm hidden-xs">
             <%= link_to 'Bookings', consumer_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
 
-            <% if !current_user.consumer.profile_img %>
+            <% if current_user.consumer.profile_img %>
               <%= cl_image_tag current_user.consumer.profile_img, class: 'avatar dropdown-toggle', id: 'navbar-wagon-menu', data: { toggle: 'dropdown' }, width: 300, height: 300, crop: :fill %>
                 <% else %>
               <%= cl_image_tag "http://res.cloudinary.com/dl12g2ws3/image/upload/v1505729708/profile-icon_xx3teu.png", class: 'avatar dropdown-toggle', id: 'navbar-wagon-menu', data: { toggle: 'dropdown' }, width: 300, height: 300, crop: :fill %>

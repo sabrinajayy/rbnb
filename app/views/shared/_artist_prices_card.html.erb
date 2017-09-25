@@ -8,6 +8,6 @@
       <!--will iterate over artist services -->
     <% end %>
   </ul>
-            <%= button_to "REQUEST #{@artist.first_name.upcase}", new_artist_consumers_request_path(@artist.id),
-          :class => "btn-pamprd request-btn", :method => :get %>
+  <%= button_to "REQUEST #{@artist.first_name.upcase}", new_artist_consumers_request_path(@artist.id),
+  :class => "btn-pamprd request-btn", :method => :get %>
 </div>
