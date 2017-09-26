@@ -19,7 +19,9 @@ locations = ['Barcelona', 'New York', 'Paris']
 real_images = ["http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506332944/mua-girl_afps2u.jpg",
                "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506332945/mua-angelo_mti7zn.jpg",
                "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506332945/mua-woman_l8tncl.jpg",
-               "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506332946/mua-sarah_eexokm.jpg"]
+               "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506332946/mua-sarah_eexokm.jpg",
+               "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506342832/ns5urbjborqilclzoclk.jpg"
+               ]
 
 real_names = ["Liz", "Michel", "Michela", "Jen", "Sally"]
 real_services = ["Makeup Application", "False Lashes", "Special FX Makeup", "Bridal Makeup", "Makeup Lesson"]
@@ -42,7 +44,7 @@ real_names.each_with_index do |name, i|
     my_tags << tags.delete(tags.sample)
   end
 
-  artist = Artist.create!({ user: user, first_name: name, last_name: Faker::Name.last_name, tags: my_tags.join(' '), location: "Barcelona" , category: "makeup", photo: real_images[i], travel_range: 20, rating: rand(5).to_f })
+  artist = Artist.create!({ user: user, first_name: name, last_name: Faker::Name.last_name, tags: my_tags.join(' '), location: "Barcelona" , category: "makeup", remote_photo_url: real_images[i], travel_range: 20, rating: rand(5).to_f })
   real_services.each do |service|
     ArtistService.create!(name: service, price: (rand(10) + 40).to_f, artist: artist )
   end
@@ -54,7 +56,7 @@ artist_sarah = Artist.create!({ user: user,
                          first_name: 'Sarah',
                          last_name: 'Leibowitz',
                          tags: "#haloween #gothic #natural #lazysundaydays #afternoondelight",
-                         photo: "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506347055/mua-real-sarah_goswvn.jpg",
+                         remote_photo_url: "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506347055/mua-real-sarah_goswvn.jpg",
                          category: 'makeup',
                          location: 'Carrer Pere Serafi, Barcelona',
                          bio: "Sarah has always had a passion for the arts. She started her professional career at MAC Cosmetics in 2003. Sarah is continually inspired by her clients and the creative collaborators she works alongside.",
@@ -79,7 +81,7 @@ sarah_artist_images = ["https://res.cloudinary.com/dl12g2ws3/image/upload/v15063
                        "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506342834/axhgtxw2obc8vp4hnfue.jpg",
                        "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506342835/rgymqldknl355hxv7fiw.jpg",
                        "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506342836/yxuiecvpqposqruleeij.jpg"]
-sarah_artist_images.each { |i| ArtistImage.create!(artist: artist_sarah, image: i) }
+sarah_artist_images.each { |i| ArtistImage.create!(artist: artist_sarah, remote_image_url: i) }
 
 
 puts "Creating and artist called Angelo"
@@ -88,7 +90,7 @@ artist_angelo = Artist.create!({ user: user,
                          first_name: 'Angelo',
                          last_name: 'Cervantes',
                          tags: "#onfleek #unnatural #busysaturdays #eveningdelight",
-                         photo: "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506347055/angelo-photo_mnobo3.jpg",
+                         remote_photo_url: "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506347055/angelo-photo_mnobo3.jpg",
                          category: 'makeup',
                          location: "Carrer d'Aribau, 51, 08011 Barcelona",
                          bio: "Hey guys, I really love all things beauty.",
@@ -114,7 +116,7 @@ angelo_artist_images = ["https://res.cloudinary.com/dl12g2ws3/image/upload/v1506
                         "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506348213/bad_makeup8_gt0n5e.jpg",
                         "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506348213/bad_makeup8_gt0n5e.jpg",
                         "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506348213/bad_makeup9_eudwqu.jpg"]
-angelo_artist_images.each { |i| ArtistImage.create!(artist: artist_angelo, image: i) }
+angelo_artist_images.each { |i| ArtistImage.create!(artist: artist_angelo, remote_image_url: i) }
 
 
 #
@@ -150,7 +152,7 @@ angelo_reviewers = ['Margot', 'Sandra', 'Amelia', 'Silvia']
 
 sarah_reviewers.each_with_index do |reviewer_name, i|
   user = User.create!({ email: Faker::Internet.email, password: Faker::Internet.password })
-  consumer = Consumer.create!(user: user, first_name: reviewer_name, last_name: Faker::Name.last_name, profile_img: sarah_consumer_images[i], city: 'Barcelona', phone_number: Faker::PhoneNumber.cell_phone, instagram: reviewer_name)
+  consumer = Consumer.create!(user: user, first_name: reviewer_name, last_name: Faker::Name.last_name, remote_profile_img_url: sarah_consumer_images[i], city: 'Barcelona', phone_number: Faker::PhoneNumber.cell_phone, instagram: reviewer_name)
   consumer_request = ConsumerRequest.create!(artist: artist_sarah, user_id: user.id, final_price: 50.0, servicename: real_services.sample, address: 'Barcelona', date: DateTime.now.advance(months: -(rand(2) + 1)), status: 'confirmed')
   Review.create!(
                 content: "#{["Sarah", "She"].sample} #{['did my', 'sorted out my'].sample} #{consumer_request.servicename} and she was #{good_adjectives[i]}#{['.','!'].sample}",
@@ -163,7 +165,7 @@ end
 
 angelo_reviewers.each_with_index do |reviewer_name, i|
   user = User.create!({ email: Faker::Internet.email, password: Faker::Internet.password })
-  consumer = Consumer.create!(user: user, first_name: reviewer_name, last_name: Faker::Name.last_name, profile_img: angelo_consumer_images[i], city: 'Barcelona', phone_number: Faker::PhoneNumber.cell_phone, instagram: reviewer_name)
+  consumer = Consumer.create!(user: user, first_name: reviewer_name, last_name: Faker::Name.last_name, remote_profile_img_url: angelo_consumer_images[i], city: 'Barcelona', phone_number: Faker::PhoneNumber.cell_phone, instagram: reviewer_name)
   consumer_request = ConsumerRequest.create!(artist: artist_angelo, user_id: user.id, final_price: 50.0, servicename: real_services.sample, address: 'Barcelona', date: DateTime.now.advance(months: -(rand(2) + 1)), status: 'confirmed')
   Review.create!(
                 content: "#{["Angelo", "He"].sample} did my #{consumer_request.servicename} and he was #{mediocre_adjectives[i]}#{['.','!'].sample}",
