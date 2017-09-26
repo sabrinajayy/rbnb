@@ -16,11 +16,11 @@ categories = ['hair', 'makeup', 'hair and makeup']
 locations = ['Barcelona', 'New York', 'Paris']
 
 
-real_images = ["http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506332944/mua-girl_afps2u.jpg",
-               "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506332945/mua-angelo_mti7zn.jpg",
-               "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506332945/mua-woman_l8tncl.jpg",
-               "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_1080,w_1080/v1506332946/mua-sarah_eexokm.jpg",
-               "https://res.cloudinary.com/dl12g2ws3/image/upload/v1506342832/ns5urbjborqilclzoclk.jpg"
+real_images = ["http://res.cloudinary.com/dl12g2ws3/image/upload/v1506431142/artist%20seeds/artist2.jpg",
+               "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506431143/artist%20seeds/artist1.jpg",
+               "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506431142/artist%20seeds/artist5.jpg",
+               "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506431143/artist%20seeds/artist4.jpg",
+               "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506431143/artist%20seeds/artist3.jpg"
                ]
 
 real_names = ["Liz", "Michel", "Michela", "Jen", "Sally"]
@@ -132,16 +132,16 @@ times.each do |t|
   ConsumerRequest.create!(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: t, status: 'confirmed')
 end
 
-sarah_consumer_images = ['http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506334654/review%20pics/profile_pic1B.jpg',
-                         "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506334655/review%20pics/profile_pic1G.jpg",
-                         "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506334654/review%20pics/profile_pic2G.jpg",
-                         "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506334654/review%20pics/profile_pic3G.jpg",
-                         "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506334654/review%20pics/profile_pic4G.jpg"]
+sarah_consumer_images = ['http://res.cloudinary.com/dl12g2ws3/image/upload/v1506430635/review%20pics/review9.jpg',
+                         "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506430634/review%20pics/review8.jpg",
+                         "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506430634/review%20pics/review7.jpg",
+                         "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506430634/review%20pics/review6.jpg",
+                         "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506430634/review%20pics/review5.jpg"]
 
-angelo_consumer_images = ["http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506334654/review%20pics/profile_pic5G.jpg",
-                          "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506334654/review%20pics/profile_pic6G.jpg",
-                          "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506334195/review%20pics/stephanie.jpg",
-                          "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506335246/review%20pics/beautiful-face-51.jpg"]
+angelo_consumer_images = ["http://res.cloudinary.com/dl12g2ws3/image/upload/v1506430634/review%20pics/review4.jpg",
+                          "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506430634/review%20pics/review3.jpg",
+                          "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506430634/review%20pics/review2.jpg",
+                          "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506430633/review%20pics/review1.jpg"]
 
 
 puts "Creating reviews for Sarah"
