@@ -44,7 +44,7 @@ real_names.each_with_index do |name, i|
     my_tags << tags.delete(tags.sample)
   end
 
-  artist = Artist.create!({ user: user, first_name: name, last_name: Faker::Name.last_name, tags: my_tags.join(' '), location: "Barcelona" , category: "makeup", remote_photo_url: real_images[i], travel_range: 20, rating: rand(5).to_f })
+  artist = Artist.create!({ user: user, first_name: name, last_name: Faker::Name.last_name, tags: my_tags.join(' '), instagram: 'horvattamara', location: "Barcelona" , category: "makeup", remote_photo_url: real_images[i], travel_range: 20, rating: rand(5).to_f })
   real_services.each do |service|
     ArtistService.create!(name: service, price: (rand(10) + 40).to_f, artist: artist )
   end
@@ -61,7 +61,8 @@ artist_sarah = Artist.create!({ user: user,
                          location: 'Carrer Pere Serafi, Barcelona',
                          bio: "Sarah has always had a passion for the arts. She started her professional career at MAC Cosmetics in 2003. Sarah is continually inspired by her clients and the creative collaborators she works alongside.",
                          travel_range: 20,
-                         rating: 4.7
+                         rating: 4.7,
+                         instagram: 'horvattamara'
                          })
 
 puts "Creating Sarah's Services"
