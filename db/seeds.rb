@@ -123,7 +123,7 @@ angelo_artist_images.each { |i| ArtistImage.create!(artist: artist_angelo, remot
 #
 # seed hero user
 hero_user = User.create!(email: 'hero@hero.com', password: 'password')
-Consumer.create!(user: hero_user, first_name: 'Bruce', last_name: 'Wayne', city: 'Barcelona', phone_number: '500-500-500', instagram: '@secret_hero')
+Consumer.create!(user: hero_user, first_name: 'Bruce', last_name: 'Wayne', city: 'Barcelona', phone_number: '500-500-500', instagram: 'secret_hero', remote_profile_img_url: "http://res.cloudinary.com/dl12g2ws3/image/upload/c_crop,h_300,w_300/v1506334654/review%20pics/profile_pic1B.jpg")
 
 puts
 puts "Creating Consumer Requests"
