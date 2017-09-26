@@ -25,7 +25,10 @@ class ConsumersRequestsController < ApplicationController
 
   def create
     consumer_request = ConsumerRequest.new(consumer_request_params)
-
+    date = consumer_request_params[:date].split('-').map { |i| i.to_i }
+    time = consumer_request_params[:time].split(':').map { |i| i.to_i }
+    datetime = DateTime.new(date[0], date[1], date[2], time[0], time[1])
+    consumer_request.date = datetime
     consumer_request.user_id = current_user.id
 
     service = ArtistService.find(params[:consumer_request][:artist_service][:name])
