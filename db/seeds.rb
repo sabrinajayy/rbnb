@@ -59,7 +59,7 @@ artist_sarah = Artist.create!({ user: user,
                          remote_photo_url: "http://res.cloudinary.com/dl12g2ws3/image/upload/v1506347055/mua-real-sarah_goswvn.jpg",
                          category: 'makeup',
                          location: 'Carrer Pere Serafi, Barcelona',
-                         bio: "Sarah has always had a passion for the arts. She started her professional career at MAC Cosmetics in 2003. Sarah is continually inspired by her clients and the creative collaborators she works alongside.",
+                         bio: "I have always had a passion for the arts. I started my professional career at MAC Cosmetics in 2003. I am continually inspired by my clients and the creative collaborators I work alongside.",
                          travel_range: 20,
                          rating: 4.7,
                          instagram_handle: 'horvattamara'
