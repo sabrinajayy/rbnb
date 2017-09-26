@@ -1,5 +1,5 @@
 class ConsumersRequestsController < ApplicationController
-  before_action :set_artist, only: [:new, :show, :create, :destroy, :update]
+  before_action :set_artist, only: [:new, :show, :create, :update]
   before_action :set_consumer_request, only: [:show, :destroy, :update]
 
   def show
@@ -25,7 +25,10 @@ class ConsumersRequestsController < ApplicationController
 
   def create
     consumer_request = ConsumerRequest.new(consumer_request_params)
-
+    date = consumer_request_params[:date].split('-').map { |i| i.to_i }
+    time = consumer_request_params[:time].split(':').map { |i| i.to_i }
+    datetime = DateTime.new(date[0], date[1], date[2], time[0], time[1])
+    consumer_request.date = datetime
     consumer_request.user_id = current_user.id
 
     service = ArtistService.find(params[:consumer_request][:artist_service][:name])
@@ -44,7 +47,7 @@ class ConsumersRequestsController < ApplicationController
   end
 
   def destroy
-
+    @artist = @consumer_request.artist
     @consumer_request.destroy!
     if current_user.is_artist?
       redirect_to artist_path(@artist)
