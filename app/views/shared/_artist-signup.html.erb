@@ -34,7 +34,7 @@
 
      <%= f.fields_for :artist_images, ArtistImage.new do |i| %>
      <div class="field">
-       <%= i.label :image %><br>
+       <%= i.label :image, "Upload photos to your gallery so users can check out your work!" %><br>
        <%= i.file_field :image, :multiple => true, name: "artist_images[image][]" %>
    <%= i.input :image_cache, as: :hidden %>
      </div>

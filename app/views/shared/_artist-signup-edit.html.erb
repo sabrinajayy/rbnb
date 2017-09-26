@@ -15,7 +15,7 @@
   <%= f.label :travel_range, "How far are you willing to travel? (km)", required: true %>
   <%= f.input :travel_range, label: false, required: true %>
 
-  <%= f.input :instagram_handle, required: false %>
+  <%= f.input :instagram_handle, placeholder: "Example: makeupgirl87", required: false %>
 
   <%= f.input :photo, label: "Upload your profile photo" %>
   <%= f.input :photo_cache, as: :hidden %>
@@ -37,7 +37,7 @@
 
        <%= f.fields_for :artist_images, ArtistImage.new do |i| %>
      <div class="field">
-       <%= i.label :image %><br>
+       <%= i.label :image, "Upload photos to your gallery so users can check out your work!" %><br>
        <%= i.file_field :image, :multiple => true, name: "artist_images[image][]" %>
       <%= i.input :image_cache, as: :hidden %>
      </div>

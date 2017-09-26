@@ -17,7 +17,11 @@
               <% end %>
               </ul>
               <p class="number-of-reviews">(<%= @artist.reviews.size %>)</p>
-          <p><%= @artist.try(:category).try(:capitalize) %> | <%= @artist.location %> | <%= @artist.instagram_handle %></p>
+          <p><%= @artist.try(:category).try(:capitalize) %> | <%= @artist.location %> |
+          <%= link_to 'https://www.instagram.com/horvattamara/', target: :_blank do %>
+            <%= @artist.instagram_handle %>
+            <% end %>
+          </p>
           <%= button_to "REQUEST #{@artist.first_name.upcase}", new_artist_consumers_request_path(@artist.id),
           :class => "btn-pamprd request-btn", :method => :get %>
 
