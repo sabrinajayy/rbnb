@@ -14,9 +14,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
-      artist_reviews = Review.where(artist_id: @artist.id).map {|review| review.rating.to_f}
-      rating = (@review.rating + artist_reviews.reduce(0, :+) )/(artist_reviews.count).to_f
-      @artist.update(rating: rating)
+
       flash[:notice] = "success"
     else
       flash[:alert] = "try again"

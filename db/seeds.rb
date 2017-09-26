@@ -96,7 +96,7 @@ artist_angelo = Artist.create!({ user: user,
                          location: "Carrer d'Aribau, 51, 08011 Barcelona",
                          bio: "Hey guys, I really love all things beauty.",
                          travel_range: 20,
-                         rating: 2.5
+                         rating: 0.0
                          })
 
 puts "Creating Angelo's Services"
