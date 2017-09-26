@@ -1,3 +1,5 @@
 $(document).ready(function() {
-  swal("Hello world!");
+  $('.accept').click( function (e) {
+    swal("Hello world!");
+  });
 });
