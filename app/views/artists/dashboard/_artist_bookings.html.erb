@@ -18,7 +18,7 @@
                 <li><p class="artist-name"><%= @artist.first_name %> <%= @artist.last_name %></p></li>
                 <li><p class="artist-location"><%= @artist.location %></p></li>
                 <li>@<%= @artist.instagram_handle %>  <%= @artist.category %></li>
-                <li><%= @artist.bio.first(100) %></li>
+                <li><%= @artist.bio.first(300) %>...</li>
                 <li><p class="artist-tags"><%= @artist.tags %></p></li>
               </ul>
             </div>
