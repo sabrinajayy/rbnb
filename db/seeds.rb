@@ -127,7 +127,7 @@ Consumer.create!(user: hero_user, first_name: 'Bruce', last_name: 'Wayne', city:
 
 puts
 puts "Creating Consumer Requests"
-times = [DateTime.yesterday, DateTime.new(2017,9,10), DateTime.new(2017,9,25), DateTime.new(2017,9,17), DateTime.new(2017,10,1)]
+times = [DateTime.yesterday, DateTime.new(2017,9,10, 9), DateTime.new(2017,9,25, 17), DateTime.new(2017,9,17, 12), DateTime.new(2017,10,1, 13)]
 times.each do |t|
   ConsumerRequest.create!(artist: artist_sarah, user_id: hero_user.id, final_price: 50.0, servicename: 'Full Face Makeup', address: 'New York City', date: t, status: 'confirmed')
 end
@@ -154,7 +154,7 @@ angelo_reviewers = ['Margot', 'Sandra', 'Amelia', 'Silvia']
 sarah_reviewers.each_with_index do |reviewer_name, i|
   user = User.create!({ email: Faker::Internet.email, password: Faker::Internet.password })
   consumer = Consumer.create!(user: user, first_name: reviewer_name, last_name: Faker::Name.last_name, remote_profile_img_url: sarah_consumer_images[i], city: 'Barcelona', phone_number: Faker::PhoneNumber.cell_phone, instagram: reviewer_name)
-  consumer_request = ConsumerRequest.create!(artist: artist_sarah, user_id: user.id, final_price: 50.0, servicename: real_services.sample, address: 'Barcelona', date: DateTime.now.advance(months: -(rand(2) + 1)), status: 'confirmed')
+  consumer_request = ConsumerRequest.create!(artist: artist_sarah, user_id: user.id, final_price: 50.0, servicename: real_services.sample, address: 'Barcelona', date: DateTime.now.advance(months: -(rand(2) + 1)).change(hour: 13), status: 'confirmed')
   Review.create!(
                 content: "#{["Sarah", "She"].sample} #{['did my', 'sorted out my'].sample} #{consumer_request.servicename} and she was #{good_adjectives[i]}#{['.','!'].sample}",
                 rating: (rand(2) + 4).to_f,
@@ -167,7 +167,7 @@ end
 angelo_reviewers.each_with_index do |reviewer_name, i|
   user = User.create!({ email: Faker::Internet.email, password: Faker::Internet.password })
   consumer = Consumer.create!(user: user, first_name: reviewer_name, last_name: Faker::Name.last_name, remote_profile_img_url: angelo_consumer_images[i], city: 'Barcelona', phone_number: Faker::PhoneNumber.cell_phone, instagram: reviewer_name)
-  consumer_request = ConsumerRequest.create!(artist: artist_angelo, user_id: user.id, final_price: 50.0, servicename: real_services.sample, address: 'Barcelona', date: DateTime.now.advance(months: -(rand(2) + 1)), status: 'confirmed')
+  consumer_request = ConsumerRequest.create!(artist: artist_angelo, user_id: user.id, final_price: 50.0, servicename: real_services.sample, address: 'Barcelona', date: DateTime.now.advance(months: -(rand(2) + 1)).change(hour: 12), status: 'confirmed')
   Review.create!(
                 content: "#{["Angelo", "He"].sample} did my #{consumer_request.servicename} and he was #{mediocre_adjectives[i]}#{['.','!'].sample}",
                 rating: (rand(2) + 2).to_f,
