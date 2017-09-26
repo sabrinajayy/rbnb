@@ -1,5 +1,5 @@
 class ConsumersRequestsController < ApplicationController
-  before_action :set_artist, only: [:new, :show, :create, :destroy, :update]
+  before_action :set_artist, only: [:new, :show, :create, :update]
   before_action :set_consumer_request, only: [:show, :destroy, :update]
 
   def show
@@ -44,7 +44,7 @@ class ConsumersRequestsController < ApplicationController
   end
 
   def destroy
-
+    @artist = @consumer_request.artist
     @consumer_request.destroy!
     if current_user.is_artist?
       redirect_to artist_path(@artist)
