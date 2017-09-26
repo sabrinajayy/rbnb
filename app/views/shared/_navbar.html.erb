@@ -3,7 +3,8 @@
   <div class="navbar-wagon <%= transparent %>">
     <!-- Logo -->
     <a href="/" class="navbar-wagon-brand">
-      <img src="https://maxcdn.icons8.com/Share/icon/Beauty//mirror1600.png" alt="logo">
+      <%= cl_image_tag("updo-logo_cqc3bb.png", :width=>600, :height=>263, :crop=>"fit") %>
+      <!-- <img src="https://maxcdn.icons8.com/Share/icon/Beauty//mirror1600.png" alt="logo"> -->
     </a>
 
     <% if user_signed_in? %>

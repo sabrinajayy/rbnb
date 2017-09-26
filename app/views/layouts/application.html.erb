@@ -21,6 +21,8 @@
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.swipebox/1.4.4/js/jquery.swipebox.min.js' %>
+    <!-- sweetalert - popups for delete and accept buttons -->
+    <%= javascript_include_tag 'https://unpkg.com/sweetalert/dist/sweetalert.min.js' %>
      <%= yield(:after_js) %>
     <%= render 'shared/footer' %>
   </body>

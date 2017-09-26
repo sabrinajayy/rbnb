@@ -12,7 +12,7 @@
 
 /* Logo */
 .navbar-wagon-brand img {
-  height: 50px;
+  height: 40px;
 }
 
 /*Left Section - Artist */
@@ -64,6 +64,10 @@ color: white !important;
 color: $pink !important;
 text-decoration: none;
 
+}
+
+.transparent img {
+  filter: invert(100%) !important;
 }
 
 .black a {
