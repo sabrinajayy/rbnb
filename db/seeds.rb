@@ -196,7 +196,7 @@ event_descriptions = ["Birthday party.",
 puts "Creating events near to Sarah to show on her search"
 event_dates = 5.times.map { |i| DateTime.new(2017, rand(2) + 9, rand(20) + 1, rand(10) + 9) }
 event_users = 5.times.map { |i| User.create!(email: Faker::Internet.email, password: Faker::Internet.password) }
-event_users.each { |i| Consumer.create!(user: i, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city: 'Barcelona', phone_number: '500-500-500', instagram: '@secret_hero') }
+event_users.each_with_index { |i, index| Consumer.create!(user: i, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city: 'Barcelona', remote_profile_img_url: sarah_consumer_images[index], phone_number: '500-500-500', instagram: '@secret_hero') }
 event_users.each_with_index { |user, i| ConsumerEvent.create!(location: event_locations[i], service: 'makeup', description: event_descriptions[i], user: user, date: event_dates[i], budget: ((rand(20) + 4) * 10).to_f) }
 
 puts "Creating a new event, with two artist requests: one from Sarah and the other from a rival artist."
