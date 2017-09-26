@@ -38,6 +38,10 @@ img {
   justify-content: center;
   margin-bottom: 37px;
   margin-top: -11px;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .booking-card-user {
