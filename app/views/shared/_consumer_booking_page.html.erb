@@ -30,6 +30,10 @@
                 <% @artist.rating.round.times do %>
                   <li><i style="padding: 0;" class="fa fa-star"></i></li>
                 <% end %>
+              <% else %>
+                <% 5.times do %>
+                  <li><i style="padding: 0;" class="fa fa-star-o"></i></li>
+                <% end %>
               <% end %>
               </ul><p style="display: inline; font-style: italic;">(<%= @artist.reviews.size %>)</p>
           <% end %>

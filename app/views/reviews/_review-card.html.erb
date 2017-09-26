@@ -9,17 +9,17 @@
         <div class="col-xs-12 col-md-2">
           <div class="review-pic hidden-xs">
             <% if review.user.consumer.profile_img %>
-              <%= image_tag review.user.consumer.profile_img, width: 75, height: 75, crop: :fill, class: 'avatar-large' %>
+              <%= image_tag review.user.consumer.profile_img, class: 'avatar-large' %>
             <% else %>
-              <%= cl_image_tag "http://res.cloudinary.com/dl12g2ws3/image/upload/v1505729708/profile-icon_xx3teu.png", class: 'avatar dropdown-toggle', id: 'navbar-wagon-menu', data: { toggle: 'dropdown' }, width: 300, height: 300, crop: :fill %>
+              <%= cl_image_tag "http://res.cloudinary.com/dl12g2ws3/image/upload/v1505729708/profile-icon_xx3teu.png", class: 'avatar-large', width: 300, height: 300, crop: :fill %>
             <% end %>
           </div>
         </div>
 
         <div class="col-xs-12 col-md-7">
           <div class="review-details">
-            <p class="review-client"><%= review.user.consumer.first_name %> - </p>
-            <p class="review-date"><%= review.created_at.strftime('%b %d %Y, %I:%M%p') %></p>
+            <p class="review-client"><%= review.user.consumer.first_name %> </p>
+            <p class="review-date"><%= review.created_at.strftime('%b %d %Y') %></p>
             <p class="review-content"><%= review.content %></p>
           </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="col-xs-12 col-md-3">
           <ul class="list-inline profile-rating review-rating">
             <% review.rating.times do %>
-              <li><i class="fa fa-star"></i></li>
+              <li><i style="padding: 0px;" class="fa fa-star"></i></li>
             <% end %>
           </ul>
         </div>
