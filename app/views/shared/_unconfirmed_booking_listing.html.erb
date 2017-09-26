@@ -30,8 +30,7 @@
               </div>
               <div class="col-xs-8 col-md-7">
                 <%= link_to artist_consumers_request_path(request.artist_id, request) do %>
-                  <p class="booking-date"><%= request.date.strftime('%b %d %Y')%> - <% if !request.time.nil? %>
-                    <%= request.time.strftime('%I:%M %p') %> <%end%></p>
+                 <p class="booking-date"><%= request.date.strftime('%A, %d %b %Y %l:%M %p')%></p>
                 <% end %>
                 <p class="booking-date client-booking-name"><%= request.consumer.first_name%> <%=request.consumer.last_name %> </p>
                 <p class="booking-category"><%= request.servicename%></p>
