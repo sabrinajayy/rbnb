@@ -97,6 +97,7 @@ class ArtistsController < ApplicationController
   end
 
   def search
+
     service = params[:category]
     location = params[:location]
     long = params[:longitude]
@@ -111,27 +112,29 @@ class ArtistsController < ApplicationController
 
     # by location and date and service (always filled in)
     if !location.empty? && !params[:date].empty?
-      results_by_cat = Artist.where(category: service)
+      results_by_cat = service == "Choose service" ? Artist.all : Artist.where(category: service)
       results_by_cat_and_location = SearchArtistByLocation.new(results_by_cat, lat, long).call
       @results = results_by_cat_and_location.reject do |artist|
         CheckArtistClashesForSegment.new(artist, time_range).call
       end
 
     elsif !location.empty?
-      results_by_cat = Artist.where(category: service)
+
+      results_by_cat = service == "Choose service" ? Artist.all : Artist.where(category: service)
       results_by_cat_and_location = SearchArtistByLocation.new(results_by_cat, lat, long).call
       @results = results_by_cat_and_location
+      # raise
 
     # by date and service
     elsif !params[:date].empty?
-      results_by_cat = Artist.where(category: service)
+      results_by_cat = service == "Choose service" ? Artist.all : Artist.where(category: service)
       @results = results_by_cat.reject do |artist|
         CheckArtistClashesForSegment.new(artist, time_range).call
       end
 
     # by service only
     else
-      @results = Artist.where(category: service)
+      @results = service == "Choose service" ? Artist.all : Artist.where(category: service)
     end
   end
 
