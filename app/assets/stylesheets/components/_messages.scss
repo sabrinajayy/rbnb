@@ -1,5 +1,5 @@
 .messaging-container {
-  height: 400px !important;
+  height: 800px !important;
   width: auto;
   margin: 0px 20px;
   word-wrap: break-word;
@@ -8,10 +8,11 @@
 }
 
 .new-message {
-  margin-bottom: 70px;
+  margin-bottom: 70px !important;
   width: 100%;
   word-wrap: break-word;
   text-align: right;
+
 }
 
 
@@ -26,18 +27,22 @@
   // border: 1px solid #757575;
   margin: 0px 10px 10px 0px;
   border-radius: 2px;
-  -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
-  -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
-  box-shadow: 0px 2px 8px -3px rgba(117,117,117,1);
+  -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,0.5);
+  -moz-box-shadow: 0px 2px 8px -3px rgba(117,117,117,0.5);
+  box-shadow: 0px 2px 8px -3px rgba(117,117,117,0.5);
 }
 
-.new-message input {
+.new-message input[type=submit] {
   text-align: right;
-  margin-bottom: 20px;
+  // margin-bottom: 20px
+  float: left;
 }
 
 .conversation {
-  margin-top: 20px;
+  // margin-top: 20px;
+  padding-top: 30px;
+  display: inline-block;
+  float: left;
 }
 
 
@@ -53,7 +58,7 @@
   text-align: right;
   background-color: #fafafa;
   border-radius: 5px;
-  margin: 5px 10px 20px 50px;
+  margin: 10px 10px 20px 50px;
   background-color: #FFF;
   padding: 15px;
   -webkit-box-shadow: 0px 2px 8px -3px rgba(117,117,117,0.7);

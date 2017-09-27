@@ -1,23 +1,20 @@
 <!-- _booking_messages.html.erb -->
 <div class="messaging-container">
   <h2>Messages with <%= display_name %></h2>
-
-          <div class="new-message">
-
-        <%= simple_form_for(:message, url: artist_consumers_request_messages_path(@artist, @consumer_request)) do |f| %>
-          <%= f.input :body, as: :text, label: false, placeholder: "Enter your message here" %>
-          <%= f.submit "Send message", class: 'btn btn-pamprd' %>
-        <% end %>
+  <div class="new-message">
+    <%= simple_form_for(:message, url: artist_consumers_request_messages_path(@artist, @consumer_request)) do |f| %>
+      <%= f.input :body, as: :text, label: false, placeholder: "Enter your message here" %>
+      <%= f.submit "Send message", class: 'btn btn-pamprd' %>
+    <% end %>
+  </div>
+  <div class="conversation">
+    <% @messages.reverse.each do |m| %>
+      <div class="<%= whos_message(m) %>">
+        <p class="user-msg"><%= m.body %></p>
+        <p class="msg-date"><%= m.created_at.strftime("%b %e, %l:%M %p") %></p>
       </div>
-      <div class="conversation">
-        <% @messages.reverse.each do |m| %>
-          <div class="<%= whos_message(m) %>">
-            <p class="user-msg"><%= m.body %></p>
-            <p class="msg-date"><%= m.created_at.strftime("%b %e, %l:%M %p") %></p>
-          </div>
-        <% end %>
-        </div>
-
+    <% end %>
+  </div>
 </div>
 
 

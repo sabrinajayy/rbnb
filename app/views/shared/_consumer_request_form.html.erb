@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-2">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <%# raise %>
       <div class="form" >
       <h1 class="form-title">Book a session with <%= @artist.first_name %> </h1>
@@ -12,7 +12,7 @@
 
       <%= f.simple_fields_for @services do |s| %>
         <%= s.input :name, label: 'Service' do %>
-        <%= s.select :name, @services.map { |s| ["#{s.name}: $#{s.price}", s.id] }, include_blank: false, class: 'request-time' %>
+        <%= s.select :name, @services.map { |s| ["#{s.name}: $#{s.price.to_i}", s.id] }, include_blank: false, class: 'request-time' %>
       <% end %>
 
       <% end %>
