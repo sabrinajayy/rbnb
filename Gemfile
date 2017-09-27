@@ -43,8 +43,6 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
-gem 'sweet-alert'
-gem 'sweet-alert-confirm'
 
 group :development, :test do
   gem 'pry-byebug'
