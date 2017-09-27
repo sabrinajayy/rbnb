@@ -10,7 +10,6 @@
 //= require google_maps_autocomplete.js
 //= require jquery.validate
 //= require consumer_event.js
-//= require sweetalert2
 //= require sweet_alert.js
 //= require_tree .
 
