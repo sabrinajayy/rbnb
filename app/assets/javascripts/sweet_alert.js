@@ -18,7 +18,7 @@ $.rails.showConfirmationDialog = function(link){
   var message = link.data("confirm");
   swal({
     title: message,
-    text: "You won't be able to revert this!",
+    text: "This cannot be undone!",
     type: 'warning',
     confirmButtonText: 'Yes',
     confirmButtonColor: '#53ce70',
