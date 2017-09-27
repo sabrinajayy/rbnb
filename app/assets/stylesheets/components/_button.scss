@@ -17,7 +17,7 @@
   margin-top: 10px;
   border-radius: 3px;
   font-weight: bold;
-  background: #F7ABB2;
+  background: $pink;
   transition: background 0.3s ease;
   text-transform: uppercase;
   border-width: 0;
@@ -65,7 +65,7 @@ outline-width: 0;
   margin-top: 40px;
   margin-left: 20px;
   &:hover {
-    color: #F7ABB2;
+    color: $pink;
     text-decoration: none;
   }
 }
