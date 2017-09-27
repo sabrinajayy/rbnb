@@ -22,7 +22,7 @@
           <% else %>
           <!-- show artist pic, name and info -->
             <%= link_to artist_path(@artist) do %>
-             <%= cl_image_tag(@artist.photo, class: "artist-profile-pic") %>
+             <%= cl_image_tag(@artist.photo, class: "avatar-super-large") %>
               <h2><%= @artist.first_name %> <%= @artist.last_name %></h2>
             <% end %>
               <ul class="list-inline profile-rating" style="display: inline; margin-top: 5px;">
@@ -40,7 +40,7 @@
           </div>
 
           <div class="booking-info text-center">
-            <p><%= @consumer_request.date.strftime('%b %d %Y') %> at </p>
+            <p><%= @consumer_request.date.strftime('%b %d %Y at %I:%M%p') %></p>
             <p><%= @consumer_request.address %></p>
 
             <ul class="booking-services">
@@ -94,14 +94,11 @@
     <%#= render 'shared/event_map' %>
     <div class="col-xs-12 col-sm-7">
 
-      <div class="messages-section">
-      <%= render 'shared/booking_messages' %>
-      </div>
+     <!--  <div class="messages-section"> -->
+        <%= render 'shared/booking_messages' %>
+   <!--    </div> -->
 
     </div>
-  </div>
- <div class="booking-location-map">
-    <%= render 'shared/event_map' %>
   </div>
 </div>
 

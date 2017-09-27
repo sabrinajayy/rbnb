@@ -29,15 +29,21 @@
 }
 
 .booking-details {
-  padding: 40px 60px 0px 60px !important;
+  padding: 60px 60px 0px 60px !important;
 }
 .booking-artist {
+  margin-top: 20px;
   margin-bottom: 30px;
 }
 
 .booking-artist a {
   text-decoration: none;
   color: #757575;
+}
+
+.booking-artist h2 {
+  font-weight: 300;
+  margin-bottom: 5px;
 }
 
 .booking-info p {

@@ -15,6 +15,10 @@
   height: 40px;
 }
 
+// #updo-logo img {
+//   filter: invert(100%);
+// }
+
 /*Left Section - Artist */
 .navbar-wagon-left {
   align-items: left;
@@ -28,6 +32,17 @@
   justify-content: space-between;
 }
 
+.navbar-wagon-right a {
+  font-weight: 600;
+}
+
+#sign-up-btn input {
+  padding: 5px 15px !important;
+  color: white !important;
+  margin: 10px 5px !important;
+  height: 40px !important;
+}
+
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
@@ -38,6 +53,7 @@
 .navbar-wagon-link {
   // color: #616668;
   font-size: 14px;
+  font-weight: 600;
 }
 .navbar-wagon-link:hover {
   // color: #da552f;
@@ -49,11 +65,10 @@
   box-shadow: none !important;
 
 }
-// .transparent img {
-//   filter: invert(100%) !important;
-// }
+
 .transparent a{
 color: white !important;
+font-weight: 600 !important;
 }
 
 .transparent h6{
@@ -66,17 +81,22 @@ text-decoration: none;
 
 }
 
-.transparent img {
-  filter: invert(100%) !important;
-}
+// .transparent img {
+//   filter: invert(100%) !important;
+// }
 
 .black a {
 color: #757575 !important;
+font-weight: 600 !important;
 }
 
 .black a:hover {
 color: $pink !important;
 text-decoration: none;
+
+// .black img {
+//   filter: invert(100%) !important;
+// }
 
 }
 
@@ -150,7 +170,7 @@ body {
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
-  padding: 0 20px;
+  padding: 0px !important;
 }
 
 /* Navbar link */
@@ -164,11 +184,14 @@ body {
 }
 
 /* Dropdown menu */
+
+
 .navbar-wagon-dropdown-menu {
   margin-top: 15px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
 }
+
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.3s ease;
   font-weight: lighter !important;
@@ -177,10 +200,12 @@ body {
   line-height: 22px !important;
   padding: 10px 20px;
 }
+
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
   color: black !important;
 }
+
 .navbar-wagon-dropdown-menu:before {
   content: ' ';
   height: 10px;
