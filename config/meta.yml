@@ -1,0 +1,5 @@
+meta_product_name: "UpDo"
+meta_title: "UpDo - Your personal salon comes to you"
+meta_description: "The UpDo - have the best makeup artists and hair stylists come to you! "
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+twitter_account: "@theUpDo"   # required for Twitter Cards
