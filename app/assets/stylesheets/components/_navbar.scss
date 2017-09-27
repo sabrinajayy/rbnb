@@ -15,9 +15,9 @@
   height: 40px;
 }
 
-#updo-logo img {
-  filter: invert(100%);
-}
+// #updo-logo img {
+//   filter: invert(100%);
+// }
 
 /*Left Section - Artist */
 .navbar-wagon-left {
@@ -37,7 +37,7 @@
 }
 
 #sign-up-btn input {
-  padding: 5px 10px !important;
+  padding: 5px 15px !important;
   color: white !important;
   margin: 10px 5px !important;
   height: 40px !important;
@@ -65,9 +65,7 @@
   box-shadow: none !important;
 
 }
-// .transparent img {
-//   filter: invert(100%) !important;
-// }
+
 .transparent a{
 color: white !important;
 font-weight: 600 !important;
@@ -83,9 +81,9 @@ text-decoration: none;
 
 }
 
-.transparent img {
-  filter: invert(100%) !important;
-}
+// .transparent img {
+//   filter: invert(100%) !important;
+// }
 
 .black a {
 color: #757575 !important;
@@ -96,9 +94,9 @@ font-weight: 600 !important;
 color: $pink !important;
 text-decoration: none;
 
-.black img {
-  filter: invert(100%) !important;
-}
+// .black img {
+//   filter: invert(100%) !important;
+// }
 
 }
 

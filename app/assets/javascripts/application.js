@@ -19,7 +19,11 @@ $(function(){
 
   //mobile search bar
   if ($(window).width() < 1000) {
-    $('search-details').hide();
+    // $('#search-details').hide();
+    $('.search-service').on('click', function(e){
+      $('.search-details').slideToggle();
+      return false;
+    });
   }
 
   // profile tabs:
