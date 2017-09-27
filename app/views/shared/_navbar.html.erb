@@ -4,7 +4,7 @@
     <!-- Logo -->
     <div id='updo-logo'>
       <a href="/" class="navbar-wagon-brand">
-        <%= cl_image_tag("updo-logo-white_xdhknf.png", :width=>600, :height=>263, :crop=>"fit") %>
+        <%= cl_image_tag("updo-logo_cqc3bb.png", :width=>600, :height=>263, :crop=>"fit") %>
         <!-- <img src="https://maxcdn.icons8.com/Share/icon/Beauty//mirror1600.png" alt="logo"> -->
       </a>
     </div>
@@ -76,8 +76,10 @@
     <% else %>
 
       <div class="navbar-wagon-right hidden-sm hidden-xs">
-        <%= link_to 'Sign Up', new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link text-white" %>
-        <%= link_to 'Login', new_user_session_path, class: "navbar-wagon-item navbar-wagon-link text-white" %>
+        <div id="sign-up-btn">
+          <%= button_to 'Sign Up', new_user_registration_path, :method => :get, class: "btn-pamprd" %>
+        </div>
+        <%= link_to 'LOGIN', new_user_session_path, class: "navbar-wagon-item navbar-wagon-link text-white" %>
       </div>
 
       <div class="navbar-wagon-right hidden-md hidden-lg">

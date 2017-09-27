@@ -15,6 +15,10 @@
   height: 40px;
 }
 
+#updo-logo img {
+  filter: invert(100%);
+}
+
 /*Left Section - Artist */
 .navbar-wagon-left {
   align-items: left;
@@ -28,6 +32,17 @@
   justify-content: space-between;
 }
 
+.navbar-wagon-right a {
+  font-weight: 600;
+}
+
+#sign-up-btn input {
+  padding: 5px 10px !important;
+  color: white !important;
+  margin: 10px 5px !important;
+  height: 40px !important;
+}
+
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
@@ -38,6 +53,7 @@
 .navbar-wagon-link {
   // color: #616668;
   font-size: 14px;
+  font-weight: 600;
 }
 .navbar-wagon-link:hover {
   // color: #da552f;
@@ -54,6 +70,7 @@
 // }
 .transparent a{
 color: white !important;
+font-weight: 600 !important;
 }
 
 .transparent h6{
@@ -72,11 +89,16 @@ text-decoration: none;
 
 .black a {
 color: #757575 !important;
+font-weight: 600 !important;
 }
 
 .black a:hover {
 color: $pink !important;
 text-decoration: none;
+
+.black img {
+  filter: invert(100%) !important;
+}
 
 }
 

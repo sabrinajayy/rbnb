@@ -3,6 +3,10 @@
 <% content_for(:after_js) do %>
     <%= javascript_tag do %>
 
+      $(document).ready(function () {
+        $('#updo-logo').css('filter', 'invert(100%)');
+      });
+
         $(function(){
             $(window).scroll(function () {
             if  ($(window).scrollTop() < 50) {
@@ -13,14 +17,14 @@
             }
 
             else if ($(window).scrollTop() < 200) {
-              $('.navbar-wagon img').removeAttr('style');
+              $('#updo-logo').css('filter', 'invert(100%)');
             }
 
             else {
               $('.transparent.navbar-wagon').css('background','white');
               $('.transparent a').css('color','#757575');
               $('.transparent.navbar-wagon').removeClass('transparent');
-             $('.navbar-wagon img').css('filter', 'invert(100%)');
+              $('#updo-logo').removeAttr('style');
             }
 
             });

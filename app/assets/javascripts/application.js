@@ -15,7 +15,6 @@
 
 $(function(){
 
-
   // datepicker and timepicker functions:
   init_datepick();
 
