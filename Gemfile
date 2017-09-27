@@ -43,6 +43,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
+gem 'rails-assets-sweetalert2'
 
 group :development, :test do
   gem 'pry-byebug'
