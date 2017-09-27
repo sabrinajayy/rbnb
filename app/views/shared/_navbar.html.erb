@@ -2,10 +2,12 @@
 <nav class="navbar  navbar-fixed-top">
   <div class="navbar-wagon <%= transparent %>">
     <!-- Logo -->
-    <a href="/" class="navbar-wagon-brand">
-      <%= cl_image_tag("updo-logo_cqc3bb.png", :width=>600, :height=>263, :crop=>"fit") %>
-      <!-- <img src="https://maxcdn.icons8.com/Share/icon/Beauty//mirror1600.png" alt="logo"> -->
-    </a>
+    <div id='updo-logo'>
+      <a href="/" class="navbar-wagon-brand">
+        <%= cl_image_tag("updo-logo-white_xdhknf.png", :width=>600, :height=>263, :crop=>"fit") %>
+        <!-- <img src="https://maxcdn.icons8.com/Share/icon/Beauty//mirror1600.png" alt="logo"> -->
+      </a>
+    </div>
 
     <% if user_signed_in? %>
       <% if current_user.is_artist? %>
