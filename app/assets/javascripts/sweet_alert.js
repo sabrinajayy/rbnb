@@ -18,9 +18,10 @@ $.rails.showConfirmationDialog = function(link){
   var message = link.data("confirm");
   swal({
     title: message,
+    text: "You won't be able to revert this!",
     type: 'warning',
-    confirmButtonText: 'Sure',
-    confirmButtonColor: '#2acbb3',
+    confirmButtonText: 'Yes',
+    confirmButtonColor: '#53ce70',
     showCancelButton: true
   }).then(function(e){
     $.rails.confirmed(link);
