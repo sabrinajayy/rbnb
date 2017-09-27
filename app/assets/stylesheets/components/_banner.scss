@@ -24,3 +24,9 @@
 .banner.transparent {
   margin-top: -70px!important;
 }
+
+@media screen and (max-width: 1000px) {
+  .banner h1 {
+    font-size: 30px;
+  }
+}

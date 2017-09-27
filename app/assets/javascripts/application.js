@@ -10,13 +10,17 @@
 //= require google_maps_autocomplete.js
 //= require jquery.validate
 //= require consumer_event.js
-//= require sweet_alert.js
 //= require_tree .
 
 $(function(){
 
   // datepicker and timepicker functions:
   init_datepick();
+
+  //mobile search bar
+  if ($(window).width() < 1000) {
+    $('search-details').hide();
+  }
 
   // profile tabs:
   $(".tab").on("click", function(e){

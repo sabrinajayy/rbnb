@@ -1,9 +1,9 @@
 <%= form_tag('/search_results', method: 'get') do  %>
      <%= select_tag :category, options_for_select([['Makeup', 'makeup'], ['Hair', 'hair'], ['Hair and Makeup', 'hair and makeup']]),  placeholder: 'Category', class: 'search-form search-service' %>
-     <%= text_field_tag :date, nil, placeholder: 'Date', class: 'search-form datepick search-date' %>
-     <%= select_tag :time, options_for_select([['Morning', 'morning'], ['Afternoon', 'afternoon'], ['Evening', 'evening']]), placeholder: 'Time', class: 'search-form search-time' %>
-     <%= text_field_tag :location, nil, placeholder: 'City', class: 'search-form search-location', id: 'flat_address' %>
-     <%= text_field_tag :latitude, nil, id: 'searchlat', class: 'hidden' %>
-     <%= text_field_tag :longitude, nil, id: 'searchlon', class: 'hidden'  %>
-     <%= submit_tag 'search', class: "btn-pamprd search-button" %>
+       <%= text_field_tag :date, nil, placeholder: 'Date', class: 'search-form datepick search-date', id: 'search-details' %>
+       <%= select_tag :time, options_for_select([['Morning', 'morning'], ['Afternoon', 'afternoon'], ['Evening', 'evening']]), placeholder: 'Time', class: 'search-form search-time', id: 'search-details' %>
+       <%= text_field_tag :location, nil, placeholder: 'City', class: 'search-form search-location', id: 'flat_address search-details' %>
+       <%= text_field_tag :latitude, nil, id: 'searchlat', class: 'hidden' %>
+       <%= text_field_tag :longitude, nil, id: 'searchlon', class: 'hidden'  %>
+       <%= submit_tag 'search', class: "btn-pamprd search-button", id: 'search-details' %>
 <% end  %>
