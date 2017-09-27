@@ -14,6 +14,10 @@
 
 $(function(){
 
+  //fade in pages
+  $('body').css('display', 'none');
+  $('body').fadeIn(500);
+
   // datepicker and timepicker functions:
   init_datepick();
 

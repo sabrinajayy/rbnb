@@ -4,7 +4,7 @@
 
 .event-search-map {
   height: 100vh !important;
-  position: sticky !important;
+  position: fixed !important;
 }
 
 // .iw-container {
@@ -24,7 +24,8 @@
 #searchmap {
   flex: 0 0 500px;
   top: 0 !important;
-  height: 100vh;
+  height: 100vh !important;
+  right: 0;
   position: sticky !important;
   position: -webkit-sticky !important;
   position: -moz-sticky !important;
