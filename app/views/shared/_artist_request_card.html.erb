@@ -28,10 +28,10 @@
               <i class="fa fa-times" aria-hidden="true"></i> <p class='quote-status'>declined</p>
             <% else %>
               <div class="choice-btns">
-                <%= link_to  accept_artist_request_path(request.artist, request), :method => :patch do %>
+                <%= link_to  accept_artist_request_path(request.artist, request), data: {:confirm => 'Are you sure you want to accept this quote?'}, :method => :patch do %>
                   <i class="fa fa-check fa-2x accept-artist" aria-hidden="true"></i>
                 <% end %>
-                <%= link_to decline_artist_request_path(request.artist, request), :method => :patch do %>
+                <%= link_to decline_artist_request_path(request.artist, request), data: {:confirm => 'Are you sure you want to decline this artist\'s quote?'}, :method => :patch do %>
                   <i class="fa fa-times fa-2x decline-artist" aria-hidden="true"></i>
                 <% end %>
               </div>
