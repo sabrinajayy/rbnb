@@ -42,6 +42,7 @@
               </ul>
               <p style="font-style: italic; display: inline;">(<%= artist.reviews.size %>)</p>
               <p class="paragraph-bold"> <%= artist.try(:category).try(:capitalize)%> | <%= artist.location %></p>
+              <p style="font-style: italic"><%= artist.tags %></p>
               <% if artist.bio %>
               <p><%= artist.bio.first(200) %>...</p>
               <% end %>
