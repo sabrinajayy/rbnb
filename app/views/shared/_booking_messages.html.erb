@@ -4,7 +4,7 @@
   <div class="new-message">
     <%= simple_form_for(:message, url: artist_consumers_request_messages_path(@artist, @consumer_request)) do |f| %>
       <%= f.input :body, as: :text, label: false, placeholder: "Enter your message here" %>
-      <%= f.submit "Send message", class: 'btn btn-pamprd' %>
+      <%= f.submit "Send message", class: 'btn-pamprd' %>
     <% end %>
   </div>
   <div class="conversation">

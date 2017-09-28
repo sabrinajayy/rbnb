@@ -19,6 +19,17 @@ $(function(){
   $('body').css('display', 'none');
   $('body').fadeIn(500);
 
+  //show dropdown menu on hover
+  // $(".dropdown img, i").on("click", function (e){
+  //   $(".dropdown-menu").fadeIn(200);
+  // });
+
+  //fade in tabs on artist public profile
+  $(".tab").on("click", function (e) {
+    $(".tab-content").css('display', 'none');
+    $('.tab-content').fadeIn(500);
+  });
+
   // datepicker and timepicker functions:
   init_datepick();
 
