@@ -34,21 +34,21 @@ puts "Creating admin user"
 
 User.create!({email: 'admin@admin.com', password: 'password', admin: true})
 
-puts "Creating 5 Artists in Barcelona"
+# puts "Creating 5 Artists in Barcelona"
 
-real_names.each_with_index do |name, i|
-  user = User.create!({ email: Faker::Internet.email, password: Faker::Internet.password })
-  my_tags = []
+# real_names.each_with_index do |name, i|
+#   user = User.create!({ email: Faker::Internet.email, password: Faker::Internet.password })
+#   my_tags = []
 
-  rand(3...7).times do
-    my_tags << tags.delete(tags.sample)
-  end
+#   rand(3...7).times do
+#     my_tags << tags.delete(tags.sample)
+#   end
 
-  artist = Artist.create!({ user: user, first_name: name, last_name: Faker::Name.last_name, tags: my_tags.join(' '), instagram_handle: 'horvattamara', location: "Barcelona" , category: "makeup", remote_photo_url: real_images[i], travel_range: 20, rating: rand(5).to_f })
-  real_services.each do |service|
-    ArtistService.create!(name: service, price: (rand(10) + 40).to_f, artist: artist )
-  end
-end
+#   artist = Artist.create!({ user: user, first_name: name, last_name: Faker::Name.last_name, tags: my_tags.join(' '), instagram_handle: 'horvattamara', location: "Barcelona" , category: "makeup", remote_photo_url: real_images[i], travel_range: 20, rating: rand(5).to_f })
+#   real_services.each do |service|
+#     ArtistService.create!(name: service, price: (rand(10) + 40).to_f, artist: artist )
+#   end
+# end
 puts "Creating an artist called Sarah"
 
 user = User.create!({ email: 'sarah@sarah.com', password: 'password' })
