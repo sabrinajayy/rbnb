@@ -7,8 +7,9 @@ class Review < ApplicationRecord
 
   private
   def auto_update_artist_rating
+    counter = Review.where(artist_id: self.artist.id).count
     artist_reviews = Review.where(artist_id: self.artist.id).map {|review| review.rating.to_f}
-    rating = (self.rating + artist_reviews.reduce(0, :+) )/(artist_reviews.count).to_f
+    rating = (self.rating + artist_reviews.reduce { |memo, i| memo + i } )/((counter +1).to_f)
     self.artist.update(rating: rating)
   end
 end
