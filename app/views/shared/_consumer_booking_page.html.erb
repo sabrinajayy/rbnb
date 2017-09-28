@@ -53,16 +53,16 @@
           <% if current_user.is_artist? %>
             <!-- Accept Booking -->
             <% if @consumer_request.status == 'unconfirmed' %>
-               <%= button_to "Accept", artist_consumers_request_path(current_user.artist, @consumer_request),:confirm => 'Are you sure?',
+             <%= button_to "Accept", artist_consumers_request_path(current_user.artist, @consumer_request), data: {:confirm => 'Are you sure you want to accept this request?'},
             :class => "booking-status accept btn-pamprd", :method => :patch %>
 
             <!-- Decline Booking -->
-            <nobr><%= button_to "Decline", artist_consumers_request_path(current_user.artist, @consumer_request), data: {:confirm => 'Are you really sure?'}, :class => "booking-status cancel-btn btn-pamprd", method: :delete %>
+            <nobr><%= button_to "Decline", artist_consumers_request_path(current_user.artist, @consumer_request), data: {:confirm => 'Are you sure you want to decline this request?'}, :class => "booking-status cancel-btn btn-pamprd", method: :delete %>
 
               <% else %>
               <!-- Cancel previously accepted booking -->
                 <p class="confirmed">CONFIRMED</p>
-                <p class="cancel-booking"><%= link_to "Cancel Booking", artist_consumers_request_path(@consumer_request),  data: {:confirm => 'Are you sure?'},
+                <p class="cancel-booking"><%= link_to "Cancel Booking", artist_consumers_request_path(@consumer_request),  data: {:confirm => 'Are you sure you want to cancel this booking?'},
             :class => "booking-status cancel", :method => :delete %></p>
               <% end %>
 
@@ -71,11 +71,11 @@
               <% if @consumer_request.status == 'unconfirmed' %>
                <!--  <i class="fa fa-clock-o fa-4x" aria-hidden="true"></i> -->
                 <p class="unconfirmed">UNCONFIRMED</p>
-                <p class="cancel-booking"><%= link_to "Cancel Request", artist_consumers_request_path(@consumer_request.artist, @consumer_request), data: {:confirm => 'Are you really sure?'}, :class => "booking-status cancel", method: :delete %></p>
+                <p class="cancel-booking"><%= link_to "Cancel Request", artist_consumers_request_path(@consumer_request.artist, @consumer_request), data: {:confirm => 'Are you sure you want to cancel this request?'}, :class => "booking-status cancel", method: :delete %></p>
 
               <% else %>
                 <p class='confirmed'><%= @consumer_request.status %></p>
-                <p class='cancel-booking'><%= link_to "Cancel Booking", artist_consumers_request_path(@consumer_request.artist, @consumer_request), data: {:confirm => 'Are you really sure?'}, :class => "booking-status cancel", method: :delete %></p>
+                <p class='cancel-booking'><%= link_to "Cancel Booking", artist_consumers_request_path(@consumer_request.artist, @consumer_request), data: {:confirm => 'Are you sure you want to cancel this booking?'}, :class => "booking-status cancel", method: :delete %></p>
 
               <% end %>
           <%end%>

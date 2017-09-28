@@ -10,9 +10,14 @@
 //= require google_maps_autocomplete.js
 //= require jquery.validate
 //= require consumer_event.js
+//= require sweet_alert.js
 //= require_tree .
 
 $(function(){
+
+  //fade in pages
+  $('body').css('display', 'none');
+  $('body').fadeIn(500);
 
   // datepicker and timepicker functions:
   init_datepick();
